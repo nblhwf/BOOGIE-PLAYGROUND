@@ -28,8 +28,8 @@ button.g{background:#fff;color:var(--ink);border:1px solid var(--line)}button.r{
 <p class="muted" style="margin-top:6px">Token hanya disimpan di browser ini. Jangan dipakai di komputer umum.</p>
 <button id="conn">Simpan dan muat data</button> <button class="g" id="forget">Hapus token dari browser ini</button></div>
 <div id="app" style="display:none">
-<div class="tabs"><button class="on" data-t="v">Hasil vote</button><button data-t="e">Jadwal</button></div>
-<div id="tv"></div><div id="te" style="display:none"></div></div>
+<div class="tabs"><button class="on" data-t="v">Hasil vote</button><button data-t="e">Jadwal</button><button data-t="c">Konten</button><button data-t="f">Foto</button></div>
+<div id="tv"></div><div id="te" style="display:none"></div><div id="tc" style="display:none"></div><div id="tf" style="display:none"></div></div>
 <script>
 const $=s=>document.querySelector(s),LS=k=>{try{return localStorage.getItem(k)||""}catch{return""}},SL=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -50,8 +50,37 @@ async function save(note){
 }
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta"}).format(new Date());
 const st=v=>{const t=today();return t>v.end_date?"selesai":t<v.start_date?"akan datang":"berlangsung"};
+async function ytInfo(id){
+  for(const u of [`https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,`https://noembed.com/embed?url=https://youtu.be/${id}`]){
+    try{const r=await fetch(u);if(!r.ok)continue;const j=await r.json();if(j.title)return j}catch{}
+  }
+  return null;
+}
+function cropJpeg(file){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{
+  const W=480,H=600,k=Math.max(W/im.width,H/im.height),sw=W/k,sh=H/k,sx=(im.width-sw)/2,sy=Math.max(0,Math.min(im.height-sh,(im.height-sh)*.3));
+  const c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(im,sx,sy,sw,sh,0,0,W,H);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.82).split(",")[1])};im.onerror=()=>rej(new Error("Foto tidak bisa dibaca"));im.src=u})}
+async function uploadPhotos(){
+  const fs=[...$("#pf").files];if(!fs.length)return msg("Pilih foto dulu.","bad");
+  seed.moments=seed.moments||[];let n=0;
+  for(const f of fs){const b64=await cropJpeg(f),name=`assets/photos/u-${Date.now()}-${n++}.jpg`;
+    const r=await fetch(`https://api.github.com/repos/${$("#repo").value.trim()}/contents/${name}`,{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:"Tambah foto",content:b64,branch:$("#branch").value.trim()||"main"})});
+    if(!r.ok)throw new Error("Upload foto gagal ("+r.status+")");seed.moments.unshift({src:name})}
+  await save("Tambah foto Comeback moments");
+}
+function renderPhotos(){
+  const L=seed.moments||[];
+  $("#tf").innerHTML=`<div class="card"><h3>Tambah foto Comeback moments</h3><p class="muted">Foto dipotong otomatis jadi 4:5 supaya seragam. Boleh pilih banyak sekaligus. Foto baru tampil paling depan.</p>
+  <input id="pf" type="file" accept="image/*" multiple><button id="pup">Upload</button></div>
+  <div class="card"><h3>Foto saat ini (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map((m,i)=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><button class="g" style="width:100%;margin-top:4px;padding:5px" data-pdel="${i}">Hapus</button></div>`).join("")}</div></div>`;
+}
+function renderContent(){
+  const L=seed.content||[];
+  $("#tc").innerHTML=`<div class="card"><h3>Tambah konten YouTube (dari channel mana pun)</h3>
+  <p class="muted">Cukup tempel link. Judul dan label diisi otomatis dari YouTube; kalau gagal, isi sendiri.</p><label>Link YouTube</label><input id="cu" placeholder="https://youtu.be/..."><div class="row"><div><label>Judul (opsional)</label><input id="ct"></div><div><label>Label singkat</label><input id="cg" placeholder="mis. Teaser, Na PD"></div></div><button id="cadd">Tambah</button></div>
+  <div class="card"><h3>Konten saat ini</h3>${L.map((c,i)=>`<div class="ev"><div><b>${esc(c.title)}</b><div class="muted">${esc(c.tag||"")} · youtu.be/${esc(c.id)}</div></div><button class="g" data-cdel="${i}">Hapus</button></div>`).join("")||'<p class="muted">Belum ada.</p>'}</div>`;
+}
 function render(){
-  $("#app").style.display="block";
+  $("#app").style.display="block";renderContent();renderPhotos();
   $("#tv").innerHTML=seed.votes.map((v,i)=>{const s=st(v),r=v.result||{};return `<div class="card"><h3>${esc(v.show)} · ${esc(v.phase)} <span class="pill ${s==="berlangsung"?"on":s==="akan datang"?"up":""}">${s}</span></h3>
   <p class="muted">${esc((v.apps||[]).join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)}${r.at?" · update terakhir "+new Date(r.at).toLocaleString("id-ID",{timeZone:"Asia/Jakarta"})+" WIB":""}</p>
   <div class="row"><div><label>Posisi / peringkat</label><input data-i="${i}" data-f="rank" value="${esc(r.rank??"")}" placeholder="mis. 1"></div><div><label>Link pengumuman</label><input data-i="${i}" data-f="url" value="${esc(r.url??"")}" placeholder="https://..."></div></div>
@@ -66,13 +95,20 @@ function render(){
 document.addEventListener("click",async ev=>{
   const t=ev.target;
   try{
-  if(t.dataset.t){document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===t));$("#tv").style.display=t.dataset.t==="v"?"":"none";$("#te").style.display=t.dataset.t==="e"?"":"none"}
+  if(t.dataset.t){document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===t));$("#tv").style.display=t.dataset.t==="v"?"":"none";$("#te").style.display=t.dataset.t==="e"?"":"none";$("#tc").style.display=t.dataset.t==="c"?"":"none";$("#tf").style.display=t.dataset.t==="f"?"":"none"}
   if(t.dataset.save!==undefined){const i=+t.dataset.save,g=f=>document.querySelector(`[data-i="${i}"][data-f="${f}"]`).value.trim();
     const rank=g("rank"),note=g("note"),url=g("url");
     seed.votes[i].result=(rank||note||url)?{rank:rank===""?null:(isNaN(rank)?rank:+rank),note,url,at:new Date().toISOString()}:null;
     await save("Update hasil vote: "+seed.votes[i].slug)}
   if(t.dataset.clear!==undefined){seed.votes[+t.dataset.clear].result=null;await save("Hapus hasil vote")}
   if(t.dataset.del!==undefined){if(confirm("Hapus jadwal ini?")){seed.events.splice(+t.dataset.del,1);await save("Hapus jadwal")}}
+  if(t.id==="cadd"){const m=$("#cu").value.match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/);if(!m)return msg("Link YouTube tidak dikenali.","bad");
+    let title=$("#ct").value.trim(),tag=$("#cg").value.trim();
+    if(!title||!tag){const info=await ytInfo(m[1]);if(info){title=title||info.title;tag=tag||String(info.author_name||"").slice(0,18)}}
+    seed.content=seed.content||[];seed.content.unshift({id:m[1],title:title||"",tag:tag||""});await save("Tambah konten YouTube")}
+  if(t.id==="pup"){await uploadPhotos()}
+  if(t.dataset.pdel!==undefined){seed.moments.splice(+t.dataset.pdel,1);await save("Hapus foto")}
+  if(t.dataset.cdel!==undefined){seed.content.splice(+t.dataset.cdel,1);await save("Hapus konten")}
   if(t.id==="eadd"){const s=$("#estart").value,title=$("#etitle").value.trim();if(!s||!title)return msg("Isi judul dan tanggal dulu.","bad");
     const all=$("#eall").checked;
     seed.events.push({slug:"manual-"+Date.now(),type:$("#etype").value,title,start:all?s.slice(0,10)+"T00:00:00+07:00":s+":00+07:00",all_day:all,note:$("#enote").value.trim(),source:$("#esrc").value.trim()||"Input manual pengelola web",url:$("#eurl").value.trim()||null,verified_at:new Date().toISOString()});
