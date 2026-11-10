@@ -1,0 +1,29 @@
+name: Update data YouTube
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: update-data
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/update-data.mjs
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+      - name: Simpan perubahan
+        run: |
+          git config user.name "boogie-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/views.json data/youtube-events.json
+          git diff --staged --quiet && exit 0
+          git commit -m "update data"
+          git pull --rebase
+          git push
