@@ -237,6 +237,116 @@
    "source": "Wikipedia: 2026 MAMA Awards (data nominasi & jadwal)",
    "url": null,
    "verified_at": "2026-11-10T09:00:00+07:00"
+  },
+  {
+   "slug": "napd-1110",
+   "type": "Guest appearance",
+   "title": "NCT DREAM x Na PD (YouTube)",
+   "start": "2026-11-10T00:00:00+07:00",
+   "all_day": true,
+   "note": "Konten promosi album di channel Na PD. Jam tayang belum dikonfirmasi.",
+   "source": "Info dari pengelola web (link YouTube dikirim langsung)",
+   "url": "https://youtu.be/mCeUNjUlGhQ",
+   "verified_at": "2026-11-10T18:50:00+07:00"
+  },
+  {
+   "slug": "jeno-dangnyang",
+   "type": "Guest appearance",
+   "title": "Jeno di DangNyang Zip",
+   "start": "2026-11-16T00:00:00+07:00",
+   "all_day": true,
+   "note": "Jam tayang belum dikonfirmasi.",
+   "source": "Info dari pengelola web",
+   "url": null,
+   "verified_at": "2026-11-10T20:10:00+07:00"
+  },
+  {
+   "slug": "jeno-kkokkomu",
+   "type": "Guest appearance",
+   "title": "Jeno di SBS Kkokkomu (Ep.247)",
+   "start": "2026-11-12T20:20:00+07:00",
+   "all_day": false,
+   "note": "22.20 KST. Episode ke-247 『닫힌 세계 - 사령카페 살인사건』 bersama Jang Trio. Siaran SBS.",
+   "source": "Info dari pengelola web (postingan resmi program)",
+   "url": null,
+   "verified_at": "2026-11-10T20:10:00+07:00"
+  }
+ ],
+ "content": [
+  {
+   "id": "U4QdFISXtX8",
+   "title": "Teaser (channel di luar NCT DREAM)",
+   "tag": "Teaser"
+  },
+  {
+   "id": "mCeUNjUlGhQ",
+   "title": "NCT DREAM x Na PD",
+   "tag": "Na PD"
+  },
+  {
+   "id": "ayiTC-mFb0Y",
+   "title": "Konten promosi album: Renjun",
+   "tag": "Renjun"
+  },
+  {
+   "id": "UJWI0So4_v0",
+   "title": "",
+   "tag": ""
+  },
+  {
+   "id": "HTk7U3LlVIY",
+   "title": "",
+   "tag": ""
+  },
+  {
+   "id": "Yw9zyGAl3Mg",
+   "title": "",
+   "tag": ""
+  },
+  {
+   "id": "53YmGEQcPg8",
+   "title": "",
+   "tag": ""
+  },
+  {
+   "id": "NGApRkZzPYU",
+   "title": "",
+   "tag": ""
+  }
+ ],
+ "moments": [
+  {
+   "src": "assets/photos/m01.jpg"
+  },
+  {
+   "src": "assets/photos/m02.jpg"
+  },
+  {
+   "src": "assets/photos/m03.jpg"
+  },
+  {
+   "src": "assets/photos/m04.jpg"
+  },
+  {
+   "src": "assets/photos/m05.jpg"
+  },
+  {
+   "src": "assets/photos/m06.jpg"
+  },
+  {
+   "src": "assets/photos/m07.jpg"
+  },
+  {
+   "src": "assets/photos/m08.jpg"
+  },
+  {
+   "src": "assets/photos/m09.jpg"
+  },
+  {
+   "src": "assets/photos/m10.jpg"
+  },
+  {
+   "src": "assets/photos/m11.jpg"
   }
  ]
 }
