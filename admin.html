@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Status Sistem — BOOGIE! PLAYGROUND</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1a2e;--mute:#6d7183;--line:#e6e8ee;--ok:#1b8f6a;--warn:#c98a00;--bad:#d62f5c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#eef1f4;color:var(--ink);padding:22px}
+.wrap{max-width:980px;margin:0 auto}
+h1{font-size:26px;letter-spacing:-.6px}.sub{color:var(--mute);font-size:13px;margin:4px 0 20px;line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:#fff;border-radius:20px;padding:18px;border:1px solid #eef0f4}
+.card h3{font-size:14px;margin-bottom:10px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #f0f2f5;font-size:13px;align-items:center}
+.row:first-of-type{border-top:0}
+.badge{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
+.ok{background:#d9f3ea;color:#0e7a55}.warn{background:#fff0c8;color:#8a6200}.bad{background:#fde0e8;color:#b0213f}.na{background:#eceff3;color:var(--ink)}
+.muted{color:var(--mute);font-size:12px;line-height:1.5}
+a{color:#1b8f96;font-weight:700}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;font-size:12px;padding:8px 14px;border-radius:11px;border:1px solid var(--line);background:#fff;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:12.5px}td,th{text-align:left;padding:7px 6px;border-top:1px solid #f0f2f5}th{color:var(--mute);font-size:11px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div><h1>Status Sistem</h1>
+  <p class="sub">Halaman pantau saja (read-only). Tidak ada tombol edit dan tidak memakai kunci rahasia. Semua pembaruan berjalan otomatis; halaman ini memberi tahu kalau ada yang berhenti atau perlu dicek.</p></div>
+  <div style="display:flex;gap:8px"><button id="re">Muat ulang</button><a href="index.html" style="align-self:center">Ke website</a></div></div>
+  <div class="grid" id="out"><div class="card">Memuat…</div></div>
+</div>
+<script src="config.js"></script>
+<script src="data/seed.js"></script>
+<script>
+const WIB="Asia/Jakarta";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const todayKey=()=>new Intl.DateTimeFormat("en-CA",{timeZone:WIB}).format(new Date());
+const fmt=d=>new Intl.DateTimeFormat("id-ID",{timeZone:WIB,day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(d))+" WIB";
+const ageMin=d=>Math.round((Date.now()-new Date(d))/6e4);
+const ageTxt=m=>m<1?"baru saja":m<60?m+" menit lalu":m<1440?Math.round(m/60)+" jam lalu":Math.round(m/1440)+" hari lalu";
+async function sb(t,q=""){
+  if(!CFG.SUPABASE_URL){
+    if(t==="mv_snapshots"){try{const j=await(await fetch((CFG.DATA_BASE||"data/")+"views.json?t="+Date.now(),{cache:"no-store"})).json();return{data:[...j.snapshots].reverse().slice(0,2)}}catch{return{data:[]}}}
+    return{err:"Mode GitHub (tanpa Supabase)"};}
+  try{const r=await fetch(`${CFG.SUPABASE_URL}/rest/v1/${t}?${q}`,{headers:{apikey:CFG.SUPABASE_ANON_KEY,Authorization:"Bearer "+CFG.SUPABASE_ANON_KEY}});
+    if(!r.ok)return{err:"HTTP "+r.status};return{data:await r.json()}}catch(e){return{err:"Tidak bisa terhubung"}}
+}
+const B=(c,t)=>`<span class="badge ${c}">${t}</span>`;
+const R=(l,v,sub)=>`<div class="row"><div>${l}${sub?`<div class="muted">${sub}</div>`:""}</div>${v}</div>`;
+function vStatus(v){const t=todayKey();if(t>v.end_date)return"ended";if(t<v.start_date)return"upcoming";return"ongoing"}
+async function run(){
+  const out=$("#out");out.innerHTML='<div class="card">Memuat…</div>';
+  const [snap,logs,votes,events]=await Promise.all([
+    sb("mv_snapshots",`select=captured_at,views&video_id=eq.${CFG.VIDEO_ID}&order=captured_at.desc&limit=2`),
+    sb("sync_log","select=fn,ok,message,ran_at&order=ran_at.desc&limit=30"),
+    sb("vote_events","select=*"),sb("schedule_events","select=*&order=start.asc&limit=500")]);
+  const cards=[];
+  // 1. Koneksi + views
+  const c1=[];
+  c1.push(R("Sumber data",snap.err?B("bad",esc(snap.err)):B("ok",CFG.SUPABASE_URL?"Supabase":"File data/views.json")));
+  if(snap.data){
+    const l=snap.data[0];
+    if(!l)c1.push(R("Snapshot views",B("warn","Belum ada data"),"Workflow "Update data YouTube" belum jalan. Cek tab Actions di GitHub."));
+    else{const m=ageMin(l.captured_at);c1.push(R("Snapshot views terakhir",B(m<=45?"ok":m<=180?"warn":"bad",m<=45?"Normal":m<=180?"Agak telat":"Berhenti"),`${fmt(l.captured_at)} (${ageTxt(m)}) · ${Number(l.views).toLocaleString("id-ID")} views`))}
+  }
+  cards.push(`<div class="card"><h3>Data views MV</h3>${c1.join("")}<p class="muted" style="margin-top:8px">Snapshot idealnya masuk tiap 15 menit.</p></div>`);
+  // 2. Sync log per fungsi
+  const c2=[];
+  if(logs.data){
+    ["update-views","sync-youtube"].forEach(fn=>{
+      const l=logs.data.find(x=>x.fn===fn);
+      if(!l)c2.push(R(fn,B("warn","Belum pernah jalan")));
+      else{const m=ageMin(l.ran_at),late=fn==="update-views"?m>45:m>180;
+        c2.push(R(fn,B(!l.ok?"bad":late?"warn":"ok",!l.ok?"Gagal":late?"Telat":"Normal"),`${ageTxt(m)}${l.ok?"":" · "+esc(l.message)}`))}
+    });
+  }else c2.push(R("Log sinkronisasi",B("na",CFG.SUPABASE_URL?esc(logs.err):"Lihat tab Actions di GitHub")));
+  cards.push(`<div class="card"><h3>Sinkronisasi otomatis</h3>${c2.join("")}</div>`);
+  // 3. Voting
+  const V=[...(window.SEED?.votes||[])];const dbv=votes.data||[];
+  dbv.forEach(d=>{const i=V.findIndex(x=>x.slug===d.slug);const n={...d,result:d.result_rank!=null||d.result_note?{rank:d.result_rank,note:d.result_note}:null};i>=0?V[i]={...V[i],...n}:V.push(n)});
+  const ended=V.filter(v=>vStatus(v)==="ended"),noRes=ended.filter(v=>!v.result),soon=V.filter(v=>vStatus(v)==="upcoming"&&(new Date(v.start_date)-Date.now())<3*864e5);
+  const c3=[R("Event voting terdaftar",B("na",V.length))];
+  c3.push(R("Voting berlangsung",B("na",V.filter(v=>vStatus(v)==="ongoing").length)));
+  c3.push(R("Selesai tapi hasil belum diisi",noRes.length?B("warn",noRes.length+" event"):B("ok","Tidak ada"),noRes.map(v=>esc(v.show+" "+v.phase)).join(", ")));
+  c3.push(R("Dimulai ≤ 3 hari lagi",B("na",soon.length),soon.map(v=>esc(v.show+" "+v.phase)).join(", ")));
+  c3.push(R("Tanpa sumber / belum diverifikasi",V.filter(v=>!v.verified_at||!v.source).length?B("warn",V.filter(v=>!v.verified_at||!v.source).length):B("ok","Aman")));
+  cards.push(`<div class="card"><h3>Voting</h3>${c3.join("")}<p class="muted" style="margin-top:8px">Hasil voting tidak bisa diambil otomatis karena aplikasi voting tidak menyediakan API publik. Isi kolom result_* di tabel vote_events setelah ada pengumuman resmi.</p></div>`);
+  // 4. Jadwal
+  const E=[...(window.SEED?.events||[]),...(events.data||[])];
+  const next7=E.filter(e=>{const d=new Date(e.start)-Date.now();return d>-864e5&&d<7*864e5});
+  const yt=(events.data||[]).filter(e=>e.youtube_video_id);
+  const c4=[R("Total jadwal",B("na",E.length)),R("Jadwal 7 hari ke depan",B(next7.length?"ok":"warn",next7.length),next7.length?"":"Belum ada jadwal terdekat."),
+    R("Konten YouTube (otomatis)",yt.length?B("ok",yt.length+" item"):B("warn","0 item"),yt.length?"Terbaru: "+esc(yt[yt.length-1].title):"Menunggu sync-youtube."),
+    R("Jadwal tanpa jam pasti",B("na",E.filter(e=>e.all_day).length))];
+  cards.push(`<div class="card"><h3>Jadwal</h3>${c4.join("")}</div>`);
+  // 5. Link
+  const missing=[...CFG.STREAMING,...CFG.VOTING_APPS].filter(a=>!a.url);
+  cards.push(`<div class="card"><h3>Link resmi</h3>${R("Link belum diisi",missing.length?B("warn",missing.length):B("ok","Lengkap"),missing.map(a=>esc(a.name)).join(", "))}<p class="muted" style="margin-top:8px">Isi di config.js, bagian STREAMING dan VOTING_APPS.</p></div>`);
+  // 6. Log
+  const rows=(logs.data||[]).slice(0,12).map(l=>`<tr><td>${fmt(l.ran_at)}</td><td>${esc(l.fn)}</td><td>${l.ok?B("ok","OK"):B("bad","Gagal")}</td><td>${esc(l.message||"")}</td></tr>`).join("");
+  cards.push(`<div class="card" style="grid-column:1/-1"><h3>Log sinkronisasi terbaru</h3>${rows?`<table><tr><th>Waktu</th><th>Fungsi</th><th>Status</th><th>Pesan</th></tr>${rows}</table>`:'<p class="muted">Belum ada log.</p>'}</div>`);
+  out.innerHTML=cards.join("");
+}
+$("#re").onclick=run;run();setInterval(run,60000);
+</script>
+</body>
+</html>
