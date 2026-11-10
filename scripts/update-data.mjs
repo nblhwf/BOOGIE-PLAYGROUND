@@ -14,7 +14,7 @@ try{
   d.snapshots=d.snapshots.slice(-6000);d.video_id=VID;d.updated_at=new Date().toISOString();
   await writeFile(f,JSON.stringify(d));console.log("views",it.statistics.viewCount);
   try{
-    const ch=it.snippet.channelId,list=await yt(`playlistItems?part=contentDetails&playlistId=UU${ch.slice(2)}&maxResults=40`);
+    const ch="UCXURHJRGr4-EB3l87kcbElw",list=await yt(`playlistItems?part=contentDetails&playlistId=UU${ch.slice(2)}&maxResults=40`);
     const ids=(list.items||[]).map(x=>x.contentDetails.videoId);
     const det=ids.length?await yt(`videos?part=snippet,liveStreamingDetails&id=${ids.join(",")}`):{items:[]};
     const since=Date.now()-14*864e5,now=new Date().toISOString();
