@@ -48,7 +48,7 @@ main{padding:26px 28px 44px;min-width:0}
 section.h{font-weight:800;font-size:17px;margin:28px 0 12px;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.2px}
 section.h a{font-size:12px;color:var(--teal);font-weight:700}
 .hero{position:relative;border-radius:var(--r);overflow:hidden;min-height:310px;color:#fff;display:flex;align-items:flex-end;padding:34px;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:-24px;background:url(assets/hero.jpg) center 28%/cover;filter:blur(6px) saturate(1.08);z-index:-2}
+.hero::before{content:"";position:absolute;inset:-24px;background:var(--heroimg,url(assets/hero.jpg)) center 28%/cover;filter:blur(6px) saturate(1.08);z-index:-2}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(28,26,46,.86) 0%,rgba(28,26,46,.56) 48%,rgba(28,26,46,.12) 100%)}
 .tag{display:inline-block;background:rgba(255,255,255,.18);padding:5px 12px;border-radius:99px;font-size:11px;font-weight:700;margin:0 6px 12px 0;backdrop-filter:blur(6px);letter-spacing:.3px}
 .hero h1{font-size:clamp(34px,5vw,60px);line-height:.96;letter-spacing:-2px;margin-bottom:10px}
@@ -146,14 +146,45 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
   .mobnav a.on{color:#fff;background:var(--ink)}
 }
 
+/* ---- v4b ---- */
+.top .pill,.top select{color:var(--ink)}
+.mright{display:none}
+@media(max-width:1200px){.mright{display:block;margin-top:14px}}
+.pwa-m{display:none;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 14px;font-size:12.5px;font-weight:600}
+@media(max-width:860px){.pwa-m.show{display:flex}}
+@media(max-width:860px){
+ .stat{padding:12px 14px}.stat .v{font-size:19px;letter-spacing:-.4px;margin-top:3px}.stat .s{font-size:11px}.stat .l{font-size:11.5px}
+ .grid{gap:10px}.item{padding:10px 11px;gap:10px;border-radius:14px}.item .t b{font-size:13px}.item .t small{font-size:11.5px}
+ section.h{margin:20px 0 9px;font-size:15.5px}.short{min-height:96px;padding:14px}.short b{font-size:15px}
+ .mobnav a{font-size:11px;padding:9px 8px}
+ .g2{grid-template-columns:1fr}
+}
+/* sales + konten */
+.sales{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}
+.sales-l{background:var(--ink);color:#fff;border:0}.sales-l .sk{font-size:11px;letter-spacing:1.4px;font-weight:800;color:var(--butter)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.sbig{background:rgba(255,255,255,.1);border-radius:12px;padding:10px}.sbig .l{font-size:10.5px;opacity:.75}.sbig .v{font-size:15px;font-weight:800;margin-top:4px;letter-spacing:-.3px}
+.sst{font-size:12px;line-height:1.55;margin-top:12px;opacity:.92}.sst a{color:var(--butter);text-decoration:underline}.sales-l .muted{color:rgba(255,255,255,.6)}
+.stabs{display:flex;gap:6px;margin-bottom:10px}.stabs button{font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:#fff;cursor:pointer}.stabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sbar{display:grid;grid-template-columns:96px 1fr auto;gap:10px;align-items:center;padding:6px 0}
+.sn b{font-size:12.5px;display:block}.sn span{font-size:10.5px;color:var(--mute)}
+.sb{height:12px;border-radius:99px;background:#eef0f4;overflow:hidden}.sb i{display:block;height:100%;border-radius:99px}
+.sv{font-size:12px;font-weight:800;text-align:right;min-width:78px}
+.recs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.rec{display:block;background:#fff;border:1px solid #eef0f4;border-left:5px solid var(--c);border-radius:14px;padding:11px 13px;font-size:12px;line-height:1.5}.rec b{display:block;font-size:10.5px;letter-spacing:1px;color:var(--c);margin-bottom:3px}
+.yts{display:grid;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:220px;gap:14px 12px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity}
+.yt{scroll-snap-align:start;min-width:0}.yt .th{aspect-ratio:16/9;border-radius:14px;background:#ddd center/cover;position:relative;box-shadow:0 6px 16px rgba(28,26,46,.14)}
+.yt .th span{position:absolute;left:8px;top:8px;color:#fff;font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:99px}
+.yt b{display:block;font-size:12.5px;margin-top:8px;line-height:1.35}
+@media(max-width:860px){.sales{grid-template-columns:1fr}.recs{grid-template-columns:1fr}.yts{grid-auto-columns:160px}.sbar{grid-template-columns:78px 1fr auto}.sgrid{gap:6px}.sbig .v{font-size:13px}}
 /* ---- v4: header foto, hero, ticker, moments ---- */
 .top{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--r);padding:24px 26px;color:#fff;min-height:112px}
-.top::before{content:"";position:absolute;inset:-18px;background:url(assets/photos/group.jpg) var(--bp,50% 30%)/cover;filter:blur(4px) saturate(1.1);z-index:-2}
+.top::before{content:"";position:absolute;inset:-18px;background:var(--group,url(assets/photos/group.jpg)) var(--bp,50% 30%)/cover;filter:blur(4px) saturate(1.1);z-index:-2}
 .top::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(28,26,46,.9),rgba(28,26,46,.58) 62%,rgba(28,26,46,.3))}
 .top h2{color:#fff}.top p{color:rgba(255,255,255,.84)}.top p a{color:var(--butter)!important}
 #view[data-p=mv] .top{--bp:20% 32%}#view[data-p=stream] .top{--bp:55% 45%}#view[data-p=schedule] .top{--bp:80% 22%}#view[data-p=play] .top{--bp:40% 72%}
 @media(min-width:861px){.hero>div:first-child{max-width:57%}}
-.hero-photo{position:absolute;right:38px;top:50%;width:min(34%,340px);aspect-ratio:4/3;transform:translateY(-50%) rotate(3deg);border-radius:18px;border:6px solid #fff;box-shadow:0 22px 44px rgba(0,0,0,.4);background:url(assets/photos/group.jpg) center/cover;z-index:1}
+.hero-photo{position:absolute;right:38px;top:50%;width:min(34%,340px);aspect-ratio:4/3;transform:translateY(-50%) rotate(3deg);border-radius:18px;border:6px solid #fff;box-shadow:0 22px 44px rgba(0,0,0,.4);background:var(--group,url(assets/photos/group.jpg)) center/cover;z-index:1}
 .hero-photo i{position:absolute;right:-14px;top:-16px;background:var(--rasp);color:#fff;padding:6px 12px;border-radius:99px;font-size:11px;font-weight:800;font-style:normal;transform:rotate(5deg);letter-spacing:.4px}
 .hero-photo b{position:absolute;left:-14px;bottom:-14px;background:var(--butter);color:var(--ink);padding:6px 13px;border-radius:99px;font-size:11px;font-weight:800;transform:rotate(-4deg);letter-spacing:.4px}
 @media(max-width:860px){.hero-photo{display:none}}
@@ -196,6 +227,10 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
 <script src="data/seed.js"></script>
 <script src="data/photos.js"></script>
 <script>
+const PH=window.PHOTOS_B64||{};
+if(PH.group)document.documentElement.style.setProperty("--group","url("+PH.group+")");
+if(PH.hero)document.documentElement.style.setProperty("--heroimg","url("+PH.hero+")");
+const phSrc=src=>{const k=String(src).split("/").pop().replace(/\.\w+$/,"");return PH[k]||src};
 /* ============================================================
    Helpers
    ============================================================ */
@@ -249,7 +284,7 @@ async function loadData(){
   D.snaps=raw.map(x=>({captured_at:x.captured_at,views:+x.views})).sort((a,b)=>new Date(a.captured_at)-new Date(b.captured_at));
   D.votes=mergeBy(seed.votes||[],v||[]).map(normVote);
   D.events=mergeBy(mergeBy(seed.events||[],(ej&&ej.events)||[]),e||[]);
-  D.ratings=r;
+  D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.content=seed.content||SEEDV.content||[];
 }
 const verified=x=>!!x.verified_at;
 function vStatus(v){
@@ -259,7 +294,7 @@ function vStatus(v){
   return"ongoing";
 }
 const ST={ongoing:["Berlangsung","ok"],upcoming:["Akan datang","warn"],ended:["Selesai","bad"]};
-const TYPE_COLOR={"Comeback release":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Fan activities":PAL[6]};
+const TYPE_COLOR={"Comeback release":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Fan activities":PAL[6]};
 function allEvents(){
   const out=D.events.filter(verified).map(e=>({...e,day:e.all_day?dayKey(e.start,WIB):dayKey(e.start),kind:/youtu/.test(e.url||"")?"yt":"ev"}));
   D.votes.filter(verified).forEach(v=>{
@@ -338,6 +373,28 @@ const PAGES=[["home","Home",PAL[2]],["mv","MV Tracker",PAL[0]],["stream","Stream
 const MOB={home:"Home",mv:"MV Tracker",stream:"Stream & Vote",schedule:"Schedule",play:"Playground"};
 const TICK=["BOOGIE WOOGIE","DREAM AFTER DREAM","NCT DREAM 10TH ANNIVERSARY","OUT NOW 9.11.2026","STREAM · VOTE · CELEBRATE"];
 
+const isStandalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch{return false}};
+const momentsAll=()=>[...(D.moments||[]),...(CFG.MOMENTS||[])];
+function contentHtml(){
+  const seen=new Set(),out=[];
+  [...(D.content||[]),...(CFG.CONTENT||[])].forEach(c=>{if(!seen.has(c.id)){seen.add(c.id);out.push(c)}});
+  D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).sort((a,b)=>new Date(b.start)-new Date(a.start)).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m&&!seen.has(m[1])){seen.add(m[1]);out.push({id:m[1],title:e.title,tag:"NCT DREAM"})}});
+  if(!out.length)return "";
+  return `<section class="h">Konten terbaru <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)">${c.tag?`<span style="background:${PAL[[3,0,1,4,6][i%5]]}">${esc(c.tag)}</span>`:""}</div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
+}
+async function afterHome(){
+  for(const b of $$("[data-yid][data-need='1']")){
+    const id=b.dataset.yid;let t=null;
+    try{t=sessionStorage.getItem("yt_"+id)}catch{}
+    if(!t){
+      for(const u of [`https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,`https://noembed.com/embed?url=https://youtu.be/${id}`]){
+        try{const r=await fetch(u);if(!r.ok)continue;const j=await r.json();if(j.title){t=j.title;break}}catch{}
+      }
+      if(t)try{sessionStorage.setItem("yt_"+id,t)}catch{}
+    }
+    if(t)b.textContent=t;
+  }
+}
 function pHome(){
   const st=mvStats(),ev=upcoming().slice(0,3);
   let vt=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").sort((a,b)=>a.end_date.localeCompare(b.end_date));
@@ -352,6 +409,8 @@ function pHome(){
     <div class="row"><a class="btn butter" href="#/stream">Mulai support</a><a class="btn glass" href="https://youtu.be/${CFG.VIDEO_ID}" target="_blank" rel="noopener">Tonton MV</a></div>
   </div><div class="hero-photo"><i>10TH ANNIVERSARY</i><b>OUT NOW</b></div></div>
   <div class="ticker"><div>${[...TICK,...TICK,...TICK,...TICK].map(t=>`<span>${t}</span>`).join("")}</div></div>
+  <div class="mright" id="mright"></div>
+  <div class="pwa-m ${isStandalone()?"":"show"}"><span>Pasang web ini di layar HP</span><button class="btn sm" data-inst="1">Pasang</button></div>
   <section class="h">Comeback snapshot <a href="#/mv">Detail</a></section>
   <div class="grid g4">
     ${stCard("Total views MV",st?nf(st.last.views):"Menunggu data",st?"update "+ago(st.last.captured_at):"muncul otomatis setelah sinkronisasi")}
@@ -363,14 +422,9 @@ function pHome(){
     <div><section class="h">Voting ${vt.length&&vStatus(vt[0])==="ongoing"?"berlangsung":"berikutnya"} <a href="#/stream">Semua</a></section><div class="list">${vt.length?vt.map(v=>{const s=vStatus(v);return `<div class="item"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><small>${esc(v.apps.join(" & "))} · ${rangeStr(v.start_date,v.end_date)}</small></div><span class="badge ${ST[s][1]}">${ST[s][0]}</span></div>`}).join(""):'<div class="empty">Belum ada voting terverifikasi.</div>'}</div></div>
     <div><section class="h">Jadwal terdekat <a href="#/schedule">Kalender</a></section><div class="list">${ev.length?ev.map(evItem).join(""):'<div class="empty">Belum ada jadwal terverifikasi.</div>'}</div></div>
   </div>
-  ${(CFG.MOMENTS||[]).length?`<section class="h">Comeback moments</section><div class="moments">${CFG.MOMENTS.map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(m.src)}" alt="${esc(m.cap)}" loading="lazy">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
-  <section class="h">Shortcut</section>
-  <div class="grid g4">
-    <a class="short" href="#/mv" style="background:var(--teal)"><small>01</small><div><b>MV Tracker</b><span>Views dan milestone</span></div></a>
-    <a class="short" href="#/stream" style="background:var(--rasp)"><small>02</small><div><b>Stream &amp; Vote</b><span>Link resmi dan jadwal vote</span></div></a>
-    <a class="short" href="#/schedule" style="background:var(--blue)"><small>03</small><div><b>Schedule</b><span>Kalender promosi</span></div></a>
-    <a class="short dark" href="#/play" style="background:var(--butter)"><small>04</small><div><b>Playground</b><span>Watermark dan album rating</span></div></a>
-  </div>`;
+  ${momentsAll().length?`<section class="h">Comeback moments</section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
+  ${contentHtml()}
+`;
 }
 
 function pMv(){
@@ -608,19 +662,21 @@ let cdTimer;
 function renderRight(){
   const next=upcoming()[0],target=next?new Date(next.start):null;
   const ong=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").slice(0,3);
-  $("#right").innerHTML=`<div class="count"><div style="font-size:12px;opacity:.75">${next?"Menuju: "+esc(next.title):"Countdown"}</div><b style="font-size:15px">${next?keyFmt(next.day,{day:"numeric",month:"short"})+" · "+evTime(next):"Belum ada jadwal"}</b><div class="n" id="cd"><div><b>--</b><span>hari</span></div><div><b>--</b><span>jam</span></div><div><b>--</b><span>mnt</span></div><div><b>--</b><span>dtk</span></div></div></div>
+  const cdHtml=`<div class="count"><div style="font-size:12px;opacity:.75">${next?"Menuju: "+esc(next.title):"Countdown"}</div><b style="font-size:15px">${next?keyFmt(next.day,{day:"numeric",month:"short"})+" · "+evTime(next):"Belum ada jadwal"}</b><div class="n" id="cd"><div><b>--</b><span>hari</span></div><div><b>--</b><span>jam</span></div><div><b>--</b><span>mnt</span></div><div><b>--</b><span>dtk</span></div></div></div>`;
+  $("#mright")&&($("#mright").innerHTML=cdHtml);
+  $("#right").innerHTML=cdHtml+`
   <div><h3>Voting berlangsung</h3><div class="list">${ong.map(v=>`<div class="item"><div class="t"><b>${esc(v.apps.join(" & "))}</b><small>${esc(v.show)} · ${esc(v.phase)}</small></div><span class="badge ok">Live</span></div>`).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div><h3>Upcoming</h3><div class="list">${upcoming().slice(0,4).map(evItem).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div class="muted" style="margin-top:auto">Zona waktu: ${TZS[TZ]}</div>`;
   clearInterval(cdTimer);if(!target)return;
-  const tick=()=>{const s=Math.max(0,Math.floor((target-Date.now())/1000)),v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];$$("#cd b").forEach((e,i)=>e.textContent=String(v[i]).padStart(2,"0"))};
+  const tick=()=>{const s=Math.max(0,Math.floor((target-Date.now())/1000)),v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];$$("#cd").forEach(c=>c.querySelectorAll("b").forEach((e,i)=>e.textContent=String(v[i]).padStart(2,"0")))};
   tick();cdTimer=setInterval(tick,1000);
 }
 function renderNav(cur){
   $("#nav").innerHTML=PAGES.map(([k,n,c])=>`<a href="#/${k}" class="${k===cur?"on":""}"><i style="--c:${c}"></i>${n}</a>`).join("");
   $("#mobnav").innerHTML=PAGES.map(([k])=>`<a href="#/${k}" class="${k===cur?"on":""}">${MOB[k]}</a>`).join("");
 }
-const ROUTES={home:[pHome],mv:[pMv,afterMv],stream:[pStream,afterStream],schedule:[pSchedule,afterSchedule],play:[pPlay,afterPlay]};
+const ROUTES={home:[pHome,afterHome],mv:[pMv,afterMv],stream:[pStream,afterStream],schedule:[pSchedule,afterSchedule],play:[pPlay,afterPlay]};
 function render(){
   const cur=location.hash.replace("#/","")||"home",r=ROUTES[cur]||ROUTES.home;
   renderNav(ROUTES[cur]?cur:"home");window.onresize=null;
@@ -630,7 +686,9 @@ addEventListener("hashchange",()=>{render();scrollTo({top:0})});
 
 let deferredPrompt=null;
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
-$("#inst").onclick=()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else $("#pwa").showModal()};
+const doInstall=()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else $("#pwa").showModal()};
+$("#inst").onclick=doInstall;
+document.addEventListener("click",e=>{const t=e.target.closest("[data-inst]");if(!t)return;if(t.dataset.inst)doInstall();});
 if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 $("#view").innerHTML='<div class="empty">Memuat data…</div>';
