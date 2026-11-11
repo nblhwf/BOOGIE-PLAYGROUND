@@ -1,7 +1,7 @@
 // Service worker sederhana supaya web tetap bisa dibuka saat sinyal jelek.
 // Network-first: selalu ambil versi terbaru, cache hanya dipakai saat offline.
 // Data Supabase (beda origin) tidak pernah di-cache di sini, jadi angka selalu segar saat online.
-const VERSION = "boogie-v4b";
+const VERSION = "boogie-v4f";
 const SHELL = ["./", "index.html", "config.js", "data/seed.js", "data/photos.js", "assets/photos/group.jpg", "manifest.webmanifest", "assets/hero.jpg", "assets/icons/icon-192.png", "assets/icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
