@@ -28,8 +28,8 @@ button.g{background:#fff;color:var(--ink);border:1px solid var(--line)}button.r{
 <p class="muted" style="margin-top:6px">Token hanya disimpan di browser ini. Jangan dipakai di komputer umum.</p>
 <button id="conn">Simpan dan muat data</button> <button class="g" id="forget">Hapus token dari browser ini</button></div>
 <div id="app" style="display:none">
-<div class="tabs"><button class="on" data-t="v">Hasil vote</button><button data-t="e">Jadwal</button><button data-t="c">Konten</button><button data-t="f">Foto</button></div>
-<div id="tv"></div><div id="te" style="display:none"></div><div id="tc" style="display:none"></div><div id="tf" style="display:none"></div></div>
+<div class="tabs"><button class="on" data-t="v">Hasil vote</button><button data-t="e">Jadwal</button><button data-t="c">Konten</button><button data-t="f">Foto</button><button data-t="p">Pengaturan</button></div>
+<div id="tv"></div><div id="te" style="display:none"></div><div id="tc" style="display:none"></div><div id="tf" style="display:none"></div><div id="tp" style="display:none"></div></div>
 <script>
 const $=s=>document.querySelector(s),LS=k=>{try{return localStorage.getItem(k)||""}catch{return""}},SL=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -73,6 +73,13 @@ function renderPhotos(){
   <input id="pf" type="file" accept="image/*" multiple><button id="pup">Upload</button></div>
   <div class="card"><h3>Foto saat ini (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map((m,i)=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><button class="g" style="width:100%;margin-top:4px;padding:5px" data-pdel="${i}">Hapus</button></div>`).join("")}</div></div>`;
 }
+function renderSettings(){
+  const st=seed.settings||{},gc=st.goatcounter||"";
+  $("#tp").innerHTML=`<div class="card"><h3>Target views MV</h3><p class="muted">Kalau views sudah melewati target, web otomatis pindah ke milestone berikutnya (25 juta, 50 juta, 100 juta, dst). Isi di sini kalau mau target sendiri.</p>
+  <label>Target (angka tanpa titik)</label><input id="tg" inputmode="numeric" value="${esc(st.target_views??"")}" placeholder="10000000"><button id="tgs">Simpan target</button></div>
+  <div class="card"><h3>Statistik pengunjung (GoatCounter)</h3><p class="muted">1) Daftar gratis di goatcounter.com dan pilih kode (mis. boogiefan). 2) Isi kode itu di bawah, lalu Simpan. 3) Lihat jumlah pengunjung di <b>kode.goatcounter.com</b>.</p>
+  <label>Kode GoatCounter</label><input id="gcc" value="${esc(gc)}" placeholder="boogiefan"><button id="gcs">Simpan</button>${gc?` <a href="https://${esc(gc)}.goatcounter.com" target="_blank" rel="noopener"><button class="g" type="button">Buka statistik</button></a>`:""}</div>`;
+}
 function renderContent(){
   const L=seed.content||[];
   $("#tc").innerHTML=`<div class="card"><h3>Tambah konten YouTube (dari channel mana pun)</h3>
@@ -80,7 +87,7 @@ function renderContent(){
   <div class="card"><h3>Konten saat ini</h3>${L.map((c,i)=>`<div class="ev"><div><b>${esc(c.title)}</b><div class="muted">${esc(c.tag||"")} · youtu.be/${esc(c.id)}</div></div><button class="g" data-cdel="${i}">Hapus</button></div>`).join("")||'<p class="muted">Belum ada.</p>'}</div>`;
 }
 function render(){
-  $("#app").style.display="block";renderContent();renderPhotos();
+  $("#app").style.display="block";renderContent();renderPhotos();renderSettings();
   $("#tv").innerHTML=seed.votes.map((v,i)=>{const s=st(v),r=v.result||{};return `<div class="card"><h3>${esc(v.show)} · ${esc(v.phase)} <span class="pill ${s==="berlangsung"?"on":s==="akan datang"?"up":""}">${s}</span></h3>
   <p class="muted">${esc((v.apps||[]).join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)}${r.at?" · update terakhir "+new Date(r.at).toLocaleString("id-ID",{timeZone:"Asia/Jakarta"})+" WIB":""}</p>
   <div class="row"><div><label>Posisi / peringkat</label><input data-i="${i}" data-f="rank" value="${esc(r.rank??"")}" placeholder="mis. 1"></div><div><label>Link pengumuman</label><input data-i="${i}" data-f="url" value="${esc(r.url??"")}" placeholder="https://..."></div></div>
@@ -95,7 +102,7 @@ function render(){
 document.addEventListener("click",async ev=>{
   const t=ev.target;
   try{
-  if(t.dataset.t){document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===t));$("#tv").style.display=t.dataset.t==="v"?"":"none";$("#te").style.display=t.dataset.t==="e"?"":"none";$("#tc").style.display=t.dataset.t==="c"?"":"none";$("#tf").style.display=t.dataset.t==="f"?"":"none"}
+  if(t.dataset.t){document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===t));$("#tv").style.display=t.dataset.t==="v"?"":"none";$("#te").style.display=t.dataset.t==="e"?"":"none";$("#tc").style.display=t.dataset.t==="c"?"":"none";$("#tf").style.display=t.dataset.t==="f"?"":"none";$("#tp").style.display=t.dataset.t==="p"?"":"none"}
   if(t.dataset.save!==undefined){const i=+t.dataset.save,g=f=>document.querySelector(`[data-i="${i}"][data-f="${f}"]`).value.trim();
     const rank=g("rank"),note=g("note"),url=g("url");
     seed.votes[i].result=(rank||note||url)?{rank:rank===""?null:(isNaN(rank)?rank:+rank),note,url,at:new Date().toISOString()}:null;
@@ -106,6 +113,8 @@ document.addEventListener("click",async ev=>{
     let title=$("#ct").value.trim(),tag=$("#cg").value.trim();
     if(!title||!tag){const info=await ytInfo(m[1]);if(info){title=title||info.title;tag=tag||String(info.author_name||"").slice(0,18)}}
     seed.content=seed.content||[];seed.content.unshift({id:m[1],title:title||"",tag:tag||""});await save("Tambah konten YouTube")}
+  if(t.id==="tgs"){const v=$("#tg").value.replace(/[^0-9]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.target_views=+v;else delete seed.settings.target_views;await save("Ubah target views")}
+  if(t.id==="gcs"){const v=$("#gcc").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.goatcounter=v;else delete seed.settings.goatcounter;await save("Atur statistik pengunjung")}
   if(t.id==="pup"){await uploadPhotos()}
   if(t.dataset.pdel!==undefined){seed.moments.splice(+t.dataset.pdel,1);await save("Hapus foto")}
   if(t.dataset.cdel!==undefined){seed.content.splice(+t.dataset.cdel,1);await save("Hapus konten")}
