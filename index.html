@@ -156,7 +156,9 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
  .stat{padding:12px 14px}.stat .v{font-size:19px;letter-spacing:-.4px;margin-top:3px}.stat .s{font-size:11px}.stat .l{font-size:11.5px}
  .grid{gap:10px}.item{padding:10px 11px;gap:10px;border-radius:14px}.item .t b{font-size:13px}.item .t small{font-size:11.5px}
  section.h{margin:20px 0 9px;font-size:15.5px}.short{min-height:96px;padding:14px}.short b{font-size:15px}
- .mobnav a{font-size:11px;padding:9px 8px}
+ .mobnav{padding:8px 6px calc(10px + env(safe-area-inset-bottom))!important;gap:2px}
+ .mobnav a{font-size:11.5px;padding:11px 8px;flex:1 1 auto;text-align:center;letter-spacing:-.1px}
+ .mobnav a.on{box-shadow:0 4px 12px rgba(28,26,46,.28)}
  .g2{grid-template-columns:1fr}
 }
 /* sales + konten */
@@ -200,6 +202,16 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
 .moment img{width:100%;height:100%;object-fit:cover;display:block}
 .moment span{position:absolute;left:7px;bottom:7px;background:var(--c);color:#fff;padding:3px 9px;border-radius:99px;font-size:9.5px;font-weight:800}
 @media(max-width:860px){.moment{flex-basis:112px;border-radius:14px}}
+.possl{margin-top:10px;padding:10px 12px;background:#f4f6f8;border-radius:12px;width:100%}.possl b{font-size:12.5px}
+/* nav HP final */
+@media(max-width:860px){
+ .mobnav{padding:9px 6px calc(11px + env(safe-area-inset-bottom))!important;gap:3px;border-radius:22px 22px 0 0;box-shadow:0 -8px 24px rgba(28,26,46,.10)}
+ .mobnav a{font-size:12px!important;font-weight:800;padding:13px 3px!important;flex:1 1 auto;min-width:0;text-align:center;border-radius:15px;letter-spacing:-.15px}
+ .mobnav a.on{box-shadow:0 5px 14px rgba(28,26,46,.25)}
+ .mobnav a[data-k=mv].on{background:var(--teal)}.mobnav a[data-k=stream].on{background:var(--rasp)}.mobnav a[data-k=schedule].on{background:var(--blue)}
+ .mobnav a[data-k=play].on{background:var(--butter);color:var(--ink)}
+}
+@media(max-width:370px){.mobnav a{font-size:10.5px!important}}
 </style>
 </head>
 <body>
@@ -284,7 +296,8 @@ async function loadData(){
   D.snaps=raw.map(x=>({captured_at:x.captured_at,views:+x.views})).sort((a,b)=>new Date(a.captured_at)-new Date(b.captured_at));
   D.votes=mergeBy(seed.votes||[],v||[]).map(normVote);
   D.events=mergeBy(mergeBy(seed.events||[],(ej&&ej.events)||[]),e||[]);
-  D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.content=seed.content||SEEDV.content||[];
+  D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.settings=seed.settings||SEEDV.settings||{};
+  const gc=D.settings.goatcounter||CFG.GOATCOUNTER;if(gc&&!document.getElementById('gc')){const sc=document.createElement('script');sc.id='gc';sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter='https://'+String(gc).replace(/[^\w-]/g,'')+'.goatcounter.com/count';document.head.appendChild(sc)}D.content=seed.content||SEEDV.content||[];
 }
 const verified=x=>!!x.verified_at;
 function vStatus(v){
@@ -331,10 +344,10 @@ function mvStats(){
   const weekly=s.length>1?last.views-wb.views:null;
   const b24=[...s].reverse().find(x=>new Date(x.captured_at)<=lt-864e5)||s[0];
   const hrs=(lt-new Date(b24.captured_at))/36e5,g24=last.views-b24.views;
-  const remain=Math.max(0,CFG.TARGET_VIEWS-last.views);
+  const TG=targetV(),remain=Math.max(0,TG-last.views);
   const etaH=hrs>=3&&g24>0&&remain>0?remain/(g24/hrs):null;
   const ms=CFG.MILESTONES.map(m=>({m,hit:s.find(x=>x.views>=m)}));
-  return{last,daily,yest,weekly,pct:Math.min(100,last.views/CFG.TARGET_VIEWS*100),remain,etaH,ms,ser:series()};
+  return{last,daily,yest,weekly,pct:Math.min(100,last.views/TG*100),remain,etaH,ms,ser:series()};
 }
 function series(){
   const s=D.snaps;if(s.length<2)return null;
@@ -380,7 +393,7 @@ function contentHtml(){
   [...(D.content||[]),...(CFG.CONTENT||[])].forEach(c=>{if(!seen.has(c.id)){seen.add(c.id);out.push(c)}});
   D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).sort((a,b)=>new Date(b.start)-new Date(a.start)).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m&&!seen.has(m[1])){seen.add(m[1]);out.push({id:m[1],title:e.title,tag:"NCT DREAM"})}});
   if(!out.length)return "";
-  return `<section class="h">Konten terbaru <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)">${c.tag?`<span style="background:${PAL[[3,0,1,4,6][i%5]]}">${esc(c.tag)}</span>`:""}</div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
+  return `<section class="h">YouTube content <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)">${c.tag?`<span style="background:${PAL[[3,0,1,4,6][i%5]]}">${esc(c.tag)}</span>`:""}</div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
 }
 async function afterHome(){
   for(const b of $$("[data-yid][data-need='1']")){
@@ -395,6 +408,7 @@ async function afterHome(){
     if(t)b.textContent=t;
   }
 }
+const targetV=()=>{const t=+((D.settings||{}).target_views)||CFG.TARGET_VIEWS;const v=D.snaps&&D.snaps.length?D.snaps[D.snaps.length-1].views:0;if(v<t)return t;return [...CFG.MILESTONES,2e8,5e8,1e9].find(m=>m>v)||t};
 function pHome(){
   const st=mvStats(),ev=upcoming().slice(0,3);
   let vt=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").sort((a,b)=>a.end_date.localeCompare(b.end_date));
@@ -416,14 +430,14 @@ function pHome(){
     ${stCard("Total views MV",st?nf(st.last.views):"Menunggu data",st?"update "+ago(st.last.captured_at):"muncul otomatis setelah sinkronisasi")}
     ${stCard("Views hari ini",st?inc(st.daily):"–",st&&st.yest!=null?"kemarin "+inc(st.yest):"dihitung sejak 00.00 WIB")}
     ${stCard("7 hari terakhir",st?inc(st.weekly):"–",st&&st.weekly!=null?short(st.weekly)+" views":"")}
-    <div class="card stat"><div class="l">Target ${short(CFG.TARGET_VIEWS)}</div><div class="v">${st?st.pct.toFixed(1)+"%":"–"}</div><div class="bar"><i style="width:${st?st.pct:0}%"></i></div></div>
+    <div class="card stat"><div class="l">Target ${short(targetV())}</div><div class="v">${st?st.pct.toFixed(1)+"%":"–"}</div><div class="bar"><i style="width:${st?st.pct:0}%"></i></div></div>
   </div>
   <div class="grid g2" style="margin-top:6px">
     <div><section class="h">Voting ${vt.length&&vStatus(vt[0])==="ongoing"?"berlangsung":"berikutnya"} <a href="#/stream">Semua</a></section><div class="list">${vt.length?vt.map(v=>{const s=vStatus(v);return `<div class="item"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><small>${esc(v.apps.join(" & "))} · ${rangeStr(v.start_date,v.end_date)}</small></div><span class="badge ${ST[s][1]}">${ST[s][0]}</span></div>`}).join(""):'<div class="empty">Belum ada voting terverifikasi.</div>'}</div></div>
     <div><section class="h">Jadwal terdekat <a href="#/schedule">Kalender</a></section><div class="list">${ev.length?ev.map(evItem).join(""):'<div class="empty">Belum ada jadwal terverifikasi.</div>'}</div></div>
   </div>
-  ${momentsAll().length?`<section class="h">Comeback moments</section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
   ${contentHtml()}
+  ${momentsAll().length?`<section class="h">Comeback moments</section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
 `;
 }
 
@@ -441,7 +455,7 @@ function pMv(){
     <div class="card stat"><div class="l">Weekly growth</div><div class="v">${inc(st.weekly)}</div><div class="s">7 hari terakhir</div></div>
     <div class="card stat"><div class="l">Rekor kenaikan</div><div class="v">${s&&s.rec.v?"+"+short(s.rec.v):"–"}</div><div class="s">${s&&s.rec.v?"per "+(s.hourly?"jam":"hari")+" · "+s.rec.l:"menunggu data"}</div></div>
   </div>
-  <div class="card" style="margin-top:14px"><b>Progress target ${nf(CFG.TARGET_VIEWS)}</b><div class="bar"><i style="width:${st.pct}%"></i></div><div class="muted">${st.pct.toFixed(2)}% · sisa ${nf(st.remain)} views${eta}</div></div>
+  <div class="card" style="margin-top:14px"><b>Progress target ${nf(targetV())}</b><div class="bar"><i style="width:${st.pct}%"></i></div><div class="muted">${st.pct.toFixed(2)}% · sisa ${nf(st.remain)} views${eta}</div></div>
   <div class="grid g2" style="margin-top:14px">
     <div class="card"><b>Pertumbuhan total views</b>${s?'<canvas class="chart" id="c1"></canvas>':'<div class="empty" style="margin-top:10px">Grafik muncul setelah ada minimal 2 snapshot.</div>'}</div>
     <div class="card"><b>Kenaikan per ${s&&!s.hourly?"hari":"jam"}</b>${s?'<canvas class="chart" id="c2"></canvas>':'<div class="empty" style="margin-top:10px">Grafik muncul setelah ada minimal 2 snapshot.</div>'}</div>
@@ -532,7 +546,7 @@ function afterSchedule(){
 let pTab=store.get("ptab2","wm");if(!["wm","rate"].includes(pTab))pTab="wm";
 function pPlay(){
   return `<div class="top"><div><h2>Playground</h2><p>Bikin konten comeback versimu sendiri, lalu bagikan.</p></div></div>
-  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Screenshot Watermark</button><button class="tab ${pTab==="rate"?"on":""}" data-t="rate">Album Rating</button></div><div id="ptab"></div>`;
+  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Watermark</button><button class="tab ${pTab==="rate"?"on":""}" data-t="rate">Album Rating</button></div><div id="ptab"></div>`;
 }
 function afterPlay(){$$("[data-t]").forEach(b=>b.onclick=()=>{pTab=b.dataset.t;store.set("ptab2",pTab);render()});(pTab==="wm"?tabWm:tabRate)()}
 function dl(cv,name){cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast("Gambar tersimpan")},"image/png")}
@@ -540,19 +554,19 @@ function shareX(text){window.open("https://twitter.com/intent/tweet?text="+encod
 
 /* --- Watermark + grid --- */
 const LAYOUTS={single:["1 foto",1],v2:["2 foto, atas-bawah",2],h2:["2 foto, kiri-kanan",2],v3:["3 foto, vertikal",3],g4:["4 foto, grid 2x2",4]};
-const WM={layout:"single",imgs:[null,null,null,null],text:"@nickname",x:.5,y:.9,size:.05,op:.92,style:"plain",deco:"sparkle",color:"#ffffff",gap:14,gapColor:"#ffffff"};
+const WM={layout:"single",imgs:[null,null,null,null],ox:[.5,.5,.5,.5],oy:[.5,.5,.5,.5],text:"@nickname",x:.5,y:.9,size:.05,op:.92,style:"plain",deco:"sparkle",color:"#ffffff",gap:14,gapColor:"#ffffff"};
 function geom(){
   const g=+WM.gap,L=WM.layout;
   if(L==="single"){const im=WM.imgs[0],sc=im?Math.min(1,1600/im.width):1,w=im?Math.round(im.width*sc):1280,h=im?Math.round(im.height*sc):720;return{W:w,H:h,cells:[{x:0,y:0,w,h}]}}
   if(L==="v2"||L==="v3"){const n=L==="v2"?2:3,w=1280,h=720;return{W:w,H:h*n+g*(n-1),cells:[...Array(n)].map((_,i)=>({x:0,y:i*(h+g),w,h}))}}
   const w=960,h=540;
-  if(L==="h2")return{W:w*2+g,H:h,cells:[{x:0,y:0,w,h},{x:w+g,y:0,w,h}]};
+  if(L==="h2"){const W2=800,H2=1000;return{W:W2*2+g,H:H2,cells:[{x:0,y:0,w:W2,h:H2},{x:W2+g,y:0,w:W2,h:H2}]}}
   return{W:w*2+g,H:h*2+g,cells:[{x:0,y:0,w,h},{x:w+g,y:0,w,h},{x:0,y:h+g,w,h},{x:w+g,y:h+g,w,h}]};
 }
 function tabWm(){
   $("#ptab").innerHTML=`<div class="editor"><div class="stage"><canvas id="wmc"></canvas></div>
   <div class="card"><label class="f" style="margin-top:0">Layout</label><select id="wl">${Object.entries(LAYOUTS).map(([k,v])=>`<option value="${k}" ${k===WM.layout?"selected":""}>${v[0]}</option>`).join("")}</select>
-   <div class="row" id="slots" style="margin-top:12px"></div>
+   <div class="row" id="slots" style="margin-top:12px"></div><div id="pos"></div>
    <div id="gapbox"><label class="f">Jarak antar foto</label><input type="range" id="wg" min="0" max="60" value="${WM.gap}"><label class="f">Warna jarak</label><input type="color" id="wgc" value="${WM.gapColor}"></div>
    <label class="f">Nickname / teks</label><input type="text" id="wt" value="${esc(WM.text)}" maxlength="40">
    <label class="f">Gaya</label><select id="ws"><option value="plain">Polos + shadow</option><option value="outline">Outline</option><option value="pill">Pill butter</option><option value="stamp">Stamp</option></select>
@@ -567,10 +581,14 @@ function tabWm(){
     const n=LAYOUTS[WM.layout][1];
     $("#slots").innerHTML=[...Array(n)].map((_,i)=>`<label class="btn sm ${WM.imgs[i]?"":"ghost"}" style="cursor:pointer">${WM.imgs[i]?"Ganti":"Upload"} foto ${i+1}<input type="file" accept="image/*" hidden data-slot="${i}"></label>`).join("")+(n>1?`<label class="btn sm ghost" style="cursor:pointer">Upload sekaligus<input type="file" accept="image/*" multiple hidden id="fmulti"></label>`:"");
     $("#gapbox").style.display=n>1?"block":"none";
+    $("#slots").insertAdjacentHTML("afterend",'');
+    $("#pos").innerHTML=[...Array(n)].map((_,i)=>WM.imgs[i]?`<div class="possl"><b>Foto ${i+1}</b><label class="f">Atas - bawah</label><input type="range" min="0" max="100" value="${WM.oy[i]*100}" data-oy="${i}"><label class="f">Kiri - kanan</label><input type="range" min="0" max="100" value="${WM.ox[i]*100}" data-ox="${i}"></div>`:"").join("");
+    $$("[data-oy]").forEach(r=>r.oninput=()=>{WM.oy[+r.dataset.oy]=r.value/100;paint()});
+    $$("[data-ox]").forEach(r=>r.oninput=()=>{WM.ox[+r.dataset.ox]=r.value/100;paint()});
     $$("[data-slot]").forEach(i=>i.onchange=e=>load(e.target.files[0],+i.dataset.slot));
     const fm=$("#fmulti");if(fm)fm.onchange=e=>[...e.target.files].slice(0,n).forEach((f,i)=>load(f,i));
   };
-  const load=(f,i)=>{if(!f)return;const im=new Image();im.onload=()=>{WM.imgs[i]=im;renderSlots();paint()};im.src=URL.createObjectURL(f)};
+  const load=(f,i)=>{if(!f)return;const im=new Image();im.onload=()=>{WM.imgs[i]=im;WM.ox[i]=.5;WM.oy[i]=.5;renderSlots();paint()};im.src=URL.createObjectURL(f)};
   $("#wl").onchange=e=>{WM.layout=e.target.value;renderSlots();paint()};
   const upd=()=>{WM.text=$("#wt").value;WM.style=$("#ws").value;WM.deco=$("#wd").value;WM.color=$("#wc").value;WM.size=$("#wz").value/100;WM.op=$("#wo").value/100;WM.gap=$("#wg").value;WM.gapColor=$("#wgc").value;paint()};
   ["wt","ws","wd","wc","wz","wo","wg","wgc"].forEach(i=>$("#"+i).oninput=upd);
@@ -585,7 +603,7 @@ function paint(){
   const cv=$("#wmc");if(!cv)return;const G=geom();if(cv.width!==G.W||cv.height!==G.H){cv.width=G.W;cv.height=G.H}
   const c=cv.getContext("2d");c.clearRect(0,0,G.W,G.H);c.fillStyle=WM.layout==="single"?"#e8ebef":WM.gapColor;c.fillRect(0,0,G.W,G.H);
   G.cells.forEach((cl,i)=>{const im=WM.imgs[i];
-    if(im){const s=Math.max(cl.w/im.width,cl.h/im.height),sw=cl.w/s,sh=cl.h/s;c.drawImage(im,(im.width-sw)/2,(im.height-sh)/2,sw,sh,cl.x,cl.y,cl.w,cl.h)}
+    if(im){const s=Math.max(cl.w/im.width,cl.h/im.height),sw=cl.w/s,sh=cl.h/s;c.drawImage(im,(im.width-sw)*WM.ox[i],(im.height-sh)*WM.oy[i],sw,sh,cl.x,cl.y,cl.w,cl.h)}
     else{c.fillStyle="#dfe4ea";c.fillRect(cl.x,cl.y,cl.w,cl.h);c.fillStyle="#8a93a3";c.font=`700 ${Math.round(cl.h*.06)}px 'Plus Jakarta Sans',sans-serif`;c.textAlign="center";c.textBaseline="middle";c.fillText(WM.layout==="single"?"Upload screenshot MV":`Foto ${i+1}`,cl.x+cl.w/2,cl.y+cl.h/2)}});
   const fs=Math.max(14,G.W*WM.size),x=WM.x*G.W,y=WM.y*G.H,t=WM.text||" ";
   c.save();c.globalAlpha=WM.op;c.font=`800 ${fs}px 'Plus Jakarta Sans',sans-serif`;c.textAlign="center";c.textBaseline="middle";
@@ -674,7 +692,7 @@ function renderRight(){
 }
 function renderNav(cur){
   $("#nav").innerHTML=PAGES.map(([k,n,c])=>`<a href="#/${k}" class="${k===cur?"on":""}"><i style="--c:${c}"></i>${n}</a>`).join("");
-  $("#mobnav").innerHTML=PAGES.map(([k])=>`<a href="#/${k}" class="${k===cur?"on":""}">${MOB[k]}</a>`).join("");
+  $("#mobnav").innerHTML=PAGES.map(([k])=>`<a href="#/${k}" data-k="${k}" class="${k===cur?"on":""}">${MOB[k]}</a>`).join("");
 }
 const ROUTES={home:[pHome,afterHome],mv:[pMv,afterMv],stream:[pStream,afterStream],schedule:[pSchedule,afterSchedule],play:[pPlay,afterPlay]};
 function render(){
