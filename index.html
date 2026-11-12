@@ -427,7 +427,7 @@ function contentHtml(){
   D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m)add({id:m[1],title:e.title,tag:"NCT DREAM"},e.start)});
   if(!out.length)return "";
   out.sort((a,b)=>(a.date?1:0)-(b.date?1:0)||(a.date?new Date(b.date)-new Date(a.date):a.ord-b.ord));
-  return `<section class="h">YouTube content <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)">${c.tag?`<span style="background:${PAL[[3,0,1,4,6][i%5]]}">${esc(c.tag)}</span>`:""}</div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
+  return `<section class="h">YouTube content <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)"></div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
 }
 async function afterHome(){
   for(const b of $$("[data-yid][data-need='1']")){
