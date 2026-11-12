@@ -78,7 +78,9 @@ function renderSettings(){
   $("#tp").innerHTML=`<div class="card"><h3>Target views MV</h3><p class="muted">Kalau views sudah melewati target, web otomatis pindah ke milestone berikutnya (25 juta, 50 juta, 100 juta, dst). Isi di sini kalau mau target sendiri.</p>
   <label>Target (angka tanpa titik)</label><input id="tg" inputmode="numeric" value="${esc(st.target_views??"")}" placeholder="10000000"><button id="tgs">Simpan target</button></div>
   <div class="card"><h3>Statistik pengunjung (GoatCounter)</h3><p class="muted">1) Daftar gratis di goatcounter.com dan pilih kode (mis. boogiefan). 2) Isi kode itu di bawah, lalu Simpan. 3) Lihat jumlah pengunjung di <b>kode.goatcounter.com</b>.</p>
-  <label>Kode GoatCounter</label><input id="gcc" value="${esc(gc)}" placeholder="boogiefan"><button id="gcs">Simpan</button>${gc?` <a href="https://${esc(gc)}.goatcounter.com" target="_blank" rel="noopener"><button class="g" type="button">Buka statistik</button></a>`:""}</div>`;
+  <label>Kode GoatCounter</label><input id="gcc" value="${esc(gc)}" placeholder="boogiefan"><button id="gcs">Simpan</button>${gc?` <a href="https://${esc(gc)}.goatcounter.com" target="_blank" rel="noopener"><button class="g" type="button">Buka statistik</button></a>`:""}</div>
+  <div class="card"><h3>Notifikasi (OneSignal)</h3><p class="muted">Isi App ID dari dashboard OneSignal (Settings → Keys &amp; IDs), lalu Simpan. Tombol "Aktifkan notifikasi" akan muncul di web.</p>
+  <label>OneSignal App ID</label><input id="osi" value="${esc(st.onesignal_app_id||"")}" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><button id="oss">Simpan</button></div>`;
 }
 function renderContent(){
   const L=seed.content||[];
@@ -114,13 +116,14 @@ document.addEventListener("click",async ev=>{
     if(!title||!tag){const info=await ytInfo(m[1]);if(info){title=title||info.title;tag=tag||String(info.author_name||"").slice(0,18)}}
     seed.content=seed.content||[];seed.content.unshift({id:m[1],title:title||"",tag:tag||""});await save("Tambah konten YouTube")}
   if(t.id==="tgs"){const v=$("#tg").value.replace(/[^0-9]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.target_views=+v;else delete seed.settings.target_views;await save("Ubah target views")}
+  if(t.id==="oss"){const v=$("#osi").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.onesignal_app_id=v;else delete seed.settings.onesignal_app_id;await save("Atur notifikasi")}
   if(t.id==="gcs"){const v=$("#gcc").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.goatcounter=v;else delete seed.settings.goatcounter;await save("Atur statistik pengunjung")}
   if(t.id==="pup"){await uploadPhotos()}
   if(t.dataset.pdel!==undefined){seed.moments.splice(+t.dataset.pdel,1);await save("Hapus foto")}
   if(t.dataset.cdel!==undefined){seed.content.splice(+t.dataset.cdel,1);await save("Hapus konten")}
   if(t.id==="eadd"){const s=$("#estart").value,title=$("#etitle").value.trim();if(!s||!title)return msg("Isi judul dan tanggal dulu.","bad");
     const all=$("#eall").checked;
-    seed.events.push({slug:"manual-"+Date.now(),type:$("#etype").value,title,start:all?s.slice(0,10)+"T00:00:00+07:00":s+":00+07:00",all_day:all,note:$("#enote").value.trim(),source:$("#esrc").value.trim()||"Input manual pengelola web",url:$("#eurl").value.trim()||null,verified_at:new Date().toISOString()});
+    seed.events.push({slug:"manual-"+Date.now(),type:$("#etype").value,title,start:all?s.slice(0,10)+"T00:00:00+07:00":s+":00+07:00",all_day:all,note:$("#enote").value.trim(),source:$("#esrc").value.trim()||"",url:$("#eurl").value.trim()||null,verified_at:new Date().toISOString()});
     await save("Tambah jadwal: "+title)}
   if(t.id==="conn"){SL("repo",$("#repo").value);SL("branch",$("#branch").value);SL("token",$("#token").value);await load();msg("Terhubung.","ok")}
   if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";msg("Token dihapus dari browser ini.","ok")}

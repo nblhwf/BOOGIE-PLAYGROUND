@@ -203,6 +203,36 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
 .moment span{position:absolute;left:7px;bottom:7px;background:var(--c);color:#fff;padding:3px 9px;border-radius:99px;font-size:9.5px;font-weight:800}
 @media(max-width:860px){.moment{flex-basis:112px;border-radius:14px}}
 .possl{margin-top:10px;padding:10px 12px;background:#f4f6f8;border-radius:12px;width:100%}.possl b{font-size:12.5px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#e9edf1;padding:4px;border-radius:14px}.seg button{border:0;background:transparent;font:inherit;font-size:12.5px;font-weight:800;padding:10px 8px;border-radius:11px;color:var(--mute);cursor:pointer}.seg button.on{background:var(--ink);color:#fff;box-shadow:0 4px 10px rgba(28,26,46,.2)}
+.zoombar{display:flex;align-items:center;gap:8px;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 10px}.zoombar input{flex:1;min-width:0}.zbtn{width:34px;height:34px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:20px;font-weight:700;cursor:pointer;line-height:1}
+.dlb{width:100%;margin-top:12px;padding:14px;font-size:15px;background:linear-gradient(90deg,var(--teal),var(--blue))!important;color:#fff!important}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{border:1px solid var(--line);background:#fff;font:inherit;font-size:12px;font-weight:700;padding:8px 12px;border-radius:99px;cursor:pointer}.chips button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+#wsub{margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid var(--line)}#wsub button{flex:1;padding:10px;font-size:13px}
+.slotgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}.slot{display:block;text-align:center;border:2px solid var(--line);border-radius:14px;padding:8px;cursor:pointer;background:#fff}.slot.on{border-color:var(--teal);background:#eaf6f6}.slot b{display:block;font-size:12px;margin-top:4px}.slot small{font-size:10.5px;color:var(--mute)}
+.slot .th{display:grid;place-items:center;aspect-ratio:1;border-radius:10px;background:#eef1f4 center/cover;font-size:20px;font-weight:800;color:var(--mute)}.slot.multi .th{background:#fdf3c8}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.two input[type=color]{width:100%}
+/* v5 */
+.getapp{display:none;margin-top:26px;border-radius:22px;padding:20px;color:#fff;background:linear-gradient(135deg,var(--teal,#1b8f96),#2a7ea6 55%,#8a3d5e);flex-direction:column;gap:14px;box-shadow:0 14px 30px rgba(42,126,166,.25)}
+.getapp b{display:block;font-size:17px;margin-bottom:4px}.getapp span{font-size:12.5px;opacity:.9;line-height:1.5}.ga-b{display:flex;gap:8px;flex-wrap:wrap}.getapp .gi{display:none}.getapp.show-i .gi{display:inline-flex}
+body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
+@media(min-width:861px){.getapp{display:none!important}}
+.v-app{text-decoration:none;color:inherit;align-items:center;justify-content:center;text-align:center;min-height:140px!important;transition:.2s}.v-app:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(28,26,46,.12)}
+.s-link{text-decoration:none;color:inherit;cursor:pointer;transition:.2s}.s-link:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(28,26,46,.14)}
+.pk-hero{background:linear-gradient(135deg,var(--ink),#2b2750);color:#fff;border-radius:24px;padding:26px;position:relative;overflow:hidden}
+.pk-hero h3{font-size:34px;letter-spacing:-1px;margin:4px 0 8px}.pk-hero p{opacity:.85;font-size:13.5px;line-height:1.6;max-width:560px}.pk-k{font-size:11px;letter-spacing:2px;font-weight:800;color:var(--butter)}
+.pk-opts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.pk-opt{font:inherit;color:#fff;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 14px;text-align:left;cursor:pointer}
+.pk-opt b{display:block;font-size:13px}.pk-opt span{font-size:11.5px;opacity:.7}.pk-opt.on{background:var(--butter);color:var(--ink);border-color:var(--butter)}.pk-opt.on span{opacity:.75}
+.pk-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.pk-stage{font-weight:800;font-size:13px;background:var(--ink);color:#fff;padding:6px 12px;border-radius:99px}
+.pk-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin-top:16px}
+.pk-card{background:var(--c);color:#fff;border-radius:24px;min-height:240px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:.18s;box-shadow:0 14px 30px rgba(28,26,46,.18);outline:none}
+.pk-card:hover,.pk-card:focus-visible{transform:translateY(-5px) scale(1.01)}.pk-card:active{transform:scale(.98)}
+.pk-al{font-size:12px;font-weight:700;opacity:.85}.pk-t{font-size:28px;font-weight:800;letter-spacing:-.8px;line-height:1.1;margin:6px 0 12px;word-break:break-word}
+.pk-ls{align-self:flex-start;font-size:11.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.2);padding:5px 11px;border-radius:99px;text-decoration:none}
+.pk-v{font-weight:800;font-size:15px;background:var(--butter);color:var(--ink);width:46px;height:46px;border-radius:50%;display:grid;place-items:center}
+.pk-row{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #eef0f4;border-left:6px solid var(--c);border-radius:14px;padding:10px 14px}.pk-row b{display:block;font-size:14.5px}.pk-row small{color:var(--mute);font-size:11.5px}
+.pk-n{width:34px;height:34px;border-radius:10px;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+@media(max-width:700px){.pk-vs{grid-template-columns:1fr}.pk-v{margin:-4px auto}.pk-card{min-height:150px}.pk-t{font-size:23px}.pk-hero h3{font-size:28px}}
+.pushbtn{display:none}body.push-on .pushbtn{display:inline-flex}
 /* nav HP final */
 @media(max-width:860px){
  .mobnav{padding:9px 6px calc(11px + env(safe-area-inset-bottom))!important;gap:3px;border-radius:22px 22px 0 0;box-shadow:0 -8px 24px rgba(28,26,46,.10)}
@@ -220,6 +250,7 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
     <div class="brand"><b>BOOGIE!</b> PLAYGROUND<small>Your Little Comeback Companion</small></div>
     <nav class="nav" id="nav"></nav>
     <button class="btn ghost sm" id="inst" style="margin:10px 4px 0">Pasang di layar HP</button>
+    <button class="btn ghost sm pushbtn" data-push="1" style="margin:8px 4px 0">Aktifkan notifikasi</button>
     <div class="foot">Fan-made, non-profit. Tidak berafiliasi dengan SM Entertainment atau NCT DREAM.</div>
   </aside>
   <main id="view"></main>
@@ -296,7 +327,8 @@ async function loadData(){
   D.snaps=raw.map(x=>({captured_at:x.captured_at,views:+x.views})).sort((a,b)=>new Date(a.captured_at)-new Date(b.captured_at));
   D.votes=mergeBy(seed.votes||[],v||[]).map(normVote);
   D.events=mergeBy(mergeBy(seed.events||[],(ej&&ej.events)||[]),e||[]);
-  D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.settings=seed.settings||SEEDV.settings||{};
+  D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.songs=seed.songs||SEEDV.songs||[];D.meta=(ej&&ej.meta)||{};D.settings=seed.settings||SEEDV.settings||{};
+  const oid=D.settings.onesignal_app_id||CFG.ONESIGNAL_APP_ID;if(oid)initPush(oid);
   const gc=D.settings.goatcounter||CFG.GOATCOUNTER;if(gc&&!document.getElementById('gc')){const sc=document.createElement('script');sc.id='gc';sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter='https://'+String(gc).replace(/[^\w-]/g,'')+'.goatcounter.com/count';document.head.appendChild(sc)}D.content=seed.content||SEEDV.content||[];
 }
 const verified=x=>!!x.verified_at;
@@ -389,10 +421,12 @@ const TICK=["BOOGIE WOOGIE","DREAM AFTER DREAM","NCT DREAM 10TH ANNIVERSARY","OU
 const isStandalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch{return false}};
 const momentsAll=()=>[...(D.moments||[]),...(CFG.MOMENTS||[])];
 function contentHtml(){
-  const seen=new Set(),out=[];
-  [...(D.content||[]),...(CFG.CONTENT||[])].forEach(c=>{if(!seen.has(c.id)){seen.add(c.id);out.push(c)}});
-  D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).sort((a,b)=>new Date(b.start)-new Date(a.start)).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m&&!seen.has(m[1])){seen.add(m[1]);out.push({id:m[1],title:e.title,tag:"NCT DREAM"})}});
+  const seen=new Set(),out=[],M=D.meta||{};
+  const add=(c,date)=>{if(seen.has(c.id))return;seen.add(c.id);const m=M[c.id]||{};out.push({...c,title:m.title||c.title,tag:c.tag||(m.channel||"").slice(0,18),date:c.date||m.published_at||date||null,ord:out.length})};
+  [...(D.content||[]),...(CFG.CONTENT||[])].forEach(c=>add(c));
+  D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m)add({id:m[1],title:e.title,tag:"NCT DREAM"},e.start)});
   if(!out.length)return "";
+  out.sort((a,b)=>(a.date?1:0)-(b.date?1:0)||(a.date?new Date(b.date)-new Date(a.date):a.ord-b.ord));
   return `<section class="h">YouTube content <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)">${c.tag?`<span style="background:${PAL[[3,0,1,4,6][i%5]]}">${esc(c.tag)}</span>`:""}</div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
 }
 async function afterHome(){
@@ -409,6 +443,13 @@ async function afterHome(){
   }
 }
 const targetV=()=>{const t=+((D.settings||{}).target_views)||CFG.TARGET_VIEWS;const v=D.snaps&&D.snaps.length?D.snaps[D.snaps.length-1].views:0;if(v<t)return t;return [...CFG.MILESTONES,2e8,5e8,1e9].find(m=>m>v)||t};
+function initPush(id){
+  if(window._pushInit)return;window._pushInit=1;document.body.classList.add("push-on");
+  window.OneSignalDeferred=window.OneSignalDeferred||[];
+  const sc=document.createElement("script");sc.src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js";sc.defer=true;document.head.appendChild(sc);
+  OneSignalDeferred.push(async OS=>{try{await OS.init({appId:id,serviceWorkerPath:"push/OneSignalSDKWorker.js",serviceWorkerParam:{scope:new URL("push/",location.href).pathname},notifyButton:{enable:false}});window._OS=OS}catch(e){console.warn("push",e)}});
+}
+const askPush=async()=>{if(!window._OS)return toast("Notifikasi belum siap, coba lagi sebentar");try{await _OS.Notifications.requestPermission();toast(_OS.Notifications.permission?"Notifikasi aktif":"Notifikasi belum diizinkan",3500)}catch{toast("Notifikasi tidak bisa diaktifkan di browser ini",3500)}};
 function pHome(){
   const st=mvStats(),ev=upcoming().slice(0,3);
   let vt=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").sort((a,b)=>a.end_date.localeCompare(b.end_date));
@@ -424,7 +465,6 @@ function pHome(){
   </div><div class="hero-photo"><i>10TH ANNIVERSARY</i><b>OUT NOW</b></div></div>
   <div class="ticker"><div>${[...TICK,...TICK,...TICK,...TICK].map(t=>`<span>${t}</span>`).join("")}</div></div>
   <div class="mright" id="mright"></div>
-  <div class="pwa-m ${isStandalone()?"":"show"}"><span>Pasang web ini di layar HP</span><button class="btn sm" data-inst="1">Pasang</button></div>
   <section class="h">Comeback snapshot <a href="#/mv">Detail</a></section>
   <div class="grid g4">
     ${stCard("Total views MV",st?nf(st.last.views):"Menunggu data",st?"update "+ago(st.last.captured_at):"muncul otomatis setelah sinkronisasi")}
@@ -438,6 +478,8 @@ function pHome(){
   </div>
   ${contentHtml()}
   ${momentsAll().length?`<section class="h">Comeback moments</section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
+
+  <div class="getapp ${isStandalone()?"":"show-i"}"><div><b>Bawa BOOGIE! ke HP kamu</b><span>Buka cepat dari layar utama${""} dan terima notifikasi milestone, konten baru, serta jadwal.</span></div><div class="ga-b"><button class="btn butter sm gi" data-inst="1">Pasang di layar HP</button><button class="btn glass sm pushbtn" data-push="1">Aktifkan notifikasi</button></div></div>
 `;
 }
 
@@ -478,7 +520,9 @@ let fApp="all",fStat="all";
 const vIcon=a=>`<div class="v-ic" style="--c:${a.color}">${esc(a.ic)}${a.icon?`<img src="${esc(a.icon)}" alt="" loading="lazy" onerror="this.remove()">`:""}</div>`;
 const appOf=n=>CFG.VOTING_APPS.find(a=>a.name.toLowerCase()===String(n).toLowerCase());
 const playUrl=a=>`https://play.google.com/store/search?q=${encodeURIComponent(a.play||a.name)}&c=apps`;
-const appLink=a=>a?(a.site||a.ios||playUrl(a)):"";
+const OS_=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)?"ios":/Android/i.test(navigator.userAgent)?"android":"desk";
+const iosUrl=a=>a.ios||`https://apps.apple.com/search?term=${encodeURIComponent(a.play||a.name)}`;
+const appLink=a=>a?(OS_==="ios"?iosUrl(a):OS_==="android"?playUrl(a):(a.site||a.ios||playUrl(a))):"";
 const vBtns=a=>[a.site&&["Website",a.site],a.ios&&["App Store",a.ios],["Google Play",playUrl(a)]].filter(Boolean).map(([l,u],i)=>`<a class="btn sm ${i?"ghost":""}" href="${esc(u)}" target="_blank" rel="noopener">${l}</a>`).join("");
 const openBtn=(a,l="Buka aplikasi")=>a&&a.url?`<a class="btn sm" href="${esc(a.url)}" target="_blank" rel="noopener">${l}</a>`:`<span class="btn sm dis">Link menyusul</span>`;
 function pStream(){
@@ -495,15 +539,16 @@ function pStream(){
       <div class="muted">${rangeStr(v.start_date,v.end_date)} ${keyFmt(v.end_date,{year:"numeric"})} · waktu pasti ikut pengumuman resmi</div>
       ${s==="ongoing"&&r?`<div class="result"><b>Update terakhir${r.at?" · "+ago(r.at):""}${r.rank?": posisi "+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">Lihat sumber</a>`:""}<br><small style="opacity:.7">Diinput manual oleh admin, bukan angka real-time dari aplikasi.</small></div>`:""}
       ${s==="ended"?(r?`<div class="result"><b>Hasil akhir${r.rank?": peringkat "+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">Lihat pengumuman</a>`:""}</div>`:`<div class="result wait">Voting selesai. Hasil akhir menunggu pengumuman resmi.</div>`):""}
-      </div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge ${ST[s][1]}">${ST[s][0]}</span>${v.apps.map(n=>{const a=appOf(n);return a&&s!=="ended"?`<a class="btn sm ghost" href="${esc(appLink(a))}" target="_blank" rel="noopener">${esc(n)}</a>`:""}).join("")}${v.guide_url?`<a class="btn sm ghost" href="${esc(v.guide_url)}" target="_blank" rel="noopener">Panduan</a>`:""}</div></div>`}).join("")}
+      </div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge ${ST[s][1]}">${ST[s][0]}</span>${v.apps.map(n=>{const a=appOf(n);return a&&s!=="ended"?`<a class="btn sm ${v.url?"":"ghost"}" href="${esc(v.url||appLink(a))}" target="_blank" rel="noopener">${v.url?"Vote di "+esc(n):esc(n)}</a>`:""}).join("")}${v.guide_url?`<a class="btn sm ghost" href="${esc(v.guide_url)}" target="_blank" rel="noopener">Panduan</a>`:""}</div></div>`}).join("")}
     <div class="muted" style="margin-top:6px">Terakhir dicek ${ago(ph[0].verified_at)} · ${esc(ph[0].source||"pengumuman resmi")}</div></div>`;
   }).join("");
-  const strm=a=>`<div class="s-card"><div class="s-cover" style="--c:${a.color}">${esc(a.ic)}${a.img?`<img src="${esc(a.img)}" alt="${esc(a.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</div><div class="s-body"><div><b>${esc(a.name)}</b><div class="muted">${esc(a.note||"")}</div></div><div style="margin-top:auto">${openBtn(a,"Buka")}</div></div></div>`;
+  const strm=a=>{const inner=`<div class="s-cover" style="--c:${a.color}">${esc(a.ic)}${a.img?`<img src="${esc(a.img)}" alt="${esc(a.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</div><div class="s-body"><div><b>${esc(a.name)}</b><div class="muted">${esc(a.note||"")}</div></div>${a.url?"":`<div style="margin-top:auto"><span class="btn sm dis">Link menyusul</span></div>`}</div>`;
+    return a.url?`<a class="s-card s-link" href="${esc(a.url)}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${inner}</a>`:`<div class="s-card">${inner}</div>`};
   return `${banner()}<div class="top"><div><h2>Stream &amp; Vote</h2><p>Promotion center: semua link resmi dan jadwal voting.</p></div>${tzSel()}</div>
   <section class="h" style="margin-top:0">Streaming directory</section>
   <div class="cards">${CFG.STREAMING.map(strm).join("")}</div>
   <section class="h">Voting directory</section>
-  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${CFG.VOTING_APPS.map(a=>`<div class="v-app">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} event berlangsung</div></div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto">${vBtns(a)}</div></div>`).join("")}</div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${CFG.VOTING_APPS.map(a=>`<a class="v-app" href="${esc(appLink(a))}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} event berlangsung</div></div></a>`).join("")}</div>
   <section class="h">Jadwal voting per music show</section>
   <div class="tabs">${[["all","Semua"],["ongoing","Berlangsung"],["upcoming","Akan datang"],["ended","Selesai"]].map(([k,l])=>`<button class="tab ${fStat===k?"on":""}" data-s="${k}">${l}</button>`).join("")}</div>
   <div class="tabs"><button class="tab ${fApp==="all"?"on":""}" data-a="all">Semua aplikasi</button>${CFG.VOTING_APPS.map(a=>`<button class="tab ${fApp===a.name?"on":""}" data-a="${esc(a.name)}">${esc(a.name)}</button>`).join("")}</div>
@@ -543,12 +588,12 @@ function afterSchedule(){
 }
 
 /* ---------- Playground ---------- */
-let pTab=store.get("ptab2","wm");if(!["wm","rate"].includes(pTab))pTab="wm";
+let pTab=store.get("ptab2","wm");if(!["wm","pick"].includes(pTab))pTab="wm";
 function pPlay(){
   return `<div class="top"><div><h2>Playground</h2><p>Bikin konten comeback versimu sendiri, lalu bagikan.</p></div></div>
-  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Watermark</button><button class="tab ${pTab==="rate"?"on":""}" data-t="rate">Album Rating</button></div><div id="ptab"></div>`;
+  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Watermark</button><button class="tab ${pTab==="pick"?"on":""}" data-t="pick">DREAM PICK!</button></div><div id="ptab"></div>`;
 }
-function afterPlay(){$$("[data-t]").forEach(b=>b.onclick=()=>{pTab=b.dataset.t;store.set("ptab2",pTab);render()});(pTab==="wm"?tabWm:tabRate)()}
+function afterPlay(){$$("[data-t]").forEach(b=>b.onclick=()=>{pTab=b.dataset.t;store.set("ptab2",pTab);render()});(pTab==="wm"?tabWm:tabPick)()}
 function dl(cv,name){cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast("Gambar tersimpan")},"image/png")}
 function shareX(text){window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text),"_blank","noopener");toast("Lampirkan gambar yang baru kamu download ke postingan X ya.",4200)}
 
@@ -563,47 +608,80 @@ function geom(){
   if(L==="h2"){const W2=800,H2=1000;return{W:W2*2+g,H:H2,cells:[{x:0,y:0,w:W2,h:H2},{x:W2+g,y:0,w:W2,h:H2}]}}
   return{W:w*2+g,H:h*2+g,cells:[{x:0,y:0,w,h},{x:w+g,y:0,w,h},{x:0,y:h+g,w,h},{x:w+g,y:h+g,w,h}]};
 }
+Object.assign(WM,{zoom:[1,1,1,1],sel:0,mode:"photo",sub:"foto",urls:[null,null,null,null]});
+const LSHORT={single:"1 foto",v2:"2 atas-bawah",h2:"2 kiri-kanan",v3:"3 vertikal",g4:"Grid 2x2"};
 function tabWm(){
-  $("#ptab").innerHTML=`<div class="editor"><div class="stage"><canvas id="wmc"></canvas></div>
-  <div class="card"><label class="f" style="margin-top:0">Layout</label><select id="wl">${Object.entries(LAYOUTS).map(([k,v])=>`<option value="${k}" ${k===WM.layout?"selected":""}>${v[0]}</option>`).join("")}</select>
-   <div class="row" id="slots" style="margin-top:12px"></div><div id="pos"></div>
-   <div id="gapbox"><label class="f">Jarak antar foto</label><input type="range" id="wg" min="0" max="60" value="${WM.gap}"><label class="f">Warna jarak</label><input type="color" id="wgc" value="${WM.gapColor}"></div>
-   <label class="f">Nickname / teks</label><input type="text" id="wt" value="${esc(WM.text)}" maxlength="40">
-   <label class="f">Gaya</label><select id="ws"><option value="plain">Polos + shadow</option><option value="outline">Outline</option><option value="pill">Pill butter</option><option value="stamp">Stamp</option></select>
-   <label class="f">Dekorasi</label><select id="wd"><option value="sparkle">Sparkle</option><option value="hearts">Hearts</option><option value="stars">Stars</option><option value="none">Tanpa dekorasi</option></select>
-   <label class="f">Warna teks</label><input type="color" id="wc" value="${WM.color}">
-   <label class="f">Ukuran</label><input type="range" id="wz" min="2" max="14" step=".5" value="${WM.size*100}">
-   <label class="f">Transparansi</label><input type="range" id="wo" min="10" max="100" value="${WM.op*100}">
-   <p class="muted" style="margin-top:10px">Geser langsung di gambar untuk memindahkan watermark.</p>
-   <div class="row"><button class="btn" id="wdl">Download</button></div></div></div>`;
-  $("#ws").value=WM.style;$("#wd").value=WM.deco;
-  const renderSlots=()=>{
-    const n=LAYOUTS[WM.layout][1];
-    $("#slots").innerHTML=[...Array(n)].map((_,i)=>`<label class="btn sm ${WM.imgs[i]?"":"ghost"}" style="cursor:pointer">${WM.imgs[i]?"Ganti":"Upload"} foto ${i+1}<input type="file" accept="image/*" hidden data-slot="${i}"></label>`).join("")+(n>1?`<label class="btn sm ghost" style="cursor:pointer">Upload sekaligus<input type="file" accept="image/*" multiple hidden id="fmulti"></label>`:"");
-    $("#gapbox").style.display=n>1?"block":"none";
-    $("#slots").insertAdjacentHTML("afterend",'');
-    $("#pos").innerHTML=[...Array(n)].map((_,i)=>WM.imgs[i]?`<div class="possl"><b>Foto ${i+1}</b><label class="f">Atas - bawah</label><input type="range" min="0" max="100" value="${WM.oy[i]*100}" data-oy="${i}"><label class="f">Kiri - kanan</label><input type="range" min="0" max="100" value="${WM.ox[i]*100}" data-ox="${i}"></div>`:"").join("");
-    $$("[data-oy]").forEach(r=>r.oninput=()=>{WM.oy[+r.dataset.oy]=r.value/100;paint()});
-    $$("[data-ox]").forEach(r=>r.oninput=()=>{WM.ox[+r.dataset.ox]=r.value/100;paint()});
-    $$("[data-slot]").forEach(i=>i.onchange=e=>load(e.target.files[0],+i.dataset.slot));
-    const fm=$("#fmulti");if(fm)fm.onchange=e=>[...e.target.files].slice(0,n).forEach((f,i)=>load(f,i));
+  $("#ptab").innerHTML=`<div class="editor"><div><div class="seg" id="wmode"><button data-m="photo">Geser dan zoom foto</button><button data-m="text">Geser teks</button></div>
+  <div class="stage" style="margin-top:10px"><canvas id="wmc"></canvas></div>
+  <div class="zoombar" id="zb"><button class="zbtn" id="zm" aria-label="Zoom out">-</button><input type="range" id="zr" min="100" max="400" value="100"><button class="zbtn" id="zp" aria-label="Zoom in">+</button><button class="btn sm ghost" id="zrs">Reset</button></div>
+  <p class="muted" id="whint" style="margin-top:8px;font-size:12px"></p><button class="btn dlb" id="wdl">Download gambar</button></div>
+  <div class="card wctl"><div class="chips" id="wsub"><button data-s="foto">Foto dan layout</button><button data-s="teks">Teks</button></div>
+   <div id="sub-foto"><label class="f" style="margin-top:4px">Layout</label><div class="chips" id="lchips">${Object.keys(LAYOUTS).map(k=>`<button data-l="${k}">${LSHORT[k]}</button>`).join("")}</div>
+    <label class="f">Foto</label><div class="slotgrid" id="slots"></div>
+    <div id="gapbox"><label class="f">Jarak antar foto</label><input type="range" id="wg" min="0" max="60" value="${WM.gap}"><label class="f">Warna jarak</label><input type="color" id="wgc" value="${WM.gapColor}"></div></div>
+   <div id="sub-teks" style="display:none"><label class="f" style="margin-top:4px">Nickname / teks</label><input type="text" id="wt" value="${esc(WM.text)}" maxlength="40">
+    <label class="f">Gaya</label><div class="chips" id="schips">${[["plain","Polos"],["outline","Outline"],["pill","Pill"],["stamp","Stamp"]].map(([k,v])=>`<button data-st="${k}">${v}</button>`).join("")}</div>
+    <label class="f">Dekorasi</label><div class="chips" id="dchips">${[["sparkle","Sparkle"],["hearts","Hearts"],["stars","Stars"],["none","Tanpa"]].map(([k,v])=>`<button data-d="${k}">${v}</button>`).join("")}</div>
+    <div class="two"><div><label class="f">Warna</label><input type="color" id="wc" value="${WM.color}"></div><div><label class="f">Ukuran</label><input type="range" id="wz" min="2" max="14" step=".5" value="${WM.size*100}"></div></div>
+    <label class="f">Transparansi</label><input type="range" id="wo" min="10" max="100" value="${WM.op*100}"></div></div></div>`;
+  const cv=$("#wmc"),nSlots=()=>LAYOUTS[WM.layout][1];
+  const mark=()=>{
+    $$("#wmode [data-m]").forEach(b=>b.classList.toggle("on",b.dataset.m===WM.mode));
+    $$("#wsub [data-s]").forEach(b=>b.classList.toggle("on",b.dataset.s===WM.sub));
+    $("#sub-foto").style.display=WM.sub==="foto"?"":"none";$("#sub-teks").style.display=WM.sub==="teks"?"":"none";
+    $$("#lchips [data-l]").forEach(b=>b.classList.toggle("on",b.dataset.l===WM.layout));
+    $$("#schips [data-st]").forEach(b=>b.classList.toggle("on",b.dataset.st===WM.style));
+    $$("#dchips [data-d]").forEach(b=>b.classList.toggle("on",b.dataset.d===WM.deco));
+    $("#zb").style.display=WM.mode==="photo"?"flex":"none";
+    $("#zr").value=Math.round((WM.zoom[WM.sel]||1)*100);
+    $("#whint").textContent=WM.mode==="photo"?"Ketuk foto untuk memilih, seret untuk menggeser, cubit (atau scroll / slider) untuk zoom. Ketuk kotak kosong untuk upload.":"Seret di gambar untuk memindahkan teks watermark.";
+    cv.style.cursor=WM.mode==="photo"?"move":"grab";
   };
-  const load=(f,i)=>{if(!f)return;const im=new Image();im.onload=()=>{WM.imgs[i]=im;WM.ox[i]=.5;WM.oy[i]=.5;renderSlots();paint()};im.src=URL.createObjectURL(f)};
-  $("#wl").onchange=e=>{WM.layout=e.target.value;renderSlots();paint()};
-  const upd=()=>{WM.text=$("#wt").value;WM.style=$("#ws").value;WM.deco=$("#wd").value;WM.color=$("#wc").value;WM.size=$("#wz").value/100;WM.op=$("#wo").value/100;WM.gap=$("#wg").value;WM.gapColor=$("#wgc").value;paint()};
-  ["wt","ws","wd","wc","wz","wo","wg","wgc"].forEach(i=>$("#"+i).oninput=upd);
-  $("#wdl").onclick=()=>{if(!WM.imgs.some(Boolean))return toast("Upload minimal satu foto dulu ya");dl($("#wmc"),"boogie-playground.png")};
-  const cv=$("#wmc");let drag=false;
-  const mv=e=>{const r=cv.getBoundingClientRect();WM.x=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));WM.y=Math.min(1,Math.max(0,(e.clientY-r.top)/r.height));paint()};
-  cv.onpointerdown=e=>{drag=true;cv.setPointerCapture(e.pointerId);cv.style.cursor="grabbing";mv(e)};
-  cv.onpointermove=e=>drag&&mv(e);cv.onpointerup=()=>{drag=false;cv.style.cursor="grab"};
-  renderSlots();paint();document.fonts.load("800 40px 'Plus Jakarta Sans'").then(paint);
+  const renderSlots=()=>{
+    const n=nSlots();if(WM.sel>=n)WM.sel=0;
+    $("#slots").innerHTML=[...Array(n)].map((_,i)=>`<label class="slot ${WM.sel===i?"on":""}" data-sel="${i}"><span class="th" style="${WM.urls[i]?`background-image:url(${WM.urls[i]})`:""}">${WM.urls[i]?"":"+"}</span><b>Foto ${i+1}</b><small>${WM.imgs[i]?"Ganti":"Upload"}</small><input type="file" accept="image/*" hidden data-slot="${i}"></label>`).join("")+(n>1?`<label class="slot multi"><span class="th">++</span><b>Sekaligus</b><small>Pilih banyak</small><input type="file" accept="image/*" multiple hidden id="fmulti"></label>`:"");
+    $("#gapbox").style.display=n>1?"block":"none";
+    $$("[data-slot]").forEach(i=>i.onchange=e=>load(e.target.files[0],+i.dataset.slot));
+    $$("#slots [data-sel]").forEach(l=>l.addEventListener("click",()=>{WM.sel=+l.dataset.sel;mark();paint(true);$$("#slots .slot").forEach(x=>x.classList.toggle("on",x===l))}));
+    const fm=$("#fmulti");if(fm)fm.onchange=e=>[...e.target.files].slice(0,n).forEach((f,i)=>load(f,i));
+    mark();
+  };
+  const load=(f,i)=>{if(!f)return;const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{WM.imgs[i]=im;WM.urls[i]=u;WM.ox[i]=.5;WM.oy[i]=.5;WM.zoom[i]=1;WM.sel=i;renderSlots();paint(true)};im.src=u};
+  $("#wmode").onclick=e=>{const b=e.target.closest("[data-m]");if(!b)return;WM.mode=b.dataset.m;mark();paint(true)};
+  $("#wsub").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;WM.sub=b.dataset.s;mark()};
+  $("#lchips").onclick=e=>{const b=e.target.closest("[data-l]");if(!b)return;WM.layout=b.dataset.l;renderSlots();paint(true)};
+  $("#schips").onclick=e=>{const b=e.target.closest("[data-st]");if(!b)return;WM.style=b.dataset.st;mark();paint(true)};
+  $("#dchips").onclick=e=>{const b=e.target.closest("[data-d]");if(!b)return;WM.deco=b.dataset.d;mark();paint(true)};
+  const upd=()=>{WM.text=$("#wt").value;WM.color=$("#wc").value;WM.size=$("#wz").value/100;WM.op=$("#wo").value/100;WM.gap=$("#wg").value;WM.gapColor=$("#wgc").value;paint(true)};
+  ["wt","wc","wz","wo","wg","wgc"].forEach(i=>$("#"+i).oninput=upd);
+  const setZ=z=>{WM.zoom[WM.sel]=Math.min(4,Math.max(1,z));$("#zr").value=Math.round(WM.zoom[WM.sel]*100);paint(true)};
+  $("#zr").oninput=e=>setZ(e.target.value/100);$("#zm").onclick=()=>setZ((WM.zoom[WM.sel]||1)-.15);$("#zp").onclick=()=>setZ((WM.zoom[WM.sel]||1)+.15);
+  $("#zrs").onclick=()=>{WM.ox[WM.sel]=.5;WM.oy[WM.sel]=.5;setZ(1)};
+  $("#wdl").onclick=()=>{if(!WM.imgs.some(Boolean))return toast("Upload minimal satu foto dulu ya");paint(false);dl(cv,"boogie-playground.png");setTimeout(()=>paint(true),50)};
+  /* gesture: satu jari = geser, dua jari = cubit zoom, roda mouse = zoom */
+  const P=new Map();let last=null;
+  const pt=e=>{const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height}};
+  const cellAt=q=>geom().cells.findIndex(c=>q.x>=c.x&&q.x<=c.x+c.w&&q.y>=c.y&&q.y<=c.y+c.h);
+  const pan=(dx,dy)=>{const i=WM.sel,im=WM.imgs[i],cl=geom().cells[i];if(!im||!cl)return;const s=Math.max(cl.w/im.width,cl.h/im.height)*WM.zoom[i],rx=im.width-cl.w/s,ry=im.height-cl.h/s;
+    if(rx>0)WM.ox[i]=Math.min(1,Math.max(0,WM.ox[i]-dx/s/rx));if(ry>0)WM.oy[i]=Math.min(1,Math.max(0,WM.oy[i]-dy/s/ry));paint(true)};
+  cv.onpointerdown=e=>{cv.setPointerCapture(e.pointerId);P.set(e.pointerId,pt(e));
+    if(P.size===1){const q=pt(e);last=q;
+      if(WM.mode==="text"){WM.x=Math.min(1,Math.max(0,q.x/cv.width));WM.y=Math.min(1,Math.max(0,q.y/cv.height));paint(true)}
+      else{const c=cellAt(q);if(c>=0){WM.sel=c;mark();if(!WM.imgs[c]){const inp=$(`[data-slot="${c}"]`);inp&&inp.click()}paint(true);$$("#slots .slot").forEach((x,k)=>x.classList.toggle("on",k===c))}}}};
+  cv.onpointermove=e=>{if(!P.has(e.pointerId))return;const old=P.get(e.pointerId),q=pt(e);
+    if(P.size===2&&WM.mode==="photo"){const ids=[...P.keys()],a=P.get(ids[0]),b=P.get(ids[1]),d0=Math.hypot(a.x-b.x,a.y-b.y);P.set(e.pointerId,q);const a2=P.get(ids[0]),b2=P.get(ids[1]),d1=Math.hypot(a2.x-b2.x,a2.y-b2.y);if(d0>0)setZ((WM.zoom[WM.sel]||1)*d1/d0);return}
+    P.set(e.pointerId,q);
+    if(WM.mode==="text"){WM.x=Math.min(1,Math.max(0,q.x/cv.width));WM.y=Math.min(1,Math.max(0,q.y/cv.height));paint(true)}
+    else if(P.size===1)pan(q.x-old.x,q.y-old.y)};
+  cv.onpointerup=cv.onpointercancel=e=>{P.delete(e.pointerId)};
+  cv.addEventListener("wheel",e=>{if(WM.mode!=="photo")return;e.preventDefault();const q=pt(e),c=cellAt(q);if(c>=0)WM.sel=c;setZ((WM.zoom[WM.sel]||1)*(e.deltaY<0?1.08:.93))},{passive:false});
+  renderSlots();paint(true);document.fonts.load("800 40px 'Plus Jakarta Sans'").then(()=>paint(true));
 }
-function paint(){
+function paint(prev){
   const cv=$("#wmc");if(!cv)return;const G=geom();if(cv.width!==G.W||cv.height!==G.H){cv.width=G.W;cv.height=G.H}
   const c=cv.getContext("2d");c.clearRect(0,0,G.W,G.H);c.fillStyle=WM.layout==="single"?"#e8ebef":WM.gapColor;c.fillRect(0,0,G.W,G.H);
   G.cells.forEach((cl,i)=>{const im=WM.imgs[i];
-    if(im){const s=Math.max(cl.w/im.width,cl.h/im.height),sw=cl.w/s,sh=cl.h/s;c.drawImage(im,(im.width-sw)*WM.ox[i],(im.height-sh)*WM.oy[i],sw,sh,cl.x,cl.y,cl.w,cl.h)}
+    if(im){const s=Math.max(cl.w/im.width,cl.h/im.height)*(WM.zoom[i]||1),sw=cl.w/s,sh=cl.h/s;c.drawImage(im,(im.width-sw)*WM.ox[i],(im.height-sh)*WM.oy[i],sw,sh,cl.x,cl.y,cl.w,cl.h)}
     else{c.fillStyle="#dfe4ea";c.fillRect(cl.x,cl.y,cl.w,cl.h);c.fillStyle="#8a93a3";c.font=`700 ${Math.round(cl.h*.06)}px 'Plus Jakarta Sans',sans-serif`;c.textAlign="center";c.textBaseline="middle";c.fillText(WM.layout==="single"?"Upload screenshot MV":`Foto ${i+1}`,cl.x+cl.w/2,cl.y+cl.h/2)}});
   const fs=Math.max(14,G.W*WM.size),x=WM.x*G.W,y=WM.y*G.H,t=WM.text||" ";
   c.save();c.globalAlpha=WM.op;c.font=`800 ${fs}px 'Plus Jakarta Sans',sans-serif`;c.textAlign="center";c.textBaseline="middle";
@@ -615,63 +693,110 @@ function paint(){
   const g={sparkle:["✦","✧"],hearts:["♥","♡"],stars:["★","☆"],none:null}[WM.deco];
   if(g){c.shadowColor="transparent";c.font=`700 ${fs*.8}px sans-serif`;c.fillStyle=WM.style==="pill"?"#e6ec98":WM.color;c.fillText(g[0],x-tw/2-fs*1.1,y-fs*.2);c.fillText(g[1],x+tw/2+fs*1.1,y+fs*.2);c.font=`700 ${fs*.5}px sans-serif`;c.fillText(g[1],x+tw/2+fs*.7,y-fs*.7)}
   c.restore();
+  if(prev&&WM.mode==='photo'&&G.cells.length>1){const cl=G.cells[WM.sel];if(cl){c.save();c.lineWidth=Math.max(4,G.W*.005);c.strokeStyle='#e6ec98';c.strokeRect(cl.x+c.lineWidth/2,cl.y+c.lineWidth/2,cl.w-c.lineWidth,cl.h-c.lineWidth);c.setLineDash([G.W*.012,G.W*.01]);c.strokeStyle='#1c1a2e';c.strokeRect(cl.x+c.lineWidth/2,cl.y+c.lineWidth/2,cl.w-c.lineWidth,cl.h-c.lineWidth);c.restore()}}
 }
 
 /* --- Album rating --- */
-function tabRate(){
-  const T=CFG.TRACKLIST,R=store.get("rate2",{}),F=store.get("fav2","");
-  const rows=T.map(t=>({t,s:R[t]||0})),ranked=[...rows].sort((a,b)=>b.s-a.s),vals=rows.filter(x=>x.s),avg=vals.length?vals.reduce((a,b)=>a+b.s,0)/vals.length:0;
-  const comm=D.ratings&&D.ratings.length?[...D.ratings].sort((a,b)=>b.avg_score-a.avg_score):null;
-  $("#ptab").innerHTML=`<div class="grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px" id="rg">
-  <div class="list">${T.map((t,i)=>`<div class="rate-row"><div style="min-width:130px"><b>${i+1}. ${esc(t)}</b><div class="muted">${R[t]?`Rating kamu: ${R[t]}/10`:"Belum dirating"}</div></div>
-    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div class="stars">${[...Array(10)].map((_,k)=>`<button data-t="${i}" data-s="${k+1}" class="${R[t]>=k+1?"on":""}">${k+1}</button>`).join("")}</div><button class="favb ${F===t?"on":""}" data-fav="${i}">${F===t?"Favorit":"Jadikan favorit"}</button></div></div>`).join("")}</div>
-  <div><div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>Ranking kamu</b><span class="muted">Rata-rata ${avg?avg.toFixed(1):"–"}</span></div><div class="list" style="margin-top:10px">${ranked.map((r,i)=>`<div class="rate-row"><span>${i+1}. ${esc(r.t)}${F===r.t?' <span class="badge" style="background:var(--rasp);color:#fff">Fav</span>':""}</span><b>${r.s||"–"}</b></div>`).join("")}</div>
-   <label class="f">Nickname di kartu (opsional)</label><input type="text" id="rn" maxlength="24" value="${esc(store.get("nick",""))}" placeholder="@nickname">
-   <div class="row"><button class="btn sm" id="rcard">Buat kartu</button><button class="btn sm ghost" id="rdl">Download</button><button class="btn sm ghost" id="rx">Share to X</button></div>
-   <canvas id="rc" style="width:100%;margin-top:14px;border-radius:16px;display:none"></canvas></div>
-   ${comm?`<div class="card" style="margin-top:14px"><b>Ranking NCTzen</b><div class="list" style="margin-top:10px">${comm.map((r,i)=>`<div class="rate-row"><span>${i+1}. ${esc(r.track)}</span><b>${(+r.avg_score).toFixed(1)} <small class="muted">(${r.votes})</small></b></div>`).join("")}</div></div>`:""}</div></div>
-  <style>@media(max-width:860px){#rg{grid-template-columns:1fr!important}}</style>`;
-  $$("[data-s]").forEach(b=>b.onclick=()=>{const t=T[b.dataset.t],s=+b.dataset.s;R[t]=s;store.set("rate2",R);
-    let sid=store.get("sid",null);if(!sid){sid=crypto.randomUUID();store.set("sid",sid)}
-    sbInsert("song_ratings",{track:t,score:s,session_id:sid});tabRate()});
-  $$("[data-fav]").forEach(b=>b.onclick=()=>{store.set("fav2",T[b.dataset.fav]);tabRate()});
-  const make=()=>{store.set("nick",$("#rn").value);const cv=$("#rc");cv.style.display="block";cardRating(cv,ranked,F,$("#rn").value,avg);document.fonts.load("800 40px 'Plus Jakarta Sans'").then(()=>cardRating(cv,ranked,F,$("#rn").value,avg));return cv};
+/* --- DREAM PICK! : bracket utama + placement match --- */
+const PK={view:"setup",n:16,st:null,hist:[]};
+const pkSongs=()=>(D.songs&&D.songs.length?D.songs:[]);
+const pkShuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function pkStart(n){
+  const all=pkSongs().map((s,i)=>({...s,id:i}));
+  let pool;
+  if(n==="new")pool=all.filter(s=>s.a===CFG.ALBUM);
+  else{const must=all.filter(s=>s.t===CFG.TITLE_TRACK);const rest=pkShuffle(all.filter(s=>!must.includes(s)));pool=[...must,...rest].slice(0,n==="all"?all.length:n)}
+  if(pool.length<10)return toast("Lagu belum cukup untuk ranking 1-10");
+  PK.st={ids:pool.map(s=>s.id),round:pkShuffle(pool.map(s=>s.id)),next:[],i:0,beat:{},cache:{},ranked:[],rno:1,cnt:0,stage:"main",slot:1,cur:null,done:false,total:pool.length-1};
+  PK.hist=[];PK.view="match";pkAdvance();
+}
+function pkFinish(st,champ){
+  st.ranked.push(champ);
+  if(st.ranked.length>=10){st.done=true;return}
+  const cand=[];st.ranked.forEach(r=>(st.beat[r]||[]).forEach(l=>{if(!st.ranked.includes(l)&&!cand.includes(l))cand.push(l)}));
+  if(!cand.length){st.ids.filter(x=>!st.ranked.includes(x)).forEach(x=>{if(st.ranked.length<10)st.ranked.push(x)});st.done=true;return}
+  st.round=pkShuffle(cand);st.next=[];st.i=0;st.rno=1;st.stage="place";st.slot=st.ranked.length+1;
+}
+function pkAdvance(){
+  const st=PK.st;
+  for(let g=0;g<5000&&!st.done;g++){
+    if(st.round.length===1){pkFinish(st,st.round[0]);continue}
+    if(st.i>=st.round.length){st.round=st.next;st.next=[];st.i=0;st.rno++;continue}
+    const a=st.round[st.i];
+    if(st.i+1>=st.round.length){st.next.push(a);st.i++;continue}
+    const b=st.round[st.i+1],k=st.cache[a+">"+b]?a:st.cache[b+">"+a]?b:null;
+    if(k!=null){st.next.push(k);st.i+=2;continue}
+    st.cur=[a,b];return;
+  }
+  if(st.done){PK.view="result";st.cur=null}
+}
+function pkChoose(w){
+  const st=PK.st,[a,b]=st.cur,l=w===a?b:a;PK.hist.push(JSON.stringify(st));
+  st.cache[w+">"+l]=1;(st.beat[w]=st.beat[w]||[]).push(l);st.next.push(w);st.i+=2;st.cnt++;pkAdvance();tabPick();
+}
+function pkUndo(){if(!PK.hist.length)return;PK.st=JSON.parse(PK.hist.pop());PK.view="match";tabPick()}
+const pkName=r=>{const s=pkSongs()[r];return s||{t:"?",a:""}};
+function tabPick(){
+  const all=pkSongs(),N=all.length,el=$("#ptab");
+  if(!N){el.innerHTML='<div class="card">Daftar lagu belum tersedia.</div>';return}
+  if(PK.view==="setup"){
+    const opts=[["new","Comeback saja",`${all.filter(s=>s.a===CFG.ALBUM).length} lagu`],[16,"Cepat","16 lagu"],[32,"Standar","32 lagu"],[64,"Besar","64 lagu"],["all","Semua lagu",`${N} lagu`]];
+    el.innerHTML=`<div class="pk-hero"><div class="pk-k">NCT DREAM</div><h3>DREAM PICK!</h3><p>Dua lagu muncul bergantian. Pilih yang kamu suka, lagu yang menang lanjut melawan lagu berikutnya. Setelah bracket utama selesai, placement match menentukan peringkat 2 sampai 10 untuk ranking akhirmu.</p>
+      <div class="pk-opts">${opts.map(([k,l,d])=>`<button class="pk-opt ${String(PK.n)===String(k)?"on":""}" data-pn="${k}"><b>${l}</b><span>${d}</span></button>`).join("")}</div>
+      <button class="btn dlb" id="pks">Mulai DREAM PICK!</button><p class="muted" style="margin-top:10px;font-size:12px">Lagu dipilih acak dari seluruh lagu NCT DREAM sampai comeback terbaru. Boogie Woogie selalu ikut.</p></div>`;
+    $$("[data-pn]").forEach(b=>b.onclick=()=>{PK.n=b.dataset.pn==="new"||b.dataset.pn==="all"?b.dataset.pn:+b.dataset.pn;tabPick()});
+    $("#pks").onclick=()=>{pkStart(PK.n);tabPick()};
+    return;
+  }
+  const st=PK.st;
+  if(PK.view==="match"&&st.cur){
+    const [a,b]=st.cur.map(pkName),stage=st.stage==="main"?`Bracket utama · Babak ${st.rno}`:`Placement match · rebut peringkat #${st.slot}`;
+    const card=(s,id,c)=>`<div class="pk-card" role="button" tabindex="0" data-pk="${id}" style="--c:${c}"><div class="pk-al">${esc(s.a||"")}${s.y?" · "+s.y:""}</div><div class="pk-t">${esc(s.t)}</div><a class="pk-ls" href="https://www.youtube.com/results?search_query=${encodeURIComponent("NCT DREAM "+s.t)}" target="_blank" rel="noopener" data-nopick="1">Dengar di YouTube</a></div>`;
+    const prog=st.stage==="main"?Math.min(100,st.cnt/Math.max(1,st.total)*100):100;
+    el.innerHTML=`<div class="pk-top"><span class="pk-stage">${stage}</span><span class="muted">Pilihan ke-${st.cnt+1}</span></div><div class="bar"><i style="width:${prog}%"></i></div>
+      <div class="pk-vs">${card(a,st.cur[0],PAL[0])}<div class="pk-v">VS</div>${card(b,st.cur[1],PAL[3])}</div>
+      <div class="row" style="margin-top:14px"><button class="btn sm ghost" id="pku" ${PK.hist.length?"":"disabled"}>Kembali</button><button class="btn sm ghost" id="pkr">Mulai ulang</button></div>`;
+    $$("[data-pk]").forEach(c=>{const go=e=>{if(e.target.closest("[data-nopick]"))return;pkChoose(+c.dataset.pk)};c.onclick=go;c.onkeydown=e=>{if(e.key==="Enter"||e.key===" ")go(e)}});
+    $("#pku").onclick=pkUndo;$("#pkr").onclick=()=>{PK.view="setup";tabPick()};return;
+  }
+  const top=st.ranked.slice(0,10).map(pkName);
+  el.innerHTML=`<div class="grid" style="grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px" id="rg"><div><h3 style="font-size:20px">Hasil DREAM PICK!</h3><div class="list" style="margin-top:10px">${top.map((s,i)=>`<div class="pk-row" style="--c:${PAL[i%PAL.length]}"><span class="pk-n">${i+1}</span><div><b>${esc(s.t)}</b><small>${esc(s.a||"")}${s.y?" · "+s.y:""}</small></div></div>`).join("")}</div></div>
+    <div><div class="card"><b>Bagikan hasilmu</b><label class="f">Nickname di kartu (opsional)</label><input type="text" id="rn" maxlength="24" value="${esc(store.get("nick",""))}" placeholder="@nickname">
+    <div class="row"><button class="btn sm" id="rcard">Buat kartu</button><button class="btn sm ghost" id="rdl">Download</button><button class="btn sm ghost" id="rx">Share to X</button></div>
+    <canvas id="rc" style="width:100%;margin-top:14px;border-radius:16px;display:none"></canvas></div>
+    <div class="row" style="margin-top:12px"><button class="btn sm ghost" id="pku">Kembali</button><button class="btn sm" id="pkr">Main lagi</button></div></div></div><style>@media(max-width:860px){#rg{grid-template-columns:1fr!important}}</style>`;
+  const make=()=>{store.set("nick",$("#rn").value);const cv=$("#rc");cv.style.display="block";cardPick(cv,top,$("#rn").value);document.fonts.load("800 40px 'Plus Jakarta Sans',sans-serif").then(()=>cardPick(cv,top,$("#rn").value));return cv};
   $("#rcard").onclick=()=>make().scrollIntoView({behavior:"smooth",block:"center"});
-  $("#rdl").onclick=()=>dl(make(),"boogie-album-rating.png");
-  $("#rx").onclick=()=>{dl(make(),"boogie-album-rating.png");shareX(`Album rating ${CFG.ALBUM} versi aku\nFavorit: ${F||"-"}\n#NCTDREAM #BOOGIEWOOGIE #DREAMAFTERDREAM`)};
+  $("#rdl").onclick=()=>dl(make(),"dream-pick.png");
+  $("#rx").onclick=()=>{dl(make(),"dream-pick.png");shareX(`DREAM PICK! Top 3 aku:\n1. ${top[0].t}\n2. ${top[1].t}\n3. ${top[2].t}\n#NCTDREAM #DREAMPICK #BOOGIEWOOGIE`)};
+  $("#pku").onclick=pkUndo;$("#pkr").onclick=()=>{PK.view="setup";tabPick()};
 }
 const cardImg=new Image();if(window.PHOTOS_B64&&PHOTOS_B64.card)cardImg.src=PHOTOS_B64.card;
 function fitText(c,t,maxW,size,weight){let z=size;for(;z>18;z--){c.font=`${weight} ${z}px 'Plus Jakarta Sans',sans-serif`;if(c.measureText(t).width<=maxW)break}return z}
-function cardRating(cv,ranked,fav,nick,avg){
+function cardPick(cv,top,nick){
   const w=1080,h=1350,FN="'Plus Jakarta Sans',sans-serif",INK="#1c1a2e";cv.width=w;cv.height=h;const c=cv.getContext("2d");
-  c.fillStyle="#f7f4ea";c.fillRect(0,0,w,h);
-  const HB=560;
-  if(cardImg.complete&&cardImg.naturalWidth){const k=Math.max(w/cardImg.naturalWidth,HB/cardImg.naturalHeight),sw=w/k,sh=HB/k;c.drawImage(cardImg,(cardImg.naturalWidth-sw)/2,(cardImg.naturalHeight-sh)/2,sw,sh,0,0,w,HB)}
-  else{c.fillStyle=PAL[0];c.fillRect(0,0,w,HB)}
+  c.fillStyle="#f7f4ea";c.fillRect(0,0,w,h);const HB=560;
+  if(cardImg.complete&&cardImg.naturalWidth){const k=Math.max(w/cardImg.naturalWidth,HB/cardImg.naturalHeight),sw=w/k,sh=HB/k;c.drawImage(cardImg,(cardImg.naturalWidth-sw)/2,(cardImg.naturalHeight-sh)/2,sw,sh,0,0,w,HB)}else{c.fillStyle=PAL[0];c.fillRect(0,0,w,HB)}
   const g=c.createLinearGradient(0,80,0,HB);g.addColorStop(0,"rgba(28,26,46,.05)");g.addColorStop(1,"rgba(28,26,46,.95)");c.fillStyle=g;c.fillRect(0,0,w,HB);
   const sw6=w/6;[0,1,2,3,4,5].forEach(i=>{c.fillStyle=PAL[i];c.fillRect(i*sw6,0,sw6+1,26)});
-  c.textBaseline="alphabetic";c.textAlign="left";
-  c.fillStyle=PAL[5];c.font=`800 26px ${FN}`;c.fillText("NCT DREAM  ·  "+CFG.ALBUM,70,372);
-  c.fillStyle="#fff";c.font=`800 104px ${FN}`;c.fillText("MY ALBUM",70,468);c.fillText("RATING",70,554);
+  c.textBaseline="alphabetic";c.textAlign="left";c.fillStyle=PAL[5];c.font=`800 26px ${FN}`;c.fillText("NCT DREAM  ·  "+CFG.ALBUM,70,372);
+  c.fillStyle="#fff";c.font=`800 104px ${FN}`;c.fillText("DREAM",70,468);c.fillText("PICK!",70,554);
   c.fillStyle=PAL[3];c.beginPath();c.arc(884,438,108,0,7);c.fill();c.lineWidth=8;c.strokeStyle="#fff";c.stroke();
-  c.fillStyle="#fff";c.textAlign="center";c.font=`800 76px ${FN}`;c.fillText(avg?avg.toFixed(1):"–",884,456);c.font=`700 19px ${FN}`;c.fillText("RATA-RATA",884,490);
+  c.fillStyle="#fff";c.textAlign="center";c.font=`800 64px ${FN}`;c.fillText("TOP 10",884,452);c.font=`700 19px ${FN}`;c.fillText("LAGU FAVORIT",884,488);
   const y0=596,tints=["#e6ec98","#fbd5e0","#cfe9ea"];
-  ranked.slice(0,10).forEach((r,i)=>{
+  top.slice(0,10).forEach((s,i)=>{
     const y=y0+i*62,col=PAL[i%PAL.length],light=(col===PAL[5]||col===PAL[2]);
     c.fillStyle=tints[i]||"#fff";c.beginPath();c.roundRect(50,y,980,54,16);c.fill();
     c.fillStyle=col;c.beginPath();c.roundRect(62,y+6,42,42,12);c.fill();
     c.fillStyle=light?INK:"#fff";c.textAlign="center";c.font=`800 24px ${FN}`;c.fillText(i+1,83,y+36);
-    c.textAlign="left";const maxW=fav===r.t?400:470,z=fitText(c,r.t,maxW,30,700);c.fillStyle=INK;c.fillText(r.t,122,y+37);
-    if(fav===r.t){const tw=c.measureText(r.t).width;c.fillStyle=PAL[3];c.beginPath();c.roundRect(122+tw+12,y+11,58,32,16);c.fill();c.fillStyle="#fff";c.textAlign="center";c.font=`800 17px ${FN}`;c.fillText("FAV",122+tw+41,y+33)}
-    c.fillStyle="rgba(28,26,46,.12)";c.beginPath();c.roundRect(620,y+20,230,14,7);c.fill();
-    if(r.s){c.fillStyle=col;c.beginPath();c.roundRect(620,y+20,Math.max(14,230*r.s/10),14,7);c.fill()}
-    c.fillStyle=INK;c.beginPath();c.roundRect(872,y+7,146,40,20);c.fill();
-    c.fillStyle="#fff";c.textAlign="center";c.font=`800 22px ${FN}`;c.fillText(r.s?r.s+"/10":"–",945,y+35);
+    c.textAlign="left";fitText(c,s.t,520,30,700);c.fillStyle=INK;c.fillText(s.t,122,y+37);
+    c.textAlign="right";c.font=`600 18px ${FN}`;c.fillStyle="rgba(28,26,46,.6)";const al=(s.a||"").length>22?(s.a||"").slice(0,21)+"…":(s.a||"");c.fillText(al,1010,y+34);
   });
   c.fillStyle=INK;c.fillRect(0,1240,w,110);[0,1,2,3,4,5].forEach(i=>{c.fillStyle=PAL[i];c.fillRect(i*sw6,1240,sw6+1,8)});
   c.fillStyle="#fff";c.textAlign="left";c.font=`700 34px ${FN}`;c.fillText(nick||"BOOGIE! PLAYGROUND",70,1305);
-  c.textAlign="right";c.font=`600 22px ${FN}`;c.fillText("#NCTDREAM  #BOOGIEWOOGIE",1010,1303);
+  c.textAlign="right";c.font=`600 22px ${FN}`;c.fillText("#NCTDREAM  #DREAMPICK",1010,1303);
 }
+
 
 /* ============================================================
    Right panel, nav, router, PWA
@@ -683,7 +808,7 @@ function renderRight(){
   const cdHtml=`<div class="count"><div style="font-size:12px;opacity:.75">${next?"Menuju: "+esc(next.title):"Countdown"}</div><b style="font-size:15px">${next?keyFmt(next.day,{day:"numeric",month:"short"})+" · "+evTime(next):"Belum ada jadwal"}</b><div class="n" id="cd"><div><b>--</b><span>hari</span></div><div><b>--</b><span>jam</span></div><div><b>--</b><span>mnt</span></div><div><b>--</b><span>dtk</span></div></div></div>`;
   $("#mright")&&($("#mright").innerHTML=cdHtml);
   $("#right").innerHTML=cdHtml+`
-  <div><h3>Voting berlangsung</h3><div class="list">${ong.map(v=>`<div class="item"><div class="t"><b>${esc(v.apps.join(" & "))}</b><small>${esc(v.show)} · ${esc(v.phase)}</small></div><span class="badge ok">Live</span></div>`).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
+  <div><h3>Voting berlangsung</h3><div class="list">${ong.map(v=>`<a class="item" href="${esc(v.url||"#/stream")}" ${v.url?'target="_blank" rel="noopener"':""} style="text-decoration:none;color:inherit"><div class="t"><b>${esc(v.apps.join(" & "))}</b><small>${esc(v.show)} · ${esc(v.phase)}${v.url?" · ketuk untuk vote":""}</small></div><span class="badge ok">Live</span></a>`).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div><h3>Upcoming</h3><div class="list">${upcoming().slice(0,4).map(evItem).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div class="muted" style="margin-top:auto">Zona waktu: ${TZS[TZ]}</div>`;
   clearInterval(cdTimer);if(!target)return;
@@ -706,7 +831,7 @@ let deferredPrompt=null;
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
 const doInstall=()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else $("#pwa").showModal()};
 $("#inst").onclick=doInstall;
-document.addEventListener("click",e=>{const t=e.target.closest("[data-inst]");if(!t)return;if(t.dataset.inst)doInstall();});
+document.addEventListener("click",e=>{const t=e.target.closest("[data-inst],[data-push]");if(!t)return;if(t.dataset.inst)doInstall();if(t.dataset.push)askPush();});
 if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 $("#view").innerHTML='<div class="empty">Memuat data…</div>';

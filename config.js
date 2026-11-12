@@ -23,20 +23,11 @@ window.CFG = {
   // --- Tracklist DREAM AFTER DREAM
   TRACKLIST: ["The Sun","Boogie Woogie","Smile for U","Tumbler","Skydive","This Is Your World","Cool for Me","Pressure","Watch U Watch Me","Dream After Dream"],
 
-  // --- Foto "Comeback moments" di Home. Tambah foto baru: simpan di assets/photos/, lalu tambah satu baris.
-  MOMENTS: [
-    {src:"assets/photos/m01.jpg", cap:""},
-    {src:"assets/photos/m02.jpg", cap:""},
-    {src:"assets/photos/m03.jpg", cap:""},
-    {src:"assets/photos/m04.jpg", cap:""},
-    {src:"assets/photos/m05.jpg", cap:""},
-    {src:"assets/photos/m06.jpg", cap:""},
-    {src:"assets/photos/m07.jpg", cap:""},
-    {src:"assets/photos/m08.jpg", cap:""},
-    {src:"assets/photos/m09.jpg", cap:""},
-    {src:"assets/photos/m10.jpg", cap:""},
-    {src:"assets/photos/m11.jpg", cap:""}
-  ],
+  // --- Foto Comeback moments dan konten YouTube sekarang diatur lewat editor.html (disimpan di data/seed.json).
+  MOMENTS: [],
+
+  // --- Konten YouTube pilihan (tampil di Home, "Konten terbaru"). Konten baru dari channel NCT DREAM ditambah otomatis.
+  CONTENT: [],
 
   // --- Streaming directory. "img" = gambar cover dari platform masing-masing.
   // url kosong = tombol tampil "Link menyusul".
@@ -57,6 +48,7 @@ window.CFG = {
   // site = situs resmi, ios = halaman App Store, play = kata kunci pencarian Google Play.
   // Ikon ada di assets/vote/.
   VOTING_APPS: [
+    {name:"Berriz",    ic:"Br", color:"#1c1a2e", icon:"assets/vote/berriz.png",    site:"https://berriz.in", ios:"", play:"BERRIZ"},
     {name:"IDOL CHAMP", ic:"IC", color:"#ec5a2c", icon:"assets/vote/idolchamp.png", site:"https://www.idolchamp.com", ios:"", play:"IDOL CHAMP"},
     {name:"Mubeat",     ic:"Mb", color:"#8a3d5e", icon:"assets/vote/mubeat.png",    site:"", ios:"https://apps.apple.com/app/id1320789688", play:"Mubeat for kpop Lovers"},
     {name:"Muniverse",  ic:"Mu", color:"#1c1a2e", icon:"assets/vote/muniverse.png", site:"https://www.muniverse.io", ios:"https://apps.apple.com/app/id6749677921", play:"MUNIVERSE TnK"},
