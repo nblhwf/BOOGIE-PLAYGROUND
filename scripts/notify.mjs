@@ -1,5 +1,6 @@
 
 // Logika notifikasi BOOGIE! PLAYGROUND (OneSignal)
+
 const WIB = d => new Date(new Date(d).getTime() + 7 * 36e5);
 const ymd = d => WIB(d).toISOString().slice(0, 10);
 
@@ -11,6 +12,14 @@ const fmtTime = d => {
 };
 
 const nf = n => Number(n).toLocaleString("en-US");
+
+const addDays = (date, days) => {
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+};
+
+const dateLabel = date => date.split("-").reverse().join("/");
 
 export function buildNotifications({
   views,
@@ -29,9 +38,8 @@ export function buildNotifications({
   const first = !st.init;
   const hour = WIB(now).getUTCHours();
   const today = ymd(now);
+  const tomorrow = addDays(today, 1);
 
-  // Tambahkan notifikasi ke daftar.
-  // allowFirst = true berarti boleh dikirim pada pemeriksaan pertama.
   const push = (key, heading, body, url, allowFirst = false) => {
     if (sent.has(key)) return;
 
@@ -52,22 +60,24 @@ export function buildNotifications({
 
   if (first) {
     st.last_million = mil;
-  } else if (mil > (st.last_million || 0)) {
-    const v = mil * 1e6;
+  } else {
+    const previous = st.last_million || 0;
 
-    out.push({
-      key: "m:" + mil,
-      heading: "🎉 MILESTONE UNLOCKED!",
-      body: `NCT DREAM's MV has reached ${nf(v)} views!\nLet's keep streaming, NCTzen! 🤍`,
-      url: site
-    });
+    if (mil > previous) {
+      for (let i = previous + 1; i <= mil; i++) {
+        out.push({
+          key: "m:" + i,
+          heading: "🎉 MILESTONE UNLOCKED!",
+          body: `NCT DREAM's MV has reached ${nf(i * 1e6)} views!\nLet's keep streaming, NCTzen! 🤍`,
+          url: site
+        });
+      }
 
-    st.last_million = mil;
+      st.last_million = mil;
+    }
   }
 
-  // 2. Konten baru.
-  // Konten lama dicatat pada pemeriksaan pertama,
-  // tetapi tidak dikirim sebagai notifikasi baru.
+  // 2. Konten YouTube baru.
   const ids = [
     ...(seed.content || []).map(c => c.id),
     ...(ytEvents || [])
@@ -90,27 +100,37 @@ export function buildNotifications({
     );
   }
 
-  // 3. Jadwal hari ini.
-  // 4. Pengingat vote aktif.
-  // Bisa dikirim pada pemeriksaan pertama setelah pukul 08.00 WIB.
+  // 3. Pengingat jadwal: sehari sebelum dan hari H.
   if (hour >= 8) {
-    for (const e of seed.events || []) {
-      if (!e.verified_at || !e.start) continue;
-      if (ymd(e.start) !== today) continue;
+    const schedules = (seed.events || [])
+      .filter(e => {
+        if (!e.verified_at || !e.start) return false;
 
-      const when = e.all_day
-        ? "All day"
-        : fmtTime(e.start) + " WIB";
+        const date = ymd(e.start);
+        return date === today || date === tomorrow;
+      });
+
+    if (schedules.length) {
+      const lines = schedules.map(e => {
+        const date = ymd(e.start);
+        const label = date === today ? "TODAY" : "TOMORROW";
+        const when = e.all_day
+          ? "All day"
+          : fmtTime(e.start) + " WIB";
+
+        return `${label} (${dateLabel(date)})\n${e.title} — ${when}`;
+      });
 
       push(
-        `s:${e.slug}:${today}`,
-        "📅 TODAY'S SCHEDULE",
-        `NCT DREAM has an upcoming schedule today!\n${e.title} — ${when}\nDon't miss it, NCTzen! 🤍`,
+        "schedule:" + today,
+        "📅 NCT DREAM SCHEDULE",
+        lines.join("\n\n") + "\n\nDon't miss it, NCTzen! 🤍",
         site,
         true
       );
     }
 
+    // 4. Pengingat voting: setiap hari selama voting aktif.
     const open = (seed.votes || []).filter(v =>
       v.verified_at &&
       v.start_date &&
@@ -122,21 +142,18 @@ export function buildNotifications({
 
     if (open.length) {
       push(
-        "v:" + today,
-        "🗳️ VOTE REMINDER!",
-        open
-          .map(v =>
-            `${v.show} — ${v.phase} on ${v.apps.join(" & ")} (until ${v.end_date})`
-          )
-          .join("\n") +
-          "\nDon't forget to vote, NCTzen! 🤍",
+        "vote:" + today,
+        "🗳️ DAILY VOTE REMINDER!",
+        open.map(v =>
+          `${v.show} — ${v.phase}\n${v.apps.join(" & ")}\nUntil ${v.end_date}`
+        ).join("\n\n") +
+        "\n\nDon't forget to vote, NCTzen! 🤍",
         open.length === 1 ? (open[0].url || site) : site,
         true
       );
     }
   }
 
-  // Simpan status pemeriksaan.
   st.init = true;
   st.sent = [...sent].slice(-300);
 
