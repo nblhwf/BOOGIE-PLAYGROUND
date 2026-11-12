@@ -443,12 +443,51 @@ async function afterHome(){
   }
 }
 const targetV=()=>{const t=+((D.settings||{}).target_views)||CFG.TARGET_VIEWS;const v=D.snaps&&D.snaps.length?D.snaps[D.snaps.length-1].views:0;if(v<t)return t;return [...CFG.MILESTONES,2e8,5e8,1e9].find(m=>m>v)||t};
+
 function initPush(id){
-  if(window._pushInit)return;window._pushInit=1;document.body.classList.add("push-on");
-  window.OneSignalDeferred=window.OneSignalDeferred||[];
-  const sc=document.createElement("script");sc.src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js";sc.defer=true;document.head.appendChild(sc);
-  OneSignalDeferred.push(async OS=>{try{await OS.init({appId:id,serviceWorkerPath:"push/OneSignalSDKWorker.js",serviceWorkerParam:{scope:new URL("push/",location.href).pathname},notifyButton:{enable:false}});window._OS=OS}catch(e){console.warn("push",e)}});
+  if(!id || window._OS || window._pushInit) return;
+
+  window._pushInit = true;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+  window.OneSignalDeferred.push(async function(OS){
+    try {
+      await OS.init({
+        appId: id,
+        safari_web_id: "web.onesignal.auto.14c30330-c4fb-483f-9c66-942ad147f917",
+        serviceWorkerPath: "push/OneSignalSDKWorker.js",
+        serviceWorkerParam: {
+          scope: new URL("push/", location.href).pathname
+        },
+        notifyButton: {
+          enable: false
+        }
+      });
+
+      window._OS = OS;
+      document.body.classList.add("push-on");
+      console.log("OneSignal siap");
+    } catch(e) {
+      window._pushInit = false;
+      document.body.classList.remove("push-on");
+      console.error("OneSignal init gagal:", e);
+    }
+  });
+
+  if(!document.getElementById("onesignal-page-sdk")){
+    const sc = document.createElement("script");
+    sc.id = "onesignal-page-sdk";
+    sc.src = "https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js";
+    sc.defer = true;
+    sc.onerror = function(){
+      window._pushInit = false;
+      document.body.classList.remove("push-on");
+      console.error("OneSignal SDK gagal dimuat");
+    };
+    document.head.appendChild(sc);
+  }
 }
+
 const askPush=async()=>{if(!window._OS)return toast("Notifikasi belum siap, coba lagi sebentar");try{await _OS.Notifications.requestPermission();toast(_OS.Notifications.permission?"Notifikasi aktif":"Notifikasi belum diizinkan",3500)}catch{toast("Notifikasi tidak bisa diaktifkan di browser ini",3500)}};
 function pHome(){
   const st=mvStats(),ev=upcoming().slice(0,3);
