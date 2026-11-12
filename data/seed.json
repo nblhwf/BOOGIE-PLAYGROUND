@@ -14,7 +14,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -29,7 +29,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -44,7 +44,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -59,7 +59,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -75,7 +75,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -91,7 +91,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -107,7 +107,7 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
   },
   {
@@ -123,8 +123,38 @@
    "url": null,
    "guide_url": null,
    "result": null,
-   "source": "Info dari pengelola web (input manual). Cek pengumuman resmi tiap aplikasi.",
+   "source": "",
    "verified_at": "2026-11-10T03:30:00+07:00"
+  },
+  {
+   "slug": "mma-berriz",
+   "show": "MMA 2026",
+   "phase": "Voting MMA",
+   "apps": [
+    "Berriz"
+   ],
+   "start_date": "2026-11-12",
+   "end_date": "2026-11-13",
+   "url": "https://berriz.in/en/vote/mma2026",
+   "guide_url": null,
+   "result": null,
+   "source": "",
+   "verified_at": "2026-11-12T04:30:00+07:00"
+  },
+  {
+   "slug": "mama-jnjm-mplus",
+   "show": "MAMA 2026",
+   "phase": "Favorite M Countdown Stage (NCT JNJM)",
+   "apps": [
+    "Mnet Plus"
+   ],
+   "start_date": "2026-11-12",
+   "end_date": "2026-11-13",
+   "url": "https://mnetplus.onelink.me/TRa8/xd22hep2?custom_link_value=vote%2Ftemplates%2Fmama-favorite-mcd-stage%2F6ae064af0c8a27ff60ed92b6%3Furl_fallback_type%3Dupdate",
+   "guide_url": null,
+   "result": null,
+   "source": "",
+   "verified_at": "2026-11-12T04:30:00+07:00"
   }
  ],
  "events": [
@@ -245,7 +275,7 @@
    "start": "2026-11-10T00:00:00+07:00",
    "all_day": true,
    "note": "Konten promosi album di channel Na PD. Jam tayang belum dikonfirmasi.",
-   "source": "Info dari pengelola web (link YouTube dikirim langsung)",
+   "source": "",
    "url": "https://youtu.be/mCeUNjUlGhQ",
    "verified_at": "2026-11-10T18:50:00+07:00"
   },
@@ -256,7 +286,7 @@
    "start": "2026-11-16T00:00:00+07:00",
    "all_day": true,
    "note": "Jam tayang belum dikonfirmasi.",
-   "source": "Info dari pengelola web",
+   "source": "",
    "url": null,
    "verified_at": "2026-11-10T20:10:00+07:00"
   },
@@ -267,7 +297,7 @@
    "start": "2026-11-12T20:20:00+07:00",
    "all_day": false,
    "note": "22.20 KST. Episode ke-247 『닫힌 세계 - 사령카페 살인사건』 bersama Jang Trio. Siaran SBS.",
-   "source": "Info dari pengelola web (postingan resmi program)",
+   "source": "",
    "url": null,
    "verified_at": "2026-11-10T20:10:00+07:00"
   }
@@ -376,5 +406,472 @@
  ],
  "settings": {
   "goatcounter": "nblhwf"
- }
+ },
+ "songs": [
+  {
+   "t": "Chewing Gum",
+   "a": "The First",
+   "y": 2016
+  },
+  {
+   "t": "My First and Last",
+   "a": "The First",
+   "y": 2016
+  },
+  {
+   "t": "We Young",
+   "a": "We Young",
+   "y": 2017
+  },
+  {
+   "t": "Trigger the Fever",
+   "a": "We Young",
+   "y": 2017
+  },
+  {
+   "t": "We Go Up",
+   "a": "We Go Up",
+   "y": 2018
+  },
+  {
+   "t": "Boom",
+   "a": "We Boom",
+   "y": 2019
+  },
+  {
+   "t": "Ridin'",
+   "a": "Reload",
+   "y": 2020
+  },
+  {
+   "t": "Quiet Down",
+   "a": "Reload",
+   "y": 2020
+  },
+  {
+   "t": "7 Days",
+   "a": "Reload",
+   "y": 2020
+  },
+  {
+   "t": "Love Again",
+   "a": "Reload",
+   "y": 2020
+  },
+  {
+   "t": "Puzzle Piece",
+   "a": "Reload",
+   "y": 2020
+  },
+  {
+   "t": "Hello Future",
+   "a": "Hello Future",
+   "y": 2021
+  },
+  {
+   "t": "Bungee",
+   "a": "Hello Future",
+   "y": 2021
+  },
+  {
+   "t": "Life Is Still Going On",
+   "a": "Hello Future",
+   "y": 2021
+  },
+  {
+   "t": "Hot Sauce",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Diggity",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Dive Into You",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "My Youth",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Rocket",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Countdown (3,2,1)",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "ANL",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Irreplaceable",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Be There for You",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Rainbow",
+   "a": "Hot Sauce",
+   "y": 2021
+  },
+  {
+   "t": "Glitch Mode",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Fire Alarm",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Arcade",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "It's Yours",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Teddy Bear",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Replay",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Saturday Drip",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Better Than Gold",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Drive",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Never Goodbye",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Rewind",
+   "a": "Glitch Mode",
+   "y": 2022
+  },
+  {
+   "t": "Beatbox",
+   "a": "Beatbox",
+   "y": 2022
+  },
+  {
+   "t": "To My First",
+   "a": "Beatbox",
+   "y": 2022
+  },
+  {
+   "t": "Sorry, Heart",
+   "a": "Beatbox",
+   "y": 2022
+  },
+  {
+   "t": "On the Way",
+   "a": "Beatbox",
+   "y": 2022
+  },
+  {
+   "t": "Candy",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "Graduation",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "Tangerine Love",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "Take My Breath",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "Moon",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "Walk with You",
+   "a": "Candy",
+   "y": 2022
+  },
+  {
+   "t": "ISTJ",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Broken Melodies",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Yogurt Shake",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Skateboard",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Blue Wave",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Poison",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "SOS",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Pretzel",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Starry Night",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Like We Just Met",
+   "a": "ISTJ",
+   "y": 2023
+  },
+  {
+   "t": "Dream()scape",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Smoothie",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Icantfeelanything",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Box",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Carat Cake",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Unknown",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Breathing",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Rains in Heaven",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "Flying Kiss",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "When I'm with You",
+   "a": "DREAM( )SCAPE",
+   "y": 2024
+  },
+  {
+   "t": "BTTF",
+   "a": "Go Back to the Future",
+   "y": 2025
+  },
+  {
+   "t": "Chiller",
+   "a": "Go Back to the Future",
+   "y": 2025
+  },
+  {
+   "t": "I Like It",
+   "a": "Go Back to the Future",
+   "y": 2025
+  },
+  {
+   "t": "'Bout You",
+   "a": "Go Back to the Future",
+   "y": 2025
+  },
+  {
+   "t": "Beat It Up",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "Rush",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "Cold Coffee",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "Butterflies",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "Tempo",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "TRICKY",
+   "a": "Beat It Up",
+   "y": 2025
+  },
+  {
+   "t": "Go",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Candle Light",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Joy",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Hair in the Air",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Fireflies",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Love Me Right",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Déjà Vu",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Don't Need Your Love",
+   "a": "Single / OST / Kolaborasi"
+  },
+  {
+   "t": "Best Friend Ever",
+   "a": "Jepang"
+  },
+  {
+   "t": "Moonlight",
+   "a": "Jepang"
+  },
+  {
+   "t": "The Sun",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Boogie Woogie",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Smile for U",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Tumbler",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Skydive",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "This Is Your World",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Cool for Me",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Pressure",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Watch U Watch Me",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  },
+  {
+   "t": "Dream After Dream",
+   "a": "DREAM AFTER DREAM",
+   "y": 2026
+  }
+ ]
 }
