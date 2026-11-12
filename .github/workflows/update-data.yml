@@ -28,5 +28,4 @@ jobs:
           git add data/views.json data/youtube-events.json
           git diff --staged --quiet && exit 0
           git commit -m "update data"
-          git pull --rebase
           git push
