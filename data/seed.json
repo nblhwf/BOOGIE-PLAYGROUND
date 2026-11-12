@@ -405,7 +405,8 @@
   }
  ],
  "settings": {
-  "goatcounter": "nblhwf"
+  "goatcounter": "nblhwf",
+  "onesignal_app_id": "f7476782-ba97-4c47-9d9e-6df9a6552049"
  },
  "songs": [
   {
