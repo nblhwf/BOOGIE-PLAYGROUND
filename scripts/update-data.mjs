@@ -38,15 +38,48 @@ try{
     for(const x of r.items||[])meta[x.id]={title:x.snippet.title,published_at:x.snippet.publishedAt,channel:x.snippet.channelTitle}}
   prev.meta=meta;await writeFile("data/youtube-events.json",JSON.stringify(prev));console.log("meta",Object.keys(meta).length);
 }catch(e){console.error("meta gagal:",e.message)}
-// ---- notifikasi (hanya jika ONESIGNAL_APP_ID & ONESIGNAL_API_KEY diisi) ----
-try{
-  const AID=process.env.ONESIGNAL_APP_ID,AK=process.env.ONESIGNAL_API_KEY;
-  if(AID&&AK){
-    const vw=await readJson("data/views.json",{snapshots:[]}),seed=await readJson("data/seed.json",{}),ev=await readJson("data/youtube-events.json",{events:[]});
-    const views=vw.snapshots.at(-1)?.views||0;vw.notify=vw.notify||{};
-    const list=buildNotifications({views,seed,ytEvents:ev.events,meta:ev.meta||meta,state:vw.notify,site:process.env.SITE_URL||""});
-    const n=await sendAll(list,{appId:AID,apiKey:AK});
-    await writeFile("data/views.json",JSON.stringify(vw));console.log("notifikasi terkirim",n,"/",list.length);
-  }else console.log("notifikasi dilewati (OneSignal belum diisi)");
-}catch(e){console.error("notifikasi gagal:",e.message)}
-process.exit(failed?1:0);
+
+ // ---- notifikasi OneSignal ----
+try {
+  const AID = process.env.ONESIGNAL_APP_ID;
+  const AK = process.env.ONESIGNAL_API_KEY;
+
+  if (AID && AK) {
+    const vw = await readJson("data/views.json", { snapshots: [] });
+    const seed = await readJson("data/seed.json", {});
+    const ev = await readJson("data/youtube-events.json", { events: [] });
+
+    const views = vw.snapshots.at(-1)?.views || 0;
+
+    // Gunakan salinan status agar status lama tidak berubah
+    // sebelum seluruh pengiriman berhasil.
+    const notifyState = structuredClone(vw.notify || {});
+
+    const list = buildNotifications({
+      views,
+      seed,
+      ytEvents: ev.events,
+      meta: ev.meta || meta,
+      state: notifyState,
+      site: process.env.SITE_URL || ""
+    });
+
+    const n = await sendAll(list, {
+      appId: AID,
+      apiKey: AK
+    });
+
+    // Simpan status hanya setelah seluruh pengiriman berhasil.
+    vw.notify = notifyState;
+    await writeFile("data/views.json", JSON.stringify(vw));
+
+    console.log("Notifikasi terkirim", n, "/", list.length);
+  } else {
+    console.log("Notifikasi dilewati (OneSignal belum diisi)");
+  }
+} catch (e) {
+  console.error("NOTIFIKASI GAGAL:", e.message);
+  failed = true;
+}
+
+process.exit(failed ? 1 : 0);
