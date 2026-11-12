@@ -14,19 +14,79 @@ try{
   d.snapshots.push({captured_at:new Date().toISOString(),views:Number(it.statistics.viewCount)});
   d.snapshots=d.snapshots.slice(-6000);d.video_id=VID;d.updated_at=new Date().toISOString();
   await writeFile(f,JSON.stringify(d));console.log("views",it.statistics.viewCount);
-  try{
-    const ch=it.snippet.channelId,list=await yt(`playlistItems?part=contentDetails&playlistId=UU${ch.slice(2)}&maxResults=40`);
-    const ids=(list.items||[]).map(x=>x.contentDetails.videoId);
-    const det=ids.length?await yt(`videos?part=snippet,liveStreamingDetails&id=${ids.join(",")}`):{items:[]};
-    const since=Date.now()-14*864e5,now=new Date().toISOString();
-    const events=(det.items||[]).flatMap(x=>{
-      const start=x.liveStreamingDetails?.scheduledStartTime||x.snippet.publishedAt;
-      if(new Date(start).getTime()<since)return [];
-      return [{slug:"yt-"+x.id,type:x.liveStreamingDetails?"Live broadcast":"Official content",title:x.snippet.title,start,all_day:false,
-        note:"",source:"YouTube NCT DREAM (otomatis)",url:"https://youtu.be/"+x.id,verified_at:now}];
-    });
-    await writeFile("data/youtube-events.json",JSON.stringify({updated_at:now,events}));console.log("events",events.length);
-  }catch(e){console.error("sync konten gagal:",e.message)}
+ 
+try {
+  // Channel resmi NCT DREAM, bukan channel pemilik MV.
+  const CHANNEL_ID = "UCXURHJRGr4-EB3l87kcbElw";
+  const UPLOADS_ID = "UU" + CHANNEL_ID.slice(2);
+
+  const list = await yt(
+    `playlistItems?part=contentDetails&playlistId=${UPLOADS_ID}&maxResults=40`
+  );
+
+  const ids = (list.items || [])
+    .map(x => x.contentDetails.videoId);
+
+  const det = ids.length
+    ? await yt(
+        `videos?part=snippet,liveStreamingDetails,contentDetails&id=${ids.join(",")}`
+      )
+    : { items: [] };
+
+  const since = Date.now() - 14 * 864e5;
+  const now = new Date().toISOString();
+
+  const durationSeconds = iso => {
+    const m = iso?.match(
+      /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/
+    );
+    if (!m) return 0;
+    return Number(m[1] || 0) * 3600 +
+      Number(m[2] || 0) * 60 +
+      Number(m[3] || 0);
+  };
+
+  const events = (det.items || []).flatMap(x => {
+    const live = x.liveStreamingDetails;
+    const start = live?.scheduledStartTime || x.snippet.publishedAt;
+
+    if (new Date(start).getTime() < since) return [];
+
+    const title = x.snippet.title || "";
+    const description = x.snippet.description || "";
+    const duration = durationSeconds(x.contentDetails?.duration);
+
+    // Keluarkan video pendek (maksimal 3 menit)
+    // dan video yang diberi penanda Shorts.
+    const isShort =
+      duration > 0 &&
+      duration <= 180 ||
+      /#shorts\b/i.test(title + " " + description);
+
+    if (isShort) return [];
+
+    return [{
+      slug: "yt-" + x.id,
+      type: live ? "Live broadcast" : "Official content",
+      title,
+      start,
+      all_day: false,
+      note: "",
+      source: "YouTube NCT DREAM (otomatis)",
+      url: "https://youtu.be/" + x.id,
+      verified_at: now
+    }];
+  });
+
+  await writeFile(
+    "data/youtube-events.json",
+    JSON.stringify({ updated_at: now, events })
+  );
+
+  console.log("events", events.length);
+} catch (e) {
+  console.error("sync konten gagal:", e.message);
+}
 }catch(e){console.error(e.message);failed=true}
 // ---- metadata judul & tanggal untuk konten (urutan terbaru dulu di web) ----
 let meta={};
