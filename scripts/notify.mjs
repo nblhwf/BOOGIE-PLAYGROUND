@@ -179,7 +179,7 @@ export async function sendAll(
         body: JSON.stringify({
           app_id: appId,
           target_channel: "push",
-          included_segments: ["Subscribed Users"],
+          included_segments: ["All"],
           headings: { en: m.heading },
           contents: { en: m.body },
           url: m.url || undefined
