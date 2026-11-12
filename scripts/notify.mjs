@@ -187,9 +187,21 @@ export async function sendAll(
       }
     );
 
-    if (!r.ok) {
-      const error = (await r.text()).slice(0, 500);
-      throw new Error(`OneSignal ${r.status}: ${error}`);
+    const responseText = await r.text();
+    let result;
+
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      result = { raw: responseText };
+    }
+
+    console.log("Respons OneSignal:", m.key, JSON.stringify(result));
+
+    if (!r.ok || result.errors) {
+      throw new Error(
+        `OneSignal ${r.status}: ${JSON.stringify(result)}`
+      );
     }
 
     n++;
@@ -198,3 +210,4 @@ export async function sendAll(
 
   return n;
 }
+
