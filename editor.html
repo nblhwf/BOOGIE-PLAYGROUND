@@ -2,14 +2,6 @@
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Editor — BOOGIE! PLAYGROUND</title>
 <style>
-:root{--ink:#1c1a2e;--mute:#6d7183;--line:#e6e8ee;--teal:#1b8f96;--rasp:#d62f5c}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#eef1f4;color:var(--ink);padding:18px}
-.wrap{max-width:820px;margin:0 auto}h1{font-size:24px;letter-spacing:-.5px}.sub{color:var(--mute);font-size:13px;margin:4px 0 16px;line-height:1.55}
-.card<!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Editor — BOOGIE! PLAYGROUND</title>
-<style>
 :root{--ink:#1c1a2e;--mute:#6d7183;--line:#e6e8ee;--teal:#1b8f96;--blue:#2a7ea6;--rasp:#d62f5c;--butter:#e6ec98;--bg:#f2f4f8}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);padding:0 0 90px}
@@ -34,6 +26,7 @@ button:hover{transform:translateY(-1px)}button:disabled{opacity:.5;cursor:wait}
 .it .t{flex:1;min-width:0}.it .t b{display:block;font-size:14px;line-height:1.35;word-break:break-word}.it .a{display:flex;gap:6px;flex:none}
 .it img.th{width:76px;height:46px;border-radius:9px;object-fit:cover;background:#e8ebf0;flex:none}
 @media(max-width:560px){.it{flex-wrap:wrap}.it .a{width:100%}.it .a button{flex:1}}
+.addbtn{width:100%;padding:15px;font-size:15px;border-radius:16px;margin-bottom:12px;background:linear-gradient(90deg,var(--rasp),#ec5a2c);box-shadow:0 8px 20px rgba(214,47,92,.28)}
 .fab{position:fixed;right:16px;bottom:16px;z-index:30;padding:14px 20px;border-radius:99px;box-shadow:0 10px 24px rgba(28,26,46,.35);font-size:14px;background:linear-gradient(90deg,var(--rasp),#ec5a2c)}
 #msg{position:fixed;left:50%;bottom:76px;transform:translateX(-50%);z-index:60;padding:11px 18px;border-radius:99px;font-size:13px;font-weight:700;display:none;max-width:92vw;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 #msg.ok{display:block;background:#0e7a55;color:#fff}#msg.bad{display:block;background:#b0213f;color:#fff}
@@ -55,7 +48,6 @@ dialog .bd{padding:6px 18px 12px;overflow:auto;max-height:68vh}dialog .ft{displa
 <div class="tabs" id="tabs"></div>
 <div id="pane"></div>
 </div></div>
-<button class="fab" id="fab" style="display:none">+ Tambah</button>
 <div id="msg"></div>
 <dialog id="dlg"><form method="dialog" id="frm"><div class="hd" id="dh"></div><div class="bd" id="db"></div><div class="ft"><button type="button" class="g" id="dc">Batal</button><button type="submit" class="b-main" id="ds">Simpan</button></div></form></dialog>
 <script>
@@ -205,18 +197,18 @@ const TABS=[["v","Vote",()=>seed.votes.length],["e","Jadwal",()=>seed.events.len
 function render(){
   $("#app").style.display="block";
   $("#tabs").innerHTML=TABS.map(([k,l,n])=>`<button data-tab="${k}" class="${tab===k?"on":""}" style="--c:${COL[k]}">${l}${n?`<i>${n()}</i>`:""}</button>`).join("");
-  const canAdd="vecs".includes(tab);$("#fab").style.display=canAdd?"":"none";
-  const search=canAdd?`<div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:"";
+  const canAdd="vecs".includes(tab);const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu"};
+  const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]} baru</button><div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:"";
   const body={v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
   const keep=document.activeElement&&document.activeElement.id==="q";
   $("#pane").innerHTML=search+body;if(keep){const x=$("#q");x.focus();x.setSelectionRange(99,99)}
 }
 document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value.toLowerCase().trim();render()}});
 const ADD={v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
-$("#fab").onclick=()=>ADD[tab]&&ADD[tab]();
 document.addEventListener("click",async ev=>{
   const t=ev.target.closest("button");if(!t)return;
   try{
+  if(t.id==="addb"){ADD[tab]&&ADD[tab]();return}
   if(t.dataset.tab){tab=t.dataset.tab;q="";render();return}
   const i=+t.dataset.i,a=t.dataset.act;
   if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
@@ -234,135 +226,9 @@ document.addEventListener("click",async ev=>{
   if(t.id==="oss"){const v=$("#osi").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.onesignal_app_id=v;else delete seed.settings.onesignal_app_id;await save("Atur notifikasi")}
   if(t.id==="gcs"){const v=$("#gcc").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.goatcounter=v;else delete seed.settings.goatcounter;await save("Atur statistik pengunjung")}
   if(t.id==="conn"){SL("repo",$("#repo").value);SL("branch",$("#branch").value);SL("token",$("#token").value);await load();msg("Terhubung.","ok")}
-  if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";seed=null;$("#app").style.display="none";$("#fab").style.display="none";$("#setup").style.display="";msg("Token dihapus dari browser ini.","ok")}
+  if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";seed=null;$("#app").style.display="none";$("#setup").style.display="";msg("Token dihapus dari browser ini.","ok")}
   }catch(e){msg(e.message,"bad")}
 });
 $("#repo").value=LS("repo");$("#branch").value=LS("branch")||"main";$("#token").value=LS("token");
 if($("#repo").value&&$("#token").value)load().catch(e=>msg(e.message,"bad"));
 </script></body></html>
-{background:#fff;border-radius:18px;padding:16px;margin-bottom:12px;border:1px solid #eef0f4}.card h3{font-size:14px;margin-bottom:8px}
-label{display:block;font-size:12px;color:var(--mute);margin:8px 0 3px;font-weight:600}
-input,select,textarea{width:100%;font:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#fff}
-button{font:inherit;font-weight:700;font-size:13px;padding:9px 15px;border-radius:11px;border:0;background:var(--ink);color:#fff;cursor:pointer;margin-top:10px}
-button.g{background:#fff;color:var(--ink);border:1px solid var(--line)}button.r{background:var(--rasp)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.row{grid-template-columns:1fr}}
-.tabs{display:flex;gap:8px;margin-bottom:12px}.tabs button{margin:0;background:#fff;color:var(--ink);border:1px solid var(--line)}.tabs button.on{background:var(--ink);color:#fff}
-.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;background:#eceff3}.pill.on{background:#d9f3ea;color:#0e7a55}.pill.up{background:#fff0c8;color:#8a6200}
-.muted{color:var(--mute);font-size:12px;line-height:1.5}#msg{position:sticky;top:8px;z-index:9;padding:10px 14px;border-radius:12px;font-size:13px;margin-bottom:10px;display:none}
-#msg.ok{display:block;background:#d9f3ea;color:#0e7a55}#msg.bad{display:block;background:#fde0e8;color:#b0213f}
-.ev{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid #f0f2f5;font-size:13px;align-items:center}
-.ev button{margin:0;padding:5px 10px;font-size:11px}
-</style></head><body><div class="wrap">
-<h1>Editor</h1>
-<p class="sub">Isi hasil vote dan tambah jadwal tanpa membuka kode. Perubahan disimpan langsung ke GitHub dan muncul di web sekitar 1-2 menit kemudian. Halaman ini publik, tapi hanya bisa menyimpan kalau kamu memasukkan token milikmu (lihat README, bagian Editor).</p>
-<div id="msg"></div>
-<div class="card" id="setup"><h3>Koneksi GitHub (sekali saja)</h3>
-<div class="row"><div><label>Repo (akun/nama-repo)</label><input id="repo" placeholder="namakamu/boogie-playground"></div><div><label>Branch</label><input id="branch" value="main"></div></div>
-<label>Token (fine-grained, izin Contents: Read and write, hanya untuk repo ini)</label><input id="token" type="password" placeholder="github_pat_...">
-<p class="muted" style="margin-top:6px">Token hanya disimpan di browser ini. Jangan dipakai di komputer umum.</p>
-<button id="conn">Simpan dan muat data</button> <button class="g" id="forget">Hapus token dari browser ini</button></div>
-<div id="app" style="display:none">
-<div class="tabs"><button class="on" data-t="v">Hasil vote</button><button data-t="e">Jadwal</button><button data-t="c">Konten</button><button data-t="f">Foto</button><button data-t="p">Pengaturan</button></div>
-<div id="tv"></div><div id="te" style="display:none"></div><div id="tc" style="display:none"></div><div id="tf" style="display:none"></div><div id="tp" style="display:none"></div></div>
-<script>
-const $=s=>document.querySelector(s),LS=k=>{try{return localStorage.getItem(k)||""}catch{return""}},SL=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let seed=null,sha=null;
-const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c;if(c==="ok")setTimeout(()=>m.className="",6000)};
-const b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));const b64e=s=>btoa(unescape(encodeURIComponent(s)));
-const api=()=>`https://api.github.com/repos/${$("#repo").value.trim()}/contents/data/seed.json`;
-const hdr=()=>({Authorization:"Bearer "+$("#token").value.trim(),Accept:"application/vnd.github+json"});
-async function load(){
-  const r=await fetch(api()+"?ref="+encodeURIComponent($("#branch").value.trim()||"main")+"&t="+Date.now(),{headers:hdr()});
-  if(!r.ok)throw new Error(r.status===401||r.status===403?"Token ditolak. Cek izin Contents: Read and write.":r.status===404?"Repo atau file data/seed.json tidak ditemukan.":"Gagal memuat ("+r.status+")");
-  const j=await r.json();sha=j.sha;seed=JSON.parse(b64d(j.content));render();
-}
-async function save(note){
-  const r=await fetch(api(),{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:note,content:b64e(JSON.stringify(seed,null,1)),sha,branch:$("#branch").value.trim()||"main"})});
-  if(!r.ok){const t=r.status===409||r.status===422?"File sudah berubah di GitHub. Muat ulang halaman ini lalu coba lagi.":"Gagal menyimpan ("+r.status+")";throw new Error(t)}
-  sha=(await r.json()).content.sha;msg("Tersimpan. Web akan ter-update sekitar 1-2 menit lagi.","ok");render();
-}
-const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta"}).format(new Date());
-const st=v=>{const t=today();return t>v.end_date?"selesai":t<v.start_date?"akan datang":"berlangsung"};
-async function ytInfo(id){
-  for(const u of [`https://www.youtube.com/oembed?url=https://youtu.be/${id}&format=json`,`https://noembed.com/embed?url=https://youtu.be/${id}`]){
-    try{const r=await fetch(u);if(!r.ok)continue;const j=await r.json();if(j.title)return j}catch{}
-  }
-  return null;
-}
-function cropJpeg(file){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{
-  const W=480,H=600,k=Math.max(W/im.width,H/im.height),sw=W/k,sh=H/k,sx=(im.width-sw)/2,sy=Math.max(0,Math.min(im.height-sh,(im.height-sh)*.3));
-  const c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(im,sx,sy,sw,sh,0,0,W,H);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.82).split(",")[1])};im.onerror=()=>rej(new Error("Foto tidak bisa dibaca"));im.src=u})}
-async function uploadPhotos(){
-  const fs=[...$("#pf").files];if(!fs.length)return msg("Pilih foto dulu.","bad");
-  seed.moments=seed.moments||[];let n=0;
-  for(const f of fs){const b64=await cropJpeg(f),name=`assets/photos/u-${Date.now()}-${n++}.jpg`;
-    const r=await fetch(`https://api.github.com/repos/${$("#repo").value.trim()}/contents/${name}`,{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:"Tambah foto",content:b64,branch:$("#branch").value.trim()||"main"})});
-    if(!r.ok)throw new Error("Upload foto gagal ("+r.status+")");seed.moments.unshift({src:name})}
-  await save("Tambah foto Comeback moments");
-}
-function renderPhotos(){
-  const L=seed.moments||[];
-  $("#tf").innerHTML=`<div class="card"><h3>Tambah foto Comeback moments</h3><p class="muted">Foto dipotong otomatis jadi 4:5 supaya seragam. Boleh pilih banyak sekaligus. Foto baru tampil paling depan.</p>
-  <input id="pf" type="file" accept="image/*" multiple><button id="pup">Upload</button></div>
-  <div class="card"><h3>Foto saat ini (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map((m,i)=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><button class="g" style="width:100%;margin-top:4px;padding:5px" data-pdel="${i}">Hapus</button></div>`).join("")}</div></div>`;
-}
-function renderSettings(){
-  const st=seed.settings||{},gc=st.goatcounter||"";
-  $("#tp").innerHTML=`<div class="card"><h3>Target views MV</h3><p class="muted">Kalau views sudah melewati target, web otomatis pindah ke milestone berikutnya (25 juta, 50 juta, 100 juta, dst). Isi di sini kalau mau target sendiri.</p>
-  <label>Target (angka tanpa titik)</label><input id="tg" inputmode="numeric" value="${esc(st.target_views??"")}" placeholder="10000000"><button id="tgs">Simpan target</button></div>
-  <div class="card"><h3>Statistik pengunjung (GoatCounter)</h3><p class="muted">1) Daftar gratis di goatcounter.com dan pilih kode (mis. boogiefan). 2) Isi kode itu di bawah, lalu Simpan. 3) Lihat jumlah pengunjung di <b>kode.goatcounter.com</b>.</p>
-  <label>Kode GoatCounter</label><input id="gcc" value="${esc(gc)}" placeholder="boogiefan"><button id="gcs">Simpan</button>${gc?` <a href="https://${esc(gc)}.goatcounter.com" target="_blank" rel="noopener"><button class="g" type="button">Buka statistik</button></a>`:""}</div>
-  <div class="card"><h3>Notifikasi (OneSignal)</h3><p class="muted">Isi App ID dari dashboard OneSignal (Settings → Keys &amp; IDs), lalu Simpan. Tombol "Aktifkan notifikasi" akan muncul di web.</p>
-  <label>OneSignal App ID</label><input id="osi" value="${esc(st.onesignal_app_id||"")}" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><button id="oss">Simpan</button></div>`;
-}
-function renderContent(){
-  const L=seed.content||[];
-  $("#tc").innerHTML=`<div class="card"><h3>Tambah konten YouTube (dari channel mana pun)</h3>
-  <p class="muted">Cukup tempel link. Judul dan label diisi otomatis dari YouTube; kalau gagal, isi sendiri.</p><label>Link YouTube</label><input id="cu" placeholder="https://youtu.be/..."><div class="row"><div><label>Judul (opsional)</label><input id="ct"></div><div><label>Label singkat</label><input id="cg" placeholder="mis. Teaser, Na PD"></div></div><button id="cadd">Tambah</button></div>
-  <div class="card"><h3>Konten saat ini</h3>${L.map((c,i)=>`<div class="ev"><div><b>${esc(c.title)}</b><div class="muted">${esc(c.tag||"")} · youtu.be/${esc(c.id)}</div></div><button class="g" data-cdel="${i}">Hapus</button></div>`).join("")||'<p class="muted">Belum ada.</p>'}</div>`;
-}
-function render(){
-  $("#app").style.display="block";renderContent();renderPhotos();renderSettings();
-  $("#tv").innerHTML=seed.votes.map((v,i)=>{const s=st(v),r=v.result||{};return `<div class="card"><h3>${esc(v.show)} · ${esc(v.phase)} <span class="pill ${s==="berlangsung"?"on":s==="akan datang"?"up":""}">${s}</span></h3>
-  <p class="muted">${esc((v.apps||[]).join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)}${r.at?" · update terakhir "+new Date(r.at).toLocaleString("id-ID",{timeZone:"Asia/Jakarta"})+" WIB":""}</p>
-  <div class="row"><div><label>Posisi / peringkat</label><input data-i="${i}" data-f="rank" value="${esc(r.rank??"")}" placeholder="mis. 1"></div><div><label>Link pengumuman</label><input data-i="${i}" data-f="url" value="${esc(r.url??"")}" placeholder="https://..."></div></div>
-  <label>Catatan (mis. selisih suara, posisi sementara)</label><input data-i="${i}" data-f="note" value="${esc(r.note??"")}">
-  <button data-save="${i}">Simpan</button> <button class="g" data-clear="${i}">Kosongkan</button></div>`}).join("");
-  $("#te").innerHTML=`<div class="card"><h3>Tambah jadwal</h3>
-  <div class="row"><div><label>Jenis</label><select id="etype"><option>Official content</option><option>Live broadcast</option><option>Music show</option><option>Award show</option><option>Festival</option><option>Guest appearance</option><option>Voting</option></select></div><div><label>Tanggal dan jam (WIB)</label><input id="estart" type="datetime-local"></div></div>
-  <label>Judul</label><input id="etitle" placeholder="mis. NCT DREAM di Na PD"><label>Link (YouTube, dll)</label><input id="eurl"><label>Catatan</label><input id="enote"><label>Sumber info</label><input id="esrc" placeholder="mis. akun X resmi / pengumuman SM">
-  <label><input id="eall" type="checkbox" style="width:auto"> Seharian (tanpa jam)</label><button id="eadd">Tambah</button></div>
-  <div class="card"><h3>Jadwal saat ini</h3>${[...seed.events].map((e,i)=>({e,i})).sort((a,b)=>a.e.start<b.e.start?-1:1).map(({e,i})=>`<div class="ev"><div><b>${esc(e.title)}</b><div class="muted">${esc(e.start)} · ${esc(e.type)}</div></div><button class="g" data-del="${i}">Hapus</button></div>`).join("")}</div>`;
-}
-document.addEventListener("click",async ev=>{
-  const t=ev.target;
-  try{
-  if(t.dataset.t){document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b===t));$("#tv").style.display=t.dataset.t==="v"?"":"none";$("#te").style.display=t.dataset.t==="e"?"":"none";$("#tc").style.display=t.dataset.t==="c"?"":"none";$("#tf").style.display=t.dataset.t==="f"?"":"none";$("#tp").style.display=t.dataset.t==="p"?"":"none"}
-  if(t.dataset.save!==undefined){const i=+t.dataset.save,g=f=>document.querySelector(`[data-i="${i}"][data-f="${f}"]`).value.trim();
-    const rank=g("rank"),note=g("note"),url=g("url");
-    seed.votes[i].result=(rank||note||url)?{rank:rank===""?null:(isNaN(rank)?rank:+rank),note,url,at:new Date().toISOString()}:null;
-    await save("Update hasil vote: "+seed.votes[i].slug)}
-  if(t.dataset.clear!==undefined){seed.votes[+t.dataset.clear].result=null;await save("Hapus hasil vote")}
-  if(t.dataset.del!==undefined){if(confirm("Hapus jadwal ini?")){seed.events.splice(+t.dataset.del,1);await save("Hapus jadwal")}}
-  if(t.id==="cadd"){const m=$("#cu").value.match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/);if(!m)return msg("Link YouTube tidak dikenali.","bad");
-    let title=$("#ct").value.trim(),tag=$("#cg").value.trim();
-    if(!title||!tag){const info=await ytInfo(m[1]);if(info){title=title||info.title;tag=tag||String(info.author_name||"").slice(0,18)}}
-    seed.content=seed.content||[];seed.content.unshift({id:m[1],title:title||"",tag:tag||""});await save("Tambah konten YouTube")}
-  if(t.id==="tgs"){const v=$("#tg").value.replace(/[^0-9]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.target_views=+v;else delete seed.settings.target_views;await save("Ubah target views")}
-  if(t.id==="oss"){const v=$("#osi").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.onesignal_app_id=v;else delete seed.settings.onesignal_app_id;await save("Atur notifikasi")}
-  if(t.id==="gcs"){const v=$("#gcc").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.goatcounter=v;else delete seed.settings.goatcounter;await save("Atur statistik pengunjung")}
-  if(t.id==="pup"){await uploadPhotos()}
-  if(t.dataset.pdel!==undefined){seed.moments.splice(+t.dataset.pdel,1);await save("Hapus foto")}
-  if(t.dataset.cdel!==undefined){seed.content.splice(+t.dataset.cdel,1);await save("Hapus konten")}
-  if(t.id==="eadd"){const s=$("#estart").value,title=$("#etitle").value.trim();if(!s||!title)return msg("Isi judul dan tanggal dulu.","bad");
-    const all=$("#eall").checked;
-    seed.events.push({slug:"manual-"+Date.now(),type:$("#etype").value,title,start:all?s.slice(0,10)+"T00:00:00+07:00":s+":00+07:00",all_day:all,note:$("#enote").value.trim(),source:$("#esrc").value.trim()||"",url:$("#eurl").value.trim()||null,verified_at:new Date().toISOString()});
-    await save("Tambah jadwal: "+title)}
-  if(t.id==="conn"){SL("repo",$("#repo").value);SL("branch",$("#branch").value);SL("token",$("#token").value);await load();msg("Terhubung.","ok")}
-  if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";msg("Token dihapus dari browser ini.","ok")}
-  }catch(e){msg(e.message,"bad")}
-});
-$("#repo").value=LS("repo");$("#branch").value=LS("branch")||"main";$("#token").value=LS("token");
-if($("#repo").value&&$("#token").value)load().catch(e=>msg(e.message,"bad"));
-</script></div></body></html>
