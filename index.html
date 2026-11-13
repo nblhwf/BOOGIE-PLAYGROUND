@@ -358,17 +358,19 @@ D.votes.filter(verified).forEach(v=>{
   out.push({
     ...base,
     id:"v-"+v.slug,
-    type:"Voting",
-    title:`${v.phase} · ${v.show}`,
-    day:v.start_date,
-    start:v.start_date+"T00:00:00+07:00"
-  });
+type:"Voting",
+title:`${v.phase} · ${v.show}`,
+start_date:v.start_date,
+end_date:v.end_date,
+day:v.start_date,
+start:v.start_date+"T00:00:00+07:00"
+});
 });
   return out;
 }
-const isPast=e=>e.all_day?e.day<todayKey():new Date(e.start)<Date.now()-36e5;
+const isPast=e=>e.kind==="vote"?new Date(e.end_date+"T00:00:00+09:00")<Date.now():e.all_day?e.day<todayKey():new Date(e.start)<Date.now()-36e5;
 const upcoming=()=>allEvents().filter(e=>!isPast(e)).sort((a,b)=>new Date(a.start)-new Date(b.start));
-const evTime=e=>e.all_day?(e.kind==="vote"?"Seharian":"Jam menyusul"):`${timeStr(e.start)} ${TZS[TZ]}`;
+const evTime=e=>e.kind==="vote"?`Berakhir ${e.note.match(/Berakhir (.+)$/)?.[1]||e.day}`:e.all_day?"Jam menyusul":`${timeStr(e.start)} ${TZS[TZ]}`;
 const evItem=e=>`<div class="item"><div class="d"><b>${keyFmt(e.day,{day:"numeric"})}</b><span>${keyFmt(e.day,{month:"short"})}</span></div><div class="t"><b>${esc(e.title)}</b><small>${evTime(e)} · ${esc(e.type)}</small></div></div>`;
 const tzSel=()=>`<select id="tzsel" class="auto">${Object.entries(TZS).map(([k,v])=>`<option value="${k}" ${k===TZ?"selected":""}>${v}</option>`).join("")}</select>`;
 const bindTz=()=>{const s=$("#tzsel");if(s)s.onchange=()=>{TZ=s.value;store.set("tz",TZ);render()}};
