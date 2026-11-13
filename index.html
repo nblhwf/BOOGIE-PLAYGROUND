@@ -341,15 +341,29 @@ function vStatus(v){
 const ST={ongoing:["Berlangsung","ok"],upcoming:["Akan datang","warn"],ended:["Selesai","bad"]};
 const TYPE_COLOR={"Comeback release":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Fan activities":PAL[6]};
 function allEvents(){
-  const out=D.events.filter(verified).map(e=>({...e,day:e.all_day?dayKey(e.start,WIB):dayKey(e.start),kind:/youtu/.test(e.url||"")?"yt":"ev"}));
-  D.votes.filter(verified).forEach(v=>{
-    const ap=v.apps.join(" & "),base={all_day:true,note:`Aplikasi: ${ap}`,source:v.source,verified_at:v.verified_at,kind:"vote"};
-    if(v.start_date===v.end_date)out.push({...base,id:"v-"+v.slug,type:"Voting",title:`${v.phase} ${v.show}`,day:v.start_date,start:v.start_date+"T00:00:00+07:00"});
-    else{
-      out.push({...base,id:"v1-"+v.slug,type:"Voting",title:`${v.phase} dibuka · ${v.show}`,day:v.start_date,start:v.start_date+"T00:00:00+07:00"});
-      out.push({...base,id:"v2-"+v.slug,type:"Voting deadline",title:`${v.phase} berakhir · ${v.show}`,day:v.end_date,start:v.end_date+"T00:00:00+07:00"});
-    }
+  const out=D.events.filter(verified)
+  .filter(e=>!["mma-berriz","mama-jnjm-mplus"].includes(e.slug))
+  .map(e=>({...e,day:e.all_day?dayKey(e.start,WIB):dayKey(e.start),kind:/youtu/.test(e.url||"")?"yt":"ev"}));
+
+D.votes.filter(verified).forEach(v=>{
+  const ap=v.apps.join(" & ");
+  const base={
+    all_day:true,
+    note:`Aplikasi: ${ap} · Berakhir ${v.end_date} pukul 00.00 KST`,
+    source:v.source,
+    verified_at:v.verified_at,
+    kind:"vote"
+  };
+
+  out.push({
+    ...base,
+    id:"v-"+v.slug,
+    type:"Voting",
+    title:`${v.phase} · ${v.show}`,
+    day:v.start_date,
+    start:v.start_date+"T00:00:00+07:00"
   });
+});
   return out;
 }
 const isPast=e=>e.all_day?e.day<todayKey():new Date(e.start)<Date.now()-36e5;
