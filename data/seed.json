@@ -13,9 +13,14 @@
    "end_date": "2026-11-16",
    "url": null,
    "guide_url": null,
-   "result": null,
+   "result": {
+    "rank": 1,
+    "note": "Congratulations, DREAMzens! We did it! DREAM successfully secured the SHOW CHAMPION pre-vote with 2,859,617 votes! 🎉",
+    "url": "https://promo-web.idolchamp.com/app_proxy.html?deeplink=https%3A%2F%2Fapp.idolchamp.com%2Fopen%2Fvote%2F01M6ZJF1MZVNVYNN2KKRTC56H3",
+    "at": "2026-11-17T10:58:26.253Z"
+   },
    "source": "",
-   "verified_at": "2026-11-10T03:30:00+07:00"
+   "verified_at": "2026-11-17T10:58:26.253Z"
   },
   {
    "slug": "mcd-pre",
