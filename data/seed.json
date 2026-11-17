@@ -111,9 +111,14 @@
    "end_date": "2026-11-13",
    "url": null,
    "guide_url": null,
-   "result": null,
+   "result": {
+    "rank": 2,
+    "note": "Great job, DREAMzens! NCT DREAM secured 2nd place in the INKIGAYO pre-vote with 35.5% of the total votes! Thank you to everyone who participated and showed their support!👏",
+    "url": "https://app.linc.fan/31TL/mekl8Epu",
+    "at": "2026-11-17T18:00:56.146Z"
+   },
    "source": "",
-   "verified_at": "2026-11-10T03:30:00+07:00"
+   "verified_at": "2026-11-17T18:00:56.146Z"
   },
   {
    "slug": "inkigayo-live",
