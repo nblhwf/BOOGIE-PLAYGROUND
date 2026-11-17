@@ -70,9 +70,10 @@
   {
    "slug": "musiccore-pre",
    "show": "Show! Music Core",
-   "phase": "Global Pre-VoteING",
+   "phase": "Global Pre-Voteing",
    "apps": [
-    "Mubeat"
+    "Mubeat",
+    "Muniverse"
    ],
    "start_date": "2026-11-17",
    "end_date": "2026-11-19",
@@ -80,7 +81,7 @@
    "guide_url": null,
    "result": null,
    "source": "",
-   "verified_at": "2026-11-17T18:30:36.710Z"
+   "verified_at": "2026-11-17T18:37:35.974Z"
   },
   {
    "slug": "musiccore-live",
