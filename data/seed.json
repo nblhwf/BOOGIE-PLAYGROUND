@@ -104,8 +104,7 @@
    "show": "Inkigayo",
    "phase": "Pre-vote",
    "apps": [
-    "LiNC",
-    "Higher"
+    "LiNC"
    ],
    "start_date": "2026-11-09",
    "end_date": "2026-11-13",
@@ -125,7 +124,6 @@
    "show": "Inkigayo",
    "phase": "Live vote",
    "apps": [
-    "LiNC",
     "Higher"
    ],
    "start_date": "2026-11-22",
