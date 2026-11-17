@@ -69,19 +69,18 @@
   },
   {
    "slug": "musiccore-pre",
-   "show": "Music Core",
-   "phase": "Pre-vote",
+   "show": "Show! Music Core",
+   "phase": "Global Pre-VoteING",
    "apps": [
-    "Mubeat",
-    "Muniverse"
+    "Mubeat"
    ],
    "start_date": "2026-11-17",
    "end_date": "2026-11-19",
-   "url": null,
+   "url": "https://mubeat.applink.info/lz5oY08B8P",
    "guide_url": null,
    "result": null,
    "source": "",
-   "verified_at": "2026-11-10T03:30:00+07:00"
+   "verified_at": "2026-11-17T18:30:36.710Z"
   },
   {
    "slug": "musiccore-live",
