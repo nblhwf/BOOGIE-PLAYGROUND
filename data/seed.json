@@ -217,6 +217,22 @@
    "url": "https://higher.fan/app/hotstage/6af26ff758ff67062857d367?did=6afd60863684fc5bd6069267",
    "result": null,
    "verified_at": "2026-11-18T08:24:38.171Z"
+  },
+  {
+   "slug": "v-1794990472460",
+   "guide_url": null,
+   "source": "",
+   "show": "Music Bank",
+   "phase": "Fans Stage Pick",
+   "apps": [
+    "Coogoong"
+   ],
+   "start_date": "2026-11-13",
+   "end_date": "2026-11-19",
+   "deadline_at": "2026-11-19T15:00:00+07:00",
+   "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D911",
+   "result": null,
+   "verified_at": "2026-11-18T08:27:52.460Z"
   }
  ],
  "events": [
