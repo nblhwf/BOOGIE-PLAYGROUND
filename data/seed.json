@@ -63,9 +63,14 @@
    "end_date": "2026-11-18",
    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D912",
    "guide_url": null,
-   "result": null,
+   "result": {
+    "rank": 2,
+    "note": "Great job, DREAMzens! NCT DREAM secured 2nd place in the MUSIC BANK pre-vote with 578,998 votes (30.92%)! Thank you to everyone who took the time to vote and give their best! Let's keep supporting DREAM!👏",
+    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D912",
+    "at": "2026-11-18T03:22:18.925Z"
+   },
    "source": "",
-   "verified_at": "2026-11-17T18:41:36.418Z"
+   "verified_at": "2026-11-18T03:22:18.925Z"
   },
   {
    "slug": "musiccore-pre",
