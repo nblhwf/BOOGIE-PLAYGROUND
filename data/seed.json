@@ -201,6 +201,22 @@
    "result": null,
    "verified_at": "2026-11-18T08:19:34.948Z",
    "deadline_at": "2026-11-19T09:00:00+07:00"
+  },
+  {
+   "slug": "v-1794990278171",
+   "guide_url": null,
+   "source": "",
+   "show": "Inkigayo",
+   "phase": "Hot stage",
+   "apps": [
+    "Higher"
+   ],
+   "start_date": "2026-11-15",
+   "end_date": "2026-11-19",
+   "deadline_at": "2026-11-19T10:00:00+07:00",
+   "url": "https://higher.fan/app/hotstage/6af26ff758ff67062857d367?did=6afd60863684fc5bd6069267",
+   "result": null,
+   "verified_at": "2026-11-18T08:24:38.171Z"
   }
  ],
  "events": [
