@@ -38,7 +38,6 @@ export function buildNotifications({
   const first = !st.init;
   const wibNow = WIB(now);
   const hour = wibNow.getUTCHours();
-  const minute = wibNow.getUTCMinutes();
   const today = ymd(now);
   const tomorrow = addDays(today, 1);
 
@@ -140,8 +139,6 @@ const voteSlot =
 
 // Kirim hanya pada jam pengingat.
 if (voteSlot) {
-  const currentMinutes = hour * 60 + minute;
-
   const open = (seed.votes || []).filter(v => {
     if (
       !v.verified_at ||
@@ -156,15 +153,11 @@ if (voteSlot) {
 
     // Jika hari ini tanggal akhir voting,
     // periksa juga jam berakhirnya.
-    if (today === v.end_date && v.end_time) {
-      const [endHour, endMinute] = v.end_time
-        .split(":")
-        .map(Number);
+if (v.deadline_at) {
+  const deadline = new Date(v.deadline_at);
 
-      const endMinutes = endHour * 60 + endMinute;
-
-      if (currentMinutes > endMinutes) return false;
-    }
+  if (now.getTime() > deadline.getTime()) return false;
+}
 
     return true;
   });
@@ -174,9 +167,13 @@ if (voteSlot) {
       "vote:" + today + ":" + voteSlot,
       "🗳️ DAILY VOTE REMINDER!",
       open.map(v =>
-        `${v.show} — ${v.phase}\n${v.apps.join(" & ")}\nUntil ${v.end_date}${v.end_time ? " · " + v.end_time + " WIB" : ""}`
-      ).join("\n\n") +
-      "\n\nDon't forget to vote, NCTzen! 🤍",
+  `${v.show} — ${v.phase}\n${v.apps.join(" & ")}\nUntil ${
+    v.deadline_at
+      ? dateLabel(ymd(v.deadline_at)) + " · " + fmtTime(v.deadline_at) + " WIB"
+      : dateLabel(v.end_date)
+  }`
+).join("\n\n") +
+      "\n\nDon't forget to vote, DREAMzens! 🤍",
       open.length === 1 ? (open[0].url || site) : site,
       true
     );
