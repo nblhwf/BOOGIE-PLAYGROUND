@@ -212,14 +212,15 @@ dialog h3{margin-bottom:10px}dialog p{font-size:13px;line-height:1.65;color:var(
 .slot .th{display:grid;place-items:center;aspect-ratio:1;border-radius:10px;background:#eef1f4 center/cover;font-size:20px;font-weight:800;color:var(--mute)}.slot.multi .th{background:#fdf3c8}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.two input[type=color]{width:100%}
 /* voting results */
-.vres{min-width:0}.vr2{display:grid;grid-auto-flow:column;grid-auto-columns:172px;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 12px}.vr2::-webkit-scrollbar{display:none}
-.rc2{position:relative;overflow:hidden;border-radius:22px;color:#fff;min-height:196px;display:flex;flex-direction:column;text-decoration:none;box-shadow:0 12px 24px rgba(28,26,46,.2);padding:14px 14px 13px 18px;background:#1c1a2e}
-.rc2::before{content:"";position:absolute;inset:-14px;background:var(--group,url(assets/photos/group.jpg)) var(--p)/cover;filter:blur(5px) saturate(1.15)}
+.vres{min-width:0}.vr2{display:grid;grid-auto-flow:column;grid-auto-columns:158px;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 12px}.vr2::-webkit-scrollbar{display:none}
+.rc2{position:relative;overflow:hidden;border-radius:20px;color:#fff;min-height:132px;display:grid;grid-template-rows:auto 1fr;text-decoration:none;box-shadow:0 10px 20px rgba(28,26,46,.18);padding:12px 12px 12px 14px;background:#1c1a2e}
+.rc2::before{content:"";position:absolute;inset:-12px;background:var(--group,url(assets/photos/group.jpg)) var(--p)/cover;filter:blur(5px) saturate(1.15)}
 .rc2::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(28,26,46,.3),rgba(28,26,46,.85))}
 .rc2>*{position:relative;z-index:1}a.rc2{transition:.2s}a.rc2:hover{transform:translateY(-3px)}
-.rc2 .no{font-size:58px;font-weight:900;letter-spacing:-4px;line-height:.95}.rc2 .no sup{font-size:22px;letter-spacing:0;vertical-align:top;margin-right:2px;color:var(--a)}
-.rc2 .sh{font-size:19px;font-weight:900;letter-spacing:-.6px;line-height:1.05;margin-top:8px}
-.rc2 .ap{font-size:12px;opacity:.92;margin-top:6px}.rc2 .ap b{color:var(--a)}.rc2 .tmp{margin-top:auto;padding-top:9px;font-size:10.5px;font-weight:700;opacity:.85}
+.rc2 .no{font-size:42px;font-weight:900;letter-spacing:-3px;line-height:1}.rc2 .no sup{font-size:17px;letter-spacing:0;vertical-align:top;margin-right:1px;color:var(--a)}
+.rc2 .tmp{position:absolute!important;top:12px;right:10px;z-index:2;font-size:9.5px;font-weight:800;letter-spacing:.3px;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:99px}
+.rc2 .bt{align-self:end}.rc2 .sh{font-size:18px;font-weight:900;letter-spacing:-.5px;line-height:1.08}
+.rc2 .ap{font-size:11.5px;opacity:.92;margin-top:3px;line-height:1.25}.rc2 .ap b{color:var(--a)}
 .g2>.vres{order:3;grid-column:1/-1}.g2>.jd{order:2}
 @media(max-width:860px){.g2>.vres{order:2;grid-column:auto}.g2>.jd{order:3}}
 /* v5 */
@@ -524,7 +525,7 @@ function vresHtml(){
     .sort((a,b)=>(vStatus(a)==="ended")-(vStatus(b)==="ended")||Number(a.result.rank)-Number(b.result.rank)||b.end_date.localeCompare(a.end_date)).slice(0,10);
   if(!L.length)return "";
   return `<div class="vres"><section class="h">Voting Results <a href="#/stream">Semua</a></section><div class="vr2">${L.map((v,i)=>{
-    const r=v.result,fin=vStatus(v)==="ended",inner=`<div class="no"><sup>#</sup>${esc(Number(r.rank))}</div><div class="sh">${esc(v.show)}</div><div class="ap"><b>${esc(v.phase)}</b> · ${esc(v.apps.join(" & "))}</div><div class="tmp">${fin?"Hasil akhir":"Hasil sementara"}</div>`,st=`--a:${A[i%5]};--p:${P[i%5]}`;
+    const r=v.result,fin=vStatus(v)==="ended",inner=`<div class="no"><sup>#</sup>${esc(Number(r.rank))}</div><span class="tmp">${fin?"AKHIR":"SEMENTARA"}</span><div class="bt"><div class="sh">${esc(v.show)}</div><div class="ap"><b>${esc(v.phase)}</b> · ${esc(v.apps.join(" & "))}</div></div>`,st=`--a:${A[i%5]};--p:${P[i%5]}`;
     return r.url?`<a class="rc2" href="${esc(r.url)}" target="_blank" rel="noopener" style="${st}">${inner}</a>`:`<div class="rc2" style="${st}">${inner}</div>`}).join("")}</div></div>`;
 }
 function pHome(){
