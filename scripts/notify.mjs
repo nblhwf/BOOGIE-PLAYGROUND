@@ -36,7 +36,9 @@ export function buildNotifications({
   const M = meta || {};
 
   const first = !st.init;
-  const hour = WIB(now).getUTCHours();
+  const wibNow = WIB(now);
+  const hour = wibNow.getUTCHours();
+  const minute = wibNow.getUTCMinutes();
   const today = ymd(now);
   const tomorrow = addDays(today, 1);
 
@@ -121,7 +123,7 @@ export function buildNotifications({
         return `${label} (${dateLabel(date)})\n${e.title} — ${when}`;
       });
 
-      push(
+     push(
         "schedule:" + today,
         "📅 NCT DREAM SCHEDULE",
         lines.join("\n\n") + "\n\nDon't miss it, NCTzen! 🤍",
@@ -129,31 +131,57 @@ export function buildNotifications({
         true
       );
     }
+  } // PENUTUP IF NOMOR 3
+// 4. Pengingat voting: pukul 08.00 dan 18.00 WIB.
+const voteSlot =
+  hour === 8 ? "morning" :
+  hour === 18 ? "evening" :
+  null;
 
-    // 4. Pengingat voting: setiap hari selama voting aktif.
-    const open = (seed.votes || []).filter(v =>
-      v.verified_at &&
-      v.start_date &&
-      v.end_date &&
-      today >= v.start_date &&
-      today <= v.end_date &&
-      !v.result
-    );
+// Kirim hanya pada jam pengingat.
+if (voteSlot) {
+  const currentMinutes = hour * 60 + minute;
 
-    if (open.length) {
-      push(
-        "vote:" + today,
-        "🗳️ DAILY VOTE REMINDER!",
-        open.map(v =>
-          `${v.show} — ${v.phase}\n${v.apps.join(" & ")}\nUntil ${v.end_date}`
-        ).join("\n\n") +
-        "\n\nDon't forget to vote, NCTzen! 🤍",
-        open.length === 1 ? (open[0].url || site) : site,
-        true
-      );
+  const open = (seed.votes || []).filter(v => {
+    if (
+      !v.verified_at ||
+      !v.start_date ||
+      !v.end_date ||
+      today < v.start_date ||
+      today > v.end_date ||
+      v.result
+    ) {
+      return false;
     }
-  }
 
+    // Jika hari ini tanggal akhir voting,
+    // periksa juga jam berakhirnya.
+    if (today === v.end_date && v.end_time) {
+      const [endHour, endMinute] = v.end_time
+        .split(":")
+        .map(Number);
+
+      const endMinutes = endHour * 60 + endMinute;
+
+      if (currentMinutes > endMinutes) return false;
+    }
+
+    return true;
+  });
+
+  if (open.length) {
+    push(
+      "vote:" + today + ":" + voteSlot,
+      "🗳️ DAILY VOTE REMINDER!",
+      open.map(v =>
+        `${v.show} — ${v.phase}\n${v.apps.join(" & ")}\nUntil ${v.end_date}${v.end_time ? " · " + v.end_time + " WIB" : ""}`
+      ).join("\n\n") +
+      "\n\nDon't forget to vote, NCTzen! 🤍",
+      open.length === 1 ? (open[0].url || site) : site,
+      true
+    );
+  }
+}
   st.init = true;
   st.sent = [...sent].slice(-300);
 
