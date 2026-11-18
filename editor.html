@@ -73,7 +73,8 @@ async function save(note){
   sha=(await r.json()).content.sha;msg("Tersimpan. Web ter-update sekitar 1–2 menit lagi.","ok");render();
 }
 const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta"}).format(new Date());
-const vst=v=>{const t=today();return t>v.end_date?"selesai":t<v.start_date?"akan datang":"berlangsung"};
+const vst=v=>{const t=today();if(v.deadline_at?new Date(v.deadline_at)<Date.now():t>v.end_date)return"selesai";return t<v.start_date?"akan datang":"berlangsung"};
+const jamWib=iso=>new Intl.DateTimeFormat("id-ID",{timeZone:"Asia/Jakarta",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(iso)).replace(":",".")+" WIB";
 const wibLocal=iso=>{const p=Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta",hour12:false,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}).formatToParts(new Date(iso)).map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}T${p.hour==="24"?"00":p.hour}:${p.minute}`};
 const fmt=(iso,all)=>new Date(iso).toLocaleString("id-ID",{timeZone:"Asia/Jakarta",day:"numeric",month:"short",year:"numeric",...(all?{}:{hour:"2-digit",minute:"2-digit"})})+(all?"":" WIB");
 async function ytInfo(id){
@@ -104,20 +105,23 @@ function voteForm(i){
   <div class="row"><div><label>Acara</label><input id="f_show" value="${esc(v.show||"")}" placeholder="mis. Show Champion"></div><div><label>Tahap</label><input id="f_phase" value="${esc(v.phase||"")}" placeholder="Pre-vote / Live vote"></div></div>
   <label>Aplikasi voting</label>${chips(v.apps||[])}
   <div class="row"><div><label>Mulai</label><input id="f_s" type="date" value="${esc(v.start_date||today())}"></div><div><label>Selesai</label><input id="f_e" type="date" value="${esc(v.end_date||today())}"></div></div>
+  <label>Jam berakhir (WIB) — opsional, tapi disarankan</label>
+  <div style="display:flex;gap:8px"><input id="f_dl" type="datetime-local" value="${v.deadline_at?wibLocal(v.deadline_at):""}" style="flex:1"><button type="button" class="g sm" id="f_now" style="margin:0">Selesai sekarang</button></div>
+  <p class="muted" style="margin-top:4px">Kalau diisi, web otomatis menandai vote "Selesai" tepat di jam itu. Kosongkan untuk memakai tanggal selesai saja.</p>
   <label>Link vote langsung (dibuka saat pembaca menekan vote)</label><input id="f_u" value="${esc(v.url||"")}" placeholder="https://...">
   <div class="sec">Hasil (isi setelah vote selesai)</div>
   <div class="row"><div><label>Posisi / peringkat</label><input id="f_rk" value="${esc(r.rank??"")}" placeholder="mis. 1"></div><div><label>Link pengumuman</label><input id="f_ru" value="${esc(r.url??"")}" placeholder="https://..."></div></div>
   <label>Catatan</label><input id="f_rn" value="${esc(r.note??"")}" placeholder="mis. selisih suara">`,
-  ()=>{const show=val("f_show"),phase=val("f_phase"),apps=pickedApps();if(!show||!phase)throw new Error("Isi acara dan tahap dulu.");if(!apps.length)throw new Error("Pilih minimal satu aplikasi.");if(val("f_e")<val("f_s"))throw new Error("Tanggal selesai harus setelah mulai.");
+  ()=>{const show=val("f_show"),phase=val("f_phase"),apps=pickedApps();if(!show||!phase)throw new Error("Isi acara dan tahap dulu.");if(!apps.length)throw new Error("Pilih minimal satu aplikasi.");let endD=val("f_e"),dl=val("f_dl");if(dl){const dd=dl.slice(0,10);if(dd>endD)endD=dd}if(endD<val("f_s"))throw new Error("Tanggal selesai harus setelah mulai.");
     const rk=val("f_rk"),rn=val("f_rn"),ru=val("f_ru");
-    const o={...(i==null?{slug:"v-"+Date.now(),guide_url:null,source:""}:seed.votes[i]),show,phase,apps,start_date:val("f_s"),end_date:val("f_e"),url:val("f_u")||null,
+    const o={...(i==null?{slug:"v-"+Date.now(),guide_url:null,source:""}:seed.votes[i]),show,phase,apps,start_date:val("f_s"),end_date:endD,deadline_at:dl?dl+":00+07:00":null,url:val("f_u")||null,
       result:(rk||rn||ru)?{rank:rk===""?null:(isNaN(rk)?rk:+rk),note:rn,url:ru,at:new Date().toISOString()}:null,verified_at:new Date().toISOString()};
     if(i==null)seed.votes.push(o);else seed.votes[i]=o;return (i==null?"Tambah":"Edit")+" vote: "+show+" "+phase});
 }
 function tabVote(){
   const L=seed.votes.map((v,i)=>({v,i})).filter(({v})=>!q||(v.show+v.phase+v.apps.join(" ")).toLowerCase().includes(q));
   const ord={berlangsung:0,"akan datang":1,selesai:2};L.sort((a,b)=>ord[vst(a.v)]-ord[vst(b.v)]||a.v.start_date.localeCompare(b.v.start_date));
-  return L.map(({v,i})=>{const s=vst(v),r=v.result;return `<div class="it" style="--c:${s==="berlangsung"?"#0e9f6e":s==="akan datang"?"#e0a100":"#c4c8d2"}"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><div class="muted">${esc(v.apps.join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)} ${v.url?"· ada link vote":"· <b style='color:#b0213f'>belum ada link vote</b>"}</div>
+  return L.map(({v,i})=>{const s=vst(v),r=v.result;return `<div class="it" style="--c:${s==="berlangsung"?"#0e9f6e":s==="akan datang"?"#e0a100":"#c4c8d2"}"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><div class="muted">${esc(v.apps.join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)} ${v.deadline_at?"· berakhir "+jamWib(v.deadline_at)+" ":""}${v.url?"· ada link vote":"· <b style='color:#b0213f'>belum ada link vote</b>"}</div>
   <div style="margin-top:5px"><span class="pill ${s==="berlangsung"?"on":s==="akan datang"?"up":""}">${s}</span> ${r?`<span class="pill has">Hasil: ${esc(r.rank??"–")}${r.note?" · "+esc(r.note):""}</span>`:""}</div></div>
   <div class="a"><button class="g sm" data-act="vedit" data-i="${i}">Edit</button><button class="r sm" data-act="vdel" data-i="${i}">Hapus</button></div></div>`}).join("")||'<div class="empty">Belum ada vote. Tekan + Tambah.</div>';
 }
@@ -209,6 +213,7 @@ document.addEventListener("click",async ev=>{
   const t=ev.target.closest("button");if(!t)return;
   try{
   if(t.id==="addb"){ADD[tab]&&ADD[tab]();return}
+  if(t.id==="f_now"){$("#f_dl").value=wibLocal(new Date().toISOString());return}
   if(t.dataset.tab){tab=t.dataset.tab;q="";render();return}
   const i=+t.dataset.i,a=t.dataset.act;
   if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
