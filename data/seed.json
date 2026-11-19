@@ -187,8 +187,13 @@
    "start_date": "2026-11-17",
    "end_date": "2026-11-19",
    "url": null,
-   "result": null,
-   "verified_at": "2026-11-18T08:19:21.957Z",
+   "result": {
+    "rank": 2,
+    "note": "Great job, DREAMzens! NCT DREAM secured 2nd place in the MUSIC CORE M PICK with 1,667,000 votes (48.73%)! Thank you to everyone who took the time to vote and give their best!👏",
+    "url": "",
+    "at": "2026-11-19T04:06:46.187Z"
+   },
+   "verified_at": "2026-11-19T04:06:46.187Z",
    "deadline_at": "2026-11-19T10:00:00+07:00"
   },
   {
