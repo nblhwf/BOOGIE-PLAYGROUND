@@ -246,8 +246,13 @@
    "end_date": "2026-11-19",
    "deadline_at": "2026-11-19T15:00:00+07:00",
    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D911",
-   "result": null,
-   "verified_at": "2026-11-18T08:27:52.460Z"
+   "result": {
+    "rank": 1,
+    "note": "Congratulations, DREAMzens! We did it! DREAM successfully secured 1st place in the MUSIC BANK Fans Stage Pick with 376,440 votes (47.77%)! 🎉🏆",
+    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D911",
+    "at": "2026-11-19T11:25:53.626Z"
+   },
+   "verified_at": "2026-11-19T11:25:53.626Z"
   }
  ],
  "events": [
