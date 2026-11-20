@@ -351,7 +351,7 @@ function vStatus(v){
   return"ongoing";
 }
 const ST={ongoing:["Berlangsung","ok"],upcoming:["Akan datang","warn"],ended:["Selesai","bad"]};
-const TYPE_COLOR={"Album Signing Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6]};
+const TYPE_COLOR={"Album Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6]};
 function allEvents(){
   const out=D.events.filter(verified)
   .filter(e=>!["mma-berriz","mama-jnjm-mplus"].includes(e.slug))
