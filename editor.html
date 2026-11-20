@@ -54,7 +54,7 @@ dialog .bd{padding:6px 18px 12px;overflow:auto;max-height:68vh}dialog .ft{displa
 const $=s=>document.querySelector(s),LS=k=>{try{return localStorage.getItem(k)||""}catch{return""}},SL=(k,v)=>{try{localStorage.setItem(k,v)}catch{}};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const APPS=["Berriz","IDOL CHAMP","Mubeat","Muniverse","LiNC","Mnet Plus","Higher","Coogoong"];
-const ETYPES=["Official content","Live broadcast","Music show","Award show","Festival","Guest appearance","Fan activities","Album Signing Event","Voting"];
+const ETYPES=["Official content","Live broadcast","Music show","Award show","Festival","Guest appearance","Recording","Album Signing Event","Voting"];
 const COL={v:"#d62f5c",e:"#2a7ea6",c:"#1b8f96",s:"#8a3d5e",f:"#ec5a2c",p:"#1c1a2e"};
 let seed=null,sha=null,tab="v",q="";
 const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c;clearTimeout(msg.t);msg.t=setTimeout(()=>m.className="",c==="ok"?5000:8000)};
