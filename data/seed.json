@@ -91,10 +91,15 @@
    "end_date": "2026-11-21",
    "url": null,
    "guide_url": null,
-   "result": null,
+   "result": {
+    "rank": 1,
+    "note": "",
+    "url": "",
+    "at": "2026-11-21T07:26:41.770Z"
+   },
    "source": "",
-   "verified_at": "2026-11-21T04:31:19.422Z",
-   "deadline_at": "2026-11-21T14:30:00+07:00"
+   "verified_at": "2026-11-21T07:26:41.770Z",
+   "deadline_at": "2026-11-21T14:20:00+07:00"
   },
   {
    "slug": "inkigayo-pre",
