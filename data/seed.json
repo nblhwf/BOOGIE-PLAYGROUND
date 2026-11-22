@@ -23,21 +23,6 @@
    "verified_at": "2026-11-17T10:58:26.253Z"
   },
   {
-   "slug": "mcd-pre",
-   "show": "M Countdown",
-   "phase": "Pre-vote",
-   "apps": [
-    "Mnet Plus"
-   ],
-   "start_date": "2026-11-14",
-   "end_date": "2026-11-16",
-   "url": null,
-   "guide_url": null,
-   "result": null,
-   "source": "",
-   "verified_at": "2026-11-10T03:30:00+07:00"
-  },
-  {
    "slug": "musicbank-pre",
    "show": "Music Bank",
    "phase": "Pre-vote",
