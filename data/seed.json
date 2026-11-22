@@ -245,6 +245,22 @@
    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D919",
    "result": null,
    "verified_at": "2026-11-22T06:31:41.031Z"
+  },
+  {
+   "slug": "v-1795329221882",
+   "guide_url": null,
+   "source": "",
+   "show": "Music Core",
+   "phase": "Stage M Pick",
+   "apps": [
+    "Muniverse"
+   ],
+   "start_date": "2026-11-21",
+   "end_date": "2026-11-26",
+   "deadline_at": "2026-11-26T10:00:00+07:00",
+   "url": null,
+   "result": null,
+   "verified_at": "2026-11-22T06:33:41.882Z"
   }
  ],
  "events": [
