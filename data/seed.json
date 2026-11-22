@@ -206,8 +206,13 @@
    "end_date": "2026-11-19",
    "deadline_at": "2026-11-19T10:00:00+07:00",
    "url": "https://higher.fan/app/hotstage/6af26ff758ff67062857d367?did=6afd60863684fc5bd6069267",
-   "result": null,
-   "verified_at": "2026-11-18T08:24:38.171Z"
+   "result": {
+    "rank": 1,
+    "note": "Congratulations, DREAMzens! We did it! DREAM successfully secured 1st place in the INKIGAYO Hot stage with 1,279 votes (59%)! 🎉🏆",
+    "url": "",
+    "at": "2026-11-22T06:37:00.765Z"
+   },
+   "verified_at": "2026-11-22T06:37:00.765Z"
   },
   {
    "slug": "v-1794990472460",
