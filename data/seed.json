@@ -229,6 +229,22 @@
     "at": "2026-11-19T11:25:53.626Z"
    },
    "verified_at": "2026-11-19T11:25:53.626Z"
+  },
+  {
+   "slug": "v-1795329101031",
+   "guide_url": null,
+   "source": "",
+   "show": "Music Bank",
+   "phase": "Fans Stage Pick",
+   "apps": [
+    "Coogoong"
+   ],
+   "start_date": "2026-11-20",
+   "end_date": "2026-11-26",
+   "deadline_at": "2026-11-26T15:00:00+07:00",
+   "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D919",
+   "result": null,
+   "verified_at": "2026-11-22T06:31:41.031Z"
   }
  ],
  "events": [
