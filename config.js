@@ -5,8 +5,8 @@
 window.CFG = {
   // --- Supabase (OPSIONAL). Hanya perlu kalau mau ranking rating antar-pengunjung.
   //     Views, jadwal, dan voting tetap jalan tanpa Supabase (lihat README).
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: "",
+  SUPABASE_URL: "https://okhxtvvqbzltxqgsjwho.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9raHh0dnZxYnpsdHhxZ3Nqd2hvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyOTg2OTgsImV4cCI6MjEwOTg3NDY5OH0.rdBC0YKYg1Ehn0c_Q9P8hImkfMNsgXuY1Q5bwAsHZhI",
 
   // Folder data. Biarkan "data/" kecuali kamu memindahkannya.
   DATA_BASE: "data/",
