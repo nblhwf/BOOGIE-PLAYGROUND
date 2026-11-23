@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BOOGIE! PLAYGROUND — Your Little Comeback Companion</title>
-<meta name="description" content="Fan-made comeback companion NCT DREAM: MV tracker, stream & vote, jadwal, dan aktivitas interaktif.">
+<title>DREAMLOOP — NCT DREAM hub: groups, solos, every era</title>
+<meta name="description" content="DREAMLOOP: fan-made NCT DREAM hub. Track MV views, stream, vote, schedule, and content for the group and every member.">
 <meta name="theme-color" content="#1c1a2e">
-<meta property="og:title" content="BOOGIE! PLAYGROUND">
-<meta property="og:description" content="Your Little Comeback Companion. Track, support, play.">
+<meta property="og:title" content="DREAMLOOP">
+<meta property="og:description" content="Track, stream, vote and follow every NCT DREAM and member activity.">
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="BOOGIE!">
+<meta name="apple-mobile-web-app-title" content="DREAMLOOP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -245,6 +245,47 @@ body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
 .pk-n{width:34px;height:34px;border-radius:10px;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
 @media(max-width:700px){.pk-vs{grid-template-columns:1fr}.pk-v{margin:-4px auto}.pk-card{min-height:150px}.pk-t{font-size:23px}.pk-hero h3{font-size:28px}}
 .pushbtn{display:none}body.push-on .pushbtn{display:inline-flex}
+
+/* ---- DREAMLOOP stage 1 ---- */
+.wm{font-weight:800;letter-spacing:-.03em;color:var(--ink)}.wm b{color:var(--rasp)}
+.brand.wm{font-size:22px}.brand.wm small{color:var(--mute)}
+.mtop{display:none}
+.bell{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;min-width:44px;padding:0 12px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px #dfe3ea;color:var(--ink);font-size:13px;font-weight:700}
+.bellrow{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.mtr{display:flex;align-items:center;gap:8px}
+.langsw{display:inline-flex;background:#fff;border-radius:14px;box-shadow:inset 0 0 0 1.5px #dfe3ea;padding:3px}.langsw button{height:38px;min-width:42px;padding:0 10px;border-radius:11px;font-size:12px;font-weight:800;color:var(--mute)}.langsw button.on{background:var(--ink);color:#fff}
+@media(max-width:860px){
+ .mtop{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 0;background:var(--panel)}.mtop .wm{font-size:23px}
+ main{padding-top:12px!important}#mright .bellrow{display:none}
+}
+.hero .row{margin-top:20px}
+
+/* recap */
+.mt{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;border-radius:7px;padding:4px 8px;color:var(--ink)}
+.rcp-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.rcp-c{display:block;background:#fff;border:1px solid #eef0f4;border-radius:20px;padding:16px;text-decoration:none;color:inherit}
+.rcp-c .rt,.rcp .rt{font-size:17px;font-weight:800;letter-spacing:-.01em;margin:8px 0 2px}.rcp-c .rv{font-size:26px;font-weight:800;letter-spacing:-.03em;margin-top:12px}
+.rcp-l{display:flex;flex-direction:column;gap:12px}
+.rcp{background:#fff;border:1px solid #eef0f4;border-radius:22px;box-shadow:0 4px 14px rgba(28,26,46,.04)}
+.rcp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px}.rcp>summary::-webkit-details-marker{display:none}
+.rcp .chev{width:44px;height:44px;border-radius:14px;background:#f1f3f7;display:grid;place-items:center;font-size:20px;font-weight:800;transition:.2s;flex:none}.rcp[open] .chev{transform:rotate(180deg)}
+.rcb{padding:0 16px 16px}.rcb .rk{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--mute);margin:6px 0 8px}
+.rcb .vr2{padding:2px 2px 12px}
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.wn{background:var(--panel);border-radius:18px;padding:12px;border:1px solid #eef0f4}.wn .wl{font-size:12px;font-weight:700;color:var(--mute)}.wn b{display:block;font-size:26px;font-weight:800;margin-top:4px;line-height:1}.wn .wd{font-size:11px;color:var(--mute);margin-top:4px}
+
+/* ---- stage 3 ---- */
+.mobnav a[data-k=content].on{background:var(--plum)}
+@media(max-width:860px){.mobnav a{font-size:10.5px!important;padding:13px 2px!important;letter-spacing:-.2px}}
+.mchips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}.mchips::-webkit-scrollbar{display:none}
+.mchips button{flex:none;height:38px;padding:0 15px;border-radius:99px;font-weight:700;font-size:13px;background:#fff;box-shadow:inset 0 0 0 1.5px #dfe3ea}.mchips button.on{background:var(--ink);color:#fff;box-shadow:none}
+.cgrp{margin:6px 0 4px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}.cgrp b{font-size:17px;letter-spacing:-.01em}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px 12px;margin-bottom:18px}
+.cgrid .yt .th{border-radius:12px}.cgrid .yt b{font-size:12px}.cgrid .yt small{display:block;font-size:11px;color:var(--mute);margin-top:2px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-bottom:18px}
+.pgrid .moment{flex:none;border-width:3px}
+.pbx{display:flex;flex-direction:column;gap:12px}.pbx textarea,.pbx input[type=text]{width:100%;font:inherit;padding:12px 14px;border:1.5px solid #dfe3ea;border-radius:16px;background:#fff;color:var(--ink)}.pbx textarea{resize:none}
+.pbx .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 /* nav HP final */
 @media(max-width:860px){
  .mobnav{padding:9px 6px calc(11px + env(safe-area-inset-bottom))!important;gap:3px;border-radius:22px 22px 0 0;box-shadow:0 -8px 24px rgba(28,26,46,.10)}
@@ -259,12 +300,13 @@ body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
 <body>
 <div class="app">
   <aside class="side">
-    <div class="brand"><b>BOOGIE!</b> PLAYGROUND<small>Your Little Comeback Companion</small></div>
+    <div class="brand wm"><b>DREAM</b>LOOP<small>NCT DREAM · group &amp; solo · every era</small></div>
     <nav class="nav" id="nav"></nav>
     <button class="btn ghost sm" id="inst" style="margin:10px 4px 0">Pasang di layar HP</button>
     <button class="btn ghost sm pushbtn" data-push="1" style="margin:8px 4px 0">Aktifkan notifikasi</button>
     <div class="foot">Fan-made, non-profit. Tidak berafiliasi dengan SM Entertainment atau NCT DREAM.</div>
   </aside>
+  <header class="mtop"><div class="wm"><b>DREAM</b>LOOP</div><div class="mtr"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-push="1" aria-label="Notifikasi"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></button></div></header>
   <main id="view"></main>
   <aside class="right" id="right"></aside>
 </div>
@@ -291,16 +333,156 @@ const phSrc=src=>{const k=String(src).split("/").pop().replace(/\.\w+$/,"");retu
    ============================================================ */
 const WIB="Asia/Jakarta";
 const TZS={"Asia/Jakarta":"WIB","Asia/Seoul":"KST","UTC":"UTC"};
+
+/* ============================================================
+   Language: English default, optional Indonesian
+   ============================================================ */
+const DICT={
+"Single / OST / Kolaborasi":"Singles / OST / Collabs","Jepang":"Japan","Pasang di layar HP":"Add to home screen","Aktifkan notifikasi":"Enable notifications","Notifikasi":"Notifications",
+"Fan-made, non-profit. Tidak berafiliasi dengan SM Entertainment atau NCT DREAM.":"Fan-made, non-profit. Not affiliated with SM Entertainment or NCT DREAM.",
+"Mulai support":"Start supporting","hari":"days","jam":"hours","mnt":"minutes","dtk":"seconds","Belum ada jadwal":"No schedule yet",
+"Menunggu data":"Waiting for data","muncul otomatis setelah sinkronisasi":"appears automatically after sync","Views hari ini":"Views today","dihitung sejak 00.00 WIB":"counted since 00:00 WIB","7 hari terakhir":"Last 7 days","Total views MV":"Total MV views",
+"Voting berikutnya":"Next voting","Voting berlangsung":"Live voting","Belum ada voting terverifikasi.":"No verified voting yet.","Belum ada.":"None yet.","Jadwal terdekat":"Next up",
+"Belum ada jadwal terverifikasi.":"No verified schedule yet.","Belum ada jadwal.":"No schedule yet.","AKHIR":"FINAL","SEMENTARA":"INTERIM",
+"Bawa BOOGIE! ke HP kamu":"Take DREAMLOOP with you","Buka cepat dari layar utama dan terima notifikasi milestone, konten baru, serta jadwal.":"Open it fast from your home screen and get alerts for milestones, new content and schedules.",
+"Pasang di layar utama HP":"Add to your home screen","buka menu titik tiga di pojok kanan atas, lalu pilih Instal aplikasi atau Tambahkan ke layar utama.":"open the three-dot menu at the top right, then choose Install app or Add to Home screen.",
+"ketuk tombol Bagikan, lalu pilih Tambah ke Layar Utama.":"tap the Share button, then choose Add to Home Screen.","Setelah terpasang, web terbuka layar penuh seperti aplikasi, tanpa perlu download dari store.":"Once added, the site opens full screen like an app, with no store download needed.","Mengerti":"Got it",
+"buka di YouTube":"open on YouTube","Belum ada data":"No data yet","sejak 00.00 WIB":"since 00:00 WIB","Rekor kenaikan":"Record growth","menunggu data":"waiting for data",
+"Pertumbuhan total views":"Total views growth","Kenaikan per hari":"Growth per day","Kenaikan per jam":"Growth per hour","Perbandingan":"Comparison","Hari ini":"Today","Kemarin":"Yesterday","Belum":"Not yet",
+"Grafik muncul setelah ada minimal 2 snapshot.":"The chart appears once there are at least 2 snapshots.","Data views belum masuk.":"No views data yet.","Setelah pembaruan otomatis pertama berjalan, angka dan grafik muncul di sini dan bertambah otomatis.":"Once the first automatic update runs, the numbers and charts appear here and keep updating automatically.",
+"Data diambil otomatis dari YouTube Data API secara berkala. YouTube kadang menahan atau mengoreksi angka views, jadi selisih kecil dengan angka di YouTube bisa terjadi.":"Data is pulled automatically from the YouTube Data API at regular intervals. YouTube sometimes holds back or corrects view counts, so small differences from the number on YouTube can happen.",
+"Data views sedang disiapkan dan akan muncul otomatis di sini.":"Views data is being prepared and will appear here automatically.",
+"Belum ada rilisan untuk filter ini.":"No releases for this filter.","Belum ada hasil voting.":"No voting results yet.","Ketuk satu rilisan untuk melihat hasil voting dan kemenangannya.":"Tap a release to see its voting results and wins.",
+"Promotion center: semua link resmi dan jadwal voting.":"Promotion center: official links, voting schedules and results.",
+"Kalender promosi, jadwal voting, dan konten resmi di YouTube.":"Promotion calendar, voting schedule and official YouTube content.","Konten YouTube":"YouTube content","Sebelumnya":"Previous","Berikutnya":"Next","Buka di YouTube":"Open on YouTube","Buka link":"Open link","Tidak ada jadwal di tanggal ini.":"No schedule on this date.",
+"Jam menyusul":"Time TBA","Bikin konten comeback versimu sendiri, lalu bagikan.":"Small fan tools. Everything runs on your device.",
+"Geser dan zoom foto":"Move & zoom photo","Geser teks":"Move text","Ketuk foto untuk memilih, seret untuk menggeser, cubit (atau scroll / slider) untuk zoom. Ketuk kotak kosong untuk upload.":"Tap a photo to select it, drag to move, pinch (or scroll / slider) to zoom. Tap an empty box to upload.",
+"Download gambar":"Download image","Foto dan layout":"Photos & layout","Teks":"Text","1 foto":"1 photo","2 atas-bawah":"2 top-bottom","2 kiri-kanan":"2 left-right","3 vertikal":"3 vertical","Foto":"Photo","Jarak antar foto":"Gap between photos","Warna jarak":"Gap color","Nickname / teks":"Nickname / text","Gaya":"Style","Polos":"Plain","Dekorasi":"Decoration","Tanpa":"None","Warna":"Color","Ukuran":"Size","Transparansi":"Opacity",
+"Seret di gambar untuk memindahkan teks watermark.":"Drag on the image to move the watermark text.","Upload minimal satu foto dulu ya":"Upload at least one photo first","Gambar tersimpan":"Image saved","Lampirkan gambar yang baru kamu download ke postingan X ya.":"Attach the image you just downloaded to your X post.","Lagu belum cukup untuk ranking 1-10":"Not enough songs for a top 10 ranking",
+"Notifikasi belum siap, coba lagi sebentar":"Notifications aren't ready yet, try again in a moment","Notifikasi aktif":"Notifications on","Notifikasi belum diizinkan":"Notifications not allowed","Notifikasi tidak bisa diaktifkan di browser ini":"Notifications can't be enabled in this browser",
+"Comeback saja":"Latest comeback only","Cepat":"Quick","Standar":"Standard","Besar":"Large","Semua lagu":"All songs",
+"Dua lagu muncul bergantian. Pilih yang kamu suka, lagu yang menang lanjut melawan lagu berikutnya. Setelah bracket utama selesai, placement match menentukan peringkat 2 sampai 10 untuk ranking akhirmu.":"Two songs appear at a time. Pick the one you like and the winner moves on to face the next song. After the main bracket, placement matches decide ranks 2 to 10 for your final ranking.",
+"Lagu dipilih acak dari seluruh lagu NCT DREAM sampai comeback terbaru. Boogie Woogie selalu ikut.":"Songs are picked at random from all NCT DREAM songs up to the latest comeback. Boogie Woogie is always included.",
+"Daftar lagu belum tersedia.":"Song list is not available yet.","Dengar di YouTube":"Listen on YouTube","Kembali":"Back","Mulai ulang":"Restart","Hasil DREAM PICK!":"DREAM PICK! results","Bagikan hasilmu":"Share your result","Nickname di kartu (opsional)":"Nickname on the card (optional)","Buat kartu":"Create card","Main lagi":"Play again","Mulai DREAM PICK!":"Start DREAM PICK!"
+};
+const DICT_A={"Semua":"See all","Detail":"Details","Kalender":"Full calendar"};
+const DICT_TAB={"Semua":"All"};
+const RULES=[
+[/Aplikasi: /g,"Apps: "],[/Berakhir (\S+) pukul (\S+ [A-Z]+)/g,"Ends $1 at $2"],
+[/Jam menyusul/g,"Time TBA"],[/(\d+) menit lalu/g,"$1 min ago"],[/(\d+) jam lalu/g,"$1 h ago"],[/(\d+) hari lalu/g,"$1 d ago"],[/baru saja/g,"just now"],
+[/^Menuju: /,"Next: "],[/^Update /,"Updated "],[/^update /,"updated "],[/^kemarin /,"yesterday "],[/^Zona waktu: /,"Time zone: "],
+[/ · rilis /,", released "],[/^per (hari|jam) · /,(m,u)=>"per "+(u==="hari"?"day":"hour")+" · "],[/^Progress target /,"Target progress "],
+[/ · sisa /," · remaining "],[/estimasi ±(\d+) jam lagi/,"estimated ±$1 h left"],[/estimasi ±(\d+) hari lagi/,"estimated ±$1 days left"],[/^Tercapai /,"Reached "],
+[/^views sekarang/,"views now"],[/^views terakhir/,"latest views"],[/ dari (\d)/," of $1"],
+[/^Mulai (.+)$/,"Starts $1"],[/^Berakhir (.+) pukul (.+)$/,"Ends $1 at $2"],[/^Catatan: /,"Note: "],[/^Dicek /,"Checked "],[/^Voting berlangsung · /,"Voting live · "],
+[/^Bracket utama · Babak (\d+)$/,"Main bracket · Round $1"],[/^Placement match · rebut peringkat #(\d+)$/,"Placement match · fight for rank #$1"],[/^Pilihan ke-(\d+)$/,"Pick #$1"],[/^Foto (\d)$/,"Photo $1"],[/^(\d+) lagu$/,"$1 songs"]
+];
+
+const ATTR_T=["aria-label","placeholder","title","alt"],ORIG=new WeakMap(),ORIGA=new WeakMap();
+const toEn=(t,node)=>{const par=node&&node.parentNode;let o=null;
+  if(par&&par.tagName==="A"&&DICT_A[t])o=DICT_A[t];else if(par&&par.classList&&par.classList.contains("tab")&&DICT_TAB[t])o=DICT_TAB[t];else if(DICT[t]!=null)o=DICT[t];
+  if(o==null){o=t;for(const [re,r] of RULES)o=o.replace(re,r)}return o};
+const toLang=(en)=>{const L=LANGS[LANG];if(!L.dict)return en;if(L.dict[en]!=null)return L.dict[en];let o=en;for(const [re,r] of (L.rules||[]))o=o.replace(re,r);return o};
+const trStr=(s,node)=>{const t=s.trim();if(!t)return s;const o=LANG==="id"?toLang(t):toLang(toEn(t,node));return o===t?s:s.replace(t,o)};
+let i18nObs=null;
+function i18nWalk(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
+  while(n=w.nextNode()){const p=n.parentNode;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))continue;
+    if(LANG!=="id"){const o=trStr(n.nodeValue,n);if(o!==n.nodeValue){if(!ORIG.has(n))ORIG.set(n,n.nodeValue);n.nodeValue=o}}
+    else{if(ORIG.has(n)){n.nodeValue=ORIG.get(n);ORIG.delete(n)}const o=trStr(n.nodeValue,n);if(o!==n.nodeValue){ORIG.set(n,n.nodeValue);n.nodeValue=o}}}
+  root.querySelectorAll&&root.querySelectorAll("[aria-label],[placeholder],[title],[alt]").forEach(e=>ATTR_T.forEach(k=>{const v=e.getAttribute(k);if(!v)return;
+    if(LANG!=="id"){const en=DICT[v]||(v.startsWith("Buka ")?"Open "+v.slice(5):v),o=toLang(en);if(o!==v){if(!ORIGA.has(e))ORIGA.set(e,{});ORIGA.get(e)[k]=v;e.setAttribute(k,o)}}
+    else{const m=ORIGA.get(e);if(m&&m[k]){e.setAttribute(k,m[k]);delete m[k]}}}));
+}
+function i18nApply(){if(i18nObs)i18nObs.disconnect();i18nWalk(document.body);document.documentElement.lang=LANG;document.querySelectorAll("[data-sw]").forEach(e=>{if(!e.firstChild)e.innerHTML=Object.entries(LANGS).map(([k,v])=>`<button data-lang="${k}">${v.label}</button>`).join("")});
+  document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("on",b.dataset.lang===LANG));
+  if(i18nObs)i18nObs.observe(document.body,{childList:true,subtree:true,characterData:true})}
+i18nObs=new MutationObserver(()=>i18nApply());
+function setLang(l){LANG=l;try{localStorage.setItem("lang",l)}catch{}i18nApply();render()}
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const nf=n=>new Intl.NumberFormat("id-ID").format(Math.round(n));
+/* Languages. To add one: add an entry here, then give it a dictionary in the i18n block below
+   (LANGS.xx.dict = { "English text": "Translation", ... }). Source text is English/Indonesian; every dictionary is keyed by the English text. */
+const LANGS={
+  en:{label:"EN",loc:"en-GB",days:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],top3:"My top 3",fav:"FAVORITE SONGS"},
+  id:{label:"ID",loc:"id-ID",days:["Sen","Sel","Rab","Kam","Jum","Sab","Min"],top3:"Top 3 aku",fav:"LAGU FAVORIT"},
+  ko:{label:"KO",loc:"ko-KR",days:["월","화","수","목","금","토","일"],top3:"내 TOP 3",fav:"좋아하는 노래"}
+};
+
+LANGS.id.dict={
+"Track, stream, vote and follow every NCT DREAM and member activity.":"Pantau, streaming, vote, dan ikuti semua aktivitas NCT DREAM dan member.",
+"Voting has ended. The final result is waiting for the official announcement.":"Voting sudah berakhir. Hasil akhir menunggu pengumuman resmi.",
+"Official videos and photos, grouped by comeback.":"Video dan foto resmi, dikelompokkan per comeback.",
+"We do our best to keep DREAMLOOP up to date, but we might occasionally miss a few things along the way.":"Kami berusaha menjaga DREAMLOOP tetap terbaru, tapi kadang ada yang terlewat.",
+"If you spot a missing group, unit, or solo schedule, or have an idea to improve the site, don't hesitate to tell us! Your messages will go straight to the editor and stay private.":"Kalau kamu menemukan jadwal grup, unit, atau solo yang belum ada, atau punya ide untuk memperbaiki situs, kabari kami! Pesanmu langsung ke editor dan tetap privat.",
+"Send to editor":"Kirim ke editor","Missing schedule":"Jadwal belum ada","Suggestion":"Saran","Message":"Pesan","Source link (optional)":"Link sumber (opsional)",
+"No account needed. Please don't include personal information.":"Tanpa akun. Jangan sertakan data pribadi.",
+"Please write a little more so the editor can find it.":"Tulis sedikit lebih lengkap supaya editor bisa menemukannya.",
+"The link should start with https://":"Link harus diawali https://","Please wait a minute before sending another message.":"Tunggu semenit sebelum kirim pesan lagi.",
+"LOOP POSTBOX isn't active yet.":"LOOP POSTBOX belum aktif.","Sent to the editor. Thank you!":"Terkirim ke editor. Terima kasih!","Couldn't send right now. Please try again later.":"Belum bisa terkirim. Coba lagi nanti."
+};
+LANGS.id.rules=[[/ · exact time follows the official announcement/," · jam pasti mengikuti pengumuman resmi"]];
+/* ---- Korean (keyed by the English text) ---- */
+LANGS.ko.dict={
+"Home":"홈","MV Tracker":"MV 트래커","Stream & Vote":"스트리밍 & 투표","Schedule":"스케줄","Content":"콘텐츠","Playground":"플레이그라운드","MV":"MV","Play":"플레이",
+"NCT DREAM · group & solo · every era":"NCT DREAM · 그룹 & 솔로 · 모든 시대","Add to home screen":"홈 화면에 추가","Enable notifications":"알림 켜기","Notifications":"알림",
+"Fan-made, non-profit. Not affiliated with SM Entertainment or NCT DREAM.":"팬이 만든 비영리 사이트입니다. SM엔터테인먼트 및 NCT DREAM과 관련이 없습니다.",
+"Views data is being prepared and will appear here automatically.":"조회수 데이터를 준비 중이며 곧 자동으로 표시됩니다.",
+"Track, stream, vote and follow every NCT DREAM and member activity.":"NCT DREAM과 멤버들의 모든 활동을 확인하고, 스트리밍하고, 투표하세요.",
+"Start supporting":"응원 시작","STREAM · VOTE · CELEBRATE":"스트리밍 · 투표 · 축하","GROUP & SOLO":"그룹 & 솔로",
+"days":"일","hours":"시간","minutes":"분","seconds":"초","Comeback snapshot":"컴백 현황","Details":"자세히","Total MV views":"MV 총 조회수","Waiting for data":"데이터 대기 중","appears automatically after sync":"동기화 후 자동으로 표시됩니다","Views today":"오늘 조회수","counted since 00:00 WIB":"00:00 WIB부터 집계","Last 7 days":"최근 7일",
+"Next voting":"다음 투표","See all":"전체 보기","No verified voting yet.":"확인된 투표가 아직 없습니다.","FINAL":"최종","INTERIM":"중간","Live vote":"라이브 투표","Pre-vote":"사전 투표",
+"Next up":"다음 일정","Full calendar":"전체 캘린더","All":"전체","Renjun":"런쥔","Haechan":"해찬","Jeno":"제노","Jaemin":"재민","Chenle":"천러","Jisung":"지성","HAECHAN":"해찬","RENJUN":"런쥔","JENO":"제노","JAEMIN":"재민","CHENLE":"천러","JISUNG":"지성",
+"YouTube content":"YouTube 콘텐츠","Comeback moments":"컴백 모멘트","Take DREAMLOOP with you":"DREAMLOOP을 가지고 다니세요","Open it fast from your home screen and get alerts for milestones, new content and schedules.":"홈 화면에서 바로 열고, 마일스톤·새 콘텐츠·스케줄 알림을 받아보세요.",
+"Live voting":"진행 중인 투표","None yet.":"아직 없습니다.","Upcoming":"예정","Add to your home screen":"홈 화면에 추가하기","Android (Chrome):":"Android (Chrome):","open the three-dot menu at the top right, then choose Install app or Add to Home screen.":"오른쪽 위 점 세 개 메뉴를 열고 '앱 설치' 또는 '홈 화면에 추가'를 선택하세요.",
+"iPhone (Safari):":"iPhone (Safari):","tap the Share button, then choose Add to Home Screen.":"공유 버튼을 누른 뒤 '홈 화면에 추가'를 선택하세요.","Once added, the site opens full screen like an app, with no store download needed.":"추가하면 앱처럼 전체 화면으로 열리며, 스토어에서 다운로드할 필요가 없습니다.","Got it":"확인",
+"open on YouTube":"YouTube에서 열기","No data yet":"데이터 없음","No views data yet.":"아직 조회수 데이터가 없습니다.","Once the first automatic update runs, the numbers and charts appear here and keep updating automatically.":"첫 자동 업데이트가 실행되면 숫자와 그래프가 여기에 표시되고 계속 자동으로 업데이트됩니다.",
+"Total views":"총 조회수","Daily growth":"일일 증가","Weekly growth":"주간 증가","Record growth":"최고 증가 기록","Target":"목표","Total views growth":"총 조회수 증가","Growth per day":"일별 증가","Growth per hour":"시간별 증가","Comparison":"비교","Today":"오늘","Yesterday":"어제","Milestone":"마일스톤","Not yet":"아직","Views per comeback":"컴백별 조회수",
+"The chart appears once there are at least 2 snapshots.":"스냅샷이 2개 이상 쌓이면 그래프가 표시됩니다.","Data is pulled automatically from the YouTube Data API at regular intervals. YouTube sometimes holds back or corrects view counts, so small differences from the number on YouTube can happen.":"데이터는 YouTube Data API에서 주기적으로 자동으로 가져옵니다. YouTube가 조회수를 보류하거나 보정하는 경우가 있어 YouTube 표시 숫자와 약간 차이가 날 수 있습니다.",
+"Promotion center: official links, voting schedules and results.":"프로모션 센터: 공식 링크, 투표 일정, 결과.","Streaming directory":"스트리밍 디렉터리","Official MV":"공식 MV","Album DREAM AFTER DREAM":"앨범 DREAM AFTER DREAM","Voting directory":"투표 디렉터리","Voting schedule":"투표 일정","Live":"진행 중","Ended":"종료","All apps":"모든 앱",
+"Voting has ended. The final result is waiting for the official announcement.":"투표가 종료되었습니다. 최종 결과는 공식 발표를 기다리고 있습니다.","See announcement":"발표 보기","See source":"출처 보기","Guide":"가이드","Link coming soon":"링크 준비 중","No events for this filter.":"이 필터에 해당하는 이벤트가 없습니다.",
+"Comeback Recap":"컴백 리캡","VOTING RESULTS":"투표 결과","MUSIC SHOW WINS":"음악 방송 1위","The Show":"더 쇼","no win":"1위 없음","No voting results yet.":"아직 투표 결과가 없습니다.","Tap a release to see its voting results and wins.":"릴리스를 눌러 투표 결과와 1위 기록을 확인하세요.","No releases for this filter.":"이 필터에 해당하는 릴리스가 없습니다.",
+"Live, upcoming and ended status is calculated automatically from the dates. This site is only a directory: voting happens in the official apps. Final results appear once the official announcement is entered.":"진행 중·예정·종료 상태는 날짜를 기준으로 자동 계산됩니다. 이 사이트는 안내용 디렉터리이며, 투표는 공식 앱에서 진행됩니다. 최종 결과는 공식 발표가 입력되면 표시됩니다.",
+"Promotion calendar, voting schedule and official YouTube content.":"프로모션 캘린더, 투표 일정, 공식 YouTube 콘텐츠.","Previous":"이전","Next":"다음","Album Event":"앨범 이벤트","Music show":"음악 방송","Voting":"투표","Voting deadline":"투표 마감","Award show":"시상식","Live broadcast":"라이브 방송","Official content":"공식 콘텐츠","Guest appearance":"게스트 출연","Recording":"녹화","Festival":"페스티벌","Comeback release":"컴백 발매","Fan activities":"팬 활동",
+"No schedule on this date.":"이 날짜에는 일정이 없습니다.","Open on YouTube":"YouTube에서 열기","Open link":"링크 열기","No schedule yet.":"아직 일정이 없습니다.","Time TBA":"시간 미정",
+"Official videos and photos, grouped by comeback.":"공식 영상과 사진을 컴백별로 모았습니다.","Photos":"사진","YouTube":"YouTube","Nothing here yet for this filter.":"이 필터에 해당하는 항목이 아직 없습니다.","Tonton di YouTube":"YouTube에서 보기",
+"Small fan tools. Everything runs on your device.":"작은 팬 도구 모음. 모든 작업은 내 기기에서 실행됩니다.","Watermark":"워터마크","DREAM PICK!":"DREAM PICK!","LOOP POSTBOX":"LOOP POSTBOX","Move & zoom photo":"사진 이동·확대","Move text":"텍스트 이동","Reset":"초기화",
+"Tap a photo to select it, drag to move, pinch (or scroll / slider) to zoom. Tap an empty box to upload.":"사진을 눌러 선택하고, 드래그해서 이동하고, 핀치(또는 스크롤/슬라이더)로 확대하세요. 빈 칸을 누르면 업로드할 수 있습니다.","Download image":"이미지 다운로드","Photos & layout":"사진 & 레이아웃","Text":"텍스트","Layout":"레이아웃",
+"1 photo":"사진 1장","2 top-bottom":"2장 위아래","2 left-right":"2장 좌우","3 vertical":"3장 세로","Grid 2x2":"2x2 격자","Photo":"사진","Upload":"업로드","Gap between photos":"사진 간격","Gap color":"간격 색상","Nickname / text":"닉네임 / 텍스트","Style":"스타일","Plain":"기본","Outline":"외곽선","Pill":"알약","Stamp":"스탬프","Decoration":"장식","Sparkle":"반짝이","Hearts":"하트","Stars":"별","None":"없음","Color":"색상","Size":"크기","Opacity":"투명도",
+"Drag on the image to move the watermark text.":"이미지 위에서 드래그해 워터마크 텍스트를 옮기세요.","Upload at least one photo first":"먼저 사진을 한 장 이상 올려주세요","Image saved":"이미지가 저장되었습니다","Attach the image you just downloaded to your X post.":"방금 다운로드한 이미지를 X 게시물에 첨부하세요.","Not enough songs for a top 10 ranking":"TOP 10 순위를 만들기에 곡이 부족합니다",
+"Notifications aren't ready yet, try again in a moment":"알림이 아직 준비되지 않았습니다. 잠시 후 다시 시도해주세요","Notifications on":"알림이 켜졌습니다","Notifications not allowed":"알림이 허용되지 않았습니다","Notifications can't be enabled in this browser":"이 브라우저에서는 알림을 켤 수 없습니다",
+"Two songs appear at a time. Pick the one you like and the winner moves on to face the next song. After the main bracket, placement matches decide ranks 2 to 10 for your final ranking.":"두 곡이 번갈아 나타납니다. 마음에 드는 곡을 고르면 이긴 곡이 다음 곡과 겨룹니다. 메인 브래킷이 끝나면 순위 결정전으로 2위부터 10위까지 정해집니다.",
+"Latest comeback only":"최신 컴백 곡만","Quick":"빠르게","Standard":"표준","Large":"크게","All songs":"모든 곡","Start DREAM PICK!":"DREAM PICK! 시작","Songs are picked at random from all NCT DREAM songs up to the latest comeback. Boogie Woogie is always included.":"최신 컴백까지의 모든 NCT DREAM 곡에서 무작위로 뽑습니다. Boogie Woogie는 항상 포함됩니다.",
+"Song list is not available yet.":"곡 목록이 아직 없습니다.","Listen on YouTube":"YouTube에서 듣기","Back":"뒤로","Restart":"다시 시작","DREAM PICK! results":"DREAM PICK! 결과","Share your result":"결과 공유","Nickname on the card (optional)":"카드에 넣을 닉네임 (선택)","Create card":"카드 만들기","Download":"다운로드","Share to X":"X에 공유","Play again":"다시 하기",
+"We do our best to keep DREAMLOOP up to date, but we might occasionally miss a few things along the way.":"DREAMLOOP을 최신 상태로 유지하려고 노력하지만, 가끔 놓치는 부분이 있을 수 있습니다.",
+"If you spot a missing group, unit, or solo schedule, or have an idea to improve the site, don't hesitate to tell us! Your messages will go straight to the editor and stay private.":"빠진 그룹·유닛·솔로 일정을 발견했거나 사이트를 개선할 아이디어가 있다면 망설이지 말고 알려주세요! 메시지는 편집자에게만 전달되며 공개되지 않습니다.",
+"Missing schedule":"누락된 일정","Suggestion":"제안","Message":"메시지","Source link (optional)":"출처 링크 (선택)","Send to editor":"편집자에게 보내기","No account needed. Please don't include personal information.":"계정은 필요 없습니다. 개인정보는 적지 말아주세요.",
+"Event name, member or group, date and time, source link":"이벤트 이름, 멤버 또는 그룹, 날짜와 시간, 출처 링크",
+"Please write a little more so the editor can find it.":"편집자가 확인할 수 있도록 조금 더 자세히 적어주세요.","The link should start with https://":"링크는 https://로 시작해야 합니다.","Please wait a minute before sending another message.":"다른 메시지를 보내려면 1분 정도 기다려주세요.","LOOP POSTBOX isn't active yet.":"LOOP POSTBOX는 아직 활성화되지 않았습니다.","Sent to the editor. Thank you!":"편집자에게 전달되었습니다. 감사합니다!","Couldn't send right now. Please try again later.":"지금은 보낼 수 없습니다. 나중에 다시 시도해주세요.","Thank you!":"감사합니다!",
+"Singles / OST / Collabs":"싱글 / OST / 콜라보","Japan":"일본","Zoom out":"축소","Zoom in":"확대","Language":"언어","VS":"VS","WIB":"WIB","KST":"KST","UTC":"UTC"
+};
+LANGS.ko.rules=[
+[/(\d+) min ago/g,"$1분 전"],[/(\d+) h ago/g,"$1시간 전"],[/(\d+) d ago/g,"$1일 전"],[/just now/g,"방금"],
+[/^Next: /,"다음: "],[/^Updated /,"업데이트 "],[/^updated /,"업데이트 "],[/^yesterday /,"어제 "],[/^Time zone: /,"시간대: "],
+[/, released /," · 발매 "],[/ · Official MV/," · 공식 MV"],[/^per day · /,"일별 · "],[/^per hour · /,"시간별 · "],[/^Target progress /,"목표 진행률 "],[/^Target /,"목표 "],
+[/ · remaining /," · 남은 조회수 "],[/estimated ±(\d+) h left/,"예상 ±$1시간 남음"],[/estimated ±(\d+) days left/,"예상 ±$1일 남음"],[/^Reached /,"달성 "],
+[/^views now/,"현재 조회수"],[/^latest views/,"최근 조회수"],[/ of (\d)/," / $1"],[/ views$/,"회"],
+[/^Starts (.+)$/,"$1 시작"],[/^Ends (.+) at (.+)$/,"$1 $2 종료"],[/^Note: /,"메모: "],[/^Checked /,"확인 "],[/^Voting live · /,"투표 진행 중 · "],[/Apps: /g,"앱: "],
+[/^Last checked /,"마지막 확인 "],[/ · official announcement$/," · 공식 발표"],[/ · exact time follows the official announcement/," · 정확한 시간은 공식 발표를 따릅니다"],
+[/^Results · /,"결과 · "],[/^Final result: /,"최종 결과: "],[/ · (\d+) wins?/," · 1위 $1회"],[/ · (\d+) voting results?/," · 투표 결과 $1개"],[/^(\d+) events live$/,"진행 중 이벤트 $1개"],
+[/^Main bracket · Round (\d+)$/,"메인 브래킷 · $1라운드"],[/^Placement match · fight for rank #(\d+)$/,"순위 결정전 · #$1위 도전"],[/^Pick #(\d+)$/,"$1번째 선택"],[/^Photo (\d)$/,"사진 $1"],[/^(\d+) songs$/,"$1곡"],[/^(\d+) videos?$/,"동영상 $1개"],[/^(\d+) photos?$/,"사진 $1장"],
+[/^1ST$/,"1위"],[/^2ND$/,"2위"],[/^3RD$/,"3위"],[/^(\d+)TH$/,"$1위"],[/Time TBA/g,"시간 미정"],[/^Open (.+)$/,"$1 열기"],[/^Vote on (.+)$/,"$1에서 투표"]
+];
+let LANG=(()=>{try{const l=localStorage.getItem("lang");return LANGS[l]?l:"en"}catch{return"en"}})();
+const LOC=()=>LANGS[LANG].loc;
+const nf=n=>new Intl.NumberFormat(LOC()).format(Math.round(n));
 const short=n=>{n=Math.abs(n)<1?0:n;return n>=1e6?(n/1e6).toFixed(n>=1e7?1:2).replace(/\.?0+$/,"")+"M":n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,"")+"K":String(Math.round(n))};
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
 let TZ=store.get("tz",CFG.DEFAULT_TZ);
 const dayKey=(d,tz=TZ)=>new Intl.DateTimeFormat("en-CA",{timeZone:tz}).format(new Date(d));
-const timeStr=(d,tz=TZ)=>new Intl.DateTimeFormat("id-ID",{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(d)).replace(".",":");
-const dateStr=(d,tz=TZ,o={day:"numeric",month:"short",year:"numeric"})=>new Intl.DateTimeFormat("id-ID",{timeZone:tz,...o}).format(new Date(d));
-const keyFmt=(k,o)=>new Intl.DateTimeFormat("id-ID",{timeZone:"UTC",...o}).format(new Date(k+"T12:00:00Z"));
+const timeStr=(d,tz=TZ)=>new Intl.DateTimeFormat(LOC(),{timeZone:tz,hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(d)).replace(".",":");
+const dateStr=(d,tz=TZ,o={day:"numeric",month:"short",year:"numeric"})=>new Intl.DateTimeFormat(LOC(),{timeZone:tz,...o}).format(new Date(d));
+const keyFmt=(k,o)=>new Intl.DateTimeFormat(LOC(),{timeZone:"UTC",...o}).format(new Date(k+"T12:00:00Z"));
 const rangeStr=(a,b)=>a===b?keyFmt(a,{day:"numeric",month:"short"}):a.slice(0,7)===b.slice(0,7)?`${+a.slice(8)}–${keyFmt(b,{day:"numeric",month:"short"})}`:`${keyFmt(a,{day:"numeric",month:"short"})} – ${keyFmt(b,{day:"numeric",month:"short"})}`;
 const ago=d=>{const m=Math.round((Date.now()-new Date(d))/6e4);return m<1?"baru saja":m<60?m+" menit lalu":m<1440?Math.round(m/60)+" jam lalu":Math.round(m/1440)+" hari lalu"};
 function toast(t,ms=2600){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),ms)}
@@ -329,10 +511,10 @@ function normVote(r){
 const DBASE=CFG.DATA_BASE||"data/";
 const fj=async f=>{try{const r=await fetch(DBASE+f+"?t="+Math.floor(Date.now()/60000),{cache:"no-store"});if(!r.ok)throw 0;return await r.json()}catch{return null}};
 async function loadData(){
-  const [s,v,e,r,vj,ej,sj]=await Promise.all([
+  const [s,v,e,r,vj,ej,sj,vl]=await Promise.all([
     sb("mv_snapshots",`select=captured_at,views&video_id=eq.${CFG.VIDEO_ID}&order=captured_at.asc&limit=5000`),
     sb("vote_events","select=*"),sb("schedule_events","select=*&order=start.asc&limit=500"),sb("rating_summary","select=*"),
-    fj("views.json"),fj("youtube-events.json"),fj("seed.json")]);
+    fj("views.json"),fj("youtube-events.json"),fj("seed.json"),fj("views-latest.json")]);
   const seed=sj||SEEDV,jsnaps=vj&&vj.snapshots&&vj.snapshots.length?vj.snapshots:null;
   D.live=!!((s&&s.length)||jsnaps);
   const raw=(s&&s.length)?s:(jsnaps||seed.snapshots||[]);
@@ -342,7 +524,19 @@ async function loadData(){
   D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.songs=seed.songs||SEEDV.songs||[];D.meta=(ej&&ej.meta)||{};D.settings=seed.settings||SEEDV.settings||{};
   const oid=D.settings.onesignal_app_id||CFG.ONESIGNAL_APP_ID;if(oid)initPush(oid);
   const gc=D.settings.goatcounter||CFG.GOATCOUNTER;if(gc&&!document.getElementById('gc')){const sc=document.createElement('script');sc.id='gc';sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter='https://'+String(gc).replace(/[^\w-]/g,'')+'.goatcounter.com/count';document.head.appendChild(sc)}D.content=seed.content||SEEDV.content||[];
+  D.releases=seed.releases||SEEDV.releases||[];D.vlatest=(vl&&vl.views)||{};applyRelease();
 }
+
+
+const MEMBERS=["Renjun","Haechan","Jeno","Jaemin","Chenle","Jisung"];
+const memOf=e=>e.members&&e.members.length?e.members:["NCT DREAM"];
+const MEMLIST=["all","NCT DREAM",...MEMBERS];
+const memChips=(cur,attr)=>`<div class="mchips">${MEMLIST.map(k=>`<button class="${cur===k?"on":""}" data-${attr}="${esc(k)}">${k==="all"?"All":esc(k)}</button>`).join("")}</div>`;
+let fMemH="all";
+/* ---- Release aktif (banner, judul, MV) ---- */
+const REL=()=>{const L=(D.releases||[]);return L.find(r=>r.active)||L[0]||{id:"main",title:CFG.TITLE_TRACK,album:CFG.ALBUM,tagline:"Track, stream, vote and follow every NCT DREAM and member activity.",banner:"assets/hero.jpg",type:"group",member:"NCT DREAM",mv:{video_id:CFG.VIDEO_ID,target_views:CFG.TARGET_VIEWS}}};
+const relOf=x=>x.release||REL().id;
+function applyRelease(){const r=REL(),b=r.banner;if(!b)return;const u="url("+(PH.group&&b==="assets/hero.jpg"?PH.group:b)+")";const R=document.documentElement.style;R.setProperty("--group",u);R.setProperty("--heroimg",u)}
 const verified=x=>!!x.verified_at;
 function vStatus(v){
   const t=todayKey();
@@ -350,7 +544,7 @@ function vStatus(v){
   if(t<v.start_date)return"upcoming";
   return"ongoing";
 }
-const ST={ongoing:["Berlangsung","ok"],upcoming:["Akan datang","warn"],ended:["Selesai","bad"]};
+const ST={ongoing:["Live","ok"],upcoming:["Upcoming","warn"],ended:["Ended","bad"]};
 const TYPE_COLOR={"Album Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6]};
 function allEvents(){
   const out=D.events.filter(verified)
@@ -362,6 +556,7 @@ D.votes.filter(verified).forEach(v=>{
   const base={
     all_day:true,
     note:`Aplikasi: ${ap} · Berakhir ${v.end_date} pukul 00.00 KST`,
+    members:v.members&&v.members.length?v.members:[((D.releases||[]).find(r=>r.id===relOf(v))||REL()).member||"NCT DREAM"],
     source:v.source,
     verified_at:v.verified_at,
     kind:"vote"
@@ -384,7 +579,7 @@ start:v.start_date+"T00:00:00+07:00"
 const voteEndAt=e=>e.deadline_at?new Date(e.deadline_at):new Date(e.end_date+"T00:00:00+09:00");
 const isPast=e=>e.kind==="vote"?voteEndAt(e)<Date.now():e.all_day?e.day<todayKey():new Date(e.start)<Date.now()-36e5;
 const upcoming=()=>allEvents().filter(e=>!isPast(e)).sort((a,b)=>new Date(a.start)-new Date(b.start));
-const evTime=e=>e.kind==="vote"?(new Date(e.start)>Date.now()?`Mulai ${keyFmt(e.start_date,{day:"numeric",month:"short"})}`:(e.deadline_at?`Berakhir ${keyFmt(dayKey(e.deadline_at,WIB),{day:"numeric",month:"short"})} pukul ${new Intl.DateTimeFormat("id-ID",{timeZone:"Asia/Jakarta",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(e.deadline_at)).replace(":",".")} WIB`:`Berakhir ${e.end_date} pukul 00.00 KST`)):e.all_day?"Jam menyusul":`${timeStr(e.start)} ${TZS[TZ]}`;
+const evTime=e=>e.kind==="vote"?(new Date(e.start)>Date.now()?`Mulai ${keyFmt(e.start_date,{day:"numeric",month:"short"})}`:(e.deadline_at?`Berakhir ${keyFmt(dayKey(e.deadline_at,WIB),{day:"numeric",month:"short"})} pukul ${new Intl.DateTimeFormat(LOC(),{timeZone:"Asia/Jakarta",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(e.deadline_at)).replace(":",LANG==="id"?".":":")} WIB`:`Berakhir ${e.end_date} pukul 00.00 KST`)):e.all_day?"Jam menyusul":`${timeStr(e.start)} ${TZS[TZ]}`;
 const evItem=e=>`<div class="item"><div class="d"><b>${keyFmt(e.day,{day:"numeric"})}</b><span>${keyFmt(e.day,{month:"short"})}</span></div><div class="t"><b>${esc(e.title)}</b><small>${evTime(e)} · ${esc(e.type)}</small></div></div>`;
 const tzSel=()=>`<select id="tzsel" class="auto">${Object.entries(TZS).map(([k,v])=>`<option value="${k}" ${k===TZ?"selected":""}>${v}</option>`).join("")}</select>`;
 const bindTz=()=>{const s=$("#tzsel");if(s)s.onchange=()=>{TZ=s.value;store.set("tz",TZ);render()}};
@@ -444,22 +639,31 @@ const inc=n=>n==null?"–":"+"+nf(n);
 /* ============================================================
    Pages
    ============================================================ */
-const PAGES=[["home","Home",PAL[2]],["mv","MV Tracker",PAL[0]],["stream","Stream & Vote",PAL[3]],["schedule","Schedule",PAL[1]],["play","Playground",PAL[5]]];
-const MOB={home:"Home",mv:"MV Tracker",stream:"Stream & Vote",schedule:"Schedule",play:"Playground"};
-const TICK=["BOOGIE WOOGIE","DREAM AFTER DREAM","NCT DREAM 10TH ANNIVERSARY","OUT NOW 9.11.2026","STREAM · VOTE · CELEBRATE"];
+const PAGES=[["home","Home",PAL[2]],["mv","MV Tracker",PAL[0]],["stream","Stream & Vote",PAL[3]],["schedule","Schedule",PAL[1]],["content","Content",PAL[6]],["play","Playground",PAL[5]]];
+const MOB={home:"Home",mv:"MV",stream:"Stream & Vote",schedule:"Schedule",content:"Content",play:"Play"};
+const TICK=["NCT DREAM","STREAM · VOTE · CELEBRATE","GROUP & SOLO"];
 
 const isStandalone=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch{return false}};
 const momentsAll=()=>[...(D.moments||[]),...(CFG.MOMENTS||[])];
-function contentHtml(){
+function ytAll(){
   const seen=new Set(),out=[],M=D.meta||{};
-  const add=(c,date)=>{if(seen.has(c.id))return;seen.add(c.id);const m=M[c.id]||{};out.push({...c,title:m.title||c.title,tag:c.tag||(m.channel||"").slice(0,18),date:c.date||m.published_at||date||null,ord:out.length})};
+  const add=(c,date)=>{if(seen.has(c.id))return;seen.add(c.id);const m=M[c.id]||{};out.push({...c,title:m.title||c.title,tag:c.tag||(m.channel||"").slice(0,18),date:c.date||m.published_at||date||null,ord:out.length,release:c.release||REL().id,members:c.members&&c.members.length?c.members:["NCT DREAM"]})};
   [...(D.content||[]),...(CFG.CONTENT||[])].forEach(c=>add(c));
   D.events.filter(e=>/^yt-/.test(e.slug||"")&&verified(e)&&new Date(e.start)<=Date.now()).forEach(e=>{const m=String(e.url||"").match(/youtu\.be\/([\w-]{11})/);if(m)add({id:m[1],title:e.title,tag:"NCT DREAM"},e.start)});
-  if(!out.length)return "";
   out.sort((a,b)=>(a.date?1:0)-(b.date?1:0)||(a.date?new Date(b.date)-new Date(a.date):a.ord-b.ord));
-  return `<section class="h">YouTube content <a href="https://www.youtube.com/@NCTDREAM" target="_blank" rel="noopener">Channel</a></section><div class="yts">${out.slice(0,60).map((c,i)=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)"></div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`).join("")}</div>`;
+  return out;
+}
+const ytCard=c=>`<a class="yt" href="https://youtu.be/${esc(c.id)}" target="_blank" rel="noopener"><div class="th" style="background-image:url(https://i.ytimg.com/vi/${esc(c.id)}/hqdefault.jpg)"></div><b data-yid="${esc(c.id)}" data-need="${c.title?"":"1"}">${esc(c.title||"Tonton di YouTube")}</b></a>`;
+function contentHtml(){
+  const out=ytAll();if(!out.length)return "";
+  return `<section class="h">YouTube content <a href="#/content">Semua</a></section><div class="yts">${out.slice(0,10).map(ytCard).join("")}</div>`;
 }
 async function afterHome(){
+  $$('[data-hm]').forEach(b=>b.onclick=()=>{fMemH=b.dataset.hm;render()});
+  $$('[data-photos]').forEach(a=>a.onclick=()=>{fCT='ph'});
+  await fillYtTitles();
+}
+async function fillYtTitles(){
   for(const b of $$("[data-yid][data-need='1']")){
     const id=b.dataset.yid;let t=null;
     try{t=sessionStorage.getItem("yt_"+id)}catch{}
@@ -472,7 +676,27 @@ async function afterHome(){
     if(t)b.textContent=t;
   }
 }
-const targetV=()=>{const t=+((D.settings||{}).target_views)||CFG.TARGET_VIEWS;const v=D.snaps&&D.snaps.length?D.snaps[D.snaps.length-1].views:0;if(v<t)return t;return [...CFG.MILESTONES,2e8,5e8,1e9].find(m=>m>v)||t};
+
+let fCT="yt",fCM="all";
+const relTitle=id=>{const r=RELS().find(x=>x.id===id);return r?r.title:id};
+const relOrder=()=>{const L=RELS().slice();return L.sort((a,b)=>(b.active?1:0)-(a.active?1:0)||new Date(b.release_at||0)-new Date(a.release_at||0))};
+function pContent(){
+  const keep=x=>fCM==="all"||memOf(x).includes(fCM);
+  const groups=relOrder().map(r=>{
+    if(fCT==="yt"){const L=ytAll().filter(c=>c.release===r.id&&keep(c));return L.length?`<div class="cgrp"><b>${esc(r.title)}</b><span class="muted">${L.length} video${L.length===1?"":"s"}</span></div><div class="cgrid">${L.map(ytCard).join("")}</div>`:""}
+    const L=momentsAll().filter(m=>relOf(m)===r.id&&keep(m));
+    return L.length?`<div class="cgrp"><b>${esc(r.title)}</b><span class="muted">${L.length} photo${L.length===1?"":"s"}</span></div><div class="pgrid">${L.map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>`}).join("")}</div>`:""}).join("");
+  return `${banner()}<div class="top"><div><h2>Content</h2><p>Official videos and photos, grouped by comeback.</p></div></div>
+  <div class="tabs"><button class="tab ${fCT==="yt"?"on":""}" data-ct="yt">YouTube</button><button class="tab ${fCT==="ph"?"on":""}" data-ct="ph">Photos</button></div>
+  ${memChips(fCM,"cm")}
+  ${groups||'<div class="empty">Nothing here yet for this filter.</div>'}`;
+}
+async function afterContent(){
+  $$("[data-ct]").forEach(b=>b.onclick=()=>{fCT=b.dataset.ct;render()});
+  $$("[data-cm]").forEach(b=>b.onclick=()=>{fCM=b.dataset.cm;render()});
+  await fillYtTitles();
+}
+const targetV=()=>{const t=+((REL().mv||{}).target_views)||+((D.settings||{}).target_views)||CFG.TARGET_VIEWS;const v=D.snaps&&D.snaps.length?D.snaps[D.snaps.length-1].views:0;if(v<t)return t;return [...CFG.MILESTONES,2e8,5e8,1e9].find(m=>m>v)||t};
 
 function initPush(id){
   if(!id || window._OS || window._pushInit) return;
@@ -521,26 +745,26 @@ function initPush(id){
 const askPush=async()=>{if(!window._OS)return toast("Notifikasi belum siap, coba lagi sebentar");try{await _OS.Notifications.requestPermission();toast(_OS.Notifications.permission?"Notifikasi aktif":"Notifikasi belum diizinkan",3500)}catch{toast("Notifikasi tidak bisa diaktifkan di browser ini",3500)}};
 function vresHtml(){
   const A=["#ff6b6f","#f59ab5","#e6ec98","#9be4e6","#ec9a5c"],P=["20% 30%","70% 25%","50% 60%","35% 45%","80% 55%"];
-  const L=D.votes.filter(v=>verified(v)&&v.result&&v.result.rank!=null&&v.result.rank!==""&&Number(v.result.rank)>=1&&Number(v.result.rank)<=3)
+  const L=D.votes.filter(v=>relOf(v)===REL().id&&verified(v)&&v.result&&v.result.rank!=null&&v.result.rank!==""&&Number(v.result.rank)>=1&&Number(v.result.rank)<=3)
     .sort((a,b)=>(vStatus(a)==="ended")-(vStatus(b)==="ended")||Number(a.result.rank)-Number(b.result.rank)||b.end_date.localeCompare(a.end_date)).slice(0,10);
   if(!L.length)return "";
-  return `<div class="vres"><section class="h">Voting Results <a href="#/stream">Semua</a></section><div class="vr2">${L.map((v,i)=>{
+  return `<div class="vres"><section class="h">Results · ${esc(REL().title)} <a href="#/stream">Semua</a></section><div class="vr2">${L.map((v,i)=>{
     const r=v.result,fin=vStatus(v)==="ended",inner=`<div class="no"><sup>#</sup>${esc(Number(r.rank))}</div><span class="tmp">${fin?"AKHIR":"SEMENTARA"}</span><div class="bt"><div class="sh">${esc(v.show)}</div><div class="ap"><b>${esc(v.phase)}</b> · ${esc(v.apps.join(" & "))}</div></div>`,st=`--a:${A[i%5]};--p:${P[i%5]}`;
     return r.url?`<a class="rc2" href="${esc(r.url)}" target="_blank" rel="noopener" style="${st}">${inner}</a>`:`<div class="rc2" style="${st}">${inner}</div>`}).join("")}</div></div>`;
 }
 function pHome(){
-  const st=mvStats(),ev=upcoming().slice(0,3);
+  const st=mvStats(),ev=upcoming().filter(e=>fMemH==='all'||memOf(e).includes(fMemH)).slice(0,3);
   let vt=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").sort((a,b)=>a.end_date.localeCompare(b.end_date));
   if(!vt.length)vt=D.votes.filter(v=>verified(v)&&vStatus(v)==="upcoming").sort((a,b)=>a.start_date.localeCompare(b.start_date)).slice(0,3);
   vt=vt.slice(0,3);
   const stCard=(l,v,s)=>`<div class="card stat"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`;
   return `${banner()}
   <div class="hero"><div>
-    <span class="tag">NCT DREAM</span><span class="tag">${esc(CFG.ALBUM)}</span>
-    <h1>BOOGIE!<br>PLAYGROUND</h1>
-    <p>Your one-stop space to track, stream, vote, stay updated, and celebrate BOOGIE WOOGIE together.</p>
-    <div class="row"><a class="btn butter" href="#/stream">Mulai support</a><a class="btn glass" href="https://youtu.be/${CFG.VIDEO_ID}" target="_blank" rel="noopener">Tonton MV</a></div>
-  </div><div class="hero-photo"><i>10TH ANNIVERSARY</i><b>OUT NOW</b></div></div>
+    <span class="tag">${esc(REL().member||"NCT DREAM")}</span><span class="tag">${esc(REL().album||"")}</span>
+    <h1>${esc(String(REL().title||"").toUpperCase()).replace(/ /,"<br>")}</h1>
+    <p>${esc(REL().tagline||"")}</p>
+    <div class="row"><a class="btn butter" href="#/stream">Mulai support</a></div>
+  </div></div>
   <div class="ticker"><div>${[...TICK,...TICK,...TICK,...TICK].map(t=>`<span>${t}</span>`).join("")}</div></div>
   <div class="mright" id="mright"></div>
   <section class="h">Comeback snapshot <a href="#/mv">Detail</a></section>
@@ -553,20 +777,51 @@ function pHome(){
   <div class="grid g2" style="margin-top:6px">
     <div><section class="h">Voting ${vt.length&&vStatus(vt[0])==="ongoing"?"berlangsung":"berikutnya"} <a href="#/stream">Semua</a></section><div class="list">${vt.length?vt.map(v=>{const s=vStatus(v);return `<div class="item"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><small>${esc(v.apps.join(" & "))} · ${rangeStr(v.start_date,v.end_date)}</small></div><span class="badge ${ST[s][1]}">${ST[s][0]}</span></div>`}).join(""):'<div class="empty">Belum ada voting terverifikasi.</div>'}</div></div>
     ${vresHtml()}
-    <div class="jd"><section class="h">Jadwal terdekat <a href="#/schedule">Kalender</a></section><div class="list">${ev.length?ev.map(evItem).join(""):'<div class="empty">Belum ada jadwal terverifikasi.</div>'}</div></div>
+    <div class="jd"><section class="h">Jadwal terdekat <a href="#/schedule">Kalender</a></section>${memChips(fMemH,"hm")}<div class="list">${ev.length?ev.map(evItem).join(""):'<div class="empty">Belum ada jadwal terverifikasi.</div>'}</div></div>
   </div>
   ${contentHtml()}
-  ${momentsAll().length?`<section class="h">Comeback moments</section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
+  ${momentsAll().length?`<section class="h">Comeback moments <a href="#/content" data-photos="1">Semua</a></section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
 
   <div class="getapp ${isStandalone()?"":"show-i"}"><div><b>Bawa BOOGIE! ke HP kamu</b><span>Buka cepat dari layar utama${""} dan terima notifikasi milestone, konten baru, serta jadwal.</span></div><div class="ga-b"><button class="btn butter sm gi" data-inst="1">Pasang di layar HP</button><button class="btn glass sm pushbtn" data-push="1">Aktifkan notifikasi</button></div></div>
 `;
 }
 
+
+/* ---- Comeback Recap ---- */
+const RELS=()=>{const L=D.releases||[];return L.length?L:[REL()]};
+const relDate=r=>r.release_at?dateStr(r.release_at,TZ,{day:"numeric",month:"short",year:"numeric"}):"";
+let fRec="all";const openRec=new Set();
+const recChips=()=>`<div class="tabs" style="margin-top:2px">${["all","NCT DREAM",...MEMBERS].map(k=>`<button class="tab ${fRec===k?"on":""}" data-rec="${esc(k)}">${k==="all"?"All":esc(k)}</button>`).join("")}</div>`;
+const recKeep=r=>fRec==="all"||(r.member||"NCT DREAM")===fRec;
+const memTag=r=>{const m=r.member||"NCT DREAM",c={"NCT DREAM":"#9be4e6",Renjun:"#e6ec98",Haechan:"#f59ab5",Jeno:"#7fd6da",Jaemin:"#ec9a5c",Chenle:"#c9b8f0",Jisung:"#f7c6a0"}[m]||"#9be4e6";return `<span class="mt" style="background:${c}">${esc(m.toUpperCase())}</span>`};
+function mvRecap(){
+  const L=RELS().filter(recKeep),cur=REL().id,st=mvStats();
+  const card=r=>{const act=r.id===cur,v=act&&st?st.last.views:(r.mv&&r.mv.final_views)||((D.vlatest||{})[(r.mv||{}).video_id])||null,t=+((r.mv||{}).target_views)||0,vid=(r.mv||{}).video_id;
+    const inner=`${memTag(r)}<div class="rt">${esc(r.title)}</div><div class="muted">${esc(r.album||"")}${r.release_at?" · "+relDate(r):""}</div>
+    <div class="rv">${v?nf(v):"–"}</div><div class="muted">${act?"views sekarang":"views terakhir"}${t&&v?" · "+Math.min(100,v/t*100).toFixed(0)+"% dari "+short(t):""}</div>`;
+    return vid?`<a class="rcp-c" href="https://youtu.be/${esc(vid)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="rcp-c">${inner}</div>`};
+  return `<section class="h">Views per comeback</section>${recChips()}<div class="rcp-g">${L.map(card).join("")||'<div class="empty">Belum ada rilisan untuk filter ini.</div>'}</div>`;
+}
+const vrCards=L=>{const A=["#ff6b6f","#f59ab5","#e6ec98","#9be4e6","#ec9a5c"],P=["20% 30%","70% 25%","50% 60%","35% 45%","80% 55%"];
+  return L.map((v,i)=>{const r=v.result,fin=vStatus(v)==="ended",inner=`<div class="no"><sup>#</sup>${esc(Number(r.rank))}</div><span class="tmp">${fin?"AKHIR":"SEMENTARA"}</span><div class="bt"><div class="sh">${esc(v.show)}</div><div class="ap"><b>${esc(v.phase)}</b> · ${esc(v.apps.join(" & "))}</div></div>`,st=`--a:${A[i%5]};--p:${P[i%5]}`;
+    return r.url?`<a class="rc2" href="${esc(r.url)}" target="_blank" rel="noopener" style="${st}">${inner}</a>`:`<div class="rc2" style="${st}">${inner}</div>`}).join("")};
+const ordS=n=>({1:"1ST",2:"2ND",3:"3RD"}[n]||n+"TH");
+function streamRecap(){
+  const L=RELS().filter(recKeep);
+  const one=r=>{const vs=D.votes.filter(v=>relOf(v)===r.id&&verified(v)&&v.result&&v.result.rank!=null&&v.result.rank!==""&&!isNaN(v.result.rank)).sort((a,b)=>Number(a.result.rank)-Number(b.result.rank)||b.end_date.localeCompare(a.end_date));
+    const W=(r.wins||[]),won=W.filter(w=>w.rank!=null&&w.rank!=="").length,open=openRec.has(r.id)||(!openRec.size&&r.id===REL().id);
+    const sub=[W.length?won+" win"+(won===1?"":"s"):"",vs.length+" voting result"+(vs.length===1?"":"s")].filter(Boolean).join(" · ");
+    return `<details class="rcp" data-rid="${esc(r.id)}" ${open?"open":""}><summary><div style="flex:1;min-width:0">${memTag(r)}<div class="rt">${esc(r.title)}</div><div class="muted">${esc(r.album||"")}${r.album&&sub?" · ":""}${sub}</div></div><span class="chev">⌄</span></summary>
+    <div class="rcb"><div class="rk">VOTING RESULTS</div>${vs.length?`<div class="vr2">${vrCards(vs)}</div>`:'<div class="empty">Belum ada hasil voting.</div>'}
+    ${W.length?`<div class="rk">MUSIC SHOW WINS</div><div class="wins">${W.map(w=>{const has=w.rank!=null&&w.rank!=="";return `<div class="wn"><div class="wl">${esc(w.show)}</div><b style="color:${!has?"#b9bcc8":Number(w.rank)===1?"var(--rasp)":"var(--teal)"}">${has?ordS(Number(w.rank)):"—"}</b><div class="wd">${has?esc(w.date||""):"no win"}</div></div>`}).join("")}</div>`:""}</div></details>`};
+  return `<section class="h">Comeback Recap</section>${recChips()}<div class="rcp-l">${L.map(one).join("")||'<div class="empty">Belum ada rilisan untuk filter ini.</div>'}</div><p class="muted" style="margin-top:8px">Ketuk satu rilisan untuk melihat hasil voting dan kemenangannya.</p>`;
+}
+const recBind=()=>{$$("[data-rec]").forEach(b=>b.onclick=()=>{fRec=b.dataset.rec;render()});$$("details.rcp").forEach(d=>d.addEventListener("toggle",()=>{if(d.open)openRec.add(d.dataset.rid);else{openRec.delete(d.dataset.rid);if(!openRec.size)openRec.add("__none")}}))};
 function pMv(){
   const st=mvStats();
-  const head=`<div class="top"><div><h2>MV Tracker</h2><p>${esc(CFG.TITLE_TRACK)} · Official MV · rilis ${dateStr(CFG.RELEASE_AT,TZ,{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})} ${TZS[TZ]} · <a href="https://youtu.be/${CFG.VIDEO_ID}" target="_blank" rel="noopener" style="color:var(--teal);font-weight:700">buka di YouTube</a></p></div>
+  const head=`<div class="top"><div><h2>MV Tracker</h2><p>${esc(REL().title)} · Official MV · rilis ${dateStr(REL().release_at||CFG.RELEASE_AT,TZ,{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})} ${TZS[TZ]} · <a href="https://youtu.be/${(REL().mv||{}).video_id||CFG.VIDEO_ID}" target="_blank" rel="noopener" style="color:var(--teal);font-weight:700">buka di YouTube</a></p></div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${tzSel()}<span class="pill"><span class="dot ${st&&Date.now()-new Date(st.last.captured_at)<36e5*3?"":"off"}"></span>${st?"Update "+ago(st.last.captured_at):"Belum ada data"}</span></div></div>`;
-  if(!st)return `${banner()}${head}<div class="empty">Data views belum masuk.<br>Setelah Edge Function <b>update-views</b> berjalan pertama kali, angka dan grafik muncul di sini dan bertambah otomatis.</div>`;
+  if(!st)return `${banner()}${head}<div class="empty">Data views belum masuk.<br>Setelah pembaruan otomatis pertama berjalan, angka dan grafik muncul di sini dan bertambah otomatis.</div>${mvRecap()}`;
   const s=st.ser;
   const eta=st.etaH==null?"":st.etaH<48?` · estimasi ±${Math.ceil(st.etaH)} jam lagi`:` · estimasi ±${Math.ceil(st.etaH/24)} hari lagi`;
   return `${banner()}${head}
@@ -588,10 +843,11 @@ function pMv(){
       <div class="rate-row"><span>7 hari terakhir</span><b>${inc(st.weekly)}</b></div></div></div>
     <div class="card"><b>Milestone</b><div class="list" style="margin-top:10px">${st.ms.map(x=>`<div class="rate-row"><span>${short(x.m)} views</span>${x.hit?`<span class="badge ok">Tercapai ${dateStr(x.hit.captured_at,TZ,{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</span>`:'<span class="badge">Belum</span>'}</div>`).join("")}</div></div>
   </div>
+  ${mvRecap()}
   <p class="muted" style="margin-top:12px">Data diambil otomatis dari YouTube Data API secara berkala. YouTube kadang menahan atau mengoreksi angka views, jadi selisih kecil dengan angka di YouTube bisa terjadi.</p>`;
 }
 function afterMv(){
-  bindTz();const st=mvStats();if(!st||!st.ser)return;const s=st.ser;
+  bindTz();recBind();const st=mvStats();if(!st||!st.ser)return;const s=st.ser;
   const draw=()=>{drawChart($("#c1"),s.labels,s.totals);drawChart($("#c2"),s.gl,s.g,"bar")};draw();window.onresize=draw;
 }
 
@@ -603,7 +859,7 @@ const OS_=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==="
 const iosUrl=a=>a.ios||`https://apps.apple.com/search?term=${encodeURIComponent(a.play||a.name)}`;
 const appLink=a=>a?(OS_==="ios"?iosUrl(a):OS_==="android"?playUrl(a):(a.site||a.ios||playUrl(a))):"";
 const vBtns=a=>[a.site&&["Website",a.site],a.ios&&["App Store",a.ios],["Google Play",playUrl(a)]].filter(Boolean).map(([l,u],i)=>`<a class="btn sm ${i?"ghost":""}" href="${esc(u)}" target="_blank" rel="noopener">${l}</a>`).join("");
-const openBtn=(a,l="Buka aplikasi")=>a&&a.url?`<a class="btn sm" href="${esc(a.url)}" target="_blank" rel="noopener">${l}</a>`:`<span class="btn sm dis">Link menyusul</span>`;
+const openBtn=(a,l="Buka aplikasi")=>a&&a.url?`<a class="btn sm" href="${esc(a.url)}" target="_blank" rel="noopener">${l}</a>`:`<span class="btn sm dis">Link coming soon</span>`;
 function pStream(){
   const votes=D.votes.filter(verified);
   const shows=[...new Set(votes.map(v=>v.show))];
@@ -615,42 +871,43 @@ function pStream(){
     const all=votes.filter(v=>v.show===sh),apps=[...new Set(all.flatMap(v=>v.apps))];
     return `<div class="show"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><div><b style="font-size:16px">${esc(sh)}</b><div class="chips">${apps.map(a=>`<span class="chip">${esc(a)}</span>`).join("")}</div></div></div>
     ${ph.map(v=>{const s=vStatus(v),r=v.result;return `<div class="phase"><div style="flex:1;min-width:200px"><b style="font-size:13.5px">${esc(v.phase)}</b>
-      <div class="muted">${rangeStr(v.start_date,v.end_date)} ${keyFmt(v.end_date,{year:"numeric"})} · waktu pasti ikut pengumuman resmi</div>
-      ${s==="ongoing"&&r?`<div class="result"><b>Update terakhir${r.at?" · "+ago(r.at):""}${r.rank?": posisi "+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">Lihat sumber</a>`:""}</div>`:""}
-      ${s==="ended"?(r?`<div class="result"><b>Hasil akhir${r.rank?": peringkat "+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">Lihat pengumuman</a>`:""}</div>`:`<div class="result wait">Voting selesai. Hasil akhir menunggu pengumuman resmi.</div>`):""}
-      </div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge ${ST[s][1]}">${ST[s][0]}</span>${v.apps.map(n=>{const a=appOf(n);return a&&s!=="ended"?`<a class="btn sm ${v.url?"":"ghost"}" href="${esc(v.url||appLink(a))}" target="_blank" rel="noopener">${v.url?"Vote di "+esc(n):esc(n)}</a>`:""}).join("")}${v.guide_url?`<a class="btn sm ghost" href="${esc(v.guide_url)}" target="_blank" rel="noopener">Panduan</a>`:""}</div></div>`}).join("")}
-    <div class="muted" style="margin-top:6px">Terakhir dicek ${ago(ph[0].verified_at)} · ${esc(ph[0].source||"pengumuman resmi")}</div></div>`;
+      <div class="muted">${rangeStr(v.start_date,v.end_date)} ${keyFmt(v.end_date,{year:"numeric"})} · exact time follows the official announcement</div>
+      ${s==="ongoing"&&r?`<div class="result"><b>Latest update${r.at?" · "+ago(r.at):""}${r.rank?": #"+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">See source</a>`:""}</div>`:""}
+      ${s==="ended"?(r?`<div class="result"><b>Final result${r.rank?": #"+esc(r.rank):""}</b>${r.note?"<br>"+esc(r.note):""}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:underline">See announcement</a>`:""}</div>`:`<div class="result wait">Voting has ended. The final result is waiting for the official announcement.</div>`):""}
+      </div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="badge ${ST[s][1]}">${ST[s][0]}</span>${v.apps.map(n=>{const a=appOf(n);return a&&s!=="ended"?`<a class="btn sm ${v.url?"":"ghost"}" href="${esc(v.url||appLink(a))}" target="_blank" rel="noopener">${v.url?"Vote on "+esc(n):esc(n)}</a>`:""}).join("")}${v.guide_url?`<a class="btn sm ghost" href="${esc(v.guide_url)}" target="_blank" rel="noopener">Guide</a>`:""}</div></div>`}).join("")}
+    <div class="muted" style="margin-top:6px">Last checked ${ago(ph[0].verified_at)} · ${esc(ph[0].source||"official announcement")}</div></div>`;
   }).join("");
-  const strm=a=>{const inner=`<div class="s-cover" style="--c:${a.color}">${esc(a.ic)}${a.img?`<img src="${esc(a.img)}" alt="${esc(a.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</div><div class="s-body"><div><b>${esc(a.name)}</b><div class="muted">${esc(a.note||"")}</div></div>${a.url?"":`<div style="margin-top:auto"><span class="btn sm dis">Link menyusul</span></div>`}</div>`;
+  const strm=a=>{const inner=`<div class="s-cover" style="--c:${a.color}">${esc(a.ic)}${a.img?`<img src="${esc(a.img)}" alt="${esc(a.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</div><div class="s-body"><div><b>${esc(a.name)}</b><div class="muted">${esc(a.note||"")}</div></div>${a.url?"":`<div style="margin-top:auto"><span class="btn sm dis">Link coming soon</span></div>`}</div>`;
     return a.url?`<a class="s-card s-link" href="${esc(a.url)}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${inner}</a>`:`<div class="s-card">${inner}</div>`};
   return `${banner()}<div class="top"><div><h2>Stream &amp; Vote</h2><p>Promotion center: semua link resmi dan jadwal voting.</p></div>${tzSel()}</div>
   <section class="h" style="margin-top:0">Streaming directory</section>
   <div class="cards">${CFG.STREAMING.map(strm).join("")}</div>
   <section class="h">Voting directory</section>
-  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${CFG.VOTING_APPS.map(a=>`<a class="v-app" href="${esc(appLink(a))}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} event berlangsung</div></div></a>`).join("")}</div>
-  <section class="h">Jadwal voting per music show</section>
-  <div class="tabs">${[["all","Semua"],["ongoing","Berlangsung"],["upcoming","Akan datang"],["ended","Selesai"]].map(([k,l])=>`<button class="tab ${fStat===k?"on":""}" data-s="${k}">${l}</button>`).join("")}</div>
-  <div class="tabs"><button class="tab ${fApp==="all"?"on":""}" data-a="all">Semua aplikasi</button>${CFG.VOTING_APPS.map(a=>`<button class="tab ${fApp===a.name?"on":""}" data-a="${esc(a.name)}">${esc(a.name)}</button>`).join("")}</div>
-  <div class="list">${blocks||'<div class="empty">Tidak ada event untuk filter ini.</div>'}</div>
-  <p class="muted" style="margin-top:14px">Status berlangsung, akan datang, dan selesai dihitung otomatis dari tanggal. Website hanya direktori: voting dilakukan langsung di aplikasi resmi. Hasil akhir tampil setelah pengumuman resmi diinput.</p>`;
+  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${CFG.VOTING_APPS.map(a=>`<a class="v-app" href="${esc(appLink(a))}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} events live</div></div></a>`).join("")}</div>
+  <section class="h">Voting schedule</section>
+  <div class="tabs">${[["all","All"],["ongoing","Live"],["upcoming","Upcoming"],["ended","Ended"]].map(([k,l])=>`<button class="tab ${fStat===k?"on":""}" data-s="${k}">${l}</button>`).join("")}</div>
+  <div class="tabs"><button class="tab ${fApp==="all"?"on":""}" data-a="all">All apps</button>${CFG.VOTING_APPS.map(a=>`<button class="tab ${fApp===a.name?"on":""}" data-a="${esc(a.name)}">${esc(a.name)}</button>`).join("")}</div>
+  <div class="list">${blocks||'<div class="empty">No events for this filter.</div>'}</div>
+  ${streamRecap()}
+  <p class="muted" style="margin-top:14px">Live, upcoming and ended status is calculated automatically from the dates. This site is only a directory: voting happens in the official apps. Final results appear once the official announcement is entered.</p>`;
 }
-function afterStream(){bindTz();$$("[data-s]").forEach(b=>b.onclick=()=>{fStat=b.dataset.s;render()});$$("[data-a]").forEach(b=>b.onclick=()=>{fApp=b.dataset.a;render()})}
+function afterStream(){bindTz();recBind();$$("[data-s]").forEach(b=>b.onclick=()=>{fStat=b.dataset.s;render()});$$("[data-a]").forEach(b=>b.onclick=()=>{fApp=b.dataset.a;render()})}
 
-const cal={y:+todayKey().slice(0,4),m:+todayKey().slice(5,7)-1,sel:todayKey(),f:"all"};
+const cal={y:+todayKey().slice(0,4),m:+todayKey().slice(5,7)-1,sel:todayKey(),mem:"all"};
 function pSchedule(){
   const first=new Date(Date.UTC(cal.y,cal.m,1)),start=(first.getUTCDay()+6)%7,dim=new Date(Date.UTC(cal.y,cal.m+1,0)).getUTCDate();
-  const pass=e=>cal.f==="all"||(cal.f==="yt"&&e.kind==="yt")||(cal.f==="vote"&&e.kind==="vote");
+  const pass=e=>cal.mem==="all"||memOf(e).includes(cal.mem);
   const evs=allEvents().filter(pass),by={};evs.forEach(e=>(by[e.day]??=[]).push(e));
   const key=d=>`${cal.y}-${String(cal.m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
   const cells=[];for(let i=0;i<start;i++)cells.push(null);for(let d=1;d<=dim;d++)cells.push(d);
   const sel=(by[cal.sel]||[]).sort((a,b)=>new Date(a.start)-new Date(b.start));
-  const running=cal.f==="yt"?[]:D.votes.filter(v=>verified(v)&&v.start_date<=cal.sel&&cal.sel<=v.end_date);
+  const running=D.votes.filter(v=>verified(v)&&v.start_date<=cal.sel&&cal.sel<=v.end_date&&(cal.mem==="all"||(v.members&&v.members.length?v.members:[((D.releases||[]).find(r=>r.id===relOf(v))||REL()).member||"NCT DREAM"]).includes(cal.mem)));
   const up=upcoming().filter(pass).slice(0,6);
   return `${banner()}<div class="top"><div><h2>Schedule</h2><p>Kalender promosi, jadwal voting, dan konten resmi di YouTube.</p></div>${tzSel()}</div>
-  <div class="tabs">${[["all","Semua"],["yt","Konten YouTube"],["vote","Voting"]].map(([k,l])=>`<button class="tab ${cal.f===k?"on":""}" data-f="${k}">${l}</button>`).join("")}</div>
+  ${memChips(cal.mem,"sm")}
   <div class="grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px" id="schgrid">
-   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><button class="btn sm ghost" id="pm">Sebelumnya</button><b>${new Intl.DateTimeFormat("id-ID",{timeZone:"UTC",month:"long",year:"numeric"}).format(first)}</b><button class="btn sm ghost" id="nm">Berikutnya</button></div>
-    <div class="cal">${["Sen","Sel","Rab","Kam","Jum","Sab","Min"].map(d=>`<div class="hd">${d}</div>`).join("")}${cells.map(d=>d===null?"<div></div>":`<button class="day ${key(d)===todayKey()?"today":""} ${key(d)===cal.sel?"sel":""}" data-d="${key(d)}">${d}${by[key(d)]?`<i>${[...new Set(by[key(d)].map(e=>e.type))].slice(0,3).map(t=>`<s style="--c:${TYPE_COLOR[t]||PAL[0]}"></s>`).join("")}</i>`:""}</button>`).join("")}</div>
+   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><button class="btn sm ghost" id="pm">Sebelumnya</button><b>${new Intl.DateTimeFormat(LOC(),{timeZone:"UTC",month:"long",year:"numeric"}).format(first)}</b><button class="btn sm ghost" id="nm">Berikutnya</button></div>
+    <div class="cal">${LANGS[LANG].days.map(d=>`<div class="hd">${d}</div>`).join("")}${cells.map(d=>d===null?"<div></div>":`<button class="day ${key(d)===todayKey()?"today":""} ${key(d)===cal.sel?"sel":""}" data-d="${key(d)}">${d}${by[key(d)]?`<i>${[...new Set(by[key(d)].map(e=>e.type))].slice(0,3).map(t=>`<s style="--c:${TYPE_COLOR[t]||PAL[0]}"></s>`).join("")}</i>`:""}</button>`).join("")}</div>
     <div class="legend">${Object.entries(TYPE_COLOR).map(([k,c])=>`<span><span class="dot" style="background:${c}"></span> ${k}</span>`).join("")}</div></div>
    <div><div class="card"><b>${keyFmt(cal.sel,{weekday:"long",day:"numeric",month:"long"})}</b>
     <div class="list" style="margin-top:12px">${sel.length?sel.map(e=>`<div class="item" style="border-left:5px solid ${TYPE_COLOR[e.type]||PAL[0]}"><div class="t"><b>${esc(e.title)}</b><small>${evTime(e)} · ${esc(e.type)}</small>${e.note?`<div class="muted" style="margin-top:4px">Catatan: ${esc(e.note)}</div>`:""}${e.url?`<div style="margin-top:8px"><a class="btn sm" href="${esc(e.url)}" target="_blank" rel="noopener">${e.kind==="yt"?"Buka di YouTube":"Buka link"}</a></div>`:""}<div class="muted" style="margin-top:6px">Dicek ${ago(e.verified_at)}${e.source?" · "+esc(e.source.length>70?e.source.slice(0,70)+"…":e.source):""}</div></div></div>`).join(""):""}
@@ -663,16 +920,41 @@ function afterSchedule(){
   $("#pm").onclick=()=>{cal.m--;if(cal.m<0){cal.m=11;cal.y--}render()};
   $("#nm").onclick=()=>{cal.m++;if(cal.m>11){cal.m=0;cal.y++}render()};
   $$("[data-d]").forEach(b=>b.onclick=()=>{cal.sel=b.dataset.d;render()});
-  $$("[data-f]").forEach(b=>b.onclick=()=>{cal.f=b.dataset.f;render()});bindTz();
+  $$("[data-sm]").forEach(b=>b.onclick=()=>{cal.mem=b.dataset.sm;render()});bindTz();
 }
 
 /* ---------- Playground ---------- */
-let pTab=store.get("ptab2","wm");if(!["wm","pick"].includes(pTab))pTab="wm";
+let pTab=store.get("ptab2","wm");if(!["wm","pick","box"].includes(pTab))pTab="wm";
 function pPlay(){
   return `<div class="top"><div><h2>Playground</h2><p>Bikin konten comeback versimu sendiri, lalu bagikan.</p></div></div>
-  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Watermark</button><button class="tab ${pTab==="pick"?"on":""}" data-t="pick">DREAM PICK!</button></div><div id="ptab"></div>`;
+  <div class="tabs"><button class="tab ${pTab==="wm"?"on":""}" data-t="wm">Watermark</button><button class="tab ${pTab==="pick"?"on":""}" data-t="pick">DREAM PICK!</button><button class="tab ${pTab==="box"?"on":""}" data-t="box">LOOP POSTBOX</button></div><div id="ptab"></div>`;
 }
-function afterPlay(){$$("[data-t]").forEach(b=>b.onclick=()=>{pTab=b.dataset.t;store.set("ptab2",pTab);render()});(pTab==="wm"?tabWm:tabPick)()}
+function afterPlay(){$$("[data-t]").forEach(b=>b.onclick=()=>{pTab=b.dataset.t;store.set("ptab2",pTab);render()});(pTab==="wm"?tabWm:pTab==="box"?tabBox:tabPick)()}
+
+let BX={kind:"schedule"};
+function tabBox(){
+  const el=$("#ptab");
+  el.innerHTML=`<div class="card pbx"><div><h3 style="font-size:20px">LOOP POSTBOX</h3><p class="muted" style="margin-top:6px;font-size:13px;line-height:1.6">We do our best to keep DREAMLOOP up to date, but we might occasionally miss a few things along the way.<br><br>If you spot a missing group, unit, or solo schedule, or have an idea to improve the site, don't hesitate to tell us! Your messages will go straight to the editor and stay private.</p></div>
+  <div class="tabs" style="margin:0"><button class="tab ${BX.kind==="schedule"?"on":""}" data-bk="schedule">Missing schedule</button><button class="tab ${BX.kind==="suggestion"?"on":""}" data-bk="suggestion">Suggestion</button></div>
+  <div><label class="f" for="bxm" style="margin-top:0">Message</label><textarea id="bxm" rows="5" maxlength="1000" placeholder="Event name, member or group, date and time, source link"></textarea></div>
+  <div><label class="f" for="bxl" style="margin-top:0">Source link (optional)</label><input type="text" id="bxl" maxlength="300" placeholder="https://"></div>
+  <input class="hp" type="text" id="bxh" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <button class="btn" id="bxs" style="background:var(--rasp)">Send to editor</button>
+  <div class="muted" style="font-size:11.5px">No account needed. Please don't include personal information.</div></div>`;
+  $$("[data-bk]").forEach(b=>b.onclick=()=>{BX.kind=b.dataset.bk;BX.m=$("#bxm").value;BX.l=$("#bxl").value;tabBox();$("#bxm").value=BX.m||"";$("#bxl").value=BX.l||""});
+  $("#bxs").onclick=async()=>{
+    const m=$("#bxm").value.trim(),l=$("#bxl").value.trim();
+    if($("#bxh").value)return toast("Thank you!");
+    if(m.length<10)return toast("Please write a little more so the editor can find it.");
+    if(l&&!/^https?:\/\//i.test(l))return toast("The link should start with https://");
+    const last=+store.get("bxlast",0);if(Date.now()-last<60000)return toast("Please wait a minute before sending another message.");
+    if(!CFG.SUPABASE_URL)return toast("LOOP POSTBOX isn't active yet.",3500);
+    const b=$("#bxs");b.disabled=true;
+    const ok=await sbInsert("editor_messages",{kind:BX.kind,message:m.slice(0,1000),source_url:l||null,lang:LANG});
+    b.disabled=false;
+    if(ok){store.set("bxlast",Date.now());$("#bxm").value="";$("#bxl").value="";toast("Sent to the editor. Thank you!",3500)}else toast("Couldn't send right now. Please try again later.",3500);
+  };
+}
 function dl(cv,name){cv.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast("Gambar tersimpan")},"image/png")}
 function shareX(text){window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text),"_blank","noopener");toast("Lampirkan gambar yang baru kamu download ke postingan X ya.",4200)}
 
@@ -736,7 +1018,7 @@ function tabWm(){
   const setZ=z=>{WM.zoom[WM.sel]=Math.min(4,Math.max(1,z));$("#zr").value=Math.round(WM.zoom[WM.sel]*100);paint(true)};
   $("#zr").oninput=e=>setZ(e.target.value/100);$("#zm").onclick=()=>setZ((WM.zoom[WM.sel]||1)-.15);$("#zp").onclick=()=>setZ((WM.zoom[WM.sel]||1)+.15);
   $("#zrs").onclick=()=>{WM.ox[WM.sel]=.5;WM.oy[WM.sel]=.5;setZ(1)};
-  $("#wdl").onclick=()=>{if(!WM.imgs.some(Boolean))return toast("Upload minimal satu foto dulu ya");paint(false);dl(cv,"boogie-playground.png");setTimeout(()=>paint(true),50)};
+  $("#wdl").onclick=()=>{if(!WM.imgs.some(Boolean))return toast("Upload minimal satu foto dulu ya");paint(false);dl(cv,"dreamloop-watermark.png");setTimeout(()=>paint(true),50)};
   /* gesture: satu jari = geser, dua jari = cubit zoom, roda mouse = zoom */
   const P=new Map();let last=null;
   const pt=e=>{const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height}};
@@ -847,7 +1129,7 @@ function tabPick(){
   const make=()=>{store.set("nick",$("#rn").value);const cv=$("#rc");cv.style.display="block";cardPick(cv,top,$("#rn").value);document.fonts.load("800 40px 'Plus Jakarta Sans',sans-serif").then(()=>cardPick(cv,top,$("#rn").value));return cv};
   $("#rcard").onclick=()=>make().scrollIntoView({behavior:"smooth",block:"center"});
   $("#rdl").onclick=()=>dl(make(),"dream-pick.png");
-  $("#rx").onclick=()=>{dl(make(),"dream-pick.png");shareX(`DREAM PICK! Top 3 aku:\n1. ${top[0].t}\n2. ${top[1].t}\n3. ${top[2].t}\n#NCTDREAM #DREAMPICK #BOOGIEWOOGIE`)};
+  $("#rx").onclick=()=>{dl(make(),"dream-pick.png");shareX(`DREAM PICK! ${LANGS[LANG].top3}:\n1. ${top[0].t}\n2. ${top[1].t}\n3. ${top[2].t}\n#NCTDREAM #DREAMPICK #BOOGIEWOOGIE`)};
   $("#pku").onclick=pkUndo;$("#pkr").onclick=()=>{PK.view="setup";tabPick()};
 }
 const cardImg=new Image();if(window.PHOTOS_B64&&PHOTOS_B64.card)cardImg.src=PHOTOS_B64.card;
@@ -861,7 +1143,7 @@ function cardPick(cv,top,nick){
   c.textBaseline="alphabetic";c.textAlign="left";c.fillStyle=PAL[5];c.font=`800 26px ${FN}`;c.fillText("NCT DREAM  ·  "+CFG.ALBUM,70,372);
   c.fillStyle="#fff";c.font=`800 104px ${FN}`;c.fillText("DREAM",70,468);c.fillText("PICK!",70,554);
   c.fillStyle=PAL[3];c.beginPath();c.arc(884,438,108,0,7);c.fill();c.lineWidth=8;c.strokeStyle="#fff";c.stroke();
-  c.fillStyle="#fff";c.textAlign="center";c.font=`800 64px ${FN}`;c.fillText("TOP 10",884,452);c.font=`700 19px ${FN}`;c.fillText("LAGU FAVORIT",884,488);
+  c.fillStyle="#fff";c.textAlign="center";c.font=`800 64px ${FN}`;c.fillText("TOP 10",884,452);c.font=`700 19px ${FN}`;c.fillText(LANGS[LANG].fav,884,488);
   const y0=596,tints=["#e6ec98","#fbd5e0","#cfe9ea"];
   top.slice(0,10).forEach((s,i)=>{
     const y=y0+i*62,col=PAL[i%PAL.length],light=(col===PAL[5]||col===PAL[2]);
@@ -872,7 +1154,7 @@ function cardPick(cv,top,nick){
     c.textAlign="right";c.font=`600 18px ${FN}`;c.fillStyle="rgba(28,26,46,.6)";const al=(s.a||"").length>22?(s.a||"").slice(0,21)+"…":(s.a||"");c.fillText(al,1010,y+34);
   });
   c.fillStyle=INK;c.fillRect(0,1240,w,110);[0,1,2,3,4,5].forEach(i=>{c.fillStyle=PAL[i];c.fillRect(i*sw6,1240,sw6+1,8)});
-  c.fillStyle="#fff";c.textAlign="left";c.font=`700 34px ${FN}`;c.fillText(nick||"BOOGIE! PLAYGROUND",70,1305);
+  c.fillStyle="#fff";c.textAlign="left";c.font=`700 34px ${FN}`;c.fillText(nick||"DREAMLOOP",70,1305);
   c.textAlign="right";c.font=`600 22px ${FN}`;c.fillText("#NCTDREAM  #DREAMPICK",1010,1303);
 }
 
@@ -881,6 +1163,7 @@ function cardPick(cv,top,nick){
    Right panel, nav, router, PWA
    ============================================================ */
 let cdTimer;
+const BELLSVG='<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>';
 function renderRight(){
   const next=upcoming()[0];
   const evTarget=e=>{if(!e)return null;const st=new Date(e.start).getTime(),now=Date.now();
@@ -891,7 +1174,7 @@ function renderRight(){
   const ong=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").slice(0,3);
   const cdHtml=`<div class="count"><div style="font-size:12px;opacity:.75">${next?"Menuju: "+esc(next.title):"Countdown"}</div><b style="font-size:15px">${next?keyFmt(next.day,{day:"numeric",month:"short"})+" · "+evTime(next):"Belum ada jadwal"}</b><div class="n" id="cd"><div><b>--</b><span>hari</span></div><div><b>--</b><span>jam</span></div><div><b>--</b><span>mnt</span></div><div><b>--</b><span>dtk</span></div></div></div>`;
   $("#mright")&&($("#mright").innerHTML=cdHtml);
-  $("#right").innerHTML=cdHtml+`
+  $("#right").innerHTML=`<div class="bellrow"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-push="1" aria-label="Notifikasi">${BELLSVG} Notifikasi</button></div>`+cdHtml+`
   <div><h3>Voting berlangsung</h3><div class="list">${ong.map(v=>`<a class="item" href="${esc(v.url||"#/stream")}" ${v.url?'target="_blank" rel="noopener"':""} style="text-decoration:none;color:inherit"><div class="t"><b>${esc(v.apps.join(" & "))}</b><small>${esc(v.show)} · ${esc(v.phase)}${v.url?" · ketuk untuk vote":""}</small></div><span class="badge ok">Live</span></a>`).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div><h3>Upcoming</h3><div class="list">${upcoming().slice(0,4).map(evItem).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div class="muted" style="margin-top:auto">Zona waktu: ${TZS[TZ]}</div>`;
@@ -900,14 +1183,14 @@ function renderRight(){
   tick();cdTimer=setInterval(tick,1000);
 }
 function renderNav(cur){
-  $("#nav").innerHTML=PAGES.map(([k,n,c])=>`<a href="#/${k}" class="${k===cur?"on":""}"><i style="--c:${c}"></i>${n}</a>`).join("");
+  $("#nav").innerHTML=PAGES.map(([k,n,c])=>`<a href="#/${k}" class="${k===cur?"on":""}">${n}</a>`).join("");
   $("#mobnav").innerHTML=PAGES.map(([k])=>`<a href="#/${k}" data-k="${k}" class="${k===cur?"on":""}">${MOB[k]}</a>`).join("");
 }
-const ROUTES={home:[pHome,afterHome],mv:[pMv,afterMv],stream:[pStream,afterStream],schedule:[pSchedule,afterSchedule],play:[pPlay,afterPlay]};
+const ROUTES={home:[pHome,afterHome],mv:[pMv,afterMv],stream:[pStream,afterStream],schedule:[pSchedule,afterSchedule],content:[pContent,afterContent],play:[pPlay,afterPlay]};
 function render(){
   const cur=location.hash.replace("#/","")||"home",r=ROUTES[cur]||ROUTES.home;
   renderNav(ROUTES[cur]?cur:"home");window.onresize=null;
-  $("#view").dataset.p=cur;$("#view").innerHTML=r[0]();r[1]&&r[1]();renderRight();
+  $("#view").dataset.p=cur;$("#view").innerHTML=r[0]();r[1]&&r[1]();renderRight();i18nApply();
 }
 addEventListener("hashchange",()=>{render();scrollTo({top:0})});
 
@@ -915,7 +1198,7 @@ let deferredPrompt=null;
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
 const doInstall=()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else $("#pwa").showModal()};
 $("#inst").onclick=doInstall;
-document.addEventListener("click",e=>{const t=e.target.closest("[data-inst],[data-push]");if(!t)return;if(t.dataset.inst)doInstall();if(t.dataset.push)askPush();});
+document.addEventListener("click",e=>{const lg=e.target.closest("[data-lang]");if(lg){setLang(lg.dataset.lang);return}const t=e.target.closest("[data-inst],[data-push]");if(!t)return;if(t.dataset.inst)doInstall();if(t.dataset.push)askPush();});
 if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 $("#view").innerHTML='<div class="empty">Memuat data…</div>';

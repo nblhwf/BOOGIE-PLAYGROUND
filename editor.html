@@ -11,7 +11,7 @@ body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--
 .card{background:#fff;border-radius:18px;padding:16px;margin-bottom:12px;border:1px solid #eef0f4;box-shadow:0 6px 18px rgba(28,26,46,.05)}.card h3{font-size:15px;margin-bottom:8px}
 label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px;font-weight:700}
 input,select,textarea{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink)}
-input:focus,select:focus{outline:none;border-color:var(--teal)}input[type=checkbox]{width:auto}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal)}input[type=checkbox]{width:auto}
 button{font:inherit;font-weight:700;font-size:13px;padding:10px 16px;border-radius:12px;border:0;background:var(--ink);color:#fff;cursor:pointer;transition:.15s}
 button:hover{transform:translateY(-1px)}button:disabled{opacity:.5;cursor:wait}
 .b-main{background:linear-gradient(90deg,var(--teal),var(--blue))}.g{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.r{background:#fde0e8;color:#b0213f}.sm{padding:6px 11px;font-size:12px;border-radius:10px}
@@ -55,8 +55,9 @@ const $=s=>document.querySelector(s),LS=k=>{try{return localStorage.getItem(k)||
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const APPS=["Berriz","IDOL CHAMP","Mubeat","Muniverse","LiNC","Mnet Plus","Higher","Coogoong"];
 const ETYPES=["Official content","Live broadcast","Music show","Award show","Festival","Guest appearance","Recording","Album Event","Voting"];
-const COL={v:"#d62f5c",e:"#2a7ea6",c:"#1b8f96",s:"#8a3d5e",f:"#ec5a2c",p:"#1c1a2e"};
-let seed=null,sha=null,tab="v",q="";
+const MEMB=["NCT DREAM","Renjun","Jeno","Haechan","Jaemin","Chenle","Jisung"];
+const COL={r:"#6a4fd8",v:"#d62f5c",e:"#2a7ea6",c:"#1b8f96",s:"#8a3d5e",f:"#ec5a2c",p:"#1c1a2e"};
+let seed=null,sha=null,tab="r",q="";
 const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c;clearTimeout(msg.t);msg.t=setTimeout(()=>m.className="",c==="ok"?5000:8000)};
 const b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));const b64e=s=>btoa(unescape(encodeURIComponent(s)));
 const api=()=>`https://api.github.com/repos/${$("#repo").value.trim()}/contents/data/seed.json`;
@@ -65,7 +66,7 @@ const br=()=>$("#branch").value.trim()||"main";
 async function load(){
   const r=await fetch(api()+"?ref="+encodeURIComponent(br())+"&t="+Date.now(),{headers:hdr()});
   if(!r.ok)throw new Error(r.status===401||r.status===403?"Token ditolak. Cek izin Contents: Read and write.":r.status===404?"Repo atau file data/seed.json tidak ditemukan.":"Gagal memuat ("+r.status+")");
-  const j=await r.json();sha=j.sha;seed=JSON.parse(b64d(j.content));["votes","events","content","moments","songs"].forEach(k=>seed[k]=seed[k]||[]);$("#setup").style.display="none";render();
+  const j=await r.json();sha=j.sha;seed=JSON.parse(b64d(j.content));["votes","events","content","moments","songs","releases"].forEach(k=>seed[k]=seed[k]||[]);$("#setup").style.display="none";render();
 }
 async function save(note){
   const r=await fetch(api(),{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:note,content:b64e(JSON.stringify(seed,null,1)),sha,branch:br()})});
@@ -98,6 +99,61 @@ const val=id=>$("#"+id).value.trim();
 const chips=(sel=[])=>`<div class="chips">${APPS.map(a=>`<label><input type="checkbox" name="app" value="${esc(a)}" ${sel.includes(a)?"checked":""}>${esc(a)}</label>`).join("")}</div>`;
 const pickedApps=()=>[...document.querySelectorAll('input[name=app]:checked')].map(x=>x.value);
 
+const ordn=n=>n===1?"1st":n===2?"2nd":n===3?"3rd":n+"th";
+function winText(show,phase,rank,votes,pct){
+  const S=String(show||"").toUpperCase(),P=phase||"",n=+rank,v=votes?" with "+Number(votes).toLocaleString("en-US")+" votes"+(pct?" ("+pct+"%)":""):(pct?" with "+pct+"% of the votes":"");
+  if(n===1)return `Congratulations, DREAMzens! We did it! DREAM successfully secured 1st place in the ${S} ${P}${v}! 🎉🏆`;
+  if(n===2)return `Great job, DREAMzens! NCT DREAM secured 2nd place in the ${S} ${P}${v}! Thank you to everyone who took the time to vote and give their best! Let's keep supporting DREAM!👏`;
+  if(n>=3)return `Thank you, DREAMzens! NCT DREAM placed ${ordn(n)} in the ${S} ${P}${v}. Thank you to everyone who voted! Let's keep supporting DREAM!`;
+  return "";
+}
+
+/* ---------- RELEASE ---------- */
+const relOpts=(sel)=>`<option value="">(rilisan aktif)</option>`+seed.releases.map(r=>`<option value="${esc(r.id)}" ${r.id===sel?"selected":""}>${esc(r.title)}</option>`).join("");
+const relSel=(v)=>seed.releases.length?`<label>Rilisan / era</label><select id="f_rel">${relOpts(v.release||"")}</select>`:"";
+const memChk=(sel=[])=>`<label>Member terkait (kosong = ikut rilisan)</label><div class="chips">${MEMB.map(m=>`<label><input type="checkbox" name="mem" value="${m}" ${sel.includes(m)?"checked":""}>${m}</label>`).join("")}</div>`;
+const pickedMem=()=>[...document.querySelectorAll('input[name=mem]:checked')].map(x=>x.value);
+const relMem=()=>({release:($("#f_rel")&&$("#f_rel").value)||undefined,members:pickedMem().length?pickedMem():undefined});
+const applyRM=(o)=>{const x=relMem();if(x.release)o.release=x.release;else delete o.release;if(x.members)o.members=x.members;else delete o.members;return o};
+const slug=t=>String(t).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"rel-"+Date.now();
+function relForm(i){
+  const r=i==null?{type:"group",member:"NCT DREAM",mv:{},wins:[],active:false}:seed.releases[i];
+  const SH=["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"];
+  const w=(r.wins&&r.wins.length?r.wins:SH.map(s=>({show:s,rank:null,date:""})));
+  ask(i==null?"Tambah rilisan":"Edit rilisan",`
+  <div class="row"><div><label>Judul lagu / rilisan</label><input id="f_t" value="${esc(r.title||"")}" placeholder="mis. Boogie Woogie"></div><div><label>Album</label><input id="f_al" value="${esc(r.album||"")}"></div></div>
+  <div class="row"><div><label>Jenis</label><select id="f_ty"><option value="group" ${r.type==="group"?"selected":""}>Grup</option><option value="unit" ${r.type==="unit"?"selected":""}>Unit</option><option value="solo" ${r.type==="solo"?"selected":""}>Solo</option></select></div>
+  <div><label>Member / grup</label><select id="f_mb">${MEMB.map(m=>`<option ${m===r.member?"selected":""}>${m}</option>`).join("")}</select></div></div>
+  <label>Tagline (teks di Home)</label><input id="f_tg" value="${esc(r.tagline||"")}">
+  <label>Tanggal rilis (WIB)</label><input id="f_ra" type="datetime-local" value="${r.release_at?wibLocal(r.release_at):""}">
+  <label>Foto banner (otomatis dipotong lebar, opsional)</label><input id="f_bn" type="file" accept="image/*"><p class="muted">Sekarang: ${esc(r.banner||"belum ada")}</p>
+  <div class="row"><div><label>ID video MV (YouTube)</label><input id="f_mv" value="${esc((r.mv&&r.mv.video_id)||"")}" placeholder="wG7pnZttup8"></div><div><label>Target views</label><input id="f_tv" inputmode="numeric" value="${esc((r.mv&&r.mv.target_views)??"")}"></div></div>
+  <label>Views akhir (opsional, untuk rilisan lama)</label><input id="f_fv" inputmode="numeric" value="${esc((r.mv&&r.mv.final_views)??"")}">
+  <div class="sec">Kemenangan acara musik</div>
+  ${w.map((x,k)=>`<div class="row" style="grid-template-columns:1.3fr .7fr 1fr"><input id="w_s${k}" value="${esc(x.show)}"><input id="w_r${k}" inputmode="numeric" value="${esc(x.rank??"")}" placeholder="posisi"><input id="w_d${k}" value="${esc(x.date||"")}" placeholder="mis. 18 Nov"></div>`).join("")}
+  <p class="muted">Kosongkan posisi kalau belum ada. Posisi 1 dihitung sebagai kemenangan.</p>
+  <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink)"><input id="f_ac" type="checkbox" ${r.active?"checked":""}> Jadikan rilisan aktif (banner, judul, dan hitung mundur di Home)</label>`,
+  async()=>{const t=val("f_t");if(!t)throw new Error("Isi judul dulu.");
+    let banner=r.banner||"";const f=$("#f_bn").files[0];
+    if(f){const b64=await cropBanner(f),name=`assets/banners/${slug(t)}-${Date.now()}.jpg`;
+      const rr=await fetch(`https://api.github.com/repos/${$("#repo").value.trim()}/contents/${name}`,{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:"Banner "+t,content:b64,branch:br()})});
+      if(!rr.ok)throw new Error("Upload banner gagal ("+rr.status+")");banner=name}
+    const wins=w.map((x,k)=>{const rk=val("w_r"+k);return{show:val("w_s"+k),rank:rk===""?null:+rk.replace(/\D/g,""),date:val("w_d"+k)}}).filter(x=>x.show);
+    const num=id=>{const v=val(id).replace(/\D/g,"");return v?+v:undefined};
+    const mv={video_id:val("f_mv")||undefined,target_views:num("f_tv"),final_views:num("f_fv")};Object.keys(mv).forEach(k=>mv[k]===undefined&&delete mv[k]);
+    const o={...r,id:r.id||slug(t),active:$("#f_ac").checked,type:$("#f_ty").value,member:$("#f_mb").value,title:t,album:val("f_al"),tagline:val("f_tg"),banner,release_at:val("f_ra")?val("f_ra")+":00+07:00":r.release_at,mv,wins};
+    if(o.active)seed.releases.forEach(x=>x.active=false);
+    if(i==null){if(seed.releases.some(x=>x.id===o.id))o.id+="-"+Date.now();seed.releases.push(o)}else seed.releases[i]=o;
+    return (i==null?"Tambah":"Edit")+" rilisan: "+t});
+}
+function cropBanner(file){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{
+  const W=1400,H=800,k=Math.max(W/im.width,H/im.height),sw=W/k,sh=H/k,sx=(im.width-sw)/2,sy=Math.max(0,(im.height-sh)*.25);
+  const c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(im,sx,sy,sw,sh,0,0,W,H);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.84).split(",")[1])};im.onerror=()=>rej(new Error("Foto tidak bisa dibaca"));im.src=u})}
+function tabRel(){
+  const L=seed.releases;
+  const first=L.length?"":`<div class="card"><h3>Mulai dari data yang ada</h3><p class="muted">Belum ada rilisan. Tombol ini membuat rilisan pertama dari pengaturan web sekarang (Boogie Woogie), lalu semua vote, konten, dan foto yang ada otomatis ikut ke rilisan itu.</p><button class="b-main" id="rel1" style="margin-top:8px">Buat rilisan pertama</button></div>`;
+  return first+`<button class="addbtn" id="reladd">+ Tambah rilisan baru</button>`+L.map((r,i)=>`<div class="it" style="--c:${r.active?"#0e9f6e":"#c4c8d2"}"><div class="t"><b>${esc(r.title)}</b><div class="muted">${esc(r.member)} · ${esc(r.album||"")} ${r.release_at?"· "+fmt(r.release_at,true):""}</div><div style="margin-top:5px">${r.active?'<span class="pill on">aktif</span>':'<span class="pill">arsip</span>'} <span class="pill has">${(r.wins||[]).filter(w=>+w.rank===1).length} kemenangan</span></div></div><div class="a"><button class="g sm" data-act="redit" data-i="${i}">Edit</button>${r.active?"":`<button class="g sm" data-act="ract" data-i="${i}">Aktifkan</button>`}<button class="r sm" data-act="rdel" data-i="${i}">Hapus</button></div></div>`).join("")||"";
+}
 /* ---------- VOTE ---------- */
 function voteForm(i){
   const v=i==null?{apps:[],result:null}:seed.votes[i],r=v.result||{};
@@ -109,14 +165,17 @@ function voteForm(i){
   <div style="display:flex;gap:8px"><input id="f_dl" type="datetime-local" value="${v.deadline_at?wibLocal(v.deadline_at):""}" style="flex:1"><button type="button" class="g sm" id="f_now" style="margin:0">Selesai sekarang</button></div>
   <p class="muted" style="margin-top:4px">Kalau diisi, web otomatis menandai vote "Selesai" tepat di jam itu. Kosongkan untuk memakai tanggal selesai saja.</p>
   <label>Link vote langsung (dibuka saat pembaca menekan vote)</label><input id="f_u" value="${esc(v.url||"")}" placeholder="https://...">
+  ${relSel(v)}${memChk(v.members||[])}
   <div class="sec">Hasil (isi setelah vote selesai)</div>
   <div class="row"><div><label>Posisi / peringkat</label><input id="f_rk" value="${esc(r.rank??"")}" placeholder="mis. 1"></div><div><label>Link pengumuman</label><input id="f_ru" value="${esc(r.url??"")}" placeholder="https://..."></div></div>
-  <label>Catatan</label><input id="f_rn" value="${esc(r.note??"")}" placeholder="mis. selisih suara">`,
+  <div class="row"><div><label>Total suara</label><input id="f_rv" inputmode="numeric" value="${esc(r.votes??"")}" placeholder="mis. 376440"></div><div><label>Persen (opsional)</label><input id="f_rp" inputmode="decimal" value="${esc(r.pct??"")}" placeholder="mis. 47.77"></div></div>
+  <label style="display:flex;justify-content:space-between;align-items:center">Ucapan / catatan <button type="button" class="g sm" id="f_tpl" style="margin:0">Buat ucapan otomatis</button></label><textarea id="f_rn" rows="4" placeholder="Terisi otomatis dari acara, kategori, peringkat, suara, dan persen. Tetap bisa kamu edit.">${esc(r.note??"")}</textarea>
+  <p class="muted" style="margin-top:4px">Isi Acara, Tahap (kategori), peringkat, suara, dan persen, lalu tekan tombol. Template tersedia untuk juara 1 dan 2. Setelah terisi, teks bebas diubah.</p>`,
   ()=>{const show=val("f_show"),phase=val("f_phase"),apps=pickedApps();if(!show||!phase)throw new Error("Isi acara dan tahap dulu.");if(!apps.length)throw new Error("Pilih minimal satu aplikasi.");let endD=val("f_e"),dl=val("f_dl");if(dl){const dd=dl.slice(0,10);if(dd>endD)endD=dd}if(endD<val("f_s"))throw new Error("Tanggal selesai harus setelah mulai.");
     const rk=val("f_rk"),rn=val("f_rn"),ru=val("f_ru");
     const o={...(i==null?{slug:"v-"+Date.now(),guide_url:null,source:""}:seed.votes[i]),show,phase,apps,start_date:val("f_s"),end_date:endD,deadline_at:dl?dl+":00+07:00":null,url:val("f_u")||null,
-      result:(rk||rn||ru)?{rank:rk===""?null:(isNaN(rk)?rk:+rk),note:rn,url:ru,at:new Date().toISOString()}:null,verified_at:new Date().toISOString()};
-    if(i==null)seed.votes.push(o);else seed.votes[i]=o;return (i==null?"Tambah":"Edit")+" vote: "+show+" "+phase});
+      result:(rk||rn||ru)?{rank:rk===""?null:(isNaN(rk)?rk:+rk),note:rn,url:ru,votes:val("f_rv").replace(/\D/g,"")?+val("f_rv").replace(/\D/g,""):null,pct:val("f_rp").replace(",",".")?+val("f_rp").replace(",","."):null,at:new Date().toISOString()}:null,verified_at:new Date().toISOString()};
+    applyRM(o);if(i==null)seed.votes.push(o);else seed.votes[i]=o;return (i==null?"Tambah":"Edit")+" vote: "+show+" "+phase});
 }
 function tabVote(){
   const L=seed.votes.map((v,i)=>({v,i})).filter(({v})=>!q||(v.show+v.phase+v.apps.join(" ")).toLowerCase().includes(q));
@@ -135,10 +194,10 @@ function eventForm(i){
   <div><label>Tanggal dan jam (WIB)</label><input id="f_st" type="datetime-local" value="${e.start?wibLocal(e.start):""}"></div></div>
   <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink)"><input id="f_all" type="checkbox" ${e.all_day?"checked":""}> Seharian (jam belum diketahui)</label>
   <label>Link (YouTube, dll)</label><input id="f_u" value="${esc(e.url||"")}" placeholder="https://...">
-  <label>Catatan</label><input id="f_n" value="${esc(e.note||"")}">`,
+  <label>Catatan</label><input id="f_n" value="${esc(e.note||"")}">${relSel(e)}${memChk(e.members||[])}`,
   ()=>{const t=val("f_t"),s=val("f_st");if(!t||!s)throw new Error("Isi judul dan tanggal dulu.");const all=$("#f_all").checked;
     const o={...(i==null?{slug:"manual-"+Date.now(),source:""}:seed.events[i]),type:$("#f_ty").value,title:t,start:all?s.slice(0,10)+"T00:00:00+07:00":s+":00+07:00",all_day:all,note:val("f_n"),url:val("f_u")||null,verified_at:new Date().toISOString()};
-    if(i==null)seed.events.push(o);else seed.events[i]=o;return (i==null?"Tambah":"Edit")+" jadwal: "+t});
+    applyRM(o);if(i==null)seed.events.push(o);else seed.events[i]=o;return (i==null?"Tambah":"Edit")+" jadwal: "+t});
 }
 function tabEvent(){
   const now=Date.now(),L=seed.events.map((e,i)=>({e,i})).filter(({e})=>!q||(e.title+e.type).toLowerCase().includes(q));
@@ -154,10 +213,10 @@ function contentForm(i){
   <label>Link YouTube (channel mana pun)</label><input id="f_l" value="${c.id?"https://youtu.be/"+esc(c.id):""}" placeholder="https://youtu.be/...">
   <label>Judul (kosongkan agar otomatis dari YouTube)</label><input id="f_t" value="${esc(c.title||"")}">
   <label>Label singkat (mis. Teaser, Na PD)</label><input id="f_g" value="${esc(c.tag||"")}">
-  <p class="muted" style="margin-top:8px">Urutan di web mengikuti tanggal tayang di YouTube, terbaru paling depan.</p>`,
+  ${relSel(c)}${memChk(c.members||[])}<p class="muted" style="margin-top:8px">Urutan di web mengikuti tanggal tayang di YouTube, terbaru paling depan.</p>`,
   async()=>{const id=ytId(val("f_l"));if(!id)throw new Error("Link YouTube tidak dikenali.");let title=val("f_t"),tag=val("f_g");
     if(!title||!tag){const info=await ytInfo(id);if(info){title=title||info.title;tag=tag||String(info.author_name||"").slice(0,18)}}
-    const o={id,title:title||"",tag:tag||""};if(i==null)seed.content.unshift(o);else seed.content[i]=o;return (i==null?"Tambah":"Edit")+" konten YouTube"});
+    const o=applyRM({...(i==null?{}:seed.content[i]),id,title:title||"",tag:tag||""});if(i==null)seed.content.unshift(o);else seed.content[i]=o;return (i==null?"Tambah":"Edit")+" konten YouTube"});
 }
 function tabContent(){
   return seed.content.map((c,i)=>({c,i})).filter(({c})=>!q||(c.title+c.tag+c.id).toLowerCase().includes(q)).map(({c,i})=>`<div class="it" style="--c:#1b8f96"><img class="th" loading="lazy" src="https://i.ytimg.com/vi/${esc(c.id)}/mqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><div class="t"><b>${esc(c.title||"(judul diisi otomatis di web)")}</b><div class="muted">${esc(c.tag||"tanpa label")} · youtu.be/${esc(c.id)}</div></div><div class="a"><button class="g sm" data-act="cedit" data-i="${i}">Edit</button><button class="r sm" data-act="cdel" data-i="${i}">Hapus</button></div></div>`).join("")||'<div class="empty">Belum ada konten.</div>';
@@ -182,7 +241,7 @@ function tabSong(){
 function tabPhoto(){
   const L=seed.moments;
   return `<div class="card"><h3>Tambah foto Comeback moments</h3><p class="muted">Foto dipotong otomatis jadi 4:5 supaya seragam. Boleh pilih banyak. Foto baru tampil paling depan.</p>
-  <input id="pf" type="file" accept="image/*" multiple style="margin:10px 0"><button id="pup" class="b-main">Upload</button></div>
+  <input id="pf" type="file" accept="image/*" multiple style="margin:10px 0">${relSel({})}${memChk([])}<button id="pup" class="b-main">Upload</button></div>
   <div class="card"><h3>Foto saat ini (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map((m,i)=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><button class="r sm" style="width:100%;margin-top:4px" data-act="pdel" data-i="${i}">Hapus</button></div>`).join("")}</div></div>`;
 }
 function tabSet(){
@@ -193,39 +252,48 @@ function tabSet(){
   <label>Kode GoatCounter</label><input id="gcc" value="${esc(gc)}" placeholder="boogiefan"><div style="display:flex;gap:8px;margin-top:10px"><button id="gcs" class="b-main">Simpan</button>${gc?`<a href="https://${esc(gc)}.goatcounter.com" target="_blank" rel="noopener"><button class="g" type="button">Buka statistik</button></a>`:""}</div></div>
   <div class="card"><h3>Notifikasi (OneSignal)</h3><p class="muted">Isi App ID dari dashboard OneSignal (Settings → Keys &amp; IDs). Tombol "Aktifkan notifikasi" akan muncul di web.</p>
   <label>OneSignal App ID</label><input id="osi" value="${esc(st.onesignal_app_id||"")}" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><button id="oss" class="b-main" style="margin-top:10px">Simpan</button></div>
+  <div class="card"><h3>Pesan dari pembaca (LOOP POSTBOX)</h3><p class="muted">Pesan masuk ke tabel <b>editor_messages</b> di Supabase dan hanya bisa kamu baca. Buka dashboard Supabase, menu Table Editor, tabel editor_messages. Kolom <b>kind</b> berisi "Missing schedule" atau "Suggestion". Isi SUPABASE_URL dan SUPABASE_ANON_KEY di config.js supaya kotak pos aktif.</p></div>
   <div class="card"><button class="g" id="forget">Keluar (hapus token dari browser ini)</button></div>`;
 }
 
 /* ---------- render ---------- */
-const TABS=[["v","Vote",()=>seed.votes.length],["e","Jadwal",()=>seed.events.length],["c","Konten",()=>seed.content.length],["s","Lagu",()=>seed.songs.length],["f","Foto",()=>seed.moments.length],["p","Pengaturan",null]];
+const TABS=[["r","Rilisan",()=>seed.releases.length],["v","Vote",()=>seed.votes.length],["e","Jadwal",()=>seed.events.length],["c","Konten",()=>seed.content.length],["s","Lagu",()=>seed.songs.length],["f","Foto",()=>seed.moments.length],["p","Pengaturan",null]];
 function render(){
   $("#app").style.display="block";
   $("#tabs").innerHTML=TABS.map(([k,l,n])=>`<button data-tab="${k}" class="${tab===k?"on":""}" style="--c:${COL[k]}">${l}${n?`<i>${n()}</i>`:""}</button>`).join("");
   const canAdd="vecs".includes(tab);const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu"};
   const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]} baru</button><div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:"";
-  const body={v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
+  const body={r:tabRel,v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
   const keep=document.activeElement&&document.activeElement.id==="q";
   $("#pane").innerHTML=search+body;if(keep){const x=$("#q");x.focus();x.setSelectionRange(99,99)}
 }
 document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value.toLowerCase().trim();render()}});
-const ADD={v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
+const ADD={r:()=>relForm(),v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
 document.addEventListener("click",async ev=>{
   const t=ev.target.closest("button");if(!t)return;
   try{
   if(t.id==="addb"){ADD[tab]&&ADD[tab]();return}
+  if(t.id==="f_tpl"){const rk=val("f_rk");if(!rk||isNaN(rk))return msg("Isi peringkat dulu (angka).","bad");const x=winText(val("f_show"),val("f_phase"),rk,val("f_rv").replace(/\D/g,""),val("f_rp").replace(",","."));if($("#f_rn").value.trim()&&!confirm("Ganti teks yang sudah ada dengan template?"))return;$("#f_rn").value=x;return}
   if(t.id==="f_now"){$("#f_dl").value=wibLocal(new Date().toISOString());return}
   if(t.dataset.tab){tab=t.dataset.tab;q="";render();return}
   const i=+t.dataset.i,a=t.dataset.act;
-  if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
+  if(a==="redit")relForm(i);if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
   if(a==="vdel"&&confirm("Hapus vote ini?\n"+seed.votes[i].show+" · "+seed.votes[i].phase)){seed.votes.splice(i,1);await save("Hapus vote")}
   if(a==="edel"&&confirm("Hapus jadwal ini?\n"+seed.events[i].title)){seed.events.splice(i,1);await save("Hapus jadwal")}
   if(a==="cdel"&&confirm("Hapus konten ini dari web?")){seed.content.splice(i,1);await save("Hapus konten")}
   if(a==="sdel"&&confirm("Hapus lagu ini?\n"+seed.songs[i].t)){seed.songs.splice(i,1);await save("Hapus lagu")}
   if(a==="pdel"&&confirm("Hapus foto ini?")){seed.moments.splice(i,1);await save("Hapus foto")}
+  if(t.id==="reladd"){relForm();return}
+  if(t.id==="rel1"){const vid=(prompt("ID video MV YouTube untuk rilisan ini:","wG7pnZttup8")||"").trim();if(!vid)return;const st=seed.settings||{};
+    seed.releases.push({id:"boogie-woogie",active:true,type:"group",member:"NCT DREAM",title:"Boogie Woogie",album:"DREAM AFTER DREAM",tagline:"Track, stream, vote and follow every NCT DREAM and member activity.",banner:"assets/hero.jpg",release_at:seed.release_at||"2026-11-09T16:00:00+07:00",mv:{video_id:vid,target_views:st.target_views||10000000},wins:["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"].map(x=>({show:x,rank:null,date:""}))});
+    seed.votes.forEach(v=>v.release=v.release||"boogie-woogie");seed.moments.forEach(m=>m.release=m.release||"boogie-woogie");seed.content.forEach(c=>c.release=c.release||"boogie-woogie");
+    await save("Buat rilisan pertama");return}
+  if(a==="ract"){seed.releases.forEach(r=>r.active=false);seed.releases[i].active=true;await save("Aktifkan rilisan: "+seed.releases[i].title)}
+  if(a==="rdel"&&confirm("Hapus rilisan ini?\n"+seed.releases[i].title+"\n(vote/konten yang menempel tetap ada)")){const was=seed.releases[i].active;seed.releases.splice(i,1);if(was&&seed.releases[0])seed.releases[0].active=true;await save("Hapus rilisan")}
   if(t.id==="pup"){const fs=[...$("#pf").files];if(!fs.length)return msg("Pilih foto dulu.","bad");t.disabled=true;let n=0;
     for(const f of fs){const b64=await cropJpeg(f),name=`assets/photos/u-${Date.now()}-${n++}.jpg`;
       const r=await fetch(`https://api.github.com/repos/${$("#repo").value.trim()}/contents/${name}`,{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:"Tambah foto",content:b64,branch:br()})});
-      if(!r.ok){t.disabled=false;throw new Error("Upload foto gagal ("+r.status+")")}seed.moments.unshift({src:name})}
+      if(!r.ok){t.disabled=false;throw new Error("Upload foto gagal ("+r.status+")")}seed.moments.unshift(applyRM({src:name}))}
     await save("Tambah foto Comeback moments")}
   if(t.id==="tgs"){const v=$("#tg").value.replace(/[^0-9]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.target_views=+v;else delete seed.settings.target_views;await save("Ubah target views")}
   if(t.id==="oss"){const v=$("#osi").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.onesignal_app_id=v;else delete seed.settings.onesignal_app_id;await save("Atur notifikasi")}
