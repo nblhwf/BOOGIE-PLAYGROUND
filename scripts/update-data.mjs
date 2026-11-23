@@ -2,18 +2,30 @@
 // Menulis data/views.json (riwayat views MV) dan data/youtube-events.json (konten channel NCT DREAM).
 import {readFile,writeFile} from "node:fs/promises";
 import {buildNotifications,sendAll} from "./notify.mjs";
-const KEY=process.env.YT_API_KEY, VID=process.env.VIDEO_ID||"wG7pnZttup8", API="https://www.googleapis.com/youtube/v3";
+const KEY=process.env.YT_API_KEY, API="https://www.googleapis.com/youtube/v3";
 if(!KEY){console.error("YT_API_KEY belum diisi di GitHub Secrets");process.exit(1)}
+const readJson0=async(f,d)=>{try{return JSON.parse(await readFile(f,"utf8"))}catch{return d}};
+// MV yang dilacak: rilisan aktif (riwayat lengkap di views.json) + semua rilisan lain yang punya video_id (angka terbaru di views-latest.json)
+const SEED0=await readJson0("data/seed.json",{});
+const RELS=(SEED0.releases||[]).filter(r=>r.mv&&r.mv.video_id);
+const ACTIVE=RELS.find(r=>r.active)||RELS[0];
+const VID=(ACTIVE&&ACTIVE.mv.video_id)||process.env.VIDEO_ID||"wG7pnZttup8";
 const yt=async p=>{const r=await fetch(`${API}/${p}&key=${KEY}`);if(!r.ok)throw new Error(`YouTube ${r.status}: ${(await r.text()).slice(0,200)}`);return r.json()};
 const readJson=async(f,d)=>{try{return JSON.parse(await readFile(f,"utf8"))}catch{return d}};
 let failed=false;
 try{
   const j=await yt(`videos?part=statistics,snippet&id=${VID}`),it=j.items?.[0];
   if(!it)throw new Error("Video tidak ditemukan");
-  const f="data/views.json",d=await readJson(f,{snapshots:[]});
+  const f="data/views.json";let d=await readJson(f,{snapshots:[]});
+  if(d.video_id&&d.video_id!==VID){await writeFile(`data/views-${d.video_id}.json`,JSON.stringify(d));d={snapshots:[]}} // rilisan aktif berganti: arsipkan riwayat lama
   d.snapshots.push({captured_at:new Date().toISOString(),views:Number(it.statistics.viewCount)});
   d.snapshots=d.snapshots.slice(-6000);d.video_id=VID;d.updated_at=new Date().toISOString();
   await writeFile(f,JSON.stringify(d));console.log("views",it.statistics.viewCount);
+  // angka terbaru semua MV rilisan (untuk Comeback Recap)
+  try{const ids=[...new Set(RELS.map(r=>r.mv.video_id).concat(VID))],views={};
+    for(let i=0;i<ids.length;i+=50){const r=await yt(`videos?part=statistics&id=${ids.slice(i,i+50).join(",")}`);for(const x of r.items||[])views[x.id]=Number(x.statistics.viewCount)}
+    await writeFile("data/views-latest.json",JSON.stringify({updated_at:new Date().toISOString(),views}));console.log("views-latest",Object.keys(views).length)}
+  catch(e){console.error("views-latest gagal:",e.message)}
  
 try {
   // Channel resmi NCT DREAM, bukan channel pemilik MV.
