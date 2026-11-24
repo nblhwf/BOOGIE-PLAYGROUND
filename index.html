@@ -297,9 +297,9 @@ body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
 @media(max-width:370px){.mobnav a{font-size:10.5px!important}}
 @media(max-width:860px){.vr2,.mchips,.yts,.moments{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;scroll-padding-left:16px}.vr2{padding-top:4px;padding-bottom:22px;margin-bottom:-10px}.yts{padding-bottom:18px}}
 .bell{position:relative;flex:none}.bell svg{flex:none;width:22px;height:22px}.g2{column-gap:28px}.bdot{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:#e8336d;border:2px solid #fff;display:none}body.has-new .bdot{display:block}
-dialog{margin:auto}dialog.sheet{padding:0;max-width:440px;overflow:hidden;display:none;flex-direction:column;max-height:min(640px,86vh)}dialog.sheet[open]{display:flex}
-.bp-h{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 8px}.bp-h h3{margin:0}.bp-x{width:36px;height:36px;border-radius:50%;background:#eef1f4;font-size:22px;line-height:1;color:var(--ink)}
-#bpl{overflow:auto;padding:4px 16px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
+dialog{margin:auto}dialog.sheet{padding:0;width:min(440px,calc(100vw - 32px));height:auto;overflow:hidden;display:none;flex-direction:column;max-height:min(640px,86vh)}dialog.sheet[open]{display:flex}
+.bp-h{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 8px}.bp-h h3{margin:0}.bp-x{width:38px;height:38px;padding:0;border-radius:50%;background:#eef1f4;color:var(--ink);display:grid;place-items:center;flex:none}.bp-x svg{display:block}
+#bpl{overflow:auto;-webkit-overflow-scrolling:touch;padding:4px 16px 14px;display:flex;flex-direction:column;gap:10px;flex:1 1 auto;min-height:120px}#bpl>*{flex:none}
 .an{position:relative;background:#f6f7fb;border-radius:16px;padding:12px 14px}.an.new{background:#fff;box-shadow:inset 0 0 0 1.5px #f2b5c8}.an.new::after{content:"NEW";position:absolute;top:10px;right:12px;font-size:10px;font-weight:800;color:#e8336d;letter-spacing:.6px}
 .an small{display:block;font-size:11px;color:var(--mute);font-weight:700;margin-bottom:3px}.an b{display:block;font-size:14px;padding-right:34px}.an p{margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--ink)}.an a{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:800;color:var(--teal,#1b8f96)}
 .bp-f{border-top:1px solid #eef0f4;background:#fafbfd;padding:12px 16px 14px;font-size:12px;color:var(--mute);line-height:1.5}.bp-b{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}.bp-b .btn{width:auto}.bp-on{display:none;font-size:12px;color:#0b7a55}
@@ -318,7 +318,7 @@ dialog{margin:auto}dialog.sheet{padding:0;max-width:440px;overflow:hidden;displa
 </div>
 <nav class="mobnav" id="mobnav"></nav>
 <dialog id="bellp" class="sheet">
-  <div class="bp-h"><h3>Announcements</h3><button class="bp-x" data-bx="1" aria-label="Close">&times;</button></div>
+  <div class="bp-h"><h3>Announcements</h3><button class="bp-x" data-bx="1" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div id="bpl"></div>
   <div class="bp-f"><span>Open DREAMLOOP from your home screen and get alerts for new announcements.</span>
     <div class="bp-b"><button class="btn butter sm" id="bpi" data-inst="1">Add to home</button><button class="btn sm pushbtn" id="bpn" data-push="1">Turn on alerts</button><b class="bp-on" id="bpo">Alerts on</b></div></div>
@@ -394,7 +394,7 @@ const ATTR_T=["aria-label","placeholder","title","alt"],ORIG=new WeakMap(),ORIGA
 const toEn=(t,node)=>{const par=node&&node.parentNode;let o=null;
   if(par&&par.tagName==="A"&&DICT_A[t])o=DICT_A[t];else if(par&&par.classList&&par.classList.contains("tab")&&DICT_TAB[t])o=DICT_TAB[t];else if(DICT[t]!=null)o=DICT[t];
   if(o==null){o=t;for(const [re,r] of RULES)o=o.replace(re,r)}return o};
-const toLang=(en)=>{const L=LANGS[LANG];if(!L.dict)return en;if(L.dict[en]!=null)return L.dict[en];let o=en;for(const [re,r] of (L.rules||[]))o=o.replace(re,r);return o};
+const toLang=(en)=>{const L=LANGS[LANG];if(!L.dict)return en;if(L.dict[en]!=null)return L.dict[en];if(!L.lc){L.lc={};for(const k in L.dict)L.lc[k.toLowerCase()]=L.dict[k]}if(L.lc[String(en).toLowerCase()]!=null)return L.lc[String(en).toLowerCase()];let o=en;for(const [re,r] of (L.rules||[]))o=o.replace(re,r);return o};
 const trStr=(s,node)=>{const t=s.trim();if(!t)return s;const o=LANG==="id"?toLang(t):toLang(toEn(t,node));return o===t?s:s.replace(t,o)};
 let i18nObs=null;
 function i18nWalk(root){
@@ -538,7 +538,7 @@ async function loadData(){
   D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.songs=seed.songs||SEEDV.songs||[];D.meta=(ej&&ej.meta)||{};D.settings=seed.settings||SEEDV.settings||{};
   const oid=D.settings.onesignal_app_id||CFG.ONESIGNAL_APP_ID;if(oid)initPush(oid);
   const gc=D.settings.goatcounter||CFG.GOATCOUNTER;if(gc&&!document.getElementById('gc')){const sc=document.createElement('script');sc.id='gc';sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter='https://'+String(gc).replace(/[^\w-]/g,'')+'.goatcounter.com/count';document.head.appendChild(sc)}D.content=seed.content||SEEDV.content||[];
-  D.releases=seed.releases||SEEDV.releases||[];D.ann=(seed.announcements||SEEDV.announcements||[]);D.vlatest=(vl&&vl.views)||{};applyRelease();
+  D.releases=seed.releases||SEEDV.releases||[];D.ann=(seed.announcements||SEEDV.announcements||[]);D.voting_apps=(seed.voting_apps||SEEDV.voting_apps||[]);D.vlatest=(vl&&vl.views)||{};applyRelease();
 }
 
 
@@ -559,6 +559,7 @@ function vStatus(v){
   return"ongoing";
 }
 const ST={ongoing:["Live","ok"],upcoming:["Upcoming","warn"],ended:["Ended","bad"]};
+const typeColor=t=>TYPE_COLOR[t]||TYPE_COLOR[Object.keys(TYPE_COLOR).find(k=>k.toLowerCase()===String(t).toLowerCase())]||PAL[0];
 const TYPE_COLOR={"Album Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6],"Radio Show":PAL[1],"Movie & Series":PAL[3]};
 function allEvents(){
   const out=D.events.filter(verified)
@@ -866,7 +867,9 @@ function afterMv(){
 
 let fApp="all",fStat="all";
 const vIcon=a=>`<div class="v-ic" style="--c:${a.color}">${esc(a.ic)}${a.icon?`<img src="${esc(a.icon)}" alt="" loading="lazy" onerror="this.remove()">`:""}</div>`;
-const appOf=n=>CFG.VOTING_APPS.find(a=>a.name.toLowerCase()===String(n).toLowerCase());
+const VAall=()=>{const ex=D.voting_apps||[];return CFG.VOTING_APPS.map(b=>({...b,...(ex.find(x=>x.name===b.name)||{})})).concat(ex.filter(x=>!CFG.VOTING_APPS.some(b=>b.name===x.name)).map(x=>({ic:String(x.name).slice(0,2),color:"#1c1a2e",...x})))};
+const VAon=()=>VAall().filter(a=>a.active!==false);
+const appOf=n=>VAall().find(a=>a.name.toLowerCase()===String(n).toLowerCase());
 const playUrl=a=>`https://play.google.com/store/search?q=${encodeURIComponent(a.play||a.name)}&c=apps`;
 const OS_=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)?"ios":/Android/i.test(navigator.userAgent)?"android":"desk";
 const iosUrl=a=>a.ios||`https://apps.apple.com/search?term=${encodeURIComponent(a.play||a.name)}`;
@@ -896,10 +899,10 @@ function pStream(){
   <section class="h" style="margin-top:0">Streaming directory</section>
   <div class="cards">${CFG.STREAMING.map(strm).join("")}</div>
   <section class="h">Voting directory</section>
-  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${CFG.VOTING_APPS.map(a=>`<a class="v-app" href="${esc(appLink(a))}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} events live</div></div></a>`).join("")}</div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${VAon().map(a=>`<a class="v-app" href="${esc(appLink(a))}" target="_blank" rel="noopener" aria-label="Buka ${esc(a.name)}">${vIcon(a)}<div><b style="font-size:14px">${esc(a.name)}</b><div class="muted">${activeCount(a.name)} events live</div></div></a>`).join("")}</div>
   <section class="h">Voting schedule</section>
   <div class="tabs">${[["all","All"],["ongoing","Live"],["upcoming","Upcoming"],["ended","Ended"]].map(([k,l])=>`<button class="tab ${fStat===k?"on":""}" data-s="${k}">${l}</button>`).join("")}</div>
-  <div class="tabs"><button class="tab ${fApp==="all"?"on":""}" data-a="all">All apps</button>${CFG.VOTING_APPS.map(a=>`<button class="tab ${fApp===a.name?"on":""}" data-a="${esc(a.name)}">${esc(a.name)}</button>`).join("")}</div>
+  <div class="tabs"><button class="tab ${fApp==="all"?"on":""}" data-a="all">All apps</button>${VAon().map(a=>`<button class="tab ${fApp===a.name?"on":""}" data-a="${esc(a.name)}">${esc(a.name)}</button>`).join("")}</div>
   <div class="list">${blocks||'<div class="empty">No events for this filter.</div>'}</div>
   ${streamRecap()}
   <p class="muted" style="margin-top:14px">Live, upcoming and ended status is calculated automatically from the dates. This site is only a directory: voting happens in the official apps. Final results appear once the official announcement is entered.</p>`;
@@ -923,7 +926,7 @@ function pSchedule(){
     <div class="cal">${LANGS[LANG].days.map(d=>`<div class="hd">${d}</div>`).join("")}${cells.map(d=>d===null?"<div></div>":`<button class="day ${key(d)===todayKey()?"today":""} ${key(d)===cal.sel?"sel":""}" data-d="${key(d)}">${d}${by[key(d)]?`<i>${[...new Set(by[key(d)].map(e=>e.type))].slice(0,3).map(t=>`<s style="--c:${TYPE_COLOR[t]||PAL[0]}"></s>`).join("")}</i>`:""}</button>`).join("")}</div>
     <div class="legend">${Object.entries(TYPE_COLOR).map(([k,c])=>`<span><span class="dot" style="background:${c}"></span> ${k}</span>`).join("")}</div></div>
    <div><div class="card"><b>${keyFmt(cal.sel,{weekday:"long",day:"numeric",month:"long"})}</b>
-    <div class="list" style="margin-top:12px">${sel.length?sel.map(e=>`<div class="item" style="border-left:5px solid ${TYPE_COLOR[e.type]||PAL[0]}"><div class="t"><b>${esc(e.title)}</b><small>${evTime(e)} · ${esc(e.type)}</small>${e.note?`<div class="muted" style="margin-top:4px">Catatan: ${esc(e.note)}</div>`:""}${e.url?`<div style="margin-top:8px"><a class="btn sm" href="${esc(e.url)}" target="_blank" rel="noopener">${e.kind==="yt"?"Buka di YouTube":"Buka link"}</a></div>`:""}<div class="muted" style="margin-top:6px">Dicek ${ago(e.verified_at)}${e.source?" · "+esc(e.source.length>70?e.source.slice(0,70)+"…":e.source):""}</div></div></div>`).join(""):""}
+    <div class="list" style="margin-top:12px">${sel.length?sel.map(e=>`<div class="item" style="border-left:5px solid ${typeColor(e.type)}"><div class="t"><b>${esc(e.title)}</b><small>${evTime(e)} · ${esc(e.type)}</small>${e.note?`<div class="muted" style="margin-top:4px">Catatan: ${esc(e.note)}</div>`:""}${e.url?`<div style="margin-top:8px"><a class="btn sm" href="${esc(e.url)}" target="_blank" rel="noopener">${e.kind==="yt"?"Buka di YouTube":"Buka link"}</a></div>`:""}<div class="muted" style="margin-top:6px">Dicek ${ago(e.verified_at)}${e.source?" · "+esc(e.source.length>70?e.source.slice(0,70)+"…":e.source):""}</div></div></div>`).join(""):""}
     ${running.map(v=>`<div class="item" style="border-left:5px solid ${PAL[4]}"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><small>Voting berlangsung · ${esc(v.apps.join(" & "))} · ${rangeStr(v.start_date,v.end_date)}</small></div></div>`).join("")}
     ${!sel.length&&!running.length?'<div class="empty">Tidak ada jadwal di tanggal ini.</div>':""}</div></div>
    <section class="h">Upcoming</section><div class="list">${up.map(evItem).join("")||'<div class="empty">Belum ada jadwal.</div>'}</div></div></div>
