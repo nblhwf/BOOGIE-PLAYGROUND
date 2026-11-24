@@ -1637,5 +1637,13 @@
    ]
   }
  ],
- "announcements": []
+ "announcements": [
+  {
+   "id": "a1795491279982",
+   "title": "We're Still Updating!",
+   "text": "This website is still a work in progress and not all NCT DREAM schedules have been added yet.\n\nIf you notice any missing schedules, feel free to let us know through the LOOP POSTBOX in the Playground. Thank you for helping us keep the schedule up to date!",
+   "at": "2026-11-24",
+   "url": ""
+  }
+ ]
 }
