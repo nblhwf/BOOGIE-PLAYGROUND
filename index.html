@@ -457,7 +457,7 @@ LANGS.ko.dict={
 "Voting has ended. The final result is waiting for the official announcement.":"투표가 종료되었습니다. 최종 결과는 공식 발표를 기다리고 있습니다.","See announcement":"발표 보기","See source":"출처 보기","Guide":"가이드","Link coming soon":"링크 준비 중","No events for this filter.":"이 필터에 해당하는 이벤트가 없습니다.",
 "Comeback Recap":"컴백 리캡","VOTING RESULTS":"투표 결과","MUSIC SHOW WINS":"음악 방송 1위","The Show":"더 쇼","no win":"1위 없음","No voting results yet.":"아직 투표 결과가 없습니다.","Tap a release to see its voting results and wins.":"릴리스를 눌러 투표 결과와 1위 기록을 확인하세요.","No releases for this filter.":"이 필터에 해당하는 릴리스가 없습니다.",
 "Live, upcoming and ended status is calculated automatically from the dates. This site is only a directory: voting happens in the official apps. Final results appear once the official announcement is entered.":"진행 중·예정·종료 상태는 날짜를 기준으로 자동 계산됩니다. 이 사이트는 안내용 디렉터리이며, 투표는 공식 앱에서 진행됩니다. 최종 결과는 공식 발표가 입력되면 표시됩니다.",
-"Promotion calendar, voting schedule and official YouTube content.":"프로모션 캘린더, 투표 일정, 공식 YouTube 콘텐츠.","Previous":"이전","Next":"다음","Album Event":"앨범 이벤트","Music show":"음악 방송","Voting":"투표","Voting deadline":"투표 마감","Award show":"시상식","Live broadcast":"라이브 방송","Official content":"공식 콘텐츠","Guest appearance":"게스트 출연","Recording":"녹화","Festival":"페스티벌","Comeback release":"컴백 발매","Fan activities":"팬 활동",
+"Promotion calendar, voting schedule and official YouTube content.":"프로모션 캘린더, 투표 일정, 공식 YouTube 콘텐츠.","Previous":"이전","Next":"다음","Album Event":"앨범 이벤트","Music show":"음악 방송","Voting":"투표","Voting deadline":"투표 마감","Award show":"시상식","Live broadcast":"라이브 방송","Official content":"공식 콘텐츠","Guest appearance":"게스트 출연","Recording":"녹화","Radio Show":"라디오 방송","Movie & Series":"영화 및 드라마","Festival":"페스티벌","Comeback release":"컴백 발매","Fan activities":"팬 활동",
 "No schedule on this date.":"이 날짜에는 일정이 없습니다.","Open on YouTube":"YouTube에서 열기","Open link":"링크 열기","No schedule yet.":"아직 일정이 없습니다.","Time TBA":"시간 미정",
 "Official videos and photos, grouped by comeback.":"공식 영상과 사진을 컴백별로 모았습니다.","Photos":"사진","YouTube":"YouTube","Nothing here yet for this filter.":"이 필터에 해당하는 항목이 아직 없습니다.","Tonton di YouTube":"YouTube에서 보기",
 "Small fan tools. Everything runs on your device.":"작은 팬 도구 모음. 모든 작업은 내 기기에서 실행됩니다.","Watermark":"워터마크","DREAM PICK!":"DREAM PICK!","LOOP POSTBOX":"LOOP POSTBOX","Move & zoom photo":"사진 이동·확대","Move text":"텍스트 이동","Reset":"초기화",
@@ -559,7 +559,7 @@ function vStatus(v){
   return"ongoing";
 }
 const ST={ongoing:["Live","ok"],upcoming:["Upcoming","warn"],ended:["Ended","bad"]};
-const TYPE_COLOR={"Album Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6]};
+const TYPE_COLOR={"Album Event":PAL[3],"Music show":PAL[2],"Voting":PAL[4],"Voting deadline":PAL[7]||PAL[6],"Award show":PAL[5],"Live broadcast":PAL[1],"Official content":PAL[0],"Guest appearance":PAL[2],"Recording":PAL[6],"Radio Show":PAL[1],"Movie & Series":PAL[3]};
 function allEvents(){
   const out=D.events.filter(verified)
   .filter(e=>!["mma-berriz","mama-jnjm-mplus"].includes(e.slug))
