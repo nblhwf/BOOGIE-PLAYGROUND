@@ -20,7 +20,8 @@
     "at": "2026-11-17T10:58:26.253Z"
    },
    "source": "",
-   "verified_at": "2026-11-17T10:58:26.253Z"
+   "verified_at": "2026-11-17T10:58:26.253Z",
+   "release": "boogie-woogie"
   },
   {
    "slug": "musicbank-pre",
@@ -41,7 +42,8 @@
    },
    "source": "",
    "verified_at": "2026-11-18T03:59:59.279Z",
-   "deadline_at": "2026-11-18T09:00:00+07:00"
+   "deadline_at": "2026-11-18T09:00:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "musiccore-pre",
@@ -62,7 +64,8 @@
    },
    "source": "",
    "verified_at": "2026-11-19T04:07:29.328Z",
-   "deadline_at": "2026-11-19T09:00:00+07:00"
+   "deadline_at": "2026-11-19T09:00:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "musiccore-live",
@@ -84,7 +87,8 @@
    },
    "source": "",
    "verified_at": "2026-11-21T07:29:58.319Z",
-   "deadline_at": "2026-11-21T14:20:00+07:00"
+   "deadline_at": "2026-11-21T14:20:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "inkigayo-pre",
@@ -104,7 +108,8 @@
     "at": "2026-11-17T18:00:56.146Z"
    },
    "source": "",
-   "verified_at": "2026-11-17T18:00:56.146Z"
+   "verified_at": "2026-11-17T18:00:56.146Z",
+   "release": "boogie-woogie"
   },
   {
    "slug": "mma-berriz",
@@ -119,7 +124,8 @@
    "guide_url": null,
    "result": null,
    "source": "",
-   "verified_at": "2026-11-12T04:30:00+07:00"
+   "verified_at": "2026-11-12T04:30:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "mama-jnjm-mplus",
@@ -134,7 +140,8 @@
    "guide_url": null,
    "result": null,
    "source": "",
-   "verified_at": "2026-11-12T04:30:00+07:00"
+   "verified_at": "2026-11-12T04:30:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1794940599380",
@@ -155,7 +162,8 @@
     "at": "2026-11-19T04:07:19.575Z"
    },
    "verified_at": "2026-11-19T04:07:19.575Z",
-   "deadline_at": "2026-11-19T10:00:00+07:00"
+   "deadline_at": "2026-11-19T10:00:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1794940648660",
@@ -176,7 +184,8 @@
     "at": "2026-11-19T04:07:41.011Z"
    },
    "verified_at": "2026-11-19T04:07:41.011Z",
-   "deadline_at": "2026-11-19T09:00:00+07:00"
+   "deadline_at": "2026-11-19T09:00:00+07:00",
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1794990278171",
@@ -197,7 +206,8 @@
     "url": "",
     "at": "2026-11-22T06:37:21.297Z"
    },
-   "verified_at": "2026-11-22T06:37:21.297Z"
+   "verified_at": "2026-11-22T06:37:21.297Z",
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1794990472460",
@@ -218,7 +228,8 @@
     "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D911",
     "at": "2026-11-19T11:25:53.626Z"
    },
-   "verified_at": "2026-11-19T11:25:53.626Z"
+   "verified_at": "2026-11-19T11:25:53.626Z",
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1795329101031",
@@ -237,7 +248,8 @@
    "verified_at": "2026-11-24T01:07:32.994Z",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "slug": "v-1795329221882",
@@ -256,7 +268,8 @@
    "verified_at": "2026-11-24T01:07:37.901Z",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   }
  ],
  "events": [
@@ -642,7 +655,8 @@
    "tag": "안될과학 Unrealscience",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "9HGlijU_fbY",
@@ -650,7 +664,8 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "5KeZpJjY_Gk",
@@ -658,7 +673,8 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "FFoMc6tCeXc",
@@ -667,7 +683,8 @@
    "members": [
     "NCT DREAM",
     "Chenle"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "Q1PP2HfUVgo",
@@ -675,7 +692,8 @@
    "tag": "장동선의 궁금한 뇌",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "tVcm6tZPSRQ",
@@ -683,7 +701,8 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "AoeVqYK31Vg",
@@ -691,7 +710,8 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "SbdteiI1Kyg",
@@ -699,12 +719,14 @@
    "tag": "댕냥ZIP",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "AlFP39DDxWc",
    "title": "[SUB] 유치원생들만 모인(?) NCT DREAM의 난리법석 촌캉스 | 아이돌 인간극장",
-   "tag": "아이돌 인간극장"
+   "tag": "아이돌 인간극장",
+   "release": "boogie-woogie"
   },
   {
    "id": "6yllk4l9-fk",
@@ -713,7 +735,8 @@
    "members": [
     "NCT DREAM",
     "Jisung"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "kbqNTVCFob8",
@@ -721,7 +744,8 @@
    "tag": "술 빚는 윤주모",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "VEwPp-Hb35w",
@@ -730,7 +754,8 @@
    "members": [
     "NCT DREAM",
     "Jaemin"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "HYHu_ui8t2s",
@@ -738,17 +763,20 @@
    "tag": "1theK Originals -",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "-Gql71Nj3nc",
    "title": "[EN/ID] 천연위고비아니고 다이어트고비가 왔숨돠 ｜ 모먹티비 EP.37 #엔시티드림 #제노 #재민",
-   "tag": "쑥쑥 SsookSsook"
+   "tag": "쑥쑥 SsookSsook",
+   "release": "boogie-woogie"
   },
   {
    "id": "HYHu_ui8t2s",
    "title": "NCT DREAM (엔시티 드림) - Boogie Woogie | 1theKILLPO | 원더킬포 | 퍼포먼스 | Performance | 런쥔 제노 해찬 재민 천러 지성",
-   "tag": "1theK Originals - "
+   "tag": "1theK Originals - ",
+   "release": "boogie-woogie"
   },
   {
    "id": "SGaB3ZbFic0",
@@ -756,7 +784,8 @@
    "tag": "효연의 레벨업 Hyo's Leve",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "ayiTC-mFb0Y",
@@ -765,12 +794,14 @@
    "members": [
     "NCT DREAM",
     "Renjun"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "G_h8PeTid-M",
    "title": "REACTION to 💃’Boogie Woogie’🕺 MV | NCT DREAM Reaction",
-   "tag": "NCT DREAM"
+   "tag": "NCT DREAM",
+   "release": "boogie-woogie"
   },
   {
    "id": "mCeUNjUlGhQ",
@@ -778,7 +809,8 @@
    "tag": "채널십오야",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "34JU3s_FJ5A",
@@ -787,7 +819,8 @@
    "members": [
     "NCT DREAM",
     "Jeno"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "U4QdFISXtX8",
@@ -795,7 +828,8 @@
    "tag": "Teaser",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "UJWI0So4_v0",
@@ -803,12 +837,14 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "HTk7U3LlVIY",
    "title": "",
-   "tag": ""
+   "tag": "",
+   "release": "boogie-woogie"
   },
   {
    "id": "Yw9zyGAl3Mg",
@@ -816,7 +852,8 @@
    "tag": "NCT DREAM",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "53YmGEQcPg8",
@@ -824,7 +861,8 @@
    "tag": "우리 사이엔 편지가 있다",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   },
   {
    "id": "NGApRkZzPYU",
@@ -832,129 +870,170 @@
    "tag": "집대성",
    "members": [
     "NCT DREAM"
-   ]
+   ],
+   "release": "boogie-woogie"
   }
  ],
  "moments": [
   {
-   "src": "assets/photos/u-1795278639421-2.jpg"
+   "src": "assets/photos/u-1795278639421-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795278637342-1.jpg"
+   "src": "assets/photos/u-1795278637342-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795278634003-0.jpg"
+   "src": "assets/photos/u-1795278634003-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000809040-3.jpg"
+   "src": "assets/photos/u-1795000809040-3.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000806935-2.jpg"
+   "src": "assets/photos/u-1795000806935-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000804694-1.jpg"
+   "src": "assets/photos/u-1795000804694-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000802016-0.jpg"
+   "src": "assets/photos/u-1795000802016-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000004551-8.jpg"
+   "src": "assets/photos/u-1795000004551-8.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000003035-7.jpg"
+   "src": "assets/photos/u-1795000003035-7.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1795000001091-6.jpg"
+   "src": "assets/photos/u-1795000001091-6.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794999997251-4.jpg"
+   "src": "assets/photos/u-1794999997251-4.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794999995641-3.jpg"
+   "src": "assets/photos/u-1794999995641-3.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794999993927-2.jpg"
+   "src": "assets/photos/u-1794999993927-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794999991889-1.jpg"
+   "src": "assets/photos/u-1794999991889-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794999988248-0.jpg"
+   "src": "assets/photos/u-1794999988248-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988566509-5.jpg"
+   "src": "assets/photos/u-1794988566509-5.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988564644-4.jpg"
+   "src": "assets/photos/u-1794988564644-4.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988562631-3.jpg"
+   "src": "assets/photos/u-1794988562631-3.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988560237-2.jpg"
+   "src": "assets/photos/u-1794988560237-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988558288-1.jpg"
+   "src": "assets/photos/u-1794988558288-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988555092-0.jpg"
+   "src": "assets/photos/u-1794988555092-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988320792-5.jpg"
+   "src": "assets/photos/u-1794988320792-5.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988319139-4.jpg"
+   "src": "assets/photos/u-1794988319139-4.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988316983-3.jpg"
+   "src": "assets/photos/u-1794988316983-3.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988315329-2.jpg"
+   "src": "assets/photos/u-1794988315329-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988313205-1.jpg"
+   "src": "assets/photos/u-1794988313205-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794988310465-0.jpg"
+   "src": "assets/photos/u-1794988310465-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794987911945-5.jpg"
+   "src": "assets/photos/u-1794987911945-5.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569595293-5.jpg"
+   "src": "assets/photos/u-1794569595293-5.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569593296-4.jpg"
+   "src": "assets/photos/u-1794569593296-4.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569591199-3.jpg"
+   "src": "assets/photos/u-1794569591199-3.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569589057-2.jpg"
+   "src": "assets/photos/u-1794569589057-2.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569586940-1.jpg"
+   "src": "assets/photos/u-1794569586940-1.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569584824-0.jpg"
+   "src": "assets/photos/u-1794569584824-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/u-1794569435560-0.jpg"
+   "src": "assets/photos/u-1794569435560-0.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/m07.jpg"
+   "src": "assets/photos/m07.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/m08.jpg"
+   "src": "assets/photos/m08.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/m09.jpg"
+   "src": "assets/photos/m09.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/m10.jpg"
+   "src": "assets/photos/m10.jpg",
+   "release": "boogie-woogie"
   },
   {
-   "src": "assets/photos/m11.jpg"
+   "src": "assets/photos/m11.jpg",
+   "release": "boogie-woogie"
   }
  ],
  "settings": {
@@ -1428,6 +1507,54 @@
    "y": 2026
   }
  ],
- "releases": [],
+ "releases": [
+  {
+   "id": "boogie-woogie",
+   "active": true,
+   "type": "group",
+   "member": "NCT DREAM",
+   "title": "Boogie Woogie",
+   "album": "DREAM AFTER DREAM",
+   "tagline": "Track, stream, vote and follow every NCT DREAM and member activity.",
+   "banner": "assets/hero.jpg",
+   "release_at": "2026-11-09T16:00:00+07:00",
+   "mv": {
+    "video_id": "wG7pnZttup8",
+    "target_views": 10000000
+   },
+   "wins": [
+    {
+     "show": "The Show",
+     "rank": null,
+     "date": ""
+    },
+    {
+     "show": "Show Champion",
+     "rank": null,
+     "date": ""
+    },
+    {
+     "show": "M Countdown",
+     "rank": null,
+     "date": ""
+    },
+    {
+     "show": "Music Bank",
+     "rank": null,
+     "date": ""
+    },
+    {
+     "show": "Inkigayo",
+     "rank": null,
+     "date": ""
+    },
+    {
+     "show": "Music Core",
+     "rank": null,
+     "date": ""
+    }
+   ]
+  }
+ ],
  "announcements": []
 }
