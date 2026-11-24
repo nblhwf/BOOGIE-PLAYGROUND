@@ -164,6 +164,40 @@ details.card summary{cursor:pointer;font-weight:800;font-size:15px;list-style:no
  #tabs .sg{margin-top:10px}
  #tabs .sfoot{padding-top:14px;margin-bottom:6px}.sfoot .st{background:#e6f6ee;color:#0b7a55}.sfoot button{color:#6b6f85}
 }
+
+@media(min-width:900px){
+.unr{margin-bottom:18px}
+.hero{padding:22px 24px;margin-bottom:18px;position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.hero>small,.hero>h2,.hero>p{flex:1 1 100%}
+.hero h2{font-size:34px}
+.hero .stats{display:flex;gap:8px;margin-top:10px;flex:1 1 100%}
+.hero .stats div{display:flex;align-items:baseline;gap:6px;padding:7px 14px;border-radius:99px}.hero .stats b{font-size:17px;display:inline}.hero .stats span{font-size:12px}
+.hero.nob::before,.hero.nob::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero.nob::before{width:150px;height:150px;right:-30px;top:-50px;background:#e8336d;opacity:.9}
+.hero.nob::after{width:90px;height:90px;right:90px;bottom:-40px;background:#e9ee8b}
+.hero>*{position:relative;z-index:1}
+.dgrid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:0 22px;align-items:start}
+.hl>.h6:first-of-type{display:none}
+.qa{grid-template-columns:minmax(0,1.7fr) repeat(4,minmax(0,1fr));gap:8px}.qa button{min-width:0;padding:10px}.qa .win span.s{display:none}
+.qa .win{grid-column:auto;padding:12px 14px;gap:10px}.qa .win .ico{width:42px;height:42px}
+.qa button{flex-direction:row;align-items:center;gap:8px;padding:12px;font-size:14px}
+.qa button .ico{width:30px;height:30px;flex:none}.qa button{font-size:13px}
+.qa .win span span:first-child{font-size:15px!important}
+.pf{display:none}.qa button:not(.win){text-transform:capitalize}
+.hr .calt{display:none}
+}
+@media(max-width:899px){.hero.nob::before,.hero.nob::after{display:none}}
+
+.gt{display:none}.agc{display:none}.gbell{display:none}
+@media(min-width:900px){
+.gr{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.gt{display:block;flex:1}.gt b{display:block;font-size:24px;letter-spacing:-.4px}.gt span{font-size:13px;color:var(--mute);font-weight:600}
+.gr .unr{width:auto;margin:0;padding:7px 16px 7px 8px;border-radius:99px;gap:8px;box-shadow:none;font-size:13px}
+.gr .unr .ico{width:28px;height:28px;border-radius:50%}.gr .unr .ico svg{width:15px;height:15px}
+.gbell{display:flex;width:42px;height:42px;border-radius:50%;background:#fff;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(28,26,46,.06);flex:none}.gr .unr small,.gr .unr em{display:none}.gr .unr b{font-size:13px}.gr .unr b::after{content:" ›"}
+.agc{display:block;background:#fff;border-radius:24px;padding:14px 16px 6px;box-shadow:0 6px 18px rgba(28,26,46,.06);margin-top:14px}
+.agh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.agh b{font-size:15px}.agh span{font-size:12px;font-weight:800;color:#e8336d}
+.agi{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #eef0f7}.agi i{width:4px;height:34px;border-radius:4px;flex:none}.agi div{flex:1;min-width:0}.agi b{display:block;font-size:13px}.agi span{font-size:11.5px;color:var(--mute);font-weight:600}.agi em{font-style:normal;font-size:12px;font-weight:800;background:#f4f5fb;padding:4px 10px;border-radius:99px}
 }
 </style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></head><body>
 <div class="top"><div class="in"><div class="wm"><b>DREAM</b>LOOP<i>EDITOR</i></div><span class="st"><u></u>Terhubung</span></div></div>
@@ -494,18 +528,20 @@ function tabHome(){
   if(!r)need.push({t:"Rilisan belum dibuat",s:"Perlu supaya win bisa dicatat",b:"Buat",a:"rel1"});
   seed.votes.forEach((v,i)=>{if(vst(v)==="selesai"&&!v.result)need.push({t:v.show+" · "+v.phase,s:"Vote sudah selesai, hasil belum diisi",b:"Isi hasil",a:"vedit",i})});
   if(r)(r.wins||[]).forEach(w=>{if(w.rank==null||w.rank==="")need.push({t:w.show,s:"Belum ada posisi di Comeback Recap",b:"Isi win",a:"win",show:w.show})});
+  const nw=new Date(),hr=+new Intl.DateTimeFormat('en-GB',{hour:'numeric',hour12:false,timeZone:'Asia/Jakarta'}).format(nw);const greet="Selamat "+(hr<11?"pagi":hr<15?"siang":hr<18?"sore":"malam")+" 👋";let dateStr=nw.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Asia/Jakarta'});if(r&&r.release_at){const dn=Math.floor((nw-new Date(r.release_at))/864e5)+1;if(dn>0&&dn<400)dateStr+=" · hari ke-"+dn+" "+r.title}
+  const td=today(),agenda=[...seed.events.filter(e=>(e.start||"").slice(0,10)===td).map(e=>({t:e.all_day?"Seharian":new Date(e.start).toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'}).replace('.',':'),h:e.title,s:e.type||"Jadwal",c:"#2a7ea6"})),...seed.votes.filter(v=>v.end_date===td).map(v=>({t:"Hari ini",h:v.show+" · "+v.phase,s:"Vote berakhir hari ini",c:"#e8336d"}))];
   const bg=r&&r.banner?`linear-gradient(rgba(28,26,46,.62),rgba(28,26,46,.62)),url(${esc(r.banner)}) center/cover,#2b2750`:"";
   window.__need=need;
-  return `${unread?`<button class="unr" data-tab="x"><span class="ico">${IC(P.mail,"#fff")}</span><span><b>${unread} pesan baru dari pembaca</b><small>Ketuk untuk membaca</small></span><em>›</em></button>`:""}<div class="hero" ${bg?`style="background:${bg}"`:""}><small>RILISAN AKTIF</small><h2>${esc(r?r.title:"Boogie Woogie")}</h2><p>${esc(r?(r.member+" · "+(r.album||"")):"NCT DREAM · DREAM AFTER DREAM")}</p><div class="stats"><div><b>${wins}</b><span>Win</span></div><div><b>${live}</b><span>Vote jalan</span></div><div><b>${up}</b><span>Jadwal</span></div></div></div>
-  <div class="dgrid"><div>
+  return `<div class="gr"><div class="gt"><b>${greet}</b><span>${dateStr}</span></div>${unread?`<button class="unr" data-tab="x"><span class="ico">${IC(P.mail,"#fff")}</span><span><b>${unread} pesan baru dari pembaca</b><small>Ketuk untuk membaca</small></span><em>›</em></button>`:""}<button class="gbell" data-tab="a" aria-label="Pengumuman">${IC(P.bell,"#1c1a2e")}</button></div><div class="dgrid"><div class="hl"><div class="hero${bg?"":" nob"}" ${bg?`style="background:${bg}"`:""}><small>RILISAN AKTIF</small><h2>${esc(r?r.title:"Boogie Woogie")}</h2><p>${esc(r?(r.member+" · "+(r.album||"")):"NCT DREAM · DREAM AFTER DREAM")}</p><div class="stats"><div><b>${wins}</b><span>Win</span></div><div><b>${live}</b><span>Vote jalan</span></div><div><b>${up}</b><span>Jadwal</span></div></div></div>
+  
   <div class="h6">Mau ngapain hari ini?</div><div class="qa">
   <button class="win" data-go="win"><span class="ico">${IC(P.cup,"#e9ee8b")}</span><span><span style="display:block;font-size:17px">Umumkan win</span><span class="s">Musik show, 1 menit selesai</span></span></button>
-  <button data-go="vote"><span class="ico" style="background:#fde4ec">${IC(P.plus,"#d62f5c")}</span>Tambah vote</button>
-  <button data-go="event"><span class="ico" style="background:#dcecf5">${IC(P.cal,"#2a7ea6")}</span>Tambah jadwal</button>
-  <button data-go="content"><span class="ico" style="background:#d9f0f1">${IC(P.play,"#1b8f96")}</span>Tambah konten</button>
-  <button data-go="photo"><span class="ico" style="background:#ffe6dc">${IC(P.img,"#ec5a2c")}</span>Upload foto</button></div>
+  <button data-go="vote"><span class="ico" style="background:#fde4ec">${IC(P.plus,"#d62f5c")}</span><span class="pf">Tambah </span>vote</button>
+  <button data-go="event"><span class="ico" style="background:#dcecf5">${IC(P.cal,"#2a7ea6")}</span><span class="pf">Tambah </span>jadwal</button>
+  <button data-go="content"><span class="ico" style="background:#d9f0f1">${IC(P.play,"#1b8f96")}</span><span class="pf">Tambah </span>konten</button>
+  <button data-go="photo"><span class="ico" style="background:#ffe6dc">${IC(P.img,"#ec5a2c")}</span><span class="pf">Upload </span>foto</button></div>
   <div class="h6" style="display:flex;justify-content:space-between"><span>Pengumuman win</span><span style="color:var(--mute)">${(r?(r.wins||[]).filter(w=>w.rank).length:0)} win</span></div>${winList()}
-  </div><div><div class="h6" style="margin-top:0">Kalender</div>${tabCal()}<div class="h6" style="display:flex;justify-content:space-between"><span>Perlu diisi</span><span style="color:var(--rasp)">${need.length} hal</span></div>
+  </div><div class="hr"><div class="h6 calt" style="margin-top:0">Kalender</div>${tabCal()}<div class="agc"><div class="agh"><b>Hari ini</b><span>${agenda.length} agenda</span></div>${agenda.length?agenda.map(x=>`<div class="agi"><i style="background:${x.c}"></i><div><b>${esc(x.h)}</b><span>${esc(x.s)}</span></div><em>${esc(x.t)}</em></div>`).join(""):'<div class="empty" style="padding:10px 0">Tidak ada agenda hari ini.</div>'}</div><div class="h6" style="display:flex;justify-content:space-between"><span>Perlu diisi</span><span style="color:var(--rasp)">${need.length} hal</span></div>
   ${need.length?need.slice(0,6).map((n,k)=>`<div class="todo"><i></i><div><b>${esc(n.t)}</b><span>${esc(n.s)}</span></div><button class="sm" data-need="${k}">${n.b}</button></div>`).join(""):'<div class="empty">Semua sudah terisi.</div>'}</div></div>`;
 }
 function tabMenu(){
