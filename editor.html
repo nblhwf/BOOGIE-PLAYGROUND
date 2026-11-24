@@ -71,6 +71,49 @@ button{border-radius:14px}
 .msgc{background:#fff;border-radius:18px;padding:14px;margin-bottom:10px}.msgc.unread{box-shadow:inset 0 0 0 2px #f2b5c8}.msgc p{font-size:14px;line-height:1.55;margin:6px 0;word-break:break-word}
 pre.sql{background:var(--ink);color:#dfe3f5;border-radius:14px;padding:12px;font-size:11.5px;overflow:auto;white-space:pre-wrap;line-height:1.5;margin-top:8px}
 dialog .hd{background:var(--butter)}dialog .bd{background:var(--bg)}dialog .bd label.chip{}
+
+/* ---- v3: sidebar desktop, nav scroll mobile ---- */
+#tabs{display:flex;grid-template-columns:none}
+#tabs .sbrand,#tabs .srel,#tabs .gl,#tabs .sfoot{display:none}
+#tabs .sg{display:contents}#tabs .gi{display:contents}
+#tabs{overflow-x:auto;gap:2px;padding:8px 6px 16px;scrollbar-width:none}#tabs::-webkit-scrollbar{display:none}
+#tabs button{flex:0 0 auto;min-width:70px;padding:0 4px}
+#tabs button .lb{white-space:nowrap}#tabs button em{display:none}
+.mfbar{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.mfbar::-webkit-scrollbar{display:none}
+.mfbar button{flex:none;background:#fff;color:var(--ink);border:1.5px solid #dcdfee;padding:8px 14px;font-size:12.5px;border-radius:99px}.mfbar button.on{background:var(--ink);color:var(--butter);border-color:var(--ink)}
+.pill.mem{background:#ece8fb;color:#4b36b0}
+.dgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:0 22px}
+.calc{padding:14px}.calh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.calh b{font-size:15px;text-transform:capitalize}
+.calg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center}.calg i{font-style:normal;font-size:11px;font-weight:800;color:var(--mute);padding:4px 0}
+.cd{background:#f4f5fb;color:var(--ink);padding:6px 0 4px;border-radius:12px;font-size:13px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:44px}.cd span{display:flex;gap:3px;height:6px}.cd u{width:6px;height:6px;border-radius:50%}
+.cd.today{box-shadow:inset 0 0 0 2px var(--ink)}.cd.sel{background:var(--butter)}.cd:hover{transform:none;background:#e8eaf6}.cd.sel:hover{background:var(--butter)}
+.lg{display:inline-block;width:8px;height:8px;border-radius:50%}
+.cdet{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.cdet b{display:block;margin-bottom:4px}
+.hero .stats{display:grid}
+@media(min-width:900px){
+ body.in{padding:0 0 40px 268px}
+ body.in .top{display:none}
+ body.in #tabs{position:fixed;left:0;top:0;bottom:0;right:auto;width:268px;display:flex;flex-direction:column;align-items:stretch;gap:0;overflow-y:auto;padding:22px 14px 16px;border:0;border-radius:0 28px 28px 0;background:linear-gradient(175deg,#1c1a2e 0%,#2b2750 60%,#4a2352 100%);color:#fff;box-shadow:12px 0 40px rgba(28,26,46,.18)}
+ body.in #tabs::before{content:"";position:absolute;right:-60px;top:-40px;width:200px;height:200px;border-radius:50%;background:#e8336d;opacity:.28;filter:blur(40px);pointer-events:none}
+ #tabs .sbrand{display:flex;align-items:center;gap:8px;padding:2px 10px 14px;position:relative}.sbrand .wm{font-size:23px;color:#fff}.sbrand .wm b{color:#ff5f95}.sbrand i{font-style:normal;background:var(--butter);color:var(--ink);font-size:10px;font-weight:800;padding:3px 8px;border-radius:99px;letter-spacing:.6px}
+ #tabs .srel{display:block;margin:0 4px 8px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.1);position:relative}.srel small{display:block;font-size:10px;font-weight:800;letter-spacing:1px;color:var(--butter)}.srel b{display:block;font-size:16px;margin-top:3px}
+ #tabs .sg{display:block;margin-top:14px;position:relative}#tabs .gl{display:block;font-size:10.5px;font-weight:800;letter-spacing:1.2px;color:rgba(255,255,255,.5);padding:0 12px 6px;text-transform:uppercase}#tabs .gi{display:flex;flex-direction:column;gap:3px}
+ #tabs button{flex-direction:row;justify-content:flex-start;align-items:center;gap:12px;min-width:0;width:100%;padding:10px 12px;border-radius:14px;font-size:14px;font-weight:700;color:rgba(255,255,255,.78);text-align:left;position:relative}
+ #tabs button .ic{width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.08);color:#fff}
+ #tabs button:hover{background:rgba(255,255,255,.1);color:#fff}
+ #tabs button.on{background:var(--butter);color:var(--ink);box-shadow:0 8px 20px rgba(0,0,0,.25);font-weight:800}#tabs button.on .ic{background:var(--ink);color:var(--butter)}
+ #tabs button em{display:block;margin-left:auto;font-style:normal;background:var(--rasp);color:#fff;font-size:11px;padding:1px 8px;border-radius:99px}
+ #tabs .sfoot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding:16px 8px 0;position:relative}.sfoot .st{background:rgba(255,255,255,.12);color:#9be8c6}.sfoot button{width:auto;background:transparent;color:rgba(255,255,255,.7);padding:8px 10px;font-size:12px}
+ .wrap{max-width:1180px;margin:0 auto;padding:26px 32px 0}
+ .back h2{font-size:28px;letter-spacing:-.6px}
+ .hero{padding:26px 28px}.hero h2{font-size:40px}
+ .dgrid{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+ .qa{grid-template-columns:repeat(4,1fr)}.qa .win{grid-column:1/-1}
+ .addbtn{width:auto;padding:13px 22px;font-size:14px}
+ #msg{bottom:24px}
+ dialog{width:min(620px,94vw)}
+}
+@media(max-width:899px){.sfoot{display:none}}
 </style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></head><body>
 <div class="top"><div class="in"><div class="wm"><b>DREAM</b>LOOP<i>EDITOR</i></div><span class="st"><u></u>Terhubung</span></div></div>
 <div class="wrap">
@@ -162,8 +205,8 @@ function relForm(i){
   <label>Tagline (teks di Home)</label><input id="f_tg" value="${esc(r.tagline||"")}">
   <label>Tanggal rilis (WIB)</label><input id="f_ra" type="datetime-local" value="${r.release_at?wibLocal(r.release_at):""}">
   <label>Foto banner (otomatis dipotong lebar, opsional)</label><input id="f_bn" type="file" accept="image/*"><p class="muted">Sekarang: ${esc(r.banner||"belum ada")}</p>
-  <div class="row"><div><label>ID video MV (YouTube)</label><input id="f_mv" value="${esc((r.mv&&r.mv.video_id)||"")}" placeholder="wG7pnZttup8"></div><div><label>Target views</label><input id="f_tv" inputmode="numeric" value="${esc((r.mv&&r.mv.target_views)??"")}"></div></div>
-  <label>Views akhir (opsional, untuk rilisan lama)</label><input id="f_fv" inputmode="numeric" value="${esc((r.mv&&r.mv.final_views)??"")}">
+  <div class="row"><div><label>Kode video MV (dari link YouTube)</label><input id="f_mv" value="${esc((r.mv&&r.mv.video_id)||"")}" placeholder="wG7pnZttup8"></div><div><label>Target views</label><input id="f_tv" inputmode="numeric" value="${esc((r.mv&&r.mv.target_views)??"")}"></div></div>
+  <p class="muted" style="margin:4px 0 0">Kode = 11 huruf setelah <b>v=</b> atau <b>youtu.be/</b>. Dipakai penghitung views otomatis. Boogie Woogie: wG7pnZttup8</p><label>Views akhir (opsional, untuk rilisan lama)</label><input id="f_fv" inputmode="numeric" value="${esc((r.mv&&r.mv.final_views)??"")}">
   <div class="sec">Kemenangan acara musik</div>
   ${w.map((x,k)=>`<div class="row" style="grid-template-columns:1.3fr .7fr 1fr"><input id="w_s${k}" value="${esc(x.show)}"><input id="w_r${k}" inputmode="numeric" value="${esc(x.rank??"")}" placeholder="posisi"><input id="w_d${k}" value="${esc(x.date||"")}" placeholder="mis. 18 Nov"></div>`).join("")}
   <p class="muted">Kosongkan posisi kalau belum ada. Posisi 1 dihitung sebagai kemenangan.</p>
@@ -213,16 +256,16 @@ function voteForm(i){
     applyRM(o);if(i==null)seed.votes.push(o);else seed.votes[i]=o;return (i==null?"Tambah":"Edit")+" vote: "+show+" "+phase});
 }
 function tabVote(){
-  const L=seed.votes.map((v,i)=>({v,i})).filter(({v})=>!q||(v.show+v.phase+v.apps.join(" ")).toLowerCase().includes(q));
+  const L=seed.votes.map((v,i)=>({v,i})).filter(({v})=>mfOK(v)&&(!q||(v.show+v.phase+v.apps.join(" ")).toLowerCase().includes(q)));
   const ord={berlangsung:0,"akan datang":1,selesai:2};L.sort((a,b)=>ord[vst(a.v)]-ord[vst(b.v)]||a.v.start_date.localeCompare(b.v.start_date));
-  return L.map(({v,i})=>{const s=vst(v),r=v.result;return `<div class="it" style="--c:${s==="berlangsung"?"#0e9f6e":s==="akan datang"?"#e0a100":"#c4c8d2"}"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><div class="muted">${esc(v.apps.join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)} ${v.deadline_at?"· berakhir "+jamWib(v.deadline_at)+" ":""}${v.url?"· ada link vote":"· <b style='color:#b0213f'>belum ada link vote</b>"}</div>
+  return L.map(({v,i})=>{const s=vst(v),r=v.result;return `<div class="it" style="--c:${s==="berlangsung"?"#0e9f6e":s==="akan datang"?"#e0a100":"#c4c8d2"}"><div class="t"><b>${esc(v.show)} · ${esc(v.phase)}</b><div style="margin:3px 0">${memPills(v)}</div><div class="muted">${esc(v.apps.join(" & "))} · ${esc(v.start_date)} s/d ${esc(v.end_date)} ${v.deadline_at?"· berakhir "+jamWib(v.deadline_at)+" ":""}${v.url?"· ada link vote":"· <b style='color:#b0213f'>belum ada link vote</b>"}</div>
   <div style="margin-top:5px"><span class="pill ${s==="berlangsung"?"on":s==="akan datang"?"up":""}">${s}</span> ${r?`<span class="pill has">Hasil: ${esc(r.rank??"–")}${r.note?" · "+esc(r.note):""}</span>`:""}</div></div>
   <div class="a"><button class="g sm" data-act="vedit" data-i="${i}">Edit</button><button class="r sm" data-act="vdel" data-i="${i}">Hapus</button></div></div>`}).join("")||'<div class="empty">Belum ada vote. Tekan + Tambah.</div>';
 }
 
 /* ---------- JADWAL ---------- */
-function eventForm(i){
-  const e=i==null?{type:ETYPES[0]}:seed.events[i];
+function eventForm(i,preset){
+  const e=i==null?{type:ETYPES[0],start:preset?preset+"T19:00:00+07:00":undefined}:seed.events[i];
   ask(i==null?"Tambah jadwal":"Edit jadwal",`
   <label>Judul</label><input id="f_t" value="${esc(e.title||"")}" placeholder="mis. NCT DREAM di Na PD">
   <div class="row"><div><label>Jenis</label><select id="f_ty">${ETYPES.map(t=>`<option ${t===e.type?"selected":""}>${t}</option>`).join("")}${ETYPES.includes(e.type)?"":`<option selected>${esc(e.type)}</option>`}</select></div>
@@ -235,9 +278,9 @@ function eventForm(i){
     applyRM(o);if(i==null)seed.events.push(o);else seed.events[i]=o;return (i==null?"Tambah":"Edit")+" jadwal: "+t});
 }
 function tabEvent(){
-  const now=Date.now(),L=seed.events.map((e,i)=>({e,i})).filter(({e})=>!q||(e.title+e.type).toLowerCase().includes(q));
+  const now=Date.now(),L=seed.events.map((e,i)=>({e,i})).filter(({e})=>mfOK(e)&&(!q||(e.title+e.type).toLowerCase().includes(q)));
   const up=L.filter(({e})=>new Date(e.start)>=now-864e5).sort((a,b)=>a.e.start<b.e.start?-1:1),past=L.filter(({e})=>new Date(e.start)<now-864e5).sort((a,b)=>a.e.start<b.e.start?1:-1);
-  const row=({e,i})=>`<div class="it" style="--c:#2a7ea6"><div class="t"><b>${esc(e.title)}</b><div class="muted">${fmt(e.start,e.all_day)} · ${esc(e.type)}</div></div><div class="a"><button class="g sm" data-act="eedit" data-i="${i}">Edit</button><button class="r sm" data-act="edel" data-i="${i}">Hapus</button></div></div>`;
+  const row=({e,i})=>`<div class="it" style="--c:#2a7ea6"><div class="t"><b>${esc(e.title)}</b><div style="margin:3px 0">${memPills(e)}</div><div class="muted">${fmt(e.start,e.all_day)} · ${esc(e.type)}</div></div><div class="a"><button class="g sm" data-act="eedit" data-i="${i}">Edit</button><button class="r sm" data-act="edel" data-i="${i}">Hapus</button></div></div>`;
   return (up.length?`<div class="sec" style="margin:4px 0 8px">Akan datang / hari ini</div>${up.map(row).join("")}`:"")+(past.length?`<div class="sec" style="margin:14px 0 8px;color:var(--mute)">Sudah lewat</div>${past.map(row).join("")}`:"")||'<div class="empty">Belum ada jadwal.</div>';
 }
 
@@ -254,7 +297,7 @@ function contentForm(i){
     const o=applyRM({...(i==null?{}:seed.content[i]),id,title:title||"",tag:tag||""});if(i==null)seed.content.unshift(o);else seed.content[i]=o;return (i==null?"Tambah":"Edit")+" konten YouTube"});
 }
 function tabContent(){
-  return seed.content.map((c,i)=>({c,i})).filter(({c})=>!q||(c.title+c.tag+c.id).toLowerCase().includes(q)).map(({c,i})=>`<div class="it" style="--c:#1b8f96"><img class="th" loading="lazy" src="https://i.ytimg.com/vi/${esc(c.id)}/mqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><div class="t"><b>${esc(c.title||"(judul diisi otomatis di web)")}</b><div class="muted">${esc(c.tag||"tanpa label")} · youtu.be/${esc(c.id)}</div></div><div class="a"><button class="g sm" data-act="cedit" data-i="${i}">Edit</button><button class="r sm" data-act="cdel" data-i="${i}">Hapus</button></div></div>`).join("")||'<div class="empty">Belum ada konten.</div>';
+  return seed.content.map((c,i)=>({c,i})).filter(({c})=>mfOK(c)&&(!q||(c.title+c.tag+c.id).toLowerCase().includes(q))).map(({c,i})=>`<div class="it" style="--c:#1b8f96"><img class="th" loading="lazy" src="https://i.ytimg.com/vi/${esc(c.id)}/mqdefault.jpg" alt="" onerror="this.style.visibility='hidden'"><div class="t"><b>${esc(c.title||"(judul diisi otomatis di web)")}</b><div style="margin:3px 0">${memPills(c)}</div><div class="muted">${esc(c.tag||"tanpa label")} · youtu.be/${esc(c.id)}</div></div><div class="a"><button class="g sm" data-act="cedit" data-i="${i}">Edit</button><button class="r sm" data-act="cdel" data-i="${i}">Hapus</button></div></div>`).join("")||'<div class="empty">Belum ada konten.</div>';
 }
 
 /* ---------- LAGU ---------- */
@@ -273,11 +316,12 @@ function tabSong(){
 }
 
 /* ---------- FOTO & PENGATURAN ---------- */
+function photoTag(i){const m=seed.moments[i];ask("Tag foto",`<img src="${esc(m.src)}" style="width:90px;aspect-ratio:4/5;object-fit:cover;border-radius:10px">${relSel(m)}${memChk(m.members||[])}`,()=>{applyRM(m);return "Tag foto"})}
 function tabPhoto(){
-  const L=seed.moments;
+  const L=seed.moments.map((m,i)=>({m,i})).filter(({m})=>mfOK(m));
   return `<div class="card"><h3>Tambah foto Comeback moments</h3><p class="muted">Foto dipotong otomatis jadi 4:5 supaya seragam. Boleh pilih banyak. Foto baru tampil paling depan.</p>
   <input id="pf" type="file" accept="image/*" multiple style="margin:10px 0">${relSel({})}${memChk([])}<button id="pup" class="b-main">Upload</button></div>
-  <div class="card"><h3>Foto saat ini (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map((m,i)=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><button class="r sm" style="width:100%;margin-top:4px" data-act="pdel" data-i="${i}">Hapus</button></div>`).join("")}</div></div>`;
+  <div class="card"><h3>Foto (${L.length})</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px">${L.map(({m,i})=>`<div><img src="${esc(m.src)}" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;background:#eee"><div style="margin:4px 0;font-size:11px">${memPills(m)}</div><div style="display:flex;gap:4px"><button class="g sm" style="flex:1" data-act="ptag" data-i="${i}">Tag</button><button class="r sm" style="flex:1" data-act="pdel" data-i="${i}">Hapus</button></div></div>`).join("")}</div></div>`;
 }
 function tabSet(){
   const st=seed.settings||{},gc=st.goatcounter||"";
@@ -292,6 +336,28 @@ function tabSet(){
 }
 
 
+
+/* ---------- NAV, FILTER MEMBER, KALENDER ---------- */
+let mf="all",cal={y:null,m:null,sel:null};
+const relMemberOf=id=>{const r=(id&&seed.releases.find(x=>x.id===id))||actRel();return r&&r.member?r.member:"NCT DREAM"};
+const memsOf=x=>x.members&&x.members.length?x.members:[relMemberOf(x.release)];
+const mfOK=x=>mf==="all"||memsOf(x).includes(mf);
+const memPills=x=>memsOf(x).map(m=>`<span class="pill mem">${esc(m)}</span>`).join(" ");
+const mfBar=()=>`<div class="mfbar">${["all",...MEMB].map(m=>`<button data-mf="${esc(m)}" class="${mf===m?"on":""}">${m==="all"?"Semua":m}</button>`).join("")}</div>`;
+function tabCal(){
+  const now=new Date(today()+"T12:00:00Z");if(cal.y==null){cal.y=now.getUTCFullYear();cal.m=now.getUTCMonth()}
+  const first=new Date(Date.UTC(cal.y,cal.m,1)),dim=new Date(Date.UTC(cal.y,cal.m+1,0)).getUTCDate(),off=(first.getUTCDay()+6)%7;
+  const key=d=>`${cal.y}-${String(cal.m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const evDay=e=>new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Jakarta"}).format(new Date(e.start));
+  const dayInfo=k=>({ev:seed.events.filter(e=>evDay(e)===k),vt:seed.votes.filter(v=>v.start_date<=k&&k<=v.end_date)});
+  const cells=[];for(let i=0;i<off;i++)cells.push("<span></span>");
+  for(let d=1;d<=dim;d++){const k=key(d),i=dayInfo(k);cells.push(`<button class="cd ${k===today()?"today":""} ${cal.sel===k?"sel":""}" data-cd="${k}">${d}<span>${i.ev.length?'<u style="background:#2a7ea6"></u>':""}${i.vt.length?'<u style="background:#e8336d"></u>':""}</span></button>`)}
+  const mn=new Intl.DateTimeFormat("id-ID",{month:"long",year:"numeric",timeZone:"UTC"}).format(first);
+  let det="";if(cal.sel){const i=dayInfo(cal.sel);det=`<div class="cdet"><b>${esc(new Intl.DateTimeFormat("id-ID",{day:"numeric",month:"long",timeZone:"UTC"}).format(new Date(cal.sel+"T12:00:00Z")))}</b>${i.ev.map(e=>`<div class="muted">• ${esc(e.title)}</div>`).join("")}${i.vt.map(v=>`<div class="muted">• Vote: ${esc(v.show)} · ${esc(v.phase)}</div>`).join("")}${!i.ev.length&&!i.vt.length?'<div class="muted">Belum ada apa-apa.</div>':""}<button class="b-main sm" data-addday="${cal.sel}" style="margin-top:8px">+ Tambah jadwal di tanggal ini</button></div>`}
+  return `<div class="card calc"><div class="calh"><button class="g sm" data-cm="-1" aria-label="Bulan lalu">‹</button><b>${esc(mn)}</b><button class="g sm" data-cm="1" aria-label="Bulan depan">›</button></div>
+  <div class="calg">${["Sen","Sel","Rab","Kam","Jum","Sab","Min"].map(x=>`<i>${x}</i>`).join("")}${cells.join("")}</div>
+  <div class="muted" style="margin-top:8px"><u style="background:#2a7ea6" class="lg"></u> Jadwal &nbsp; <u style="background:#e8336d" class="lg"></u> Vote berjalan</div>${det}</div>`;
+}
 /* ---------- RINGKASAN / MENU / WIN / PENGUMUMAN / PESAN ---------- */
 const SHOWS=["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"];
 const IC=(d,c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c||"currentColor"}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
@@ -311,14 +377,15 @@ function tabHome(){
   const bg=r&&r.banner?`linear-gradient(160deg,rgba(43,39,80,.75),rgba(232,51,109,.55)),url(${esc(r.banner)}) center/cover`:"";
   window.__need=need;
   return `<div class="hero" ${bg?`style="background:${bg}"`:""}><small>RILISAN AKTIF</small><h2>${esc(r?r.title:"Boogie Woogie")}</h2><p>${esc(r?(r.member+" · "+(r.album||"")):"NCT DREAM · DREAM AFTER DREAM")}</p><div class="stats"><div><b>${wins}</b><span>Win</span></div><div><b>${live}</b><span>Vote jalan</span></div><div><b>${up}</b><span>Jadwal</span></div></div></div>
+  <div class="dgrid"><div>
   <div class="h6">Mau ngapain hari ini?</div><div class="qa">
   <button class="win" data-go="win"><span class="ico">${IC(P.cup,"#e9ee8b")}</span><span><span style="display:block;font-size:17px">Umumkan win</span><span class="s">Musik show, 1 menit selesai</span></span></button>
   <button data-go="vote"><span class="ico" style="background:#fde4ec">${IC(P.plus,"#d62f5c")}</span>Tambah vote</button>
   <button data-go="event"><span class="ico" style="background:#dcecf5">${IC(P.cal,"#2a7ea6")}</span>Tambah jadwal</button>
   <button data-go="content"><span class="ico" style="background:#d9f0f1">${IC(P.play,"#1b8f96")}</span>Tambah konten</button>
   <button data-go="photo"><span class="ico" style="background:#ffe6dc">${IC(P.img,"#ec5a2c")}</span>Upload foto</button></div>
-  <div class="h6" style="display:flex;justify-content:space-between"><span>Perlu diisi</span><span style="color:var(--rasp)">${need.length} hal</span></div>
-  ${need.length?need.slice(0,6).map((n,k)=>`<div class="todo"><i></i><div><b>${esc(n.t)}</b><span>${esc(n.s)}</span></div><button class="sm" data-need="${k}">${n.b}</button></div>`).join(""):'<div class="empty">Semua sudah terisi.</div>'}`;
+  </div><div><div class="h6" style="margin-top:0">Kalender</div>${tabCal()}<div class="h6" style="display:flex;justify-content:space-between"><span>Perlu diisi</span><span style="color:var(--rasp)">${need.length} hal</span></div>
+  ${need.length?need.slice(0,6).map((n,k)=>`<div class="todo"><i></i><div><b>${esc(n.t)}</b><span>${esc(n.s)}</span></div><button class="sm" data-need="${k}">${n.b}</button></div>`).join(""):'<div class="empty">Semua sudah terisi.</div>'}</div></div>`;
 }
 function tabMenu(){
   const it=(k,ic,bg,col,extra)=>`<button data-tab="${k}"><span class="ico" style="background:${bg}">${IC(P[ic],col)}</span><span><b>${SUBS[k][0]}</b><span class="s">${SUBS[k][1]}</span></span>${extra||""}</button>`;
@@ -396,17 +463,25 @@ function tabInbox(){
   return (L.length?`<div class="muted" style="margin:2px 2px 10px">${L.length} pesan · ${L.filter(m=>!m.is_read).length} belum dibaca</div>`:"")+L.map(m=>`<div class="msgc ${m.is_read?"":"unread"}"><div><span class="pill ${m.kind==="Missing schedule"?"up":"has"}">${esc(m.kind||"")}</span> <span class="muted">${esc(fmt(m.created_at))}${m.lang?" · "+esc(m.lang):""}</span></div><p>${esc(m.message)}</p>${/^https:\/\//.test(m.source_url||"")?`<a href="${esc(m.source_url)}" target="_blank" rel="noopener" class="muted" style="color:var(--blue);font-weight:700">${esc(m.source_url)}</a>`:""}<div style="display:flex;gap:6px;margin-top:10px"><button class="g sm" data-act="mread" data-id="${m.id}" data-r="${m.is_read?0:1}">${m.is_read?"Tandai belum dibaca":"Tandai dibaca"}</button><button class="r sm" data-act="mdel" data-id="${m.id}">Hapus</button></div></div>`).join("")+cfg||cfg+'<div class="empty">Belum ada pesan.</div>';
 }
 /* ---------- render ---------- */
-const MAINT=[["h","Ringkasan",P.home],["v","Vote",P.vote],["e","Jadwal",P.cal],["c","Konten",P.play],["m","Lainnya",P.more]];
+const NAVG=[["Utama",[["h","Ringkasan",P.home]]],["Kelola",[["v","Vote",P.vote],["e","Jadwal",P.cal],["c","Konten",P.play],["f","Foto",P.img],["r","Rilisan",P.rel]]],["Komunikasi",[["a","Pengumuman",P.bell],["x","Pesan pembaca",P.mail],["s","Lagu",P.mus]]],["Sistem",[["p","Pengaturan",P.gear]]]];
+const NAVALL=NAVG.flatMap(g=>g[1]);
+const TITLES={v:"Vote",e:"Jadwal",c:"Konten",f:"Foto",r:"Rilisan",a:"Pengumuman",x:"Pesan pembaca",s:"Lagu",p:"Pengaturan"};
+const FILT="vecf";
 function render(){
-  $("#app").style.display="block";
-  const grp=SUBS[tab]?"m":tab;
-  $("#tabs").innerHTML=MAINT.map(([k,l,p])=>`<button data-tab="${k}" class="${grp===k?"on":""}"><span class="ic">${IC(p)}</span>${l}</button>`).join("");
-  const canAdd="vecas".includes(tab)&&tab!=="m"&&tab!=="h"&&tab!=="x";const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu",a:"pengumuman"};
-  const head=SUBS[tab]?`<div class="back"><button data-tab="m" aria-label="Kembali">${IC(P.back)}</button><div><h2>${SUBS[tab][0]}</h2></div></div>`:(["v","e","c"].includes(tab)?`<div class="back"><h2>${{v:"Vote",e:"Jadwal",c:"Konten"}[tab]}</h2></div>`:"");
-  const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]||""} baru</button>${"vecs".includes(tab)?`<div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:""}`:"";
-  const body={h:tabHome,m:tabMenu,a:tabAnn,x:tabInbox,r:tabRel,v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
+  $("#app").style.display="block";document.body.classList.add("in");
+  const r=actRel();
+  const navItem=([k,l,p])=>{const n=k==="x"&&INBOX?INBOX.filter(m=>!m.is_read).length:0;return `<button data-tab="${k}" class="${tab===k?"on":""}"><span class="ic">${IC(p)}</span><span class="lb">${l}</span>${n?`<em>${n}</em>`:""}</button>`};
+  $("#tabs").innerHTML=`<div class="sbrand"><div class="wm"><b>DREAM</b>LOOP</div><i>EDITOR</i></div>
+   <div class="srel"><small>RILISAN AKTIF</small><b>${esc(r?r.title:"Boogie Woogie")}</b></div>
+   ${NAVG.map(([g,items])=>`<div class="sg"><span class="gl">${g}</span><div class="gi">${items.map(navItem).join("")}</div></div>`).join("")}
+   <div class="sfoot"><span class="st"><u></u>Terhubung</span><button data-tab="out" id="forget2">Keluar</button></div>`;
+  const canAdd="vecas".includes(tab);const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu",a:"pengumuman"};
+  const head=TITLES[tab]?`<div class="back"><h2>${TITLES[tab]}</h2></div>`:"";
+  const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]||""} baru</button>${"vec".includes(tab)?mfBar():""}${"vecs".includes(tab)?`<div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:""}`:(tab==="f"?mfBar():"");
+  const body={h:tabHome,a:tabAnn,x:tabInbox,r:tabRel,v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
   const keep=document.activeElement&&document.activeElement.id==="q";
   $("#pane").innerHTML=head+search+body;if(keep){const x=$("#q");x.focus();x.setSelectionRange(99,99)}
+  const on=$("#tabs .gi .on");if(on&&on.scrollIntoView&&innerWidth<900)on.scrollIntoView({inline:"center",block:"nearest"});
 }
 document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value.toLowerCase().trim();render()}});
 const ADD={a:()=>annForm(),r:()=>relForm(),v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
@@ -416,15 +491,21 @@ document.addEventListener("click",async ev=>{
   if(t.id==="addb"){ADD[tab]&&ADD[tab]();return}
   if(t.id==="f_tpl"){const rk=val("f_rk");if(!rk||isNaN(rk))return msg("Isi peringkat dulu (angka).","bad");const x=winText(val("f_show"),val("f_phase"),rk,val("f_rv").replace(/\D/g,""),val("f_rp").replace(",","."));if($("#f_rn").value.trim()&&!confirm("Ganti teks yang sudah ada dengan template?"))return;$("#f_rn").value=x;return}
   if(t.id==="f_now"){$("#f_dl").value=wibLocal(new Date().toISOString());return}
-  if(t.dataset.tab){tab=t.dataset.tab;q="";render();return}
+  if(t.dataset.tab==="out"){try{localStorage.removeItem("token")}catch{}$("#token").value="";seed=null;$("#app").style.display="none";document.body.classList.remove("in");$("#setup").style.display="";msg("Token dihapus dari browser ini.","ok");return}
+  if(t.dataset.tab){tab=t.dataset.tab;q="";render();scrollTo(0,0);return}
   const i=+t.dataset.i,a=t.dataset.act;
-  if(a==="redit")relForm(i);if(a==="aedit")annForm(i);if(a==="adel"&&confirm("Hapus pengumuman ini?")){seed.announcements.splice(i,1);await save("Hapus pengumuman")}if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
+  if(a==="redit")relForm(i);if(a==="aedit")annForm(i);if(a==="ptag")photoTag(i);if(a==="adel"&&confirm("Hapus pengumuman ini?")){seed.announcements.splice(i,1);await save("Hapus pengumuman")}if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
   if(a==="vdel"&&confirm("Hapus vote ini?\n"+seed.votes[i].show+" · "+seed.votes[i].phase)){seed.votes.splice(i,1);await save("Hapus vote")}
   if(a==="edel"&&confirm("Hapus jadwal ini?\n"+seed.events[i].title)){seed.events.splice(i,1);await save("Hapus jadwal")}
   if(a==="cdel"&&confirm("Hapus konten ini dari web?")){seed.content.splice(i,1);await save("Hapus konten")}
   if(a==="sdel"&&confirm("Hapus lagu ini?\n"+seed.songs[i].t)){seed.songs.splice(i,1);await save("Hapus lagu")}
   if(a==="pdel"&&confirm("Hapus foto ini?")){seed.moments.splice(i,1);await save("Hapus foto")}
   if(t.id==="reladd"){relForm();return}
+  if(t.dataset.mf){mf=t.dataset.mf;render();return}
+  if(t.dataset.cd){cal.sel=t.dataset.cd;render();return}
+  if(t.dataset.cm){cal.m+=+t.dataset.cm;if(cal.m<0){cal.m=11;cal.y--}if(cal.m>11){cal.m=0;cal.y++}cal.sel=null;render();return}
+  if(t.dataset.addday){eventForm(null,t.dataset.addday);return}
+
   if(t.dataset.go){const g=t.dataset.go;if(g==="win")winForm();if(g==="vote")voteForm();if(g==="event")eventForm();if(g==="content")contentForm();if(g==="photo"){tab="f";render()}return}
   if(t.dataset.need!=null){const n=(window.__need||[])[+t.dataset.need];if(!n)return;if(n.a==="win")winForm(n.show);if(n.a==="vedit")voteForm(n.i);if(n.a==="rel1"){tab="r";render()}return}
   if(t.id==="sbq"){const b=$("#sqlbox");b.style.display=b.style.display==="none"?"block":"none";return}
@@ -432,7 +513,7 @@ document.addEventListener("click",async ev=>{
   if(t.id==="sbs"){SL("sb_url",$("#sbu").value);SL("sb_key",$("#sbk").value);SL("sb_pass",$("#sbp").value);t.disabled=true;try{INBOX=await sbrpc("read_messages",{})||[];render();msg("Pesan dimuat.","ok")}finally{t.disabled=false}return}
   if(t.dataset.act==="mread"){await sbrpc("manage_message",{msg_id:+t.dataset.id,act:t.dataset.r==="1"?"read":"unread"});INBOX=await sbrpc("read_messages",{})||[];render();return}
   if(t.dataset.act==="mdel"&&confirm("Hapus pesan ini permanen?")){await sbrpc("manage_message",{msg_id:+t.dataset.id,act:"delete"});INBOX=await sbrpc("read_messages",{})||[];render();return}
-  if(t.id==="rel1"){const vid=(prompt("ID video MV YouTube untuk rilisan ini:","wG7pnZttup8")||"").trim();if(!vid)return;const st=seed.settings||{};
+  if(t.id==="rel1"){const vid=(prompt("Kode video MV Boogie Woogie (11 huruf dari link YouTube):","wG7pnZttup8")||"").trim();if(!vid)return;const st=seed.settings||{};
     seed.releases.push({id:"boogie-woogie",active:true,type:"group",member:"NCT DREAM",title:"Boogie Woogie",album:"DREAM AFTER DREAM",tagline:"Track, stream, vote and follow every NCT DREAM and member activity.",banner:"assets/hero.jpg",release_at:seed.release_at||"2026-11-09T16:00:00+07:00",mv:{video_id:vid,target_views:st.target_views||10000000},wins:["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"].map(x=>({show:x,rank:null,date:""}))});
     seed.votes.forEach(v=>v.release=v.release||"boogie-woogie");seed.moments.forEach(m=>m.release=m.release||"boogie-woogie");seed.content.forEach(c=>c.release=c.release||"boogie-woogie");
     await save("Buat rilisan pertama");return}
@@ -447,7 +528,7 @@ document.addEventListener("click",async ev=>{
   if(t.id==="oss"){const v=$("#osi").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.onesignal_app_id=v;else delete seed.settings.onesignal_app_id;await save("Atur notifikasi")}
   if(t.id==="gcs"){const v=$("#gcc").value.trim().replace(/[^\w-]/g,"");seed.settings=seed.settings||{};if(v)seed.settings.goatcounter=v;else delete seed.settings.goatcounter;await save("Atur statistik pengunjung")}
   if(t.id==="conn"){SL("repo",$("#repo").value);SL("branch",$("#branch").value);SL("token",$("#token").value);await load();msg("Terhubung.","ok")}
-  if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";seed=null;$("#app").style.display="none";$("#setup").style.display="";msg("Token dihapus dari browser ini.","ok")}
+  if(t.id==="forget"){try{localStorage.removeItem("token")}catch{}$("#token").value="";seed=null;$("#app").style.display="none";document.body.classList.remove("in");$("#setup").style.display="";msg("Token dihapus dari browser ini.","ok")}
   }catch(e){msg(e.message,"bad")}
 });
 $("#repo").value=LS("repo");$("#branch").value=LS("branch")||"main";$("#token").value=LS("token");
