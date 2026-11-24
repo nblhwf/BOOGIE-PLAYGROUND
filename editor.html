@@ -366,7 +366,17 @@ const SUBS={r:["Rilisan","Banner, MV, dan win tiap comeback"],f:["Foto","Comebac
 const fmtWinDate=()=>new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Jakarta",day:"numeric",month:"short"}).format(new Date());
 const actRel=()=>seed.releases.find(r=>r.active)||seed.releases[0];
 const ord=n=>({1:"1st",2:"2nd",3:"3rd"}[n]||"");
-const winTpl=(r,show,rank)=>{const who=r.member||"NCT DREAM",o=ord(+rank);if(!o)return "";return (+rank===1?"Congratulations, DREAMzens! We did it! ":"Great job, DREAMzens! ")+`${who} secured ${o} place on ${show} with "${r.title}"! Thank you to everyone who streamed and voted. Let's keep supporting DREAM!`};
+const winTpl=(r,show,rank)=>{
+  const who=r.member||"NCT DREAM",o=ord(+rank);
+  if(!o)return "";
+  if(+rank===1)return `Congratulations, DREAMzens! We did it! 🎉
+
+${who} takes 1st place on ${show} with "${r.title}"! Thank you for always giving your best, showing so much love and support, and bringing home a trophy for this album🏆`;
+
+  if(+rank===2)return `Great job, DREAMzens! ${who} secured 2nd place on ${show} with "${r.title}"! Thank you to everyone who voted and gave their best👏`;
+
+  return `Thank you, DREAMzens! ${who} placed ${o} on ${show} with "${r.title}"! Thank you to everyone who voted and gave their best👏`;
+};
 function tabHome(){
   const r=actRel(),wins=r?(r.wins||[]).filter(w=>+w.rank===1).length:0;
   const live=seed.votes.filter(v=>vst(v)==="berlangsung").length,up=seed.events.filter(e=>new Date(e.start)>=Date.now()-864e5).length;
