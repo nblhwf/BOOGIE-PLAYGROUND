@@ -234,7 +234,10 @@
    "deadline_at": "2026-11-26T15:00:00+07:00",
    "url": "https://open.coogoong.com?target=event%2Fdetail%3Fkey_event%3D919",
    "result": null,
-   "verified_at": "2026-11-22T06:31:41.031Z"
+   "verified_at": "2026-11-24T01:07:32.994Z",
+   "members": [
+    "NCT DREAM"
+   ]
   },
   {
    "slug": "v-1795329221882",
@@ -1422,5 +1425,6 @@
    "y": 2026
   }
  ],
- "releases": []
+ "releases": [],
+ "announcements": []
 }
