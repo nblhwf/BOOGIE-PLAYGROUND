@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Editor — BOOGIE! PLAYGROUND</title>
+<meta name="robots" content="noindex,nofollow"><title>Editor — DREAMLOOP</title>
 <style>
 :root{--ink:#1c1a2e;--mute:#6d7183;--line:#e6e8ee;--teal:#1b8f96;--blue:#2a7ea6;--rasp:#d62f5c;--butter:#e6ec98;--bg:#f2f4f8}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -36,8 +36,43 @@ dialog .bd{padding:6px 18px 12px;overflow:auto;max-height:68vh}dialog .ft{displa
 .chips{display:flex;flex-wrap:wrap;gap:6px}.chips label{display:flex;gap:6px;align-items:center;margin:0;padding:6px 11px;border:1.5px solid var(--line);border-radius:99px;font-size:12.5px;color:var(--ink);cursor:pointer;font-weight:700}.chips label:has(input:checked){background:var(--teal);border-color:var(--teal);color:#fff}.chips input{display:none}
 .sec{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--teal);margin:16px 0 0;text-transform:uppercase}
 .empty{text-align:center;color:var(--mute);padding:26px;font-size:13px}
-</style></head><body>
-<div class="top"><div class="in"><h1>BOOGIE! <b>Editor</b></h1><p>Tambah, ubah, atau hapus vote, jadwal, konten, foto, dan lagu. Semua tersimpan langsung ke GitHub dan muncul di web sekitar 1–2 menit kemudian. Salah input? Tekan Edit di item itu.</p></div></div>
+
+/* ---- DREAMLOOP editor look ---- */
+:root{--bg:#f4f5fb;--rasp:#e8336d;--butter:#e9ee8b;--teal:#1b8f96}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;padding:0 0 110px}
+.top{background:transparent;padding:18px 16px 4px}.top .in{display:flex;align-items:center;justify-content:space-between}
+.wm{font-weight:800;font-size:22px;letter-spacing:-.5px}.wm b{color:var(--rasp)}.wm i{font-style:normal;background:var(--ink);color:var(--butter);font-size:11px;padding:4px 9px;border-radius:99px;letter-spacing:.6px;margin-left:8px;vertical-align:3px}
+.st{display:flex;align-items:center;gap:6px;background:#fff;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600;color:#0b7a55}.st u{width:8px;height:8px;border-radius:50%;background:#16a56f}
+.wrap{margin:8px auto 0}
+.card{border-radius:20px;border:0;box-shadow:none}
+button{border-radius:14px}
+.b-main{background:var(--rasp)}.g{border-color:#d9dcea}
+.addbtn{background:var(--rasp);border-radius:18px;box-shadow:0 10px 22px rgba(232,51,109,.3)}
+.it{border-radius:18px;border:0;box-shadow:none}
+#tabs{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:40;margin:0;padding:8px 6px 16px;background:#fff;border-top:1px solid #e7e9f3;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;overflow:visible}
+#tabs button{background:transparent;border:0;box-shadow:none;color:var(--mute);padding:0;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:0}
+#tabs button .ic{width:44px;height:30px;border-radius:99px;display:flex;align-items:center;justify-content:center}
+#tabs button.on{color:var(--ink);background:transparent;box-shadow:none;font-weight:800}#tabs button.on .ic{background:var(--butter)}
+#tabs button:hover{transform:none}
+.hero{border-radius:24px;color:#fff;padding:20px;margin-bottom:6px;background:linear-gradient(160deg,#2b2750,#e8336d 130%)}
+.hero small{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--butter)}.hero h2{font-size:30px;line-height:1.05;letter-spacing:-.5px;margin-top:6px}.hero p{font-size:13px;opacity:.85;margin-top:6px}
+.hero .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.hero .stats div{background:rgba(255,255,255,.15);border-radius:14px;padding:10px 12px}.hero .stats b{display:block;font-size:22px}.hero .stats span{font-size:11px;opacity:.85}
+.h6{font-size:12px;font-weight:800;letter-spacing:.8px;color:var(--mute);margin:20px 2px 10px;text-transform:uppercase}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qa button{background:#fff;color:var(--ink);text-align:left;border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:12px;font-size:15px;font-weight:800}
+.qa .ico{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.qa .win{grid-column:1/-1;background:var(--butter);flex-direction:row;align-items:center;gap:14px;padding:16px}.qa .win .ico{width:52px;height:52px;border-radius:16px;background:var(--ink)}.qa .win span.s{display:block;font-size:12px;font-weight:600;opacity:.7;margin-top:2px}
+.todo{background:#fff;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px}.todo i{width:6px;align-self:stretch;border-radius:4px;background:#e0a100}.todo div{flex:1}.todo b{display:block;font-size:14px}.todo span{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.menu{display:flex;flex-direction:column;gap:10px}.menu button{background:#fff;color:var(--ink);display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;text-align:left}.menu .ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex:none}.menu b{display:block;font-size:15px}.menu span.s{display:block;font-size:12px;color:var(--mute);font-weight:600;margin-top:2px}.menu .n{margin-left:auto;background:var(--rasp);color:#fff;font-size:11px;padding:2px 8px;border-radius:99px}
+.back{display:flex;align-items:center;gap:10px;margin:2px 0 12px}.back button{width:40px;height:40px;padding:0;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center}.back h2{font-size:20px;letter-spacing:-.3px}
+.wsel{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wsel label{margin:0;background:#fff;border:2px solid transparent;border-radius:16px;padding:12px 14px;color:var(--ink);font-size:14px;font-weight:800;cursor:pointer}.wsel label span{display:inline-block;margin-top:6px;font-size:11px;padding:3px 8px;border-radius:99px;background:#eceef6}.wsel label span.todo2{background:#fff3d6;color:#7a5a00}.wsel label:has(input:checked){border-color:var(--ink);box-shadow:0 6px 16px rgba(28,26,46,.12)}.wsel input,.seg input{display:none}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#fff;border-radius:18px;padding:5px}.seg label{margin:0;text-align:center;padding:12px 0;border-radius:14px;font-size:14px;font-weight:800;color:var(--mute);cursor:pointer}.seg label:has(input:checked){background:var(--ink);color:var(--butter)}
+.say{background:var(--ink);color:#fff;border-radius:18px;padding:14px;margin-top:6px}.say textarea{background:transparent;color:#fff;border:0;padding:0;font-size:14px;line-height:1.55;resize:vertical}
+.msgc{background:#fff;border-radius:18px;padding:14px;margin-bottom:10px}.msgc.unread{box-shadow:inset 0 0 0 2px #f2b5c8}.msgc p{font-size:14px;line-height:1.55;margin:6px 0;word-break:break-word}
+pre.sql{background:var(--ink);color:#dfe3f5;border-radius:14px;padding:12px;font-size:11.5px;overflow:auto;white-space:pre-wrap;line-height:1.5;margin-top:8px}
+dialog .hd{background:var(--butter)}dialog .bd{background:var(--bg)}dialog .bd label.chip{}
+</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></head><body>
+<div class="top"><div class="in"><div class="wm"><b>DREAM</b>LOOP<i>EDITOR</i></div><span class="st"><u></u>Terhubung</span></div></div>
 <div class="wrap">
 <div id="setup" class="card"><h3>Koneksi GitHub (sekali saja)</h3>
 <div class="row"><div><label>Repo (akun/nama-repo)</label><input id="repo" placeholder="nblhwf/BOOGIE-PLAYGROUND"></div><div><label>Branch</label><input id="branch" value="main"></div></div>
@@ -56,8 +91,8 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const APPS=["Berriz","IDOL CHAMP","Mubeat","Muniverse","LiNC","Mnet Plus","Higher","Coogoong"];
 const ETYPES=["Official content","Live broadcast","Music show","Award show","Festival","Guest appearance","Recording","Album Event","Voting"];
 const MEMB=["NCT DREAM","Renjun","Jeno","Haechan","Jaemin","Chenle","Jisung"];
-const COL={r:"#6a4fd8",v:"#d62f5c",e:"#2a7ea6",c:"#1b8f96",s:"#8a3d5e",f:"#ec5a2c",p:"#1c1a2e"};
-let seed=null,sha=null,tab="r",q="";
+const COL={h:"#1c1a2e",m:"#1c1a2e",a:"#e8336d",x:"#2a7ea6",r:"#6a4fd8",v:"#d62f5c",e:"#2a7ea6",c:"#1b8f96",s:"#8a3d5e",f:"#ec5a2c",p:"#1c1a2e"};
+let seed=null,sha=null,tab="h",q="";
 const msg=(t,c)=>{const m=$("#msg");m.textContent=t;m.className=c;clearTimeout(msg.t);msg.t=setTimeout(()=>m.className="",c==="ok"?5000:8000)};
 const b64d=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));const b64e=s=>btoa(unescape(encodeURIComponent(s)));
 const api=()=>`https://api.github.com/repos/${$("#repo").value.trim()}/contents/data/seed.json`;
@@ -66,7 +101,7 @@ const br=()=>$("#branch").value.trim()||"main";
 async function load(){
   const r=await fetch(api()+"?ref="+encodeURIComponent(br())+"&t="+Date.now(),{headers:hdr()});
   if(!r.ok)throw new Error(r.status===401||r.status===403?"Token ditolak. Cek izin Contents: Read and write.":r.status===404?"Repo atau file data/seed.json tidak ditemukan.":"Gagal memuat ("+r.status+")");
-  const j=await r.json();sha=j.sha;seed=JSON.parse(b64d(j.content));["votes","events","content","moments","songs","releases"].forEach(k=>seed[k]=seed[k]||[]);$("#setup").style.display="none";render();
+  const j=await r.json();sha=j.sha;seed=JSON.parse(b64d(j.content));["votes","events","content","moments","songs","releases","announcements"].forEach(k=>seed[k]=seed[k]||[]);$("#setup").style.display="none";render();
 }
 async function save(note){
   const r=await fetch(api(),{method:"PUT",headers:{...hdr(),"Content-Type":"application/json"},body:JSON.stringify({message:note,content:b64e(JSON.stringify(seed,null,1)),sha,branch:br()})});
@@ -256,19 +291,125 @@ function tabSet(){
   <div class="card"><button class="g" id="forget">Keluar (hapus token dari browser ini)</button></div>`;
 }
 
+
+/* ---------- RINGKASAN / MENU / WIN / PENGUMUMAN / PESAN ---------- */
+const SHOWS=["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"];
+const IC=(d,c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c||"currentColor"}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const P={home:'<path d="M4 11l8-7 8 7v9H4z"/>',vote:'<path d="M5 12l5 5 9-10"/>',cal:'<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/>',play:'<rect x="3" y="5" width="18" height="14" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',more:'<circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/>',plus:'<path d="M12 5v14M5 12h14"/>',cup:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',img:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/>',mus:'<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',bell:'<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>',rel:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 15l3-4 2 3 2-2 2 3"/>',back:'<path d="M15 6l-6 6 6 6"/>'};
+const SUBS={r:["Rilisan","Banner, MV, dan win tiap comeback"],f:["Foto","Comeback moments"],s:["Lagu","Daftar lagu untuk DREAM PICK!"],a:["Pengumuman","Isi panel lonceng di web"],x:["Pesan pembaca","Dari LOOP POSTBOX"],p:["Pengaturan","Target, statistik, notifikasi"]};
+const fmtWinDate=()=>new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Jakarta",day:"numeric",month:"short"}).format(new Date());
+const actRel=()=>seed.releases.find(r=>r.active)||seed.releases[0];
+const ord=n=>({1:"1st",2:"2nd",3:"3rd"}[n]||"");
+const winTpl=(r,show,rank)=>{const who=r.member||"NCT DREAM",o=ord(+rank);if(!o)return "";return (+rank===1?"Congratulations, DREAMzens! We did it! ":"Great job, DREAMzens! ")+`${who} secured ${o} place on ${show} with "${r.title}"! Thank you to everyone who streamed and voted. Let's keep supporting DREAM!`};
+function tabHome(){
+  const r=actRel(),wins=r?(r.wins||[]).filter(w=>+w.rank===1).length:0;
+  const live=seed.votes.filter(v=>vst(v)==="berlangsung").length,up=seed.events.filter(e=>new Date(e.start)>=Date.now()-864e5).length;
+  const need=[];
+  if(!r)need.push({t:"Rilisan belum dibuat",s:"Perlu supaya win bisa dicatat",b:"Buat",a:"rel1"});
+  seed.votes.forEach((v,i)=>{if(vst(v)==="selesai"&&!v.result)need.push({t:v.show+" · "+v.phase,s:"Vote sudah selesai, hasil belum diisi",b:"Isi hasil",a:"vedit",i})});
+  if(r)(r.wins||[]).forEach(w=>{if(w.rank==null||w.rank==="")need.push({t:w.show,s:"Belum ada posisi di Comeback Recap",b:"Isi win",a:"win",show:w.show})});
+  const bg=r&&r.banner?`linear-gradient(160deg,rgba(43,39,80,.75),rgba(232,51,109,.55)),url(${esc(r.banner)}) center/cover`:"";
+  window.__need=need;
+  return `<div class="hero" ${bg?`style="background:${bg}"`:""}><small>RILISAN AKTIF</small><h2>${esc(r?r.title:"Boogie Woogie")}</h2><p>${esc(r?(r.member+" · "+(r.album||"")):"NCT DREAM · DREAM AFTER DREAM")}</p><div class="stats"><div><b>${wins}</b><span>Win</span></div><div><b>${live}</b><span>Vote jalan</span></div><div><b>${up}</b><span>Jadwal</span></div></div></div>
+  <div class="h6">Mau ngapain hari ini?</div><div class="qa">
+  <button class="win" data-go="win"><span class="ico">${IC(P.cup,"#e9ee8b")}</span><span><span style="display:block;font-size:17px">Umumkan win</span><span class="s">Musik show, 1 menit selesai</span></span></button>
+  <button data-go="vote"><span class="ico" style="background:#fde4ec">${IC(P.plus,"#d62f5c")}</span>Tambah vote</button>
+  <button data-go="event"><span class="ico" style="background:#dcecf5">${IC(P.cal,"#2a7ea6")}</span>Tambah jadwal</button>
+  <button data-go="content"><span class="ico" style="background:#d9f0f1">${IC(P.play,"#1b8f96")}</span>Tambah konten</button>
+  <button data-go="photo"><span class="ico" style="background:#ffe6dc">${IC(P.img,"#ec5a2c")}</span>Upload foto</button></div>
+  <div class="h6" style="display:flex;justify-content:space-between"><span>Perlu diisi</span><span style="color:var(--rasp)">${need.length} hal</span></div>
+  ${need.length?need.slice(0,6).map((n,k)=>`<div class="todo"><i></i><div><b>${esc(n.t)}</b><span>${esc(n.s)}</span></div><button class="sm" data-need="${k}">${n.b}</button></div>`).join(""):'<div class="empty">Semua sudah terisi.</div>'}`;
+}
+function tabMenu(){
+  const it=(k,ic,bg,col,extra)=>`<button data-tab="${k}"><span class="ico" style="background:${bg}">${IC(P[ic],col)}</span><span><b>${SUBS[k][0]}</b><span class="s">${SUBS[k][1]}</span></span>${extra||""}</button>`;
+  return `<div class="h6" style="margin-top:4px">Lainnya</div><div class="menu">${it("r","rel","#ece8fb","#6a4fd8")}${it("a","bell","#fde4ec","#d62f5c",seed.announcements.length?`<span class="n">${seed.announcements.length}</span>`:"")}${it("x","mail","#dcecf5","#2a7ea6",INBOX&&INBOX.filter(m=>!m.is_read).length?`<span class="n">${INBOX.filter(m=>!m.is_read).length}</span>`:"")}${it("f","img","#ffe6dc","#ec5a2c")}${it("s","mus","#f3e1ea","#8a3d5e")}${it("p","gear","#eceef6","#6b6f85")}</div><div class="card" style="margin-top:14px"><button class="g" id="forget">Keluar (hapus token dari browser ini)</button></div>`;
+}
+function winForm(pre){
+  const r=actRel();if(!r){msg("Buat rilisan pertama dulu (Lainnya > Rilisan).","bad");tab="r";render();return}
+  r.wins=r.wins||[];const get=sh=>r.wins.find(w=>w.show===sh)||{};
+  const first=pre||SHOWS.find(sh=>get(sh).rank==null||get(sh).rank==="")||SHOWS[0],g0=get(first);
+  ask("Umumkan win",`<p class="muted" style="margin:2px 0 4px">${esc(r.title)} · rilisan aktif</p>
+  <div class="h6" style="margin-top:12px">1 · Acara musik</div><div class="wsel">${SHOWS.map(sh=>{const w=get(sh);return `<label><input type="radio" name="ws" value="${esc(sh)}" ${sh===first?"checked":""}>${esc(sh)}<br><span class="${w.rank?"":"todo2"}">${w.rank?ord(+w.rank)+(w.date?" · "+esc(w.date):""):"belum diisi"}</span></label>`}).join("")}</div>
+  <div class="h6">2 · Posisi</div><div class="seg">${[["1","1st"],["2","2nd"],["3","3rd"],["","Tidak menang"]].map(([v,l])=>`<label><input type="radio" name="wr" value="${v}" ${String(g0.rank??"")===v?"checked":""}>${l}</label>`).join("")}</div>
+  <div class="h6">3 · Detail</div><div class="row"><div><label>Tanggal siar</label><input id="w_d" value="${esc(g0.date||fmtWinDate())}"></div><div><label>Total skor / suara (opsional)</label><input id="w_s" value="${esc(g0.score||"")}"></div></div>
+  <label>Link pengumuman (opsional)</label><input id="w_u" value="${esc(g0.url||"")}" placeholder="https://...">
+  <div class="h6">4 · Ucapan (otomatis, boleh diedit)</div><div class="say"><textarea id="w_t" rows="4">${esc(g0.note||winTpl(r,first,g0.rank))}</textarea></div>`,
+  ()=>{const sh=document.querySelector('input[name=ws]:checked').value,rk=document.querySelector('input[name=wr]:checked');const rank=rk&&rk.value?+rk.value:null;
+    const o={show:sh,rank,date:val("w_d"),score:val("w_s")||undefined,url:val("w_u")||undefined,note:val("w_t")||undefined};Object.keys(o).forEach(k=>o[k]===undefined&&delete o[k]);
+    const k=r.wins.findIndex(w=>w.show===sh);if(k<0)r.wins.push(o);else r.wins[k]=o;return "Win: "+sh+(rank?" #"+rank:"")});
+}
+document.addEventListener("change",e=>{const n=e.target.name;if(n!=="ws"&&n!=="wr")return;const r=actRel();if(!r||!$("#w_t"))return;
+  const sh=document.querySelector('input[name=ws]:checked').value;
+  if(n==="ws"){const w=(r.wins||[]).find(x=>x.show===sh)||{};const rv=String(w.rank??"");const el=document.querySelector(`input[name=wr][value="${rv}"]`);if(el)el.checked=true;$("#w_d").value=w.date||fmtWinDate();$("#w_s").value=w.score||"";$("#w_u").value=w.url||"";$("#w_t").value=w.note||winTpl(r,sh,w.rank)}
+  else{$("#w_t").value=winTpl(r,sh,document.querySelector('input[name=wr]:checked').value)}});
+function annForm(i){
+  const a=i==null?{at:today()}:seed.announcements[i];
+  ask(i==null?"Tambah pengumuman":"Edit pengumuman",`<label>Judul</label><input id="a_t" value="${esc(a.title||"")}" placeholder="mis. Vote Show Champion dibuka">
+  <label>Isi (opsional)</label><textarea id="a_x" rows="3">${esc(a.text||"")}</textarea>
+  <div class="row"><div><label>Tanggal</label><input id="a_d" type="date" value="${esc(String(a.at||today()).slice(0,10))}"></div><div><label>Link (opsional)</label><input id="a_u" value="${esc(a.url||"")}" placeholder="https://..."></div></div>
+  <p class="muted" style="margin-top:8px">Muncul di panel lonceng. Pembaca melihat titik merah sampai mereka membukanya.</p>`,
+  ()=>{const t=val("a_t");if(!t)throw new Error("Isi judul dulu.");const u=val("a_u");if(u&&!/^https:\/\//.test(u))throw new Error("Link harus diawali https://");
+    const o={id:i==null?"a"+Date.now():a.id,title:t,text:val("a_x"),at:val("a_d"),url:u};if(i==null)seed.announcements.unshift(o);else seed.announcements[i]=o;return (i==null?"Tambah":"Edit")+" pengumuman: "+t});
+}
+function tabAnn(){
+  const L=seed.announcements.map((a,i)=>({a,i}));
+  return L.map(({a,i})=>`<div class="it" style="--c:#e8336d"><div class="t"><b>${esc(a.title)}</b><div class="muted">${esc(String(a.at||"").slice(0,10))}${a.text?" · "+esc(a.text.slice(0,70)):""}</div></div><div class="a"><button class="g sm" data-act="aedit" data-i="${i}">Edit</button><button class="r sm" data-act="adel" data-i="${i}">Hapus</button></div></div>`).join("")||'<div class="empty">Belum ada pengumuman.</div>';
+}
+let INBOX=null;
+const sbc=()=>({u:LS("sb_url").trim().replace(/\/$/,""),k:LS("sb_key").trim(),p:LS("sb_pass")});
+async function sbrpc(fn,body){const c=sbc();if(!c.u||!c.k||!c.p)throw new Error("Isi URL, key, dan kata sandi dulu.");
+  const r=await fetch(c.u+"/rest/v1/rpc/"+fn,{method:"POST",headers:{apikey:c.k,Authorization:"Bearer "+c.k,"Content-Type":"application/json"},body:JSON.stringify({pass:c.p,...body})});
+  if(!r.ok)throw new Error(r.status===404?"Fungsi SQL belum dipasang di Supabase.":r.status>=400&&r.status<500?"Kata sandi salah, atau pengaturan Supabase belum tepat.":"Gagal ("+r.status+")");
+  return r.status===204?null:r.json().catch(()=>null)}
+const SQL=`-- Jalankan sekali di Supabase > SQL Editor. Ganti GANTI_KATA_SANDI.
+create extension if not exists pgcrypto with schema extensions;
+alter table editor_messages add column if not exists is_read boolean default false;
+create table if not exists editor_admin(pass_hash text);
+alter table editor_admin enable row level security;
+delete from editor_admin;
+insert into editor_admin values (encode(extensions.digest('GANTI_KATA_SANDI','sha256'),'hex'));
+create or replace function read_messages(pass text) returns setof editor_messages
+language plpgsql security definer set search_path=public,extensions as $$
+begin
+  if not exists(select 1 from editor_admin where pass_hash=encode(digest(pass,'sha256'),'hex')) then raise exception 'denied'; end if;
+  return query select * from editor_messages order by created_at desc limit 300;
+end $$;
+create or replace function manage_message(pass text, msg_id bigint, act text) returns void
+language plpgsql security definer set search_path=public,extensions as $$
+begin
+  if not exists(select 1 from editor_admin where pass_hash=encode(digest(pass,'sha256'),'hex')) then raise exception 'denied'; end if;
+  if act='read' then update editor_messages set is_read=true where id=msg_id;
+  elsif act='unread' then update editor_messages set is_read=false where id=msg_id;
+  elsif act='delete' then delete from editor_messages where id=msg_id; end if;
+end $$;
+grant execute on function read_messages(text), manage_message(text,bigint,text) to anon;`;
+function tabInbox(){
+  const c=sbc(),ready=c.u&&c.k&&c.p;
+  const cfg=`<div class="card"><h3>Koneksi Supabase</h3><p class="muted">Disimpan hanya di browser ini. Kata sandi dibuat sendiri lewat SQL di bawah, bukan password Supabase.</p>
+  <label>Project URL</label><input id="sbu" value="${esc(c.u)}" placeholder="https://xxxx.supabase.co">
+  <label>Anon key (sama dengan di config.js)</label><input id="sbk" value="${esc(c.k)}" placeholder="eyJ...">
+  <label>Kata sandi editor</label><input id="sbp" type="password" value="${esc(c.p)}">
+  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="b-main" id="sbs">Simpan dan muat pesan</button><button class="g" id="sbq">Lihat SQL pemasangan</button></div>
+  <div id="sqlbox" style="display:none"><pre class="sql">${esc(SQL)}</pre><button class="g sm" id="sqlc" style="margin-top:8px">Salin SQL</button></div></div>`;
+  if(!ready||!INBOX)return cfg+(ready?'<div class="empty">Tekan "Simpan dan muat pesan".</div>':"");
+  const L=INBOX;
+  return (L.length?`<div class="muted" style="margin:2px 2px 10px">${L.length} pesan · ${L.filter(m=>!m.is_read).length} belum dibaca</div>`:"")+L.map(m=>`<div class="msgc ${m.is_read?"":"unread"}"><div><span class="pill ${m.kind==="Missing schedule"?"up":"has"}">${esc(m.kind||"")}</span> <span class="muted">${esc(fmt(m.created_at))}${m.lang?" · "+esc(m.lang):""}</span></div><p>${esc(m.message)}</p>${/^https:\/\//.test(m.source_url||"")?`<a href="${esc(m.source_url)}" target="_blank" rel="noopener" class="muted" style="color:var(--blue);font-weight:700">${esc(m.source_url)}</a>`:""}<div style="display:flex;gap:6px;margin-top:10px"><button class="g sm" data-act="mread" data-id="${m.id}" data-r="${m.is_read?0:1}">${m.is_read?"Tandai belum dibaca":"Tandai dibaca"}</button><button class="r sm" data-act="mdel" data-id="${m.id}">Hapus</button></div></div>`).join("")+cfg||cfg+'<div class="empty">Belum ada pesan.</div>';
+}
 /* ---------- render ---------- */
-const TABS=[["r","Rilisan",()=>seed.releases.length],["v","Vote",()=>seed.votes.length],["e","Jadwal",()=>seed.events.length],["c","Konten",()=>seed.content.length],["s","Lagu",()=>seed.songs.length],["f","Foto",()=>seed.moments.length],["p","Pengaturan",null]];
+const MAINT=[["h","Ringkasan",P.home],["v","Vote",P.vote],["e","Jadwal",P.cal],["c","Konten",P.play],["m","Lainnya",P.more]];
 function render(){
   $("#app").style.display="block";
-  $("#tabs").innerHTML=TABS.map(([k,l,n])=>`<button data-tab="${k}" class="${tab===k?"on":""}" style="--c:${COL[k]}">${l}${n?`<i>${n()}</i>`:""}</button>`).join("");
-  const canAdd="vecs".includes(tab);const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu"};
-  const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]} baru</button><div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:"";
-  const body={r:tabRel,v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
+  const grp=SUBS[tab]?"m":tab;
+  $("#tabs").innerHTML=MAINT.map(([k,l,p])=>`<button data-tab="${k}" class="${grp===k?"on":""}"><span class="ic">${IC(p)}</span>${l}</button>`).join("");
+  const canAdd="vecas".includes(tab)&&tab!=="m"&&tab!=="h"&&tab!=="x";const LBL={v:"vote",e:"jadwal",c:"konten",s:"lagu",a:"pengumuman"};
+  const head=SUBS[tab]?`<div class="back"><button data-tab="m" aria-label="Kembali">${IC(P.back)}</button><div><h2>${SUBS[tab][0]}</h2></div></div>`:(["v","e","c"].includes(tab)?`<div class="back"><h2>${{v:"Vote",e:"Jadwal",c:"Konten"}[tab]}</h2></div>`:"");
+  const search=canAdd?`<button class="addbtn" id="addb">+ Tambah ${LBL[tab]||""} baru</button>${"vecs".includes(tab)?`<div class="bar"><input id="q" placeholder="Cari..." value="${esc(q)}"></div>`:""}`:"";
+  const body={h:tabHome,m:tabMenu,a:tabAnn,x:tabInbox,r:tabRel,v:tabVote,e:tabEvent,c:tabContent,s:tabSong,f:tabPhoto,p:tabSet}[tab]();
   const keep=document.activeElement&&document.activeElement.id==="q";
-  $("#pane").innerHTML=search+body;if(keep){const x=$("#q");x.focus();x.setSelectionRange(99,99)}
+  $("#pane").innerHTML=head+search+body;if(keep){const x=$("#q");x.focus();x.setSelectionRange(99,99)}
 }
 document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value.toLowerCase().trim();render()}});
-const ADD={r:()=>relForm(),v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
+const ADD={a:()=>annForm(),r:()=>relForm(),v:()=>voteForm(),e:()=>eventForm(),c:()=>contentForm(),s:()=>songForm()};
 document.addEventListener("click",async ev=>{
   const t=ev.target.closest("button");if(!t)return;
   try{
@@ -277,13 +418,20 @@ document.addEventListener("click",async ev=>{
   if(t.id==="f_now"){$("#f_dl").value=wibLocal(new Date().toISOString());return}
   if(t.dataset.tab){tab=t.dataset.tab;q="";render();return}
   const i=+t.dataset.i,a=t.dataset.act;
-  if(a==="redit")relForm(i);if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
+  if(a==="redit")relForm(i);if(a==="aedit")annForm(i);if(a==="adel"&&confirm("Hapus pengumuman ini?")){seed.announcements.splice(i,1);await save("Hapus pengumuman")}if(a==="vedit")voteForm(i);if(a==="eedit")eventForm(i);if(a==="cedit")contentForm(i);if(a==="sedit")songForm(i);
   if(a==="vdel"&&confirm("Hapus vote ini?\n"+seed.votes[i].show+" · "+seed.votes[i].phase)){seed.votes.splice(i,1);await save("Hapus vote")}
   if(a==="edel"&&confirm("Hapus jadwal ini?\n"+seed.events[i].title)){seed.events.splice(i,1);await save("Hapus jadwal")}
   if(a==="cdel"&&confirm("Hapus konten ini dari web?")){seed.content.splice(i,1);await save("Hapus konten")}
   if(a==="sdel"&&confirm("Hapus lagu ini?\n"+seed.songs[i].t)){seed.songs.splice(i,1);await save("Hapus lagu")}
   if(a==="pdel"&&confirm("Hapus foto ini?")){seed.moments.splice(i,1);await save("Hapus foto")}
   if(t.id==="reladd"){relForm();return}
+  if(t.dataset.go){const g=t.dataset.go;if(g==="win")winForm();if(g==="vote")voteForm();if(g==="event")eventForm();if(g==="content")contentForm();if(g==="photo"){tab="f";render()}return}
+  if(t.dataset.need!=null){const n=(window.__need||[])[+t.dataset.need];if(!n)return;if(n.a==="win")winForm(n.show);if(n.a==="vedit")voteForm(n.i);if(n.a==="rel1"){tab="r";render()}return}
+  if(t.id==="sbq"){const b=$("#sqlbox");b.style.display=b.style.display==="none"?"block":"none";return}
+  if(t.id==="sqlc"){try{await navigator.clipboard.writeText(SQL);msg("SQL disalin.","ok")}catch{msg("Salin manual dari kotak.","bad")}return}
+  if(t.id==="sbs"){SL("sb_url",$("#sbu").value);SL("sb_key",$("#sbk").value);SL("sb_pass",$("#sbp").value);t.disabled=true;try{INBOX=await sbrpc("read_messages",{})||[];render();msg("Pesan dimuat.","ok")}finally{t.disabled=false}return}
+  if(t.dataset.act==="mread"){await sbrpc("manage_message",{msg_id:+t.dataset.id,act:t.dataset.r==="1"?"read":"unread"});INBOX=await sbrpc("read_messages",{})||[];render();return}
+  if(t.dataset.act==="mdel"&&confirm("Hapus pesan ini permanen?")){await sbrpc("manage_message",{msg_id:+t.dataset.id,act:"delete"});INBOX=await sbrpc("read_messages",{})||[];render();return}
   if(t.id==="rel1"){const vid=(prompt("ID video MV YouTube untuk rilisan ini:","wG7pnZttup8")||"").trim();if(!vid)return;const st=seed.settings||{};
     seed.releases.push({id:"boogie-woogie",active:true,type:"group",member:"NCT DREAM",title:"Boogie Woogie",album:"DREAM AFTER DREAM",tagline:"Track, stream, vote and follow every NCT DREAM and member activity.",banner:"assets/hero.jpg",release_at:seed.release_at||"2026-11-09T16:00:00+07:00",mv:{video_id:vid,target_views:st.target_views||10000000},wins:["The Show","Show Champion","M Countdown","Music Bank","Inkigayo","Music Core"].map(x=>({show:x,rank:null,date:""}))});
     seed.votes.forEach(v=>v.release=v.release||"boogie-woogie");seed.moments.forEach(m=>m.release=m.release||"boogie-woogie");seed.content.forEach(c=>c.release=c.release||"boogie-woogie");

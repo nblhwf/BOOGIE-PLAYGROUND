@@ -295,6 +295,14 @@ body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
  .mobnav a[data-k=play].on{background:var(--butter);color:var(--ink)}
 }
 @media(max-width:370px){.mobnav a{font-size:10.5px!important}}
+@media(max-width:860px){.vr2,.mchips,.yts,.moments{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;scroll-padding-left:16px}.vr2{padding-top:4px;padding-bottom:22px;margin-bottom:-10px}.yts{padding-bottom:18px}}
+.bell{position:relative;flex:none}.bell svg{flex:none;width:22px;height:22px}.g2{column-gap:28px}.bdot{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:#e8336d;border:2px solid #fff;display:none}body.has-new .bdot{display:block}
+dialog{margin:auto}dialog.sheet{padding:0;max-width:440px;overflow:hidden;display:none;flex-direction:column;max-height:min(640px,86vh)}dialog.sheet[open]{display:flex}
+.bp-h{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 8px}.bp-h h3{margin:0}.bp-x{width:36px;height:36px;border-radius:50%;background:#eef1f4;font-size:22px;line-height:1;color:var(--ink)}
+#bpl{overflow:auto;padding:4px 16px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
+.an{position:relative;background:#f6f7fb;border-radius:16px;padding:12px 14px}.an.new{background:#fff;box-shadow:inset 0 0 0 1.5px #f2b5c8}.an.new::after{content:"NEW";position:absolute;top:10px;right:12px;font-size:10px;font-weight:800;color:#e8336d;letter-spacing:.6px}
+.an small{display:block;font-size:11px;color:var(--mute);font-weight:700;margin-bottom:3px}.an b{display:block;font-size:14px;padding-right:34px}.an p{margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--ink)}.an a{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:800;color:var(--teal,#1b8f96)}
+.bp-f{border-top:1px solid #eef0f4;background:#fafbfd;padding:12px 16px 14px;font-size:12px;color:var(--mute);line-height:1.5}.bp-b{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}.bp-b .btn{width:auto}.bp-on{display:none;font-size:12px;color:#0b7a55}
 </style>
 </head>
 <body>
@@ -302,15 +310,19 @@ body.push-on .getapp{display:flex}.getapp.show-i{display:flex}
   <aside class="side">
     <div class="brand wm"><b>DREAM</b>LOOP<small>NCT DREAM · group &amp; solo · every era</small></div>
     <nav class="nav" id="nav"></nav>
-    <button class="btn ghost sm" id="inst" style="margin:10px 4px 0">Pasang di layar HP</button>
-    <button class="btn ghost sm pushbtn" data-push="1" style="margin:8px 4px 0">Aktifkan notifikasi</button>
     <div class="foot">Fan-made, non-profit. Tidak berafiliasi dengan SM Entertainment atau NCT DREAM.</div>
   </aside>
-  <header class="mtop"><div class="wm"><b>DREAM</b>LOOP</div><div class="mtr"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-push="1" aria-label="Notifikasi"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></button></div></header>
+  <header class="mtop"><div class="wm"><b>DREAM</b>LOOP</div><div class="mtr"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-bell="1" aria-label="Announcements"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg><i class="bdot" aria-hidden="true"></i></button></div></header>
   <main id="view"></main>
   <aside class="right" id="right"></aside>
 </div>
 <nav class="mobnav" id="mobnav"></nav>
+<dialog id="bellp" class="sheet">
+  <div class="bp-h"><h3>Announcements</h3><button class="bp-x" data-bx="1" aria-label="Close">&times;</button></div>
+  <div id="bpl"></div>
+  <div class="bp-f"><span>Open DREAMLOOP from your home screen and get alerts for new announcements.</span>
+    <div class="bp-b"><button class="btn butter sm" id="bpi" data-inst="1">Add to home</button><button class="btn sm pushbtn" id="bpn" data-push="1">Turn on alerts</button><b class="bp-on" id="bpo">Alerts on</b></div></div>
+</dialog>
 <dialog id="pwa">
   <h3>Pasang di layar utama HP</h3>
   <p><b>Android (Chrome):</b> buka menu titik tiga di pojok kanan atas, lalu pilih Instal aplikasi atau Tambahkan ke layar utama.</p>
@@ -387,7 +399,7 @@ const trStr=(s,node)=>{const t=s.trim();if(!t)return s;const o=LANG==="id"?toLan
 let i18nObs=null;
 function i18nWalk(root){
   const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
-  while(n=w.nextNode()){const p=n.parentNode;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName))continue;
+  while(n=w.nextNode()){const p=n.parentNode;if(!p||/^(SCRIPT|STYLE)$/.test(p.tagName)||(p.closest&&p.closest("[data-nt]")))continue;
     if(LANG!=="id"){const o=trStr(n.nodeValue,n);if(o!==n.nodeValue){if(!ORIG.has(n))ORIG.set(n,n.nodeValue);n.nodeValue=o}}
     else{if(ORIG.has(n)){n.nodeValue=ORIG.get(n);ORIG.delete(n)}const o=trStr(n.nodeValue,n);if(o!==n.nodeValue){ORIG.set(n,n.nodeValue);n.nodeValue=o}}}
   root.querySelectorAll&&root.querySelectorAll("[aria-label],[placeholder],[title],[alt]").forEach(e=>ATTR_T.forEach(k=>{const v=e.getAttribute(k);if(!v)return;
@@ -410,6 +422,7 @@ const LANGS={
 };
 
 LANGS.id.dict={
+"Announcements":"Pengumuman","Close":"Tutup","No announcements yet.":"Belum ada pengumuman.","Open link":"Buka link","Open DREAMLOOP from your home screen and get alerts for new announcements.":"Buka DREAMLOOP dari layar utama dan dapatkan notifikasi pengumuman baru.","Add to home":"Pasang di layar HP","Turn on alerts":"Aktifkan notifikasi","Alerts on":"Notifikasi aktif",
 "Track, stream, vote and follow every NCT DREAM and member activity.":"Pantau, streaming, vote, dan ikuti semua aktivitas NCT DREAM dan member.",
 "Voting has ended. The final result is waiting for the official announcement.":"Voting sudah berakhir. Hasil akhir menunggu pengumuman resmi.",
 "Official videos and photos, grouped by comeback.":"Video dan foto resmi, dikelompokkan per comeback.",
@@ -424,6 +437,7 @@ LANGS.id.dict={
 LANGS.id.rules=[[/ · exact time follows the official announcement/," · jam pasti mengikuti pengumuman resmi"]];
 /* ---- Korean (keyed by the English text) ---- */
 LANGS.ko.dict={
+"Announcements":"공지","Close":"닫기","No announcements yet.":"아직 공지가 없습니다.","Open link":"링크 열기","Open DREAMLOOP from your home screen and get alerts for new announcements.":"홈 화면에서 DREAMLOOP을 열고 새 공지 알림을 받아보세요.","Add to home":"홈 화면에 추가","Turn on alerts":"알림 켜기","Alerts on":"알림 켜짐",
 "Home":"홈","MV Tracker":"MV 트래커","Stream & Vote":"스트리밍 & 투표","Schedule":"스케줄","Content":"콘텐츠","Playground":"플레이그라운드","MV":"MV","Play":"플레이",
 "NCT DREAM · group & solo · every era":"NCT DREAM · 그룹 & 솔로 · 모든 시대","Add to home screen":"홈 화면에 추가","Enable notifications":"알림 켜기","Notifications":"알림",
 "Fan-made, non-profit. Not affiliated with SM Entertainment or NCT DREAM.":"팬이 만든 비영리 사이트입니다. SM엔터테인먼트 및 NCT DREAM과 관련이 없습니다.",
@@ -524,7 +538,7 @@ async function loadData(){
   D.ratings=r;D.moments=seed.moments||SEEDV.moments||[];D.songs=seed.songs||SEEDV.songs||[];D.meta=(ej&&ej.meta)||{};D.settings=seed.settings||SEEDV.settings||{};
   const oid=D.settings.onesignal_app_id||CFG.ONESIGNAL_APP_ID;if(oid)initPush(oid);
   const gc=D.settings.goatcounter||CFG.GOATCOUNTER;if(gc&&!document.getElementById('gc')){const sc=document.createElement('script');sc.id='gc';sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter='https://'+String(gc).replace(/[^\w-]/g,'')+'.goatcounter.com/count';document.head.appendChild(sc)}D.content=seed.content||SEEDV.content||[];
-  D.releases=seed.releases||SEEDV.releases||[];D.vlatest=(vl&&vl.views)||{};applyRelease();
+  D.releases=seed.releases||SEEDV.releases||[];D.ann=(seed.announcements||SEEDV.announcements||[]);D.vlatest=(vl&&vl.views)||{};applyRelease();
 }
 
 
@@ -742,7 +756,7 @@ function initPush(id){
   }
 }
 
-const askPush=async()=>{if(!window._OS)return toast("Notifikasi belum siap, coba lagi sebentar");try{await _OS.Notifications.requestPermission();toast(_OS.Notifications.permission?"Notifikasi aktif":"Notifikasi belum diizinkan",3500)}catch{toast("Notifikasi tidak bisa diaktifkan di browser ini",3500)}};
+const askPush=async()=>{if(!window._OS){toast("Notifikasi belum siap, coba lagi sebentar");return}try{await _OS.Notifications.requestPermission();toast(_OS.Notifications.permission?"Notifikasi aktif":"Notifikasi belum diizinkan",3500)}catch{toast("Notifikasi tidak bisa diaktifkan di browser ini",3500)}};
 function vresHtml(){
   const A=["#ff6b6f","#f59ab5","#e6ec98","#9be4e6","#ec9a5c"],P=["20% 30%","70% 25%","50% 60%","35% 45%","80% 55%"];
   const L=D.votes.filter(v=>relOf(v)===REL().id&&verified(v)&&v.result&&v.result.rank!=null&&v.result.rank!==""&&Number(v.result.rank)>=1&&Number(v.result.rank)<=3)
@@ -782,7 +796,6 @@ function pHome(){
   ${contentHtml()}
   ${momentsAll().length?`<section class="h">Comeback moments <a href="#/content" data-photos="1">Semua</a></section><div class="moments">${momentsAll().map((m,i)=>{const c=PAL[[0,3,1,5,4,2,6][i%7]];return `<div class="moment" style="--c:${c}"><img src="${esc(phSrc(m.src))}" alt="${esc(m.cap)}" onerror="this.parentNode.style.display='none'">${m.cap?`<span style="${(c===PAL[5]||c===PAL[2])?"color:#1c1a2e":""}">${esc(m.cap)}</span>`:""}</div>`}).join("")}</div>`:""}
 
-  <div class="getapp ${isStandalone()?"":"show-i"}"><div><b>Bawa BOOGIE! ke HP kamu</b><span>Buka cepat dari layar utama${""} dan terima notifikasi milestone, konten baru, serta jadwal.</span></div><div class="ga-b"><button class="btn butter sm gi" data-inst="1">Pasang di layar HP</button><button class="btn glass sm pushbtn" data-push="1">Aktifkan notifikasi</button></div></div>
 `;
 }
 
@@ -1174,7 +1187,7 @@ function renderRight(){
   const ong=D.votes.filter(v=>verified(v)&&vStatus(v)==="ongoing").slice(0,3);
   const cdHtml=`<div class="count"><div style="font-size:12px;opacity:.75">${next?"Menuju: "+esc(next.title):"Countdown"}</div><b style="font-size:15px">${next?keyFmt(next.day,{day:"numeric",month:"short"})+" · "+evTime(next):"Belum ada jadwal"}</b><div class="n" id="cd"><div><b>--</b><span>hari</span></div><div><b>--</b><span>jam</span></div><div><b>--</b><span>mnt</span></div><div><b>--</b><span>dtk</span></div></div></div>`;
   $("#mright")&&($("#mright").innerHTML=cdHtml);
-  $("#right").innerHTML=`<div class="bellrow"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-push="1" aria-label="Notifikasi">${BELLSVG} Notifikasi</button></div>`+cdHtml+`
+  $("#right").innerHTML=`<div class="bellrow"><div class="langsw" data-sw role="group" aria-label="Language"></div><button class="bell" data-bell="1" aria-label="Announcements">${BELLSVG}<i class="bdot" aria-hidden="true"></i></button></div>`+cdHtml+`
   <div><h3>Voting berlangsung</h3><div class="list">${ong.map(v=>`<a class="item" href="${esc(v.url||"#/stream")}" ${v.url?'target="_blank" rel="noopener"':""} style="text-decoration:none;color:inherit"><div class="t"><b>${esc(v.apps.join(" & "))}</b><small>${esc(v.show)} · ${esc(v.phase)}${v.url?" · ketuk untuk vote":""}</small></div><span class="badge ok">Live</span></a>`).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div><h3>Upcoming</h3><div class="list">${upcoming().slice(0,4).map(evItem).join("")||'<div class="empty">Belum ada.</div>'}</div></div>
   <div class="muted" style="margin-top:auto">Zona waktu: ${TZS[TZ]}</div>`;
@@ -1190,15 +1203,30 @@ const ROUTES={home:[pHome,afterHome],mv:[pMv,afterMv],stream:[pStream,afterStrea
 function render(){
   const cur=location.hash.replace("#/","")||"home",r=ROUTES[cur]||ROUTES.home;
   renderNav(ROUTES[cur]?cur:"home");window.onresize=null;
-  $("#view").dataset.p=cur;$("#view").innerHTML=r[0]();r[1]&&r[1]();renderRight();i18nApply();
+  $("#view").dataset.p=cur;$("#view").innerHTML=r[0]();r[1]&&r[1]();renderRight();annDot();i18nApply();
 }
 addEventListener("hashchange",()=>{render();scrollTo({top:0})});
 
+
+/* ---- Announcements (bell) ---- */
+const annSeen=()=>{try{return JSON.parse(localStorage.getItem("ann_seen")||"[]")}catch{return[]}};
+const annList=()=>(D.ann||[]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+const annUnread=()=>{const seen=annSeen();return annList().filter(a=>!seen.includes(a.id))};
+const annDot=()=>document.body.classList.toggle("has-new",annUnread().length>0);
+function openBellState(){const on=!!(window._OS&&_OS.Notifications&&_OS.Notifications.permission);$("#bpn").style.display=on?"none":"";$("#bpo").style.display=on?"block":"none"}
+function openBell(){
+  const seen=annSeen(),L=annList();
+  $("#bpl").innerHTML=L.length?L.map(a=>{const nw=!seen.includes(a.id);return `<div class="an${nw?" new":""}"><small>${esc(a.at?keyFmt(String(a.at).slice(0,10),{day:"numeric",month:"short",year:"numeric"}):"")}</small><b data-nt="1">${esc(a.title)}</b>${a.text?`<p data-nt="1">${esc(a.text)}</p>`:""}${/^https:\/\//.test(a.url||"")?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Open link</a>`:""}</div>`}).join(""):'<div class="empty">No announcements yet.</div>';
+  const on=!!(window._OS&&_OS.Notifications&&_OS.Notifications.permission);
+  $("#bpi").style.display=isStandalone()?"none":"";$("#bpn").style.display=on?"none":"";$("#bpo").style.display=on?"block":"none";
+  i18nApply();$("#bellp").showModal();
+  try{localStorage.setItem("ann_seen",JSON.stringify(L.map(a=>a.id)))}catch{}annDot();
+}
 let deferredPrompt=null;
 addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e});
 const doInstall=()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else $("#pwa").showModal()};
-$("#inst").onclick=doInstall;
-document.addEventListener("click",e=>{const lg=e.target.closest("[data-lang]");if(lg){setLang(lg.dataset.lang);return}const t=e.target.closest("[data-inst],[data-push]");if(!t)return;if(t.dataset.inst)doInstall();if(t.dataset.push)askPush();});
+
+document.addEventListener("click",e=>{const lg=e.target.closest("[data-lang]");if(lg){setLang(lg.dataset.lang);return}if(e.target.closest("[data-bell]")){openBell();return}if(e.target.closest("[data-bx]")){$("#bellp").close();return}if(e.target===$("#bellp")){$("#bellp").close();return}const t=e.target.closest("[data-inst],[data-push]");if(!t)return;if(t.dataset.inst)doInstall();if(t.dataset.push)askPush().then(()=>{if($("#bellp").open)openBellState()});});
 if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
 
 $("#view").innerHTML='<div class="empty">Memuat data…</div>';
