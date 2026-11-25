@@ -1967,5 +1967,16 @@
    "url": ""
   }
  ],
- "voting_apps": []
+ "voting_apps": [
+  {
+   "name": "Fandora",
+   "ic": "Fa",
+   "color": "#5b03d4",
+   "icon": "assets/vote/fandora.png",
+   "site": "https://thefandora.com",
+   "ios": "",
+   "play": "Fandora",
+   "active": true
+  }
+ ]
 }
