@@ -69,7 +69,7 @@ export function buildNotifications({
         out.push({
           key: "m:" + i,
           heading: "🎉 MILESTONE UNLOCKED!",
-          body: `NCT DREAM's MV has reached ${nf(i * 1e6)} views!\nLet's keep streaming, NCTzen! 🤍`,
+          body: `NCT DREAM's MV has reached ${nf(i * 1e6)} views!\nLet's keep streaming, DREAMzens🤍`,
           url: site
         });
       }
@@ -96,7 +96,7 @@ export function buildNotifications({
     push(
       "new:" + id,
       "🎬 NEW CONTENT!",
-      `${t}\nWatch now, NCTzen! 🤍`,
+      `${t}\nWatch now, DREAMzens🤍`,
       "https://youtu.be/" + id
     );
   }
@@ -125,7 +125,7 @@ export function buildNotifications({
      push(
         "schedule:" + today,
         "📅 NCT DREAM SCHEDULE",
-        lines.join("\n\n") + "\n\nDon't miss it, NCTzen! 🤍",
+        lines.join("\n\n") + "\n\nDon't miss it, DREAMzens🤍",
         site,
         true
       );
