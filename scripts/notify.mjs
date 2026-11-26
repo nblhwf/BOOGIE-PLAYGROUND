@@ -69,7 +69,7 @@ export function buildNotifications({
         out.push({
           key: "m:" + i,
           heading: "🎉 MILESTONE UNLOCKED!",
-          body: `NCT DREAM's MV has reached ${nf(i * 1e6)} views!\nLet's keep streaming, DREAMzens🤍`,
+          body: `NCT DREAM's MV has reached ${nf(i * 1e6)} views!\nLet's keep streaming, NCTzen! 🤍`,
           url: site
         });
       }
@@ -96,7 +96,7 @@ export function buildNotifications({
     push(
       "new:" + id,
       "🎬 NEW CONTENT!",
-      `${t}\nWatch now, DREAMzens🤍`,
+      `${t}\nWatch now, NCTzen! 🤍`,
       "https://youtu.be/" + id
     );
   }
@@ -111,22 +111,30 @@ export function buildNotifications({
         return date === today || date === tomorrow;
       });
 
-    if (schedules.length) {
-      const lines = schedules.map(e => {
-        const date = ymd(e.start);
-        const label = date === today ? "TODAY" : "TOMORROW";
-        const when = e.all_day
-          ? "All day"
-          : fmtTime(e.start) + " WIB";
+    // Satu jadwal = satu notifikasi (sehari sebelum dan hari H, masing-masing sekali).
+    const who = list => {
+      const l = (list && list.length ? list : ["NCT DREAM"]).filter(Boolean);
+      const names = l.length > 1 ? l.slice(0, -1).join(", ") + " and " + l[l.length - 1] : l[0];
+      return names + "'s Schedule";
+    };
+    const clock = d => {
+      const w = WIB(d);
+      const h = w.getUTCHours();
+      return `${String(h % 12 || 12).padStart(2, "0")}.${String(w.getUTCMinutes()).padStart(2, "0")} ${h < 12 ? "AM" : "PM"} WIB`;
+    };
 
-        return `${label} (${dateLabel(date)})\n${e.title} — ${when}`;
-      });
+    for (const e of schedules) {
+      const date = ymd(e.start);
+      const isToday = date === today;
+      const label = isToday ? "TODAY" : "TOMORROW";
+      const when = e.all_day ? "All day" : clock(e.start);
+      const id = e.slug || (e.start + "|" + e.title);
 
-     push(
-        "schedule:" + today,
-        "📅 NCT DREAM SCHEDULE",
-        lines.join("\n\n") + "\n\nDon't miss it, DREAMzens🤍",
-        site,
+      push(
+        "schedule:" + id + ":" + label + ":" + date,
+        "📅 NCT DREAM SCHEDULE · " + label,
+        `${who(e.members)}\n${e.title} · ${when}\nDon't miss it, DREAMzens🤍`,
+        e.url || site,
         true
       );
     }
